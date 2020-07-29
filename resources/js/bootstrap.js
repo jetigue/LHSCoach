@@ -1,28 +1,34 @@
+import Vue from 'vue';
+import axios from 'axios';
+import VueSweetalert2 from 'vue-sweetalert2';
+import Form from './utilities/Form';
+import Errors from './utilities/Errors';
+import PortalVue from 'portal-vue';
+
+Vue.use(PortalVue);
+Vue.use(VueSweetalert2);
+Vue.use(require('vue-moment'));
+
+window.Vue = require('vue');
 window._ = require('lodash');
 
-/**
- * We'll load the axios HTTP library which allows us to easily issue requests
- * to our Laravel back-end. This library automatically handles sending the
- * CSRF token as a header based on the value of the "XSRF" token cookie.
- */
-
-window.axios = require('axios');
-
+window.axios = axios;
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
-/**
- * Echo exposes an expressive API for subscribing to channels and listening
- * for events that are broadcast by Laravel. Echo and event broadcasting
- * allows your team to easily build robust real-time web applications.
- */
+let token = document.head.querySelector('meta[name="csrf-token"]');
 
-// import Echo from 'laravel-echo';
+if (token) {
+    window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
+} else {
+    console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
+}
 
-// window.Pusher = require('pusher-js');
+window.Event = new Vue();
+window.events = new Vue();
 
-// window.Echo = new Echo({
-//     broadcaster: 'pusher',
-//     key: process.env.MIX_PUSHER_APP_KEY,
-//     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
-//     forceTLS: true
-// });
+window.flash = function (message, level = 'success') {
+    window.events.$emit('flash', { message, level});
+};
+
+window.Form = Form;
+window.Errors = Errors;

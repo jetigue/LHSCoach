@@ -20,3 +20,15 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/sports', 'SportController@index')->name('sports');
+Route::get('/athletes', 'AthleteController@index')->name('athletes');
+Route::get('/physicals', 'PhysicalController@index')->name('physicals');
+
+Route::apiResources([
+    'api/athletes'      => 'API\AthleteController',
+    'api/physicals'     => 'API\PhysicalController',
+    'api/sports/fall'   => 'API\FallSportController',
+    'api/sports/spring' => 'API\SpringSportController',
+    'api/sports/winter' => 'API\WinterSportController',
+]);
