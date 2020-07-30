@@ -4,7 +4,7 @@
             <div class="flex md:w-1/2 lg:w-1/3">
                 <input type="text"
                        v-model="search"
-                       placeholder="Find athlete..."
+                       placeholder="Find an athlete..."
                        class="flex w-full rounded-md border px-3 py-2 text-lg border shadow"
                 />
                 <button @click="clearSearch"

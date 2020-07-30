@@ -13,7 +13,7 @@ class Physical extends Model
             'physical_exam_form',
             'medical_eligibility_form',
             'physical_form',
-            'transportation_waiver_form',
+            'blanket_waiver_form',
             'ghsa_concussion_form',
             'ghsa_cardiac_form',
             'exam_date',

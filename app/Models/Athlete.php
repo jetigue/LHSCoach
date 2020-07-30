@@ -34,7 +34,10 @@ class Athlete extends Model
         'sex',
         'dob',
         'grad_year',
-        'status'
+        'status',
+        'fall_sport_id',
+        'winter_sport_id',
+        'spring_sport_id'
     ]);
 
     /**

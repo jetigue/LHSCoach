@@ -15,7 +15,7 @@ class CreatePhysicalsTable extends Migration {
             $table->boolean('physical_exam_form')->default(0);
             $table->boolean('medical_eligibility_form')->default(0);
             $table->boolean('physical_form')->default(0);
-            $table->boolean('transportation_waiver_form')->default(0);
+            $table->boolean('blanket_waiver_form')->default(0);
             $table->boolean('ghsa_concussion_form')->default(0);
             $table->boolean('ghsa_cardiac_form')->default(0);
             $table->date('exam_date');

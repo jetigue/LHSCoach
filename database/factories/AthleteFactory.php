@@ -13,8 +13,8 @@ $factory->define(Athlete::class, function (Faker $faker) {
         'dob'             => $faker->date($format = 'Y-m-d'),
         'grad_year'       => $faker->randomElement([2021, 2022, 2023, 2024, 2025]),
         'status'          => $faker->randomElement(['a', 'i']),
-        'fall_sport_id'   => $faker->randomElement([null, 1, 2, 3, 4, 5]),
-        'winter_sport_id' => $faker->randomElement([null, 1, 2, 3, 4, 5]),
-        'spring_sport_id' => $faker->randomElement([null, 1, 2, 3, 4, 5])
+        'fall_sport_id'   => $faker->randomElement([1, 2, 3, 4, 5]),
+        'winter_sport_id' => $faker->randomElement([1, 2, 3, 4, 5]),
+        'spring_sport_id' => $faker->randomElement([1, 2, 3, 4, 5])
     ];
 });

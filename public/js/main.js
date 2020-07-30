@@ -2405,6 +2405,565 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Physical.vue?vue&type=script&lang=js&":
+/*!*******************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Physical.vue?vue&type=script&lang=js& ***!
+  \*******************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: "Physical",
+  props: ['data'],
+  data: function data() {
+    return {
+      editing: false,
+      isExpanded: false,
+      statusColor: '',
+      expirationColor: '',
+      allClear: false,
+      restrict: false,
+      notClear: false,
+      id: this.data.id,
+      last_name: this.data.athlete.last_name,
+      first_name: this.data.athlete.first_name,
+      exam_date: this.data.exam_date,
+      restrictions: this.data.restrictions,
+      notes: this.data.notes,
+      athlete_id: this.data.athlete_id,
+      athletes: [],
+      form: new Form({
+        athlete_id: this.data.athlete_id,
+        exam_date: this.data.exam_date,
+        restrictions: this.data.restrictions,
+        form_path: this.data.form_path,
+        notes: this.data.notes,
+        history_form: this.data.history_form,
+        physical_exam_form: this.data.physical_exam_form,
+        medical_eligibility_form: this.data.medical_eligibility_form,
+        physical_form: this.data.physical_form,
+        blanket_waiver_form: this.data.blanket_waiver_form,
+        ghsa_concussion_form: this.data.ghsa_concussion_form,
+        ghsa_cardiac_form: this.data.ghsa_cardiac_form
+      }),
+      historyFormConfirmed: this.data.history_form === 1,
+      physicalExamFormConfirmed: this.data.physical_exam_form === 1,
+      eligibilityFormConfirmed: this.data.medical_eligibility_form === 1,
+      physicalFormConfirmed: this.data.physical_form === 1,
+      blanketFormConfirmed: this.data.blanket_waiver_form === 1,
+      concussionFormConfirmed: this.data.ghsa_concussion_form === 1,
+      cardiacFormConfirmed: this.data.ghsa_cardiac_form === 1
+    };
+  },
+  computed: {
+    status: function status() {
+      var forms = [this.historyFormConfirmed, this.physicalExamFormConfirmed, this.eligibilityFormConfirmed, this.physicalFormConfirmed, this.blanketFormConfirmed, this.concussionFormConfirmed, this.cardiacFormConfirmed];
+
+      if (forms.every(Boolean) && this.restrictions === null) {
+        this.statusColor = '#00b300';
+        this.allClear = true;
+        return "Cleared";
+      } else if (forms.every(Boolean) && this.restrictions !== null) {
+        this.statusColor = '#fd6a02';
+        this.restrict = true;
+        return "Cleared with Restrictions";
+      } else {
+        this.statusColor = '#cc0000';
+        return "Not Cleared";
+      }
+    },
+    expiration: function expiration() {
+      var examination_date = this.$moment(this.exam_date);
+      var expiration_date = this.$moment(examination_date).add(1, 'years');
+      var today = this.$moment();
+      var d = this.$moment(expiration_date).diff(today, 'days');
+
+      if (expiration_date > today && d >= 60) {
+        this.expirationColor = '#00b300';
+        return "Expires";
+      } else if (expiration_date > today && d <= 59) {
+        this.expirationColor = '#fd6a02';
+        return "Expires";
+      } else {
+        axios.patch('/api/physicals/' + this.data.id, {
+          history_form: this.history_form = '0',
+          physical_exam_form: this.physical_exam_form = '0',
+          medical_eligibility_form: this.medical_eligibility_form = '0',
+          physical_form: this.physical_form = '0',
+          blanket_waiver_form: this.blanket_waiver_form = '0',
+          ghsa_concussion_form: this.ghsa_concussion_form = '0',
+          ghsa_cardiac_form: this.ghsa_cardiac_form = '0'
+        })["catch"](function (errors) {
+          console.log(errors);
+        });
+        this.expirationColor = '#cc0000';
+        return "Expired";
+      }
+    }
+  },
+  methods: {
+    toggleRow: function toggleRow() {
+      this.isExpanded = !this.isExpanded;
+    },
+    confirmHistoryForm: function confirmHistoryForm() {
+      this.form.history_form = 1;
+      this.historyFormConfirmed = true;
+    },
+    unconfirmHistoryForm: function unconfirmHistoryForm() {
+      this.form.history_form = 0;
+      this.historyFormConfirmed = false;
+    },
+    confirmPhysicalExamForm: function confirmPhysicalExamForm() {
+      this.form.physical_exam_form = 1;
+      this.physicalExamFormConfirmed = true;
+    },
+    unconfirmPhysicalExamForm: function unconfirmPhysicalExamForm() {
+      this.form.physical_exam_form = 0;
+      this.physicalExamFormConfirmed = false;
+    },
+    confirmEligibilityForm: function confirmEligibilityForm() {
+      this.form.medical_eligibility_form = 1;
+      this.eligibilityFormConfirmed = true;
+    },
+    unconfirmEligibilityForm: function unconfirmEligibilityForm() {
+      this.form.medical_eligibility_form = 0;
+      this.eligibilityFormConfirmed = false;
+    },
+    confirmPhysicalForm: function confirmPhysicalForm() {
+      this.form.physical_form = 1;
+      this.physicalFormConfirmed = true;
+    },
+    unconfirmPhysicalForm: function unconfirmPhysicalForm() {
+      this.form.physical_form = 0;
+      this.physicalFormConfirmed = false;
+    },
+    confirmBlanketForm: function confirmBlanketForm() {
+      this.form.blanket_waiver_form = 1;
+      this.blanketFormConfirmed = true;
+    },
+    unconfirmBlanketForm: function unconfirmBlanketForm() {
+      this.form.blanket_waiver_form = 0;
+      this.blanketFormConfirmed = false;
+    },
+    confirmConcussionForm: function confirmConcussionForm() {
+      this.form.ghsa_concussion_form = 1;
+      this.concussionFormConfirmed = true;
+    },
+    unconfirmConcussionForm: function unconfirmConcussionForm() {
+      this.form.ghsa_concussion_form = 0;
+      this.concussionFormConfirmed = false;
+    },
+    confirmCardiacForm: function confirmCardiacForm() {
+      this.form.ghsa_cardiac_form = 1;
+      this.cardiacFormConfirmed = true;
+    },
+    unconfirmCardiacForm: function unconfirmCardiacForm() {
+      this.form.ghsa_cardiac_form = 0;
+      this.cardiacFormConfirmed = false;
+    },
+    getNames: function getNames() {
+      var _this = this;
+
+      this.editing = true;
+      axios.get('/api/athletes').then(function (response) {
+        _this.athletes = response.data;
+      })["catch"](function (errors) {
+        console.log(errors);
+      });
+    },
+    update: function update() {
+      var _this2 = this;
+
+      this.form.patch('/api/physicals/' + this.data.id).then(function (data) {
+        _this2.last_name = _this2.athletes.find(function (athlete) {
+          return athlete.id === _this2.form.athlete_id;
+        }).last_name;
+        _this2.first_name = _this2.athletes.find(function (athlete) {
+          return athlete.id === _this2.form.athlete_id;
+        }).first_name;
+        _this2.exam_date = _this2.form.exam_date;
+        _this2.restrictions = _this2.form.restrictions;
+        _this2.notes = _this2.form.notes;
+        _this2.history_form = _this2.form.history_form, _this2.physical_exam_form = _this2.form.physical_exam_form, _this2.medical_eligibility_form = _this2.form.medical_eligibility_form, _this2.physical_form = _this2.form.physical_form, _this2.blanket_waiver_form = _this2.form.blanket_waiver_form, _this2.ghsa_concussion_form = _this2.form.ghsa_concussion_form, _this2.ghsa_cardiac_form = _this2.form.ghsa_cardiac_form;
+        _this2.editing = false;
+        _this2.isExpanded = false;
+
+        if (_this2.athlete_id !== _this2.data.athlete_id || _this2.exam_date !== _this2.data.exam_date || _this2.restrictions !== _this2.data.restrictions || _this2.notes !== _this2.data.notes || _this2.grad_year !== _this2.data.grad_year || _this2.history_form !== _this2.data.history_form || _this2.physical_exam_form !== _this2.data.physical_exam_form || _this2.medical_eligibility_form !== _this2.data.medical_eligibility_form || _this2.physical_form !== _this2.data.physical_form || _this2.blanket_waiver_form !== _this2.data.blanket_waiver_form || _this2.ghsa_concussion_form !== _this2.data.ghsa_concussion_form || _this2.ghsa_cardiac_form !== _this2.data.ghsa_cardiac_form) {
+          var Toast = Vue.swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 2500,
+            timerProgressBar: true,
+            onOpen: function onOpen(toast) {
+              toast.addEventListener('mouseenter', Vue.swal.stopTimer);
+              toast.addEventListener('mouseleave', Vue.swal.resumeTimer);
+            }
+          });
+          Toast.fire({
+            icon: 'success',
+            title: 'Physical Updated!'
+          });
+        }
+      })["catch"](function (errors) {
+        console.log(errors);
+      });
+    },
+    destroy: function destroy() {
+      axios["delete"]('api/physicals/' + this.data.id);
+      this.$emit('deleted', this.data.id);
+    },
+    resetForm: function resetForm() {
+      this.form.athlete_id = this.data.athlete_id, this.form.exam_date = this.data.exam_date, this.form.restrictions = this.data.restrictions, this.form.form_path = this.data.form_path, this.form.notes = this.data.notes, this.form.history_form = this.data.history_form, this.form.physical_exam_form = this.data.physical_exam_form, this.form.medical_eligibility_form = this.data.medical_eligibility_form, this.form.physical_form = this.data.physical_form, this.form.blanket_waiver_form = this.data.blanket_waiver_form, this.form.ghsa_concussion_form = this.data.ghsa_concussion_form, this.form.ghsa_cardiac_form = this.data.ghsa_cardiac_form;
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/PhysicalStatus.vue?vue&type=script&lang=js&":
 /*!*************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/PhysicalStatus.vue?vue&type=script&lang=js& ***!
@@ -2471,13 +3030,91 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Collection__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../Collection */ "./resources/js/Collection.js");
+/* harmony import */ var _Physical__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Physical */ "./resources/js/components/Physical.vue");
+/* harmony import */ var _forms_NewPhysicalForm__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./forms/NewPhysicalForm */ "./resources/js/components/forms/NewPhysicalForm.vue");
 //
 //
 //
 //
-/* harmony default export */ __webpack_exports__["default"] = ({
-  name: "Physicals"
-});
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = (_Collection__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
+  name: "Physicals",
+  components: {
+    Physical: _Physical__WEBPACK_IMPORTED_MODULE_1__["default"],
+    NewPhysicalForm: _forms_NewPhysicalForm__WEBPACK_IMPORTED_MODULE_2__["default"]
+  },
+  props: ['data'],
+  data: function data() {
+    return {
+      search: ''
+    };
+  },
+  computed: {
+    filteredPhysicals: function filteredPhysicals() {
+      var _this = this;
+
+      return this.items.filter(function (physical) {
+        return physical.exam_date.toLowerCase().match(_this.search.toLowerCase()) // athlete.first_name.toLowerCase().match(this.search.toLowerCase())
+        ;
+      });
+    }
+  },
+  methods: {
+    clearSearch: function clearSearch() {
+      this.search = '';
+    }
+  }
+}));
 
 /***/ }),
 
@@ -3170,6 +3807,438 @@ __webpack_require__.r(__webpack_exports__);
       this.form.status = '';
       this.form.errors.clear();
     }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/forms/NewPhysicalForm.vue?vue&type=script&lang=js&":
+/*!********************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/forms/NewPhysicalForm.vue?vue&type=script&lang=js& ***!
+  \********************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      form: new Form({
+        athlete_id: '',
+        exam_date: '',
+        restrictions: '',
+        form_path: '',
+        notes: '',
+        history_form: 0,
+        physical_exam_form: 0,
+        medical_eligibility_form: 0,
+        physical_form: 0,
+        blanket_waiver_form: 0,
+        ghsa_concussion_form: 0,
+        ghsa_cardiac_form: 0
+      }),
+      historyFormConfirmed: false,
+      physicalExamFormConfirmed: false,
+      eligibilityFormConfirmed: false,
+      physicalFormConfirmed: false,
+      blanketFormConfirmed: false,
+      concussionFormConfirmed: false,
+      cardiacFormConfirmed: false,
+      athletes: []
+    };
+  },
+  methods: {
+    confirmHistoryForm: function confirmHistoryForm() {
+      this.form.history_form = 1;
+      this.historyFormConfirmed = true;
+    },
+    unconfirmHistoryForm: function unconfirmHistoryForm() {
+      this.form.history_form = 0;
+      this.historyFormConfirmed = false;
+    },
+    confirmPhysicalExamForm: function confirmPhysicalExamForm() {
+      this.form.physical_exam_form = 1;
+      this.physicalExamFormConfirmed = true;
+    },
+    unconfirmPhysicalExamForm: function unconfirmPhysicalExamForm() {
+      this.form.physical_exam_form = 0;
+      this.physicalExamFormConfirmed = false;
+    },
+    confirmEligibilityForm: function confirmEligibilityForm() {
+      this.form.medical_eligibility_form = 1;
+      this.eligibilityFormConfirmed = true;
+    },
+    unconfirmEligibilityForm: function unconfirmEligibilityForm() {
+      this.form.medical_eligibility_form = 0;
+      this.eligibilityFormConfirmed = false;
+    },
+    confirmPhysicalForm: function confirmPhysicalForm() {
+      this.form.physical_form = 1;
+      this.physicalFormConfirmed = true;
+    },
+    unconfirmPhysicalForm: function unconfirmPhysicalForm() {
+      this.form.physical_form = 0;
+      this.physicalFormConfirmed = false;
+    },
+    confirmBlanketForm: function confirmBlanketForm() {
+      this.form.blanket_waiver_form = 1;
+      this.blanketFormConfirmed = true;
+    },
+    unconfirmBlanketForm: function unconfirmBlanketForm() {
+      this.form.blanket_waiver_form = 0;
+      this.blanketFormConfirmed = false;
+    },
+    confirmConcussionForm: function confirmConcussionForm() {
+      this.form.ghsa_concussion_form = 1;
+      this.concussionFormConfirmed = true;
+    },
+    unconfirmConcussionForm: function unconfirmConcussionForm() {
+      this.form.ghsa_concussion_form = 0;
+      this.concussionFormConfirmed = false;
+    },
+    confirmCardiacForm: function confirmCardiacForm() {
+      this.form.ghsa_cardiac_form = 1;
+      this.cardiacFormConfirmed = true;
+    },
+    unconfirmCardiacForm: function unconfirmCardiacForm() {
+      this.form.ghsa_cardiac_form = 0;
+      this.cardiacFormConfirmed = false;
+    },
+    onSubmit: function onSubmit() {
+      var _this = this;
+
+      this.form.post('/api/physicals').then(function (data) {
+        Event.$emit('formSubmitted');
+        var Toast = Vue.swal.mixin({
+          toast: true,
+          position: 'top-end',
+          showConfirmButton: false,
+          timer: 2500,
+          timerProgressBar: true,
+          onOpen: function onOpen(toast) {
+            toast.addEventListener('mouseenter', Vue.swal.stopTimer);
+            toast.addEventListener('mouseleave', Vue.swal.resumeTimer);
+          }
+        });
+        Toast.fire({
+          icon: 'success',
+          title: 'Physical Successfully Added!'
+        });
+
+        _this.$emit('created', data);
+
+        _this.resetForm();
+      })["catch"](function (errors) {
+        return console.log(errors);
+      });
+    },
+    resetForm: function resetForm() {
+      this.form.athlete_id = '';
+      this.form.restrictions = '';
+      this.form.notes = '';
+      this.form.exam_date = '';
+      this.form.history_form = 0;
+      this.form.physical_exam_form = 0;
+      this.form.medical_eligibility_form = 0;
+      this.form.physical_form = 0;
+      this.form.blanket_waiver_form = 0;
+      this.form.ghsa_concussion_form = 0;
+      this.form.ghsa_cardiac_form = 0;
+      this.historyFormConfirmed = false;
+      this.physicalFormConfirmed = false;
+      this.eligibilityFormConfirmed = false;
+      this.physicalFormConfirmed = false;
+      this.blanketFormConfirmed = false;
+      this.concussionFormConfirmed = false;
+      this.cardiacFormConfirmed = false;
+      this.form.errors.clear();
+    }
+  },
+  created: function created() {
+    var _this2 = this;
+
+    Event.$on('cancel', function () {
+      return _this2.resetForm();
+    });
+    Event.$on('getNames', function () {
+      return axios.get('api/athletes').then(function (response) {
+        _this2.athletes = response.data;
+        console.log(_this2.athletes);
+      })["catch"](function (errors) {
+        console.log(errors);
+      });
+    });
   }
 });
 
@@ -25444,7 +26513,7 @@ var render = function() {
           ],
           staticClass:
             "flex w-full rounded-md border px-3 py-2 text-lg border shadow",
-          attrs: { type: "text", placeholder: "Find athlete..." },
+          attrs: { type: "text", placeholder: "Find an athlete..." },
           domProps: { value: _vm.search },
           on: {
             input: function($event) {
@@ -25554,6 +26623,1059 @@ render._withStripped = true
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Physical.vue?vue&type=template&id=7b6e9a7c&scoped=true&":
+/*!***********************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Physical.vue?vue&type=template&id=7b6e9a7c&scoped=true& ***!
+  \***********************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", {}, [
+    _vm.editing
+      ? _c("div", { staticClass: "p-3" }, [
+          _c("div", { staticClass: "w-full lg:w-1/2 mx-auto" }, [
+            _c(
+              "form",
+              {
+                staticClass:
+                  "bg-gray-200 shadow-md rounded px-8 pt-6 pb-8 mb-4",
+                attrs: {
+                  action: "api/physicals/id",
+                  method: "POST",
+                  id: "editPhysical"
+                },
+                on: {
+                  submit: function($event) {
+                    $event.preventDefault()
+                    return _vm.update($event)
+                  },
+                  keydown: function($event) {
+                    return _vm.form.errors.clear()
+                  }
+                }
+              },
+              [
+                _c("div", { staticClass: "flex items-center mb-4" }, [
+                  _vm._m(0),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "w-full text-gray-800 px-4" }, [
+                    _c("p", [_vm._v(_vm._s(_vm.id))])
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "mb-2" }, [
+                  _c(
+                    "div",
+                    { staticClass: "flex justify-between content-end" },
+                    [
+                      _c(
+                        "label",
+                        {
+                          staticClass: "text-sm font-semibold text-red-900",
+                          attrs: { for: "form.athlete_id" }
+                        },
+                        [
+                          _vm._v(
+                            "\n                            Athlete\n                        "
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _vm.form.errors.has("athlete_id")
+                        ? _c("span", {
+                            staticClass: "form-help",
+                            attrs: { id: "athleteHelp" },
+                            domProps: {
+                              textContent: _vm._s(
+                                _vm.form.errors.get("athlete_id")
+                              )
+                            }
+                          })
+                        : _vm._e()
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "select",
+                    {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.form.athlete_id,
+                          expression: "form.athlete_id"
+                        }
+                      ],
+                      staticClass:
+                        "w-full rounded border px-3 py-2 text-lg border shadow-md",
+                      attrs: {
+                        name: "athlete_id",
+                        id: "form.athlete_id",
+                        required: ""
+                      },
+                      on: {
+                        change: function($event) {
+                          var $$selectedVal = Array.prototype.filter
+                            .call($event.target.options, function(o) {
+                              return o.selected
+                            })
+                            .map(function(o) {
+                              var val = "_value" in o ? o._value : o.value
+                              return val
+                            })
+                          _vm.$set(
+                            _vm.form,
+                            "athlete_id",
+                            $event.target.multiple
+                              ? $$selectedVal
+                              : $$selectedVal[0]
+                          )
+                        }
+                      }
+                    },
+                    _vm._l(_vm.athletes, function(athlete) {
+                      return _c(
+                        "option",
+                        { key: athlete.id, domProps: { value: athlete.id } },
+                        [
+                          _vm._v(
+                            "\n                            " +
+                              _vm._s(athlete.last_name) +
+                              ", " +
+                              _vm._s(athlete.first_name) +
+                              "\n                        "
+                          )
+                        ]
+                      )
+                    }),
+                    0
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "py-2" }, [
+                  _c(
+                    "div",
+                    { staticClass: "flex justify-between content-end" },
+                    [
+                      _c(
+                        "label",
+                        {
+                          staticClass: "text-sm font-semibold text-red-900",
+                          attrs: { for: "form.exam_date" }
+                        },
+                        [_vm._v("Exam Date")]
+                      ),
+                      _vm._v(" "),
+                      _vm.form.errors.has("exam_date")
+                        ? _c("span", {
+                            staticClass: "text-red-600 text-xs font-semibold",
+                            attrs: { id: "exam_dateHelp" },
+                            domProps: {
+                              textContent: _vm._s(
+                                _vm.form.errors.get("exam_date")
+                              )
+                            }
+                          })
+                        : _vm._e()
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.form.exam_date,
+                        expression: "form.exam_date"
+                      }
+                    ],
+                    staticClass:
+                      "w-full rounded border px-2 py-2 text-lg border shadow-md",
+                    attrs: { id: "form.exam_date", type: "date" },
+                    domProps: { value: _vm.form.exam_date },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(_vm.form, "exam_date", $event.target.value)
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _vm._m(1),
+                _vm._v(" "),
+                _c("div", { staticClass: "flex flex-col px-4" }, [
+                  _c("div", { staticClass: "flex items-center py-1" }, [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.form.history_form,
+                          expression: "form.history_form"
+                        }
+                      ],
+                      staticClass: "hidden",
+                      attrs: {
+                        type: "radio",
+                        id: "form.history_form",
+                        value: "1"
+                      },
+                      domProps: { checked: _vm._q(_vm.form.history_form, "1") },
+                      on: {
+                        change: function($event) {
+                          return _vm.$set(_vm.form, "history_form", "1")
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _vm.historyFormConfirmed
+                      ? _c(
+                          "a",
+                          {
+                            staticClass: "text-xl",
+                            on: { click: _vm.unconfirmHistoryForm }
+                          },
+                          [_vm._m(2)]
+                        )
+                      : _c("a", { on: { click: _vm.confirmHistoryForm } }, [
+                          _vm._m(3)
+                        ]),
+                    _vm._v(" "),
+                    _vm._m(4)
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "flex flex-col px-4" }, [
+                  _c("div", { staticClass: "flex items-center py-1" }, [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.form.physical_exam_form,
+                          expression: "form.physical_exam_form"
+                        }
+                      ],
+                      staticClass: "hidden",
+                      attrs: {
+                        type: "radio",
+                        id: "form.physical_exam_form",
+                        value: "1"
+                      },
+                      domProps: {
+                        checked: _vm._q(_vm.form.physical_exam_form, "1")
+                      },
+                      on: {
+                        change: function($event) {
+                          return _vm.$set(_vm.form, "physical_exam_form", "1")
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _vm.physicalExamFormConfirmed
+                      ? _c(
+                          "a",
+                          {
+                            staticClass: "text-xl",
+                            on: { click: _vm.unconfirmPhysicalExamForm }
+                          },
+                          [_vm._m(5)]
+                        )
+                      : _c(
+                          "a",
+                          { on: { click: _vm.confirmPhysicalExamForm } },
+                          [_vm._m(6)]
+                        ),
+                    _vm._v(" "),
+                    _vm._m(7)
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "flex flex-col px-4" }, [
+                  _c("div", { staticClass: "flex items-center py-1" }, [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.form.medical_eligibility_form,
+                          expression: "form.medical_eligibility_form"
+                        }
+                      ],
+                      staticClass: "hidden",
+                      attrs: {
+                        type: "radio",
+                        id: "form.medical_eligibility_form",
+                        value: "1"
+                      },
+                      domProps: {
+                        checked: _vm._q(_vm.form.medical_eligibility_form, "1")
+                      },
+                      on: {
+                        change: function($event) {
+                          return _vm.$set(
+                            _vm.form,
+                            "medical_eligibility_form",
+                            "1"
+                          )
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _vm.eligibilityFormConfirmed
+                      ? _c(
+                          "a",
+                          {
+                            staticClass: "text-xl",
+                            on: { click: _vm.unconfirmEligibilityForm }
+                          },
+                          [_vm._m(8)]
+                        )
+                      : _c("a", { on: { click: _vm.confirmEligibilityForm } }, [
+                          _vm._m(9)
+                        ]),
+                    _vm._v(" "),
+                    _vm._m(10)
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "flex flex-col px-4" }, [
+                  _c("div", { staticClass: "flex items-center py-1" }, [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.form.physical_form,
+                          expression: "form.physical_form"
+                        }
+                      ],
+                      staticClass: "hidden",
+                      attrs: {
+                        type: "radio",
+                        id: "form.physical_form",
+                        value: "1"
+                      },
+                      domProps: {
+                        checked: _vm._q(_vm.form.physical_form, "1")
+                      },
+                      on: {
+                        change: function($event) {
+                          return _vm.$set(_vm.form, "physical_form", "1")
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _vm.physicalFormConfirmed
+                      ? _c(
+                          "a",
+                          {
+                            staticClass: "text-xl",
+                            on: { click: _vm.unconfirmPhysicalForm }
+                          },
+                          [_vm._m(11)]
+                        )
+                      : _c("a", { on: { click: _vm.confirmPhysicalForm } }, [
+                          _vm._m(12)
+                        ]),
+                    _vm._v(" "),
+                    _vm._m(13)
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "flex flex-col px-4" }, [
+                  _c("div", { staticClass: "flex items-center py-1" }, [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.form.blanket_waiver_form,
+                          expression: "form.blanket_waiver_form"
+                        }
+                      ],
+                      staticClass: "hidden",
+                      attrs: {
+                        type: "radio",
+                        id: "form.blanket_waiver_form",
+                        value: "1"
+                      },
+                      domProps: {
+                        checked: _vm._q(_vm.form.blanket_waiver_form, "1")
+                      },
+                      on: {
+                        change: function($event) {
+                          return _vm.$set(_vm.form, "blanket_waiver_form", "1")
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _vm.blanketFormConfirmed
+                      ? _c(
+                          "a",
+                          {
+                            staticClass: "text-xl",
+                            on: { click: _vm.unconfirmBlanketForm }
+                          },
+                          [_vm._m(14)]
+                        )
+                      : _c("a", { on: { click: _vm.confirmBlanketForm } }, [
+                          _vm._m(15)
+                        ]),
+                    _vm._v(" "),
+                    _vm._m(16)
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "flex flex-col px-4" }, [
+                  _c("div", { staticClass: "flex items-center py-1" }, [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.form.ghsa_concussion_form,
+                          expression: "form.ghsa_concussion_form"
+                        }
+                      ],
+                      staticClass: "hidden",
+                      attrs: {
+                        type: "radio",
+                        id: "form.ghsa_concussion_form",
+                        value: "1"
+                      },
+                      domProps: {
+                        checked: _vm._q(_vm.form.ghsa_concussion_form, "1")
+                      },
+                      on: {
+                        change: function($event) {
+                          return _vm.$set(_vm.form, "ghsa_concussion_form", "1")
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _vm.concussionFormConfirmed
+                      ? _c(
+                          "a",
+                          {
+                            staticClass: "text-xl",
+                            on: { click: _vm.unconfirmConcussionForm }
+                          },
+                          [_vm._m(17)]
+                        )
+                      : _c("a", { on: { click: _vm.confirmConcussionForm } }, [
+                          _vm._m(18)
+                        ]),
+                    _vm._v(" "),
+                    _vm._m(19)
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "flex flex-col px-4" }, [
+                  _c("div", { staticClass: "flex items-center py-1" }, [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.form.ghsa_cardiac_form,
+                          expression: "form.ghsa_cardiac_form"
+                        }
+                      ],
+                      staticClass: "hidden",
+                      attrs: {
+                        type: "radio",
+                        id: "form.ghsa_cardiac_form",
+                        value: "1"
+                      },
+                      domProps: {
+                        checked: _vm._q(_vm.form.ghsa_cardiac_form, "1")
+                      },
+                      on: {
+                        change: function($event) {
+                          return _vm.$set(_vm.form, "ghsa_cardiac_form", "1")
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _vm.cardiacFormConfirmed
+                      ? _c(
+                          "a",
+                          {
+                            staticClass: "text-xl",
+                            on: { click: _vm.unconfirmCardiacForm }
+                          },
+                          [_vm._m(20)]
+                        )
+                      : _c("a", { on: { click: _vm.confirmCardiacForm } }, [
+                          _vm._m(21)
+                        ]),
+                    _vm._v(" "),
+                    _vm._m(22)
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "py-2" }, [
+                  _c(
+                    "div",
+                    { staticClass: "flex justify-between content-end" },
+                    [
+                      _c(
+                        "label",
+                        {
+                          staticClass: "text-sm font-semibold text-red-900",
+                          attrs: { for: "form.restrictions" }
+                        },
+                        [_vm._v("Restrictions (if any)")]
+                      ),
+                      _vm._v(" "),
+                      _vm.form.errors.has("restrictions")
+                        ? _c("span", {
+                            staticClass: "text-red-600 text-xs font-semibold",
+                            attrs: { id: "restrictionsHelp" },
+                            domProps: {
+                              textContent: _vm._s(
+                                _vm.form.errors.get("restrictions")
+                              )
+                            }
+                          })
+                        : _vm._e()
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.form.restrictions,
+                        expression: "form.restrictions"
+                      }
+                    ],
+                    staticClass:
+                      "w-full rounded border px-3 py-2 text-lg border shadow-md",
+                    attrs: { id: "form.restrictions", type: "text" },
+                    domProps: { value: _vm.form.restrictions },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(_vm.form, "restrictions", $event.target.value)
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "py-2" }, [
+                  _c(
+                    "div",
+                    { staticClass: "flex justify-between content-end" },
+                    [
+                      _c(
+                        "label",
+                        {
+                          staticClass: "text-sm font-semibold text-red-900",
+                          attrs: { for: "form.notes" }
+                        },
+                        [
+                          _vm._v(
+                            "\n                            Notes (optional)\n                        "
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _vm.form.errors.has("notes")
+                        ? _c("span", {
+                            staticClass: "form-help",
+                            attrs: { id: "notesHelp" },
+                            domProps: {
+                              textContent: _vm._s(_vm.form.errors.get("notes"))
+                            }
+                          })
+                        : _vm._e()
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c("textarea", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.form.notes,
+                        expression: "form.notes"
+                      }
+                    ],
+                    staticClass:
+                      "w-full rounded border px-3 py-2 text-lg border shadow-md",
+                    attrs: { id: "form.notes" },
+                    domProps: { value: _vm.form.notes },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(_vm.form, "notes", $event.target.value)
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: " pt-2 flex items-center justify-end" },
+                  [
+                    _c(
+                      "update-button",
+                      {
+                        staticClass: "mr-4",
+                        attrs: { disabled: _vm.form.errors.any() }
+                      },
+                      [
+                        _vm._v(
+                          "\n                        Update\n                    "
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c("cancel-button", { on: { clicked: _vm.resetForm } })
+                  ],
+                  1
+                )
+              ]
+            )
+          ])
+        ])
+      : _c("div", { staticClass: "flex py-1 items-center hover:bg-gray-200" }, [
+          _c("div", { staticClass: "flex flex-col w-full" }, [
+            _c("div", { staticClass: "flex w-full" }, [
+              _c("div", { staticClass: "flex pt-1 w-11/12" }, [
+                _c("div", { staticClass: "flex w-1/3" }, [
+                  _vm._v(
+                    "\n                        " +
+                      _vm._s(_vm.last_name) +
+                      ", " +
+                      _vm._s(_vm.first_name) +
+                      "\n                    "
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "flex w-1/3 px-2" }, [
+                  _c(
+                    "div",
+                    {
+                      staticClass: "w-full",
+                      style: { color: _vm.expirationColor }
+                    },
+                    [
+                      _vm._v(
+                        "\n                            " +
+                          _vm._s(_vm.expiration) +
+                          "\n                            "
+                      ),
+                      _c("span", [
+                        _vm._v(
+                          _vm._s(
+                            _vm._f("moment")(
+                              _vm._f("moment")(_vm.exam_date, "add", "1 year"),
+                              "from",
+                              "now"
+                            )
+                          )
+                        )
+                      ])
+                    ]
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "flex w-1/3 px-2" }, [
+                  _c(
+                    "div",
+                    {
+                      staticClass: "w-full",
+                      style: { color: _vm.statusColor }
+                    },
+                    [
+                      _vm._v(
+                        "\n                                " +
+                          _vm._s(_vm.status) +
+                          "\n                            "
+                      ),
+                      _vm.allClear
+                        ? _c("span", [_c("i", { staticClass: "fas fa-check" })])
+                        : _vm.restrict
+                        ? _c("span", [
+                            _c("i", { staticClass: "fas fa-exclamation" })
+                          ])
+                        : _c("span", [_c("i", { staticClass: "fas fa-times" })])
+                    ]
+                  )
+                ])
+              ]),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "flex w-1/12 pt-1 justify-end px-4" },
+                [_c("expand-button", { on: { toggleRow: _vm.toggleRow } })],
+                1
+              )
+            ]),
+            _vm._v(" "),
+            _vm.isExpanded
+              ? _c("div", { staticClass: "p-2" }, [
+                  _c("div", { staticClass: "flex w-11/12 flex-wrap px-4" }, [
+                    _c("div", { staticClass: "w-1/3" }, [
+                      _c("p", { staticClass: "text-gray-500 w-full py-1" }, [
+                        _vm._v("Exam Date:\n                            "),
+                        _c(
+                          "span",
+                          { staticClass: "text-gray-800 font-semibold" },
+                          [
+                            _vm._v(
+                              "\n                                " +
+                                _vm._s(
+                                  _vm._f("moment")(_vm.exam_date, "MM/DD/YYYY")
+                                ) +
+                                "\n                            "
+                            )
+                          ]
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("p", { staticClass: "text-gray-500 w-full py-1" }, [
+                        _vm._v("Restrictions:\n                            "),
+                        _c(
+                          "span",
+                          {
+                            staticClass:
+                              "text-gray-800 font-semibold text-orange-500"
+                          },
+                          [
+                            _vm._v(
+                              "\n                                " +
+                                _vm._s(_vm.restrictions) +
+                                "\n                            "
+                            )
+                          ]
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("p", { staticClass: "text-gray-500 w-full py-1" }, [
+                        _vm._v("Notes:\n                            "),
+                        _c(
+                          "span",
+                          { staticClass: "text-gray-800 font-semibold" },
+                          [_vm._v(_vm._s(_vm.notes))]
+                        )
+                      ])
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    { staticClass: "flex justify-start cursor-pointer pt-1" },
+                    [
+                      _c("edit-button", { on: { clicked: _vm.getNames } }),
+                      _vm._v(" "),
+                      _c("delete-button", { on: { clicked: _vm.destroy } })
+                    ],
+                    1
+                  )
+                ])
+              : _vm._e()
+          ])
+        ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-label ml-1" }, [
+      _c("p", [_vm._v("id")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "mt-2" }, [
+      _c("p", { staticClass: "text-sm font-semibold text-red-900" }, [
+        _vm._v("Forms")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticStyle: { color: "green" } }, [
+      _c("i", { staticClass: "fas fa-check-square" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticClass: "text-xl text-gray-500" }, [
+      _c("i", { staticClass: "bg-white far fa-square" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "label",
+      {
+        staticClass: "text-sm font-semibold px-2",
+        attrs: { for: "form.history_form" }
+      },
+      [
+        _vm._v(
+          "\n                                Medical History Form\n                                "
+        ),
+        _c("span", { staticClass: "text-xs text-gray-600" }, [
+          _vm._v("student and parent signature")
+        ])
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticStyle: { color: "green" } }, [
+      _c("i", { staticClass: "fas fa-check-square" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticClass: "text-xl text-gray-500" }, [
+      _c("i", { staticClass: "bg-white far fa-square" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "label",
+      {
+        staticClass: "text-sm font-semibold px-2",
+        attrs: { for: "form.physical_exam_form" }
+      },
+      [
+        _vm._v(
+          "\n                                Physical Examination Form\n                                "
+        ),
+        _c("span", { staticClass: "text-xs text-gray-600" }, [
+          _vm._v("physician's signature")
+        ])
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticStyle: { color: "green" } }, [
+      _c("i", { staticClass: "fas fa-check-square" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticClass: "text-xl text-gray-500" }, [
+      _c("i", { staticClass: "bg-white far fa-square" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "label",
+      {
+        staticClass: "text-sm font-semibold px-2",
+        attrs: { for: "form.medical_eligibility_form" }
+      },
+      [
+        _vm._v(
+          "\n                                Medical Eligibility Form\n                                "
+        ),
+        _c("span", { staticClass: "text-xs text-gray-600" }, [
+          _vm._v("physician's signature")
+        ])
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticStyle: { color: "green" } }, [
+      _c("i", { staticClass: "fas fa-check-square" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticClass: "text-xl text-gray-500" }, [
+      _c("i", { staticClass: "bg-white far fa-square" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "label",
+      {
+        staticClass: "text-sm font-semibold px-2",
+        attrs: { for: "form.physical_form" }
+      },
+      [
+        _vm._v(
+          "\n                                LHS Physical Form\n                                "
+        ),
+        _c("span", { staticClass: "text-xs text-gray-600" }, [
+          _vm._v("insurance information and parent signature")
+        ])
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticStyle: { color: "green" } }, [
+      _c("i", { staticClass: "fas fa-check-square" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticClass: "text-xl text-gray-500" }, [
+      _c("i", { staticClass: "bg-white far fa-square" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "label",
+      {
+        staticClass: "text-sm font-semibold px-2",
+        attrs: { for: "form.blanket_waiver_form" }
+      },
+      [
+        _vm._v(
+          "\n                                Blanket Waiver Form\n                                "
+        ),
+        _c("span", { staticClass: "text-xs text-gray-600" }, [
+          _vm._v("2 parent signatures")
+        ])
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticStyle: { color: "green" } }, [
+      _c("i", { staticClass: "fas fa-check-square" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticClass: "text-xl text-gray-500" }, [
+      _c("i", { staticClass: "bg-white far fa-square" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "label",
+      {
+        staticClass: "text-sm font-semibold px-2",
+        attrs: { for: "form.ghsa_concussion_form" }
+      },
+      [
+        _vm._v(
+          "\n                                GHSA Concussion Form\n                                "
+        ),
+        _c("span", { staticClass: "text-xs text-gray-600" }, [
+          _vm._v("student and parent signature")
+        ])
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticStyle: { color: "green" } }, [
+      _c("i", { staticClass: "fas fa-check-square" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticClass: "text-xl text-gray-500" }, [
+      _c("i", { staticClass: "bg-white far fa-square" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "label",
+      {
+        staticClass: "text-sm font-semibold px-2",
+        attrs: { for: "form.ghsa_cardiac_form" }
+      },
+      [
+        _vm._v(
+          "\n                                GHSA Cardiac Form\n                                "
+        ),
+        _c("span", { staticClass: "text-xs text-gray-600" }, [
+          _vm._v("student and parent signature")
+        ])
+      ]
+    )
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/PhysicalStatus.vue?vue&type=template&id=0800ce54&scoped=true&":
 /*!*****************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/PhysicalStatus.vue?vue&type=template&id=0800ce54&scoped=true& ***!
@@ -25604,9 +27726,124 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div")
+  return _c("div", { staticClass: "flex flex-col w-full" }, [
+    _c("div", { staticClass: "flex justify-end w-full" }, [
+      _c("div", { staticClass: "flex md:w-1/2 lg:w-1/3" }, [
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.search,
+              expression: "search"
+            }
+          ],
+          staticClass:
+            "flex w-full rounded-md border px-3 py-2 text-lg border shadow",
+          attrs: { type: "text", placeholder: "Find a physical..." },
+          domProps: { value: _vm.search },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.search = $event.target.value
+            }
+          }
+        }),
+        _vm._v(" "),
+        _c(
+          "button",
+          {
+            staticClass:
+              "w-20 py-2 ml-2 bg-green-500 text-white text-sm font-bold rounded-md border-2 border-green-400",
+            on: { click: _vm.clearSearch }
+          },
+          [_vm._v("\n                Clear\n            ")]
+        )
+      ])
+    ]),
+    _vm._v(" "),
+    _c(
+      "header",
+      {
+        staticClass: "w-full md:w-1/2 font-thin lg:text-5xl py-4 text-red-900"
+      },
+      [_vm._v("Physicals")]
+    ),
+    _vm._v(" "),
+    _c("div", {}, [
+      _c("div", { staticClass: "flex" }, [
+        _vm._m(0),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "flex w-1/12 justify-end px-2 items-center" },
+          [
+            _c(
+              "create-button",
+              { attrs: { title: "Add New Physical" } },
+              [_c("new-physical-form", { on: { created: _vm.add } })],
+              1
+            )
+          ],
+          1
+        )
+      ]),
+      _vm._v(" "),
+      _vm.records
+        ? _c(
+            "div",
+            { staticClass: "divide-y border-t border-b" },
+            _vm._l(_vm.filteredPhysicals, function(physical, index) {
+              return _c(
+                "div",
+                { key: physical.id },
+                [
+                  _c("physical", {
+                    attrs: { data: physical },
+                    on: {
+                      deleted: function($event) {
+                        return _vm.remove(index)
+                      }
+                    }
+                  })
+                ],
+                1
+              )
+            }),
+            0
+          )
+        : _c("div", { staticClass: "flex flex-col text-center" }, [
+            _c("p", { staticClass: "text-2xl text-tertiary p-4" }, [
+              _vm._v("No Physicals Listed")
+            ])
+          ])
+    ])
+  ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      { staticClass: "flex w-11/12 px-2 text-gray-500 font-semibold" },
+      [
+        _c("div", { staticClass: "w-1/3" }, [_c("p", {}, [_vm._v("Name")])]),
+        _vm._v(" "),
+        _c("div", { staticClass: "w-1/3" }, [
+          _c("p", { staticClass: "px-2" }, [_vm._v("Expiration Status")])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "px-2 w-1/3" }, [
+          _c("p", {}, [_vm._v("Physical Status")])
+        ])
+      ]
+    )
+  }
+]
 render._withStripped = true
 
 
@@ -26466,7 +28703,7 @@ var render = function() {
               }
             ],
             staticClass:
-              "w-full rounded border px-3 py-2 text-lg border shadow-md ",
+              "w-full rounded border px-3 py-2 text-lg border shadow-md",
             attrs: { id: "form.sex", name: "sex", required: "" },
             on: {
               change: function($event) {
@@ -26664,6 +28901,803 @@ var render = function() {
   )
 }
 var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/forms/NewPhysicalForm.vue?vue&type=template&id=2a015740&":
+/*!************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/forms/NewPhysicalForm.vue?vue&type=template&id=2a015740& ***!
+  \************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "form",
+    {
+      attrs: {
+        action: "/physicals",
+        method: "POST",
+        id: "newPhysical",
+        enctype: "multipart/form-data"
+      },
+      on: {
+        submit: function($event) {
+          $event.preventDefault()
+          return _vm.onSubmit($event)
+        },
+        keydown: function($event) {
+          return _vm.form.errors.clear()
+        }
+      }
+    },
+    [
+      _c("div", { staticClass: "mb-2" }, [
+        _c("div", { staticClass: "flex justify-between content-end" }, [
+          _c(
+            "label",
+            {
+              staticClass: "text-sm font-semibold text-red-900",
+              attrs: { for: "form.athlete_id" }
+            },
+            [_vm._v("\n                Athlete\n            ")]
+          ),
+          _vm._v(" "),
+          _vm.form.errors.has("athlete_id")
+            ? _c("span", {
+                staticClass: "form-help",
+                attrs: { id: "athleteHelp" },
+                domProps: {
+                  textContent: _vm._s(_vm.form.errors.get("athlete_id"))
+                }
+              })
+            : _vm._e()
+        ]),
+        _vm._v(" "),
+        _c(
+          "select",
+          {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.form.athlete_id,
+                expression: "form.athlete_id"
+              }
+            ],
+            staticClass:
+              "w-full rounded border px-3 py-2 text-lg border shadow-md",
+            attrs: { name: "athlete_id", id: "form.athlete_id", required: "" },
+            on: {
+              change: function($event) {
+                var $$selectedVal = Array.prototype.filter
+                  .call($event.target.options, function(o) {
+                    return o.selected
+                  })
+                  .map(function(o) {
+                    var val = "_value" in o ? o._value : o.value
+                    return val
+                  })
+                _vm.$set(
+                  _vm.form,
+                  "athlete_id",
+                  $event.target.multiple ? $$selectedVal : $$selectedVal[0]
+                )
+              }
+            }
+          },
+          _vm._l(_vm.athletes, function(athlete) {
+            return _c(
+              "option",
+              { key: athlete.id, domProps: { value: athlete.id } },
+              [
+                _vm._v(
+                  "\n                " +
+                    _vm._s(athlete.last_name) +
+                    ", " +
+                    _vm._s(athlete.first_name) +
+                    "\n            "
+                )
+              ]
+            )
+          }),
+          0
+        )
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "py-2" }, [
+        _c("div", { staticClass: "flex justify-between content-end" }, [
+          _c(
+            "label",
+            {
+              staticClass: "text-sm font-semibold text-red-900",
+              attrs: { for: "form.exam_date" }
+            },
+            [_vm._v("Exam Date")]
+          ),
+          _vm._v(" "),
+          _vm.form.errors.has("exam_date")
+            ? _c("span", {
+                staticClass: "text-red-600 text-xs font-semibold",
+                attrs: { id: "exam_dateHelp" },
+                domProps: {
+                  textContent: _vm._s(_vm.form.errors.get("exam_date"))
+                }
+              })
+            : _vm._e()
+        ]),
+        _vm._v(" "),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.form.exam_date,
+              expression: "form.exam_date"
+            }
+          ],
+          staticClass:
+            "w-full rounded border px-2 py-2 text-lg border shadow-md",
+          attrs: { id: "form.exam_date", type: "date" },
+          domProps: { value: _vm.form.exam_date },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.$set(_vm.form, "exam_date", $event.target.value)
+            }
+          }
+        })
+      ]),
+      _vm._v(" "),
+      _vm._m(0),
+      _vm._v(" "),
+      _c("div", { staticClass: "flex flex-col px-4" }, [
+        _c("div", { staticClass: "flex items-center py-1" }, [
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.form.history_form,
+                expression: "form.history_form"
+              }
+            ],
+            staticClass: "hidden",
+            attrs: { type: "radio", id: "form.history_form", value: "1" },
+            domProps: { checked: _vm._q(_vm.form.history_form, "1") },
+            on: {
+              change: function($event) {
+                return _vm.$set(_vm.form, "history_form", "1")
+              }
+            }
+          }),
+          _vm._v(" "),
+          _vm.historyFormConfirmed
+            ? _c(
+                "a",
+                {
+                  staticClass: "text-xl",
+                  on: { click: _vm.unconfirmHistoryForm }
+                },
+                [_vm._m(1)]
+              )
+            : _c("a", { on: { click: _vm.confirmHistoryForm } }, [_vm._m(2)]),
+          _vm._v(" "),
+          _vm._m(3)
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "flex flex-col px-4" }, [
+        _c("div", { staticClass: "flex items-center py-1" }, [
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.form.physical_exam_form,
+                expression: "form.physical_exam_form"
+              }
+            ],
+            staticClass: "hidden",
+            attrs: { type: "radio", id: "form.physical_exam_form", value: "1" },
+            domProps: { checked: _vm._q(_vm.form.physical_exam_form, "1") },
+            on: {
+              change: function($event) {
+                return _vm.$set(_vm.form, "physical_exam_form", "1")
+              }
+            }
+          }),
+          _vm._v(" "),
+          _vm.physicalExamFormConfirmed
+            ? _c(
+                "a",
+                {
+                  staticClass: "text-xl",
+                  on: { click: _vm.unconfirmPhysicalExamForm }
+                },
+                [_vm._m(4)]
+              )
+            : _c("a", { on: { click: _vm.confirmPhysicalExamForm } }, [
+                _vm._m(5)
+              ]),
+          _vm._v(" "),
+          _vm._m(6)
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "flex flex-col px-4" }, [
+        _c("div", { staticClass: "flex items-center py-1" }, [
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.form.medical_eligibility_form,
+                expression: "form.medical_eligibility_form"
+              }
+            ],
+            staticClass: "hidden",
+            attrs: {
+              type: "radio",
+              id: "form.medical_eligibility_form",
+              value: "1"
+            },
+            domProps: {
+              checked: _vm._q(_vm.form.medical_eligibility_form, "1")
+            },
+            on: {
+              change: function($event) {
+                return _vm.$set(_vm.form, "medical_eligibility_form", "1")
+              }
+            }
+          }),
+          _vm._v(" "),
+          _vm.eligibilityFormConfirmed
+            ? _c(
+                "a",
+                {
+                  staticClass: "text-xl",
+                  on: { click: _vm.unconfirmEligibilityForm }
+                },
+                [_vm._m(7)]
+              )
+            : _c("a", { on: { click: _vm.confirmEligibilityForm } }, [
+                _vm._m(8)
+              ]),
+          _vm._v(" "),
+          _vm._m(9)
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "flex flex-col px-4" }, [
+        _c("div", { staticClass: "flex items-center py-1" }, [
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.form.physical_form,
+                expression: "form.physical_form"
+              }
+            ],
+            staticClass: "hidden",
+            attrs: { type: "radio", id: "form.physical_form", value: "1" },
+            domProps: { checked: _vm._q(_vm.form.physical_form, "1") },
+            on: {
+              change: function($event) {
+                return _vm.$set(_vm.form, "physical_form", "1")
+              }
+            }
+          }),
+          _vm._v(" "),
+          _vm.physicalFormConfirmed
+            ? _c(
+                "a",
+                {
+                  staticClass: "text-xl",
+                  on: { click: _vm.unconfirmPhysicalForm }
+                },
+                [_vm._m(10)]
+              )
+            : _c("a", { on: { click: _vm.confirmPhysicalForm } }, [_vm._m(11)]),
+          _vm._v(" "),
+          _vm._m(12)
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "flex flex-col px-4" }, [
+        _c("div", { staticClass: "flex items-center py-1" }, [
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.form.blanket_waiver_form,
+                expression: "form.blanket_waiver_form"
+              }
+            ],
+            staticClass: "hidden",
+            attrs: {
+              type: "radio",
+              id: "form.blanket_waiver_form",
+              value: "1"
+            },
+            domProps: { checked: _vm._q(_vm.form.blanket_waiver_form, "1") },
+            on: {
+              change: function($event) {
+                return _vm.$set(_vm.form, "blanket_waiver_form", "1")
+              }
+            }
+          }),
+          _vm._v(" "),
+          _vm.blanketFormConfirmed
+            ? _c(
+                "a",
+                {
+                  staticClass: "text-xl",
+                  on: { click: _vm.unconfirmBlanketForm }
+                },
+                [_vm._m(13)]
+              )
+            : _c("a", { on: { click: _vm.confirmBlanketForm } }, [_vm._m(14)]),
+          _vm._v(" "),
+          _vm._m(15)
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "flex flex-col px-4" }, [
+        _c("div", { staticClass: "flex items-center py-1" }, [
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.form.ghsa_concussion_form,
+                expression: "form.ghsa_concussion_form"
+              }
+            ],
+            staticClass: "hidden",
+            attrs: {
+              type: "radio",
+              id: "form.ghsa_concussion_form",
+              value: "1"
+            },
+            domProps: { checked: _vm._q(_vm.form.ghsa_concussion_form, "1") },
+            on: {
+              change: function($event) {
+                return _vm.$set(_vm.form, "ghsa_concussion_form", "1")
+              }
+            }
+          }),
+          _vm._v(" "),
+          _vm.concussionFormConfirmed
+            ? _c(
+                "a",
+                {
+                  staticClass: "text-xl",
+                  on: { click: _vm.unconfirmConcussionForm }
+                },
+                [_vm._m(16)]
+              )
+            : _c("a", { on: { click: _vm.confirmConcussionForm } }, [
+                _vm._m(17)
+              ]),
+          _vm._v(" "),
+          _vm._m(18)
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "flex flex-col px-4" }, [
+        _c("div", { staticClass: "flex items-center py-1" }, [
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.form.ghsa_cardiac_form,
+                expression: "form.ghsa_cardiac_form"
+              }
+            ],
+            staticClass: "hidden",
+            attrs: { type: "radio", id: "form.ghsa_cardiac_form", value: "1" },
+            domProps: { checked: _vm._q(_vm.form.ghsa_cardiac_form, "1") },
+            on: {
+              change: function($event) {
+                return _vm.$set(_vm.form, "ghsa_cardiac_form", "1")
+              }
+            }
+          }),
+          _vm._v(" "),
+          _vm.cardiacFormConfirmed
+            ? _c(
+                "a",
+                {
+                  staticClass: "text-xl",
+                  on: { click: _vm.unconfirmCardiacForm }
+                },
+                [_vm._m(19)]
+              )
+            : _c("a", { on: { click: _vm.confirmCardiacForm } }, [_vm._m(20)]),
+          _vm._v(" "),
+          _vm._m(21)
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "py-2" }, [
+        _c("div", { staticClass: "flex justify-between content-end" }, [
+          _c(
+            "label",
+            {
+              staticClass: "text-sm font-semibold text-red-900",
+              attrs: { for: "form.restrictions" }
+            },
+            [_vm._v("Restrictions (if any)")]
+          ),
+          _vm._v(" "),
+          _vm.form.errors.has("restrictions")
+            ? _c("span", {
+                staticClass: "text-red-600 text-xs font-semibold",
+                attrs: { id: "restrictionsHelp" },
+                domProps: {
+                  textContent: _vm._s(_vm.form.errors.get("restrictions"))
+                }
+              })
+            : _vm._e()
+        ]),
+        _vm._v(" "),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.form.restrictions,
+              expression: "form.restrictions"
+            }
+          ],
+          staticClass:
+            "w-full rounded border px-3 py-2 text-lg border shadow-md",
+          attrs: { id: "form.restrictions", type: "text" },
+          domProps: { value: _vm.form.restrictions },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.$set(_vm.form, "restrictions", $event.target.value)
+            }
+          }
+        })
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "py-2" }, [
+        _c("div", { staticClass: "flex justify-between content-end" }, [
+          _c(
+            "label",
+            {
+              staticClass: "text-sm font-semibold text-red-900",
+              attrs: { for: "form.notes" }
+            },
+            [_vm._v("\n                Notes (optional)\n            ")]
+          ),
+          _vm._v(" "),
+          _vm.form.errors.has("notes")
+            ? _c("span", {
+                staticClass: "form-help",
+                attrs: { id: "notesHelp" },
+                domProps: { textContent: _vm._s(_vm.form.errors.get("notes")) }
+              })
+            : _vm._e()
+        ]),
+        _vm._v(" "),
+        _c("textarea", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.form.notes,
+              expression: "form.notes"
+            }
+          ],
+          staticClass:
+            "w-full rounded border px-3 py-2 text-lg border shadow-md",
+          attrs: { id: "form.notes" },
+          domProps: { value: _vm.form.notes },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.$set(_vm.form, "notes", $event.target.value)
+            }
+          }
+        })
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "text-right pt-2" }, [
+        _c(
+          "button",
+          {
+            staticClass: "bg-green-500 text-white w-20 py-2 rounded-md",
+            attrs: { type: "submit", disabled: _vm.form.errors.any() }
+          },
+          [_vm._v("\n                Create\n        ")]
+        )
+      ])
+    ]
+  )
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "mt-2" }, [
+      _c("p", { staticClass: "text-sm font-semibold text-red-900" }, [
+        _vm._v("Forms")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticStyle: { color: "green" } }, [
+      _c("i", { staticClass: "fas fa-check-square" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticClass: "text-xl text-gray-500" }, [
+      _c("i", { staticClass: "bg-white far fa-square" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "label",
+      {
+        staticClass: "text-sm font-semibold px-2",
+        attrs: { for: "form.history_form" }
+      },
+      [
+        _vm._v(
+          "\n                    Medical History Form\n                    "
+        ),
+        _c("span", { staticClass: "text-xs text-gray-600" }, [
+          _vm._v("student and parent signature")
+        ])
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticStyle: { color: "green" } }, [
+      _c("i", { staticClass: "fas fa-check-square" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticClass: "text-xl text-gray-500" }, [
+      _c("i", { staticClass: "bg-white far fa-square" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "label",
+      {
+        staticClass: "text-sm font-semibold px-2",
+        attrs: { for: "form.physical_exam_form" }
+      },
+      [
+        _vm._v(
+          "\n                    Physical Examination Form\n                    "
+        ),
+        _c("span", { staticClass: "text-xs text-gray-600" }, [
+          _vm._v("physician's signature")
+        ])
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticStyle: { color: "green" } }, [
+      _c("i", { staticClass: "fas fa-check-square" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticClass: "text-xl text-gray-500" }, [
+      _c("i", { staticClass: "bg-white far fa-square" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "label",
+      {
+        staticClass: "text-sm font-semibold px-2",
+        attrs: { for: "form.medical_eligibility_form" }
+      },
+      [
+        _vm._v(
+          "\n                    Medical Eligibility Form\n                    "
+        ),
+        _c("span", { staticClass: "text-xs text-gray-600" }, [
+          _vm._v("physician's signature")
+        ])
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticStyle: { color: "green" } }, [
+      _c("i", { staticClass: "fas fa-check-square" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticClass: "text-xl text-gray-500" }, [
+      _c("i", { staticClass: "bg-white far fa-square" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "label",
+      {
+        staticClass: "text-sm font-semibold px-2",
+        attrs: { for: "form.physical_form" }
+      },
+      [
+        _vm._v("\n                    LHS Physical Form\n                    "),
+        _c("span", { staticClass: "text-xs text-gray-600" }, [
+          _vm._v("insurance information and parent signature")
+        ])
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticStyle: { color: "green" } }, [
+      _c("i", { staticClass: "fas fa-check-square" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticClass: "text-xl text-gray-500" }, [
+      _c("i", { staticClass: "bg-white far fa-square" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "label",
+      {
+        staticClass: "text-sm font-semibold px-2",
+        attrs: { for: "form.blanket_waiver_form" }
+      },
+      [
+        _vm._v(
+          "\n                    Blanket Waiver Form\n                    "
+        ),
+        _c("span", { staticClass: "text-xs text-gray-600" }, [
+          _vm._v("2 parent signatures")
+        ])
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticStyle: { color: "green" } }, [
+      _c("i", { staticClass: "fas fa-check-square" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticClass: "text-xl text-gray-500" }, [
+      _c("i", { staticClass: "bg-white far fa-square" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "label",
+      {
+        staticClass: "text-sm font-semibold px-2",
+        attrs: { for: "form.ghsa_concussion_form" }
+      },
+      [
+        _vm._v(
+          "\n                    GHSA Concussion Form\n                    "
+        ),
+        _c("span", { staticClass: "text-xs text-gray-600" }, [
+          _vm._v("student and parent signature")
+        ])
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticStyle: { color: "green" } }, [
+      _c("i", { staticClass: "fas fa-check-square" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticClass: "text-xl text-gray-500" }, [
+      _c("i", { staticClass: "bg-white far fa-square" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "label",
+      {
+        staticClass: "text-sm font-semibold px-2",
+        attrs: { for: "form.ghsa_cardiac_form" }
+      },
+      [
+        _vm._v("\n                    GHSA Cardiac Form\n                    "),
+        _c("span", { staticClass: "text-xs text-gray-600" }, [
+          _vm._v("student and parent signature")
+        ])
+      ]
+    )
+  }
+]
 render._withStripped = true
 
 
@@ -44165,6 +47199,75 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/Physical.vue":
+/*!**********************************************!*\
+  !*** ./resources/js/components/Physical.vue ***!
+  \**********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Physical_vue_vue_type_template_id_7b6e9a7c_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Physical.vue?vue&type=template&id=7b6e9a7c&scoped=true& */ "./resources/js/components/Physical.vue?vue&type=template&id=7b6e9a7c&scoped=true&");
+/* harmony import */ var _Physical_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Physical.vue?vue&type=script&lang=js& */ "./resources/js/components/Physical.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _Physical_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _Physical_vue_vue_type_template_id_7b6e9a7c_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _Physical_vue_vue_type_template_id_7b6e9a7c_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  "7b6e9a7c",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/Physical.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/Physical.vue?vue&type=script&lang=js&":
+/*!***********************************************************************!*\
+  !*** ./resources/js/components/Physical.vue?vue&type=script&lang=js& ***!
+  \***********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Physical_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./Physical.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Physical.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Physical_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/Physical.vue?vue&type=template&id=7b6e9a7c&scoped=true&":
+/*!*****************************************************************************************!*\
+  !*** ./resources/js/components/Physical.vue?vue&type=template&id=7b6e9a7c&scoped=true& ***!
+  \*****************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Physical_vue_vue_type_template_id_7b6e9a7c_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./Physical.vue?vue&type=template&id=7b6e9a7c&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Physical.vue?vue&type=template&id=7b6e9a7c&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Physical_vue_vue_type_template_id_7b6e9a7c_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Physical_vue_vue_type_template_id_7b6e9a7c_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
 /***/ "./resources/js/components/PhysicalStatus.vue":
 /*!****************************************************!*\
   !*** ./resources/js/components/PhysicalStatus.vue ***!
@@ -44924,6 +48027,75 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/forms/NewPhysicalForm.vue":
+/*!***********************************************************!*\
+  !*** ./resources/js/components/forms/NewPhysicalForm.vue ***!
+  \***********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _NewPhysicalForm_vue_vue_type_template_id_2a015740___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./NewPhysicalForm.vue?vue&type=template&id=2a015740& */ "./resources/js/components/forms/NewPhysicalForm.vue?vue&type=template&id=2a015740&");
+/* harmony import */ var _NewPhysicalForm_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./NewPhysicalForm.vue?vue&type=script&lang=js& */ "./resources/js/components/forms/NewPhysicalForm.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _NewPhysicalForm_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _NewPhysicalForm_vue_vue_type_template_id_2a015740___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _NewPhysicalForm_vue_vue_type_template_id_2a015740___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/forms/NewPhysicalForm.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/forms/NewPhysicalForm.vue?vue&type=script&lang=js&":
+/*!************************************************************************************!*\
+  !*** ./resources/js/components/forms/NewPhysicalForm.vue?vue&type=script&lang=js& ***!
+  \************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_NewPhysicalForm_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./NewPhysicalForm.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/forms/NewPhysicalForm.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_NewPhysicalForm_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/forms/NewPhysicalForm.vue?vue&type=template&id=2a015740&":
+/*!******************************************************************************************!*\
+  !*** ./resources/js/components/forms/NewPhysicalForm.vue?vue&type=template&id=2a015740& ***!
+  \******************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_NewPhysicalForm_vue_vue_type_template_id_2a015740___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./NewPhysicalForm.vue?vue&type=template&id=2a015740& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/forms/NewPhysicalForm.vue?vue&type=template&id=2a015740&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_NewPhysicalForm_vue_vue_type_template_id_2a015740___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_NewPhysicalForm_vue_vue_type_template_id_2a015740___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
 /***/ "./resources/js/components/forms/NewSportForm.vue":
 /*!********************************************************!*\
   !*** ./resources/js/components/forms/NewSportForm.vue ***!
@@ -45353,8 +48525,8 @@ var Form = /*#__PURE__*/function () {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! F:\XAMPP\htdocs\laravel\LHSCoach\resources\js\main.js */"./resources/js/main.js");
-module.exports = __webpack_require__(/*! F:\XAMPP\htdocs\laravel\LHSCoach\resources\css\main.css */"./resources/css/main.css");
+__webpack_require__(/*! C:\xampp\htdocs\laravel\LHSCoach\resources\js\main.js */"./resources/js/main.js");
+module.exports = __webpack_require__(/*! C:\xampp\htdocs\laravel\LHSCoach\resources\css\main.css */"./resources/css/main.css");
 
 
 /***/ })

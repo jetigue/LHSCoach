@@ -4,6 +4,7 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use App\Models\Physical;
+use Exception;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
@@ -28,17 +29,17 @@ class PhysicalController extends Controller {
     public function store(Request $request)
     {
         $physical = request()->validate ([
-            'athlete_id'                 => 'required|integer',
-            'history_form'               => 'required|boolean',
-            'physical_exam_form'         => 'required|boolean',
-            'medical_eligibility_form'   => 'required|boolean',
-            'physical_form'              => 'required|boolean',
-            'transportation_waiver_form' => 'required|boolean',
-            'ghsa_concussion_form'       => 'required|boolean',
-            'ghsa_cardiac_form'          => 'required|boolean',
-            'exam_date'                  => 'required|date',
-            'restrictions'               => 'string|nullable',
-            'notes'                      => 'string|nullable',
+            'athlete_id' => 'required|integer',
+            'history_form' => 'required|boolean',
+            'physical_exam_form' => 'required|boolean',
+            'medical_eligibility_form' => 'required|boolean',
+            'physical_form' => 'required|boolean',
+            'blanket_waiver_form' => 'required|boolean',
+            'ghsa_concussion_form' => 'required|boolean',
+            'ghsa_cardiac_form' => 'required|boolean',
+            'exam_date' => 'required|date',
+            'restrictions' => 'string|nullable',
+            'notes' => 'string|nullable',
         ]);
 
         $physical = Physical::create($physical)->load('athlete');
@@ -62,21 +63,52 @@ class PhysicalController extends Controller {
      *
      * @param Request $request
      * @param Physical $physical
-     * @return \Illuminate\Http\Response
+     * @return JsonResponse
      */
     public function update(Request $request, Physical $physical)
     {
-        //
+        request()->validate([
+            'athlete_id'                => 'integer',
+            'history_form'              => 'boolean',
+            'physical_exam_form'        => 'boolean',
+            'medical_eligibility_form'  => 'boolean',
+            'physical_form'             => 'boolean',
+            'blanket_waiver_form'       => 'boolean',
+            'ghsa_concussion_form'      => 'boolean',
+            'ghsa_cardiac_form'         => 'boolean',
+            'exam_date'                 => 'date',
+            'restrictions'              => 'string|nullable',
+            'notes'                     => 'string|nullable',
+        ]);
+
+        $physical->update(request([
+            'athlete_id',
+            'history_form',
+            'physical_exam_form',
+            'medical_eligibility_form',
+            'physical_form',
+            'blanket_waiver_form',
+            'ghsa_concussion_form',
+            'ghsa_cardiac_form',
+            'exam_date',
+            'restrictions',
+            'notes'
+        ]));
+
+        return response()->json($physical, 200);
     }
 
     /**
      * Remove the specified resource from storage.
      *
      * @param Physical $physical
-     * @return \Illuminate\Http\Response
+     * @return JsonResponse
+     * @throws Exception
      */
     public function destroy(Physical $physical)
     {
-        //
+        $physical->delete();
+
+        return response()->json(null, 204);
     }
 }

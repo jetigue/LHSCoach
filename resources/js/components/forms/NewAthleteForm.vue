@@ -52,7 +52,7 @@
             <select id="form.sex"
                     name="sex"
                     v-model="form.sex"
-                    class="w-full rounded border px-3 py-2 text-lg border shadow-md "
+                    class="w-full rounded border px-3 py-2 text-lg border shadow-md"
                     required
             >
                 <option value="f">Female</option>

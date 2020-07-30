@@ -8,7 +8,9 @@ class PhysicalController extends Controller {
 
     public function index()
     {
-        $physicals = Physical::query()->orderBy('exam_date')->get();
+        $physicals = Physical::with('athlete')
+            ->orderBy('exam_date', 'desc')
+            ->get();
 
         return view('physicals.index', compact('physicals'));
     }
