@@ -1,5 +1,3 @@
-import vue from "vue-sweetalert2";
-
 export default Vue.extend({
     props: ['data'],
 

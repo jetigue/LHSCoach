@@ -1,8 +1,8 @@
 <template>
     <div class="">
         <div v-if="editing" class="p-3">
-            <div class="w-full lg:w-1/2 mx-auto">
-                <form action="api/fall/sports/id" method="POST" id="editSport" @submit.prevent="update"
+            <div class="w-full mx-auto">
+                <form action="api/spring/sports/id" method="POST" id="editSpringSport" @submit.prevent="update"
                       @keydown="form.errors.clear()"
                       class="bg-gray-100 shadow-md rounded px-8 pt-6 pb-8 mb-4">
 
@@ -37,9 +37,9 @@
         <div v-else class="flex py-1 items-center hover:bg-gray-100">
             <div class="flex flex-col w-full">
                 <div class="flex w-full">
-                    <div class="flex pt-1 w-11/12">
-                        <div class="flex w-1/3">
-                            <a :href="sportUrl" class="hover:font-semibold hover:underline">
+                    <div class="flex pt-1 w-11/12 px-2">
+                        <div class="flex">
+                            <a :href="url" class="hover:font-semibold hover:underline">
                                 {{ name }}
                             </a>
                         </div>
@@ -48,7 +48,7 @@
                         <expand-button @toggleRow="toggleRow" class=""></expand-button>
                     </div>
                 </div>
-                <div v-if="isExpanded" class="pt-2">
+                <div v-if="isExpanded" class="p-2">
                     <div class="flex justify-start cursor-pointer">
                         <edit-button @clicked="editing=true"></edit-button>
                         <delete-button @clicked="destroy"></delete-button>
@@ -61,7 +61,7 @@
 
 <script>
     export default {
-        name: "Sport",
+        name: "SpringSport",
 
         props: ['data'],
 
@@ -71,6 +71,7 @@
                 isExpanded: false,
 
                 name: this.data.name,
+                url: '/spring/sports/' + this.data.slug,
 
                 form: new Form({
                     name: this.data.name,
@@ -79,9 +80,6 @@
         },
 
         computed: {
-            // sportSeason() {
-            //     return this.season.charAt(0).toUpperCase() + this.season.slice(1);
-            // }
         },
 
         methods: {
@@ -91,7 +89,7 @@
 
             update() {
                 this.form
-                    .patch('/api/fall/sports/' + this.data.id)
+                    .patch('/api/spring/sports/' + this.data.id)
                     .then(data => {
                         this.name = this.form.name;
 
@@ -116,7 +114,7 @@
 
                              Toast.fire({
                                  icon: 'success',
-                                 title: 'Sport Updated!'
+                                 title: 'Spring Sport Updated!'
                              });
                          }
                     })
@@ -126,7 +124,7 @@
             },
 
             destroy() {
-                axios.delete('api/fall/sports/' + this.data.id);
+                axios.delete('api/spring/sports/' + this.data.id);
 
                 this.$emit('deleted', this.data.id);
             },

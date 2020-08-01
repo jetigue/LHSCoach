@@ -18,7 +18,6 @@ class CreateAthletesTable extends Migration {
             $table->unsignedtinyInteger('fall_sport_id')->default(1);
             $table->unsignedtinyInteger('winter_sport_id')->default(1);
             $table->unsignedtinyInteger('spring_sport_id')->default(1);
-            $table->enum('status', ['a', 'i']);
             $table->string('slug')->nullable();
             $table->timestamps();
 

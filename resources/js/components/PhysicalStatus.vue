@@ -16,7 +16,6 @@
 
         data() {
             return {
-
                 statusColor: '',
 
                 allClear: false,
@@ -36,7 +35,7 @@
                         this.confirmedMedicalEligibilityForm = this.data.latest_physical.medical_eligibility_form === 1,
                         this.confirmedPhysicalExamForm = this.data.latest_physical.physical_exam_form === 1,
                         this.confirmedPhysicalForm = this.data.latest_physical.physical_form === 1,
-                        this.confirmedTransportationWaiverForm = this.data.latest_physical.transportation_waiver_form === 1,
+                        this.confirmedBlanketWaiverForm = this.data.latest_physical.blanket_waiver_form === 1,
 
                     ];
 

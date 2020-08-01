@@ -4,7 +4,7 @@
             <div class="flex md:w-1/2 lg:w-1/3">
                 <input type="text"
                        v-model="search"
-                       placeholder="Find a physical..."
+                       placeholder="Find an athlete..."
                        class="flex w-full rounded-md border px-3 py-2 text-lg border shadow"
                 />
                 <button @click="clearSearch"
@@ -14,35 +14,38 @@
             </div>
         </div>
 
-        <header class="w-full md:w-1/2 font-thin text-2xl lg:text-5xl py-4 text-red-900">Physicals</header>
+        <header class="w-full md:w-1/2 font-thin text-2xl lg:text-5xl py-4 text-red-900">Athletes</header>
 
-        <div class="">
+        <div class="w-full">
             <div class="flex">
                 <div class="flex w-11/12 px-2 text-gray-500 font-semibold">
                     <div class="w-full lg:w-1/3">
                         <p class="">Name</p>
                     </div>
-                    <div class="hidden lg:flex px-2 lg:w-1/3">
-                        <p class="">Physical Status</p>
+                    <div class="hidden lg:flex lg:w-1/6">
+                        <p class="">Sex</p>
                     </div>
-                    <div class="hidden lg:flex lg:w-1/3">
-                        <p class="px-2">Expiration Status</p>
+                    <div class="hidden lg:flex lg:w-1/6">
+                        <p class="">Class</p>
+                    </div>
+                    <div class="hidden lg:flex lg:w-1/3 px-2">
+                        <p class="">Sports</p>
                     </div>
                 </div>
                 <div class="flex w-1/12 justify-end px-2 items-center">
-                    <create-button title="Add New Physical">
-                        <new-physical-form @created="add"></new-physical-form>
+                    <create-button title="Create New Athlete">
+                        <new-athlete-form @created="add"></new-athlete-form>
                     </create-button>
                 </div>
             </div>
             <div v-if="records" class="divide-y border-t border-b">
-                <div v-for="(physical, index) in filteredPhysicals" :key="physical.id">
-                    <physical :data="physical" @deleted="remove(index)"></physical>
+                <div v-for="(athlete, index) in filteredAthletes" :key="athlete.id">
+                    <athlete :data="athlete" @deleted="remove(index)"></athlete>
                 </div>
             </div>
 
             <div v-else class="flex flex-col text-center">
-                <p class="text-2xl text-tertiary p-4">No Physicals Listed</p>
+                <p class="text-2xl text-tertiary p-4">No Athletes Listed</p>
             </div>
         </div>
     </div>
@@ -50,13 +53,13 @@
 </template>
 
 <script>
-    import Collection from "../Collection";
-    import Physical from "./Physical";
-    import NewPhysicalForm from "./forms/NewPhysicalForm";
+    import Collection from "../../Collection";
+    import Athlete from "./Athlete";
+    import NewAthleteForm from "../forms/NewAthleteForm";
 
     export default Collection.extend({
-        name: "Physicals",
-        components: {Physical, NewPhysicalForm},
+        name: "Athletes",
+        components: {Athlete, NewAthleteForm},
 
         props: ['data'],
 
@@ -68,11 +71,11 @@
         },
 
         computed: {
-            filteredPhysicals() {
-                return this.items.filter((physical) => {
+            filteredAthletes() {
+                return this.items.filter((athlete) => {
                     return (
-                        physical.exam_date.toLowerCase().match(this.search.toLowerCase())
-                        // athlete.first_name.toLowerCase().match(this.search.toLowerCase())
+                        athlete.last_name.toLowerCase().match(this.search.toLowerCase()) ||
+                        athlete.first_name.toLowerCase().match(this.search.toLowerCase())
                     )
                 });
             }

@@ -19,13 +19,13 @@
         <link href="{{ asset('css/main.css') }}" rel="stylesheet">
     </head>
 <body>
-    <div id="app" class="w-full min-h-screen">
+    <div id="app" class="w-full min-h-screen bg-white">
         <div class="flex flex-col w-full">
             <x-banner>
                 <header class="text-white text-3xl">Physical Tracker</header>
             </x-banner>
         </div>
-        <div class="flex bg-gray-100 min-h-screen lg:w-2/3 mx-auto">
+        <div class="flex min-h-screen lg:w-2/3 mx-auto">
             {{ $slot }}
         </div>
         <portal-target name="create-modal"></portal-target>

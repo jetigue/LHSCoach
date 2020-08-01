@@ -1,24 +1,25 @@
 <?php
 
-namespace App\Http\Controllers\API;
+namespace App\Http\Controllers\API\Sports;
 
 use App\Http\Controllers\Controller;
-use App\Models\Sports\SpringSport;
+use App\Models\Sports\WinterSport;
 use Exception;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
-class SpringSportController extends Controller {
+class WinterSportController extends Controller {
 
     /**
      * Display a listing of the resource.
      *
-     * @return Response
+     * @return WinterSport[]|Collection
      */
     public function index()
     {
-        return SpringSport::orderBy('name')->get();
+        return WinterSport::all();
     }
 
     /**
@@ -29,22 +30,22 @@ class SpringSportController extends Controller {
      */
     public function store(Request $request)
     {
-        $springSport = request()->validate([
+        $winterSport = request()->validate([
             'name'   => 'required|string',
         ]);
 
-        $springSport = SpringSport::create($springSport);
+        $winterSport = WinterSport::create($winterSport);
 
-        return response()->json($springSport, 201);
+        return response()->json($winterSport, 201);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param SpringSport $springSport
+     * @param WinterSport $winterSport
      * @return void
      */
-    public function show(SpringSport $springSport)
+    public function show(WinterSport $winterSport)
     {
         //
     }
@@ -53,30 +54,30 @@ class SpringSportController extends Controller {
      * Update the specified resource in storage.
      *
      * @param Request $request
-     * @param SpringSport $springSport
+     * @param WinterSport $winterSport
      * @return JsonResponse
      */
-    public function update(Request $request, SpringSport $springSport)
+    public function update(Request $request, WinterSport $winterSport)
     {
         request()->validate([
             'name'   => 'required|string'
         ]);
 
-        $springSport->update(request(['name']));
+        $winterSport->update(request(['name']));
 
-        return response()->json($springSport, 200);
+        return response()->json($winterSport, 200);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param SpringSport $springSport
+     * @param WinterSport $winterSport
      * @return JsonResponse
      * @throws Exception
      */
-    public function destroy(SpringSport $springSport)
+    public function destroy(WinterSport $winterSport)
     {
-        $springSport->delete();
+        $winterSport->delete();
 
         return response()->json(null, 204);
     }

@@ -4,7 +4,7 @@
             <div class="w-full lg:w-1/2 mx-auto">
                 <form action="api/physicals/id" method="POST" id="editPhysical" @submit.prevent="update"
                       @keydown="form.errors.clear()"
-                      class="bg-gray-200 shadow-md rounded px-8 pt-6 pb-8 mb-4">
+                      class="bg-gray-100 shadow-md rounded px-8 pt-6 pb-8 mb-4">
                     <div class="flex items-center mb-4">
                         <div class="form-label ml-1">
                             <p>id</p>
@@ -279,26 +279,28 @@
             </div>
         </div>
 
-        <div v-else class="flex py-1 items-center hover:bg-gray-200">
+        <div v-else class="flex py-1 items-center hover:bg-gray-100">
             <div class="flex flex-col w-full">
                 <div class="flex w-full">
-                    <div class="flex pt-1 w-11/12">
-                        <div class="flex w-1/3">
-                            {{ last_name }}, {{ first_name }}
+                    <div class="flex pt-1 w-11/12 px-2 flex-wrap">
+                        <div class="flex w-full lg:w-1/3">
+                            <a :href="athleteUrl" class="hover:font-semibold hover:underline">
+                                {{ last_name }}, {{ first_name }}
+                            </a>
                         </div>
-                        <div class="flex w-1/3 px-2">
-                            <div class="w-full" :style="{color: expirationColor}">
-                                {{ expiration }}
-                                <span>{{ exam_date | moment("add", "1 year") | moment("from", "now") }}</span>
-                            </div>
-                        </div>
-                        <div class="flex w-1/3 px-2">
+                        <div class="flex w-full lg:w-1/3 px-2">
                             <div class="w-full"
                                  :style="{color: statusColor}">
                                     {{ status }}
                                 <span v-if="allClear"><i class="fas fa-check"></i> </span>
                                 <span v-else-if="restrict"><i class="fas fa-exclamation"></i></span>
                                 <span v-else><i class="fas fa-times"></i></span>
+                            </div>
+                        </div>
+                        <div class="flex w-full lg:w-1/3 px-2">
+                            <div class="w-full" :style="{color: expirationColor}">
+                                {{ expiration }}
+                                <span>{{ exam_date | moment("add", "1 year") | moment("from", "now") }}</span>
                             </div>
                         </div>
                     </div>
@@ -308,7 +310,7 @@
                 </div>
                 <div v-if="isExpanded" class="p-2">
                     <div class="flex w-11/12 flex-wrap px-4">
-                        <div class="w-1/3">
+                        <div class="w-full lg:w-1/3">
                             <p class="text-gray-500 w-full py-1">Exam Date:
                                 <span class="text-gray-800 font-semibold">
                                     {{ exam_date | moment("MM/DD/YYYY") }}
@@ -325,7 +327,24 @@
                                 <span class="text-gray-800 font-semibold">{{ notes }}</span>
                             </p>
                         </div>
-
+                        <div class="w-full lg:w-1/3">
+                            <div v-if="this.expiration ==='Expired'">
+                                <p class="lg:px-1 font-sm font-semibold text-red-700">All Forms Have Expired</p>
+                            </div>
+                            <div v-else-if="this.status === 'Not Cleared'">
+                                <p class="text-gray-500 w-full py-1 px-1">Missing:</p>
+                                <div class="text-sm px-1">
+                                    <p v-show="!historyFormConfirmed">Medical History Form</p>
+                                    <p v-show="!physicalExamFormConfirmed">Physical Exam Form</p>
+                                    <p v-show="!eligibilityFormConfirmed">Elegibility Form</p>
+                                    <p v-show="!physicalFormConfirmed">LHS Physical Form</p>
+                                    <p v-show="!blanketFormConfirmed">Blanket Waiver Form</p>
+                                    <p v-show="!concussionFormConfirmed">Concussion Form</p>
+                                    <p v-show="!cardiacFormConfirmed">Cardiac Form</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="w-1/3"></div>
                     </div>
                     <div class="flex justify-start cursor-pointer pt-1">
                         <edit-button @clicked="getNames"></edit-button>
@@ -363,6 +382,7 @@
                 restrictions: this.data.restrictions,
                 notes: this.data.notes,
                 athlete_id: this.data.athlete_id,
+                athleteUrl: '/athletes/' + this.data.athlete.slug,
 
                 athletes: [],
 

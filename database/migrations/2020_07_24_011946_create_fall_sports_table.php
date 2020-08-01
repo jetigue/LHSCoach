@@ -16,6 +16,7 @@ class CreateFallSportsTable extends Migration
         Schema::create('fall_sports', function (Blueprint $table) {
             $table->tinyIncrements('id');
             $table->string('name', 50);
+            $table->string('slug')->nullable();
             $table->timestamps();
         });
     }

@@ -11,6 +11,7 @@ class CreateSpringSportsTable extends Migration {
         Schema::create('spring_sports', function (Blueprint $table) {
             $table->tinyIncrements('id');
             $table->string('name', 50);
+            $table->string('slug')->nullable();
             $table->timestamps();
         });
     }

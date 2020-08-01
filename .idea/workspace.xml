@@ -2,31 +2,42 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2b56f75d-7ca0-4d53-b152-7a241e594436" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.env.example" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/LHSCoach.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/LHSCoach.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/API/AthleteController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/API/AthleteController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/API/PhysicalController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/API/PhysicalController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/API/FallSportController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/API/Sports/FallSportController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/API/SpringSportController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/API/Sports/SpringSportController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/API/WinterSportController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/API/Sports/WinterSportController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AthleteController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AthleteController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PhysicalController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PhysicalController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/SportController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/SportController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Models/Athlete.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Athlete.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Models/Physical.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Physical.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Sports/FallSport.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Sports/FallSport.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Sports/SpringSport.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Sports/SpringSport.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Sports/WinterSport.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Sports/WinterSport.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/factories/AthleteFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/factories/AthleteFactory.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/factories/PhysicalFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/factories/PhysicalFactory.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_07_24_141335_create_physicals_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_07_24_141335_create_physicals_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_07_24_011946_create_fall_sports_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_07_24_011946_create_fall_sports_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_07_24_163024_create_winter_sports_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_07_24_163024_create_winter_sports_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_07_24_163141_create_spring_sports_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_07_24_163141_create_spring_sports_table.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/migrations/2020_07_25_125117_create_athletes_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_07_25_125117_create_athletes_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/main.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/mix-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/mix-manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/vendor/telescope/app-dark.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/vendor/telescope/app-dark.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/vendor/telescope/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/vendor/telescope/app.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/vendor/telescope/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/vendor/telescope/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/vendor/telescope/mix-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/vendor/telescope/mix-manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/Athletes.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/Athletes.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/Collection.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/Collection.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/Athlete.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/athletes/Athlete.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/Athletes.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/athletes/Athletes.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/Physical.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/Physical.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/PhysicalStatus.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/PhysicalStatus.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/components/Physicals.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/Physicals.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/Sport.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/Sport.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/Sports.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/Sports.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/buttons/CreateButton.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/buttons/CreateButton.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/components/forms/NewAthleteForm.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/forms/NewAthleteForm.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/physicals/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/physicals/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/forms/NewPhysicalForm.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/forms/NewPhysicalForm.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/athletes/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/athletes/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/components/layout.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/layout.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/sports/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/sports/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,6 +53,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="JavaScript File" />
         <option value="Vue Single File Component" />
       </list>
     </option>
@@ -49,7 +61,7 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP 7.4">
+  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP 7.3">
     <include_path>
       <path value="$PROJECT_DIR$/vendor/phpunit/php-text-template" />
       <path value="$PROJECT_DIR$/vendor/phpunit/php-timer" />
@@ -159,6 +171,9 @@
     </include_path>
   </component>
   <component name="ProjectId" id="1f72tI5v5Vek6rWB6Qm4Z0d7Y80" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -168,7 +183,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/js/components" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -176,15 +191,22 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="Errors" />
+    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
+    <property name="settings.editor.selected.configurable" value="database.data.csv.formats" />
     <property name="ts.external.directory.path" value="C:\Users\James\AppData\Local\JetBrains\Toolbox\apps\PhpStorm\ch-0\201.8743.18\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="F:\XAMPP\htdocs\laravel\LHSCoach\app\Http\Controllers\API" />
-      <recent name="F:\XAMPP\htdocs\laravel\LHSCoach\resources\js\components\forms" />
-      <recent name="F:\XAMPP\htdocs\laravel\LHSCoach\resources\js\components" />
-      <recent name="F:\XAMPP\htdocs\laravel\LHSCoach\resources\views" />
+      <recent name="C:\xampp\htdocs\laravel\LHSCoach\resources\js\components" />
+      <recent name="C:\xampp\htdocs\laravel\LHSCoach\app\Http\Controllers\Sports" />
+      <recent name="C:\xampp\htdocs\laravel\LHSCoach\resources\js\components\athletes" />
+      <recent name="C:\xampp\htdocs\laravel\LHSCoach\resources\views\sports\spring" />
+      <recent name="C:\xampp\htdocs\laravel\LHSCoach\resources\js\components\sports" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\laravel\LHSCoach\resources\js\components\athletes" />
+      <recent name="C:\xampp\htdocs\laravel\LHSCoach\resources\views\sports\fall" />
+      <recent name="C:\xampp\htdocs\laravel\LHSCoach\app\Http\Controllers\API\Sports" />
     </key>
   </component>
   <component name="RunManager" selected="PHPUnit.PhysicalTest.a_physical_requires_an_athlete_id">
@@ -235,6 +257,10 @@
       <workItem from="1596045734099" duration="5996000" />
       <workItem from="1596053521713" duration="157000" />
       <workItem from="1596053702757" duration="16873000" />
+      <workItem from="1596115042664" duration="10629000" />
+      <workItem from="1596139928988" duration="16439000" />
+      <workItem from="1596200182287" duration="8016000" />
+      <workItem from="1596218847542" duration="24236000" />
     </task>
     <servers />
   </component>
@@ -266,25 +292,34 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="693" y="363" key="#com.intellij.ide.actions.ChooseComponentsToExportDialog/0.0.1920.1050/-1920.0.1920.1050@0.0.1920.1050" timestamp="1595601401729" />
-    <state x="765" y="241" key="#com.intellij.ide.util.MemberChooser" timestamp="1595872249349">
-      <screen x="0" y="0" width="1920" height="1050" />
+    <state x="612" y="189" key="#com.intellij.ide.util.MemberChooser" timestamp="1596232334397">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
+    <state x="612" y="189" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824/1158.-1080.1920.1040@0.0.1536.824" timestamp="1596232334397" />
+    <state x="612" y="189" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1596214208502" />
     <state x="765" y="241" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1050/-1920.0.1920.1050@0.0.1920.1050" timestamp="1595872249349" />
     <state x="627" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1595969336648">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="627" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1920.1050/-1920.0.1920.1050@0.0.1920.1050" timestamp="1595969336648" />
-    <state x="690" y="280" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1595616870576">
-      <screen x="0" y="0" width="1920" height="1050" />
+    <state x="552" y="220" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1596154622682">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
+    <state x="552" y="220" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1536.824/1158.-1080.1920.1040@0.0.1536.824" timestamp="1596154622682" />
     <state x="690" y="280" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1050/-1920.0.1920.1050@0.0.1920.1050" timestamp="1595616870576" />
+    <state x="514" y="236" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1596225670942">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="514" y="236" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1536.824/1158.-1080.1920.1040@0.0.1536.824" timestamp="1596225670942" />
     <state x="791" y="435" key="ComposerInitDialogKey" timestamp="1595631542989">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="791" y="435" key="ComposerInitDialogKey/0.0.1920.1050/-1920.0.1920.1050@0.0.1920.1050" timestamp="1595631542989" />
-    <state x="809" y="434" key="Create Controller" timestamp="1595940204911">
-      <screen x="0" y="0" width="1920" height="1050" />
+    <state x="647" y="341" key="Create Controller" timestamp="1596153892963">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
+    <state x="647" y="341" key="Create Controller/0.0.1536.824/1158.-1080.1920.1040@0.0.1536.824" timestamp="1596153892963" />
+    <state x="647" y="341" key="Create Controller/0.0.1536.824@0.0.1536.824" timestamp="1596130045426" />
     <state x="809" y="434" key="Create Controller/0.0.1920.1050/-1920.0.1920.1050@0.0.1920.1050" timestamp="1595940204911" />
     <state x="834" y="421" key="Create Database Factory" timestamp="1595616962336">
       <screen x="0" y="0" width="1920" height="1050" />
@@ -306,10 +341,16 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="834" y="449" key="Create Model/0.0.1920.1050/-1920.0.1920.1050@0.0.1920.1050" timestamp="1595968691201" />
-    <state x="809" y="406" key="Create Resource Controller" timestamp="1595940243814">
-      <screen x="0" y="0" width="1920" height="1050" />
+    <state x="647" y="319" key="Create Resource Controller" timestamp="1596130982558">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
+    <state x="647" y="319" key="Create Resource Controller/0.0.1536.824@0.0.1536.824" timestamp="1596130982558" />
     <state x="809" y="406" key="Create Resource Controller/0.0.1920.1050/-1920.0.1920.1050@0.0.1920.1050" timestamp="1595940243814" />
+    <state x="550" y="155" key="FileChooserDialogImpl" timestamp="1596157135536">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="550" y="155" key="FileChooserDialogImpl/0.0.1536.824/1158.-1080.1920.1040@0.0.1536.824" timestamp="1596157135536" />
+    <state x="550" y="155" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1596131146085" />
     <state width="1921" height="114" key="GridCell.Tab.0.bottom" timestamp="1595631733540">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
@@ -342,14 +383,16 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state width="1921" height="378" key="GridCell.Tab.1.right/0.0.1920.1050/-1920.0.1920.1050@0.0.1920.1050" timestamp="1595627855594" />
-    <state x="794" y="444" key="NewPhpFileDialog" timestamp="1595634190594">
-      <screen x="0" y="0" width="1920" height="1050" />
-    </state>
-    <state x="794" y="444" key="NewPhpFileDialog/0.0.1920.1050/-1920.0.1920.1050@0.0.1920.1050" timestamp="1595634190594" />
-    <state x="369" y="116" key="SettingsEditor" timestamp="1596062316228">
+    <state x="635" y="348" key="NewPhpFileDialog" timestamp="1596232452196">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="369" y="116" key="SettingsEditor/0.0.1536.824/1158.-1080.1920.1040@0.0.1536.824" timestamp="1596062316228" />
+    <state x="635" y="348" key="NewPhpFileDialog/0.0.1536.824/1158.-1080.1920.1040@0.0.1536.824" timestamp="1596232452196" />
+    <state x="635" y="348" key="NewPhpFileDialog/0.0.1536.824@0.0.1536.824" timestamp="1596129353874" />
+    <state x="794" y="444" key="NewPhpFileDialog/0.0.1920.1050/-1920.0.1920.1050@0.0.1920.1050" timestamp="1595634190594" />
+    <state x="369" y="116" key="SettingsEditor" timestamp="1596225974399">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="369" y="116" key="SettingsEditor/0.0.1536.824/1158.-1080.1920.1040@0.0.1536.824" timestamp="1596225974399" />
     <state x="369" y="116" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1596053678460" />
     <state x="461" y="170" key="SettingsEditor/0.0.1920.1050/-1920.0.1920.1050@0.0.1920.1050" timestamp="1595866598555" />
     <state width="498" height="446" key="SwitcherDM" timestamp="1595681484219">
@@ -360,11 +403,11 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="523" y="131" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1920.1050/-1920.0.1920.1050@0.0.1920.1050" timestamp="1595766018322" />
-    <state x="498" y="178" width="672" height="533" key="search.everywhere.popup" timestamp="1596072272023">
+    <state x="498" y="178" width="672" height="533" key="search.everywhere.popup" timestamp="1596245884013">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="498" y="178" width="672" height="533" key="search.everywhere.popup/0.0.1536.824/1158.-1080.1920.1040@0.0.1536.824" timestamp="1596072272023" />
-    <state x="498" y="178" width="672" height="533" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1596051010440" />
+    <state x="498" y="178" width="672" height="533" key="search.everywhere.popup/0.0.1536.824/1158.-1080.1920.1040@0.0.1536.824" timestamp="1596245884013" />
+    <state x="498" y="178" width="672" height="533" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1596214280735" />
     <state x="623" y="227" width="672" height="678" key="search.everywhere.popup/0.0.1920.1050/-1920.0.1920.1050@0.0.1920.1050" timestamp="1595973315876" />
   </component>
 </project>

@@ -23,7 +23,7 @@ class Athlete extends Model
     /**
      * @var string[]
      */
-    protected $appends = ['age', 'class'];
+    protected $appends = ['age', 'class', 'gender'];
 
     /**
      * @var array
@@ -85,29 +85,16 @@ class Athlete extends Model
         return $this->hasOne(Physical::class)->latest('exam_date');
     }
 
-//    /**
-//     * @param $value
-//     * @return string
-//     */
-//    public function getSexAttribute($value)
-//    {
-//        if ($value == "f") {
-//            return "Female";
-//        }
-//        return "Male";
-//    }
-
-//    /**
-//     * @param $value
-//     * @return string
-//     */
-//    public function getStatusAttribute($value)
-//    {
-//        if ($value == "a") {
-//            return "Active";
-//        }
-//        return "Inactive";
-//    }
+    /**
+     * @return string
+     */
+    public function getGenderAttribute()
+    {
+        if ($this->sex == "f") {
+            return "Female";
+        }
+        return "Male";
+    }
 
     /**
      * @return mixed

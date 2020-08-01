@@ -254,7 +254,8 @@
             </div>
             <textarea class="w-full rounded border px-3 py-2 text-lg border shadow-md"
                       id="form.notes"
-                      v-model="form.notes">
+                      v-model="form.notes"
+                      placeholder="Any medical conditions, concerns, etc.">
             </textarea>
         </div>
 

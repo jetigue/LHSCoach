@@ -16,7 +16,8 @@
             <input id="form.first_name"
                    type="text"
                    v-model="form.first_name"
-                   class="w-full rounded border px-3 py-2 text-lg border shadow-md"
+                   class="w-full rounded px-3 h-10 text-blue-800 font-semibold shadow-md"
+                   autocomplete="off"
                    required
             >
         </div>
@@ -35,12 +36,13 @@
             <input id="form.last_name"
                    type="text"
                    v-model="form.last_name"
-                   class="w-full rounded border px-3 py-2 text-lg border shadow-md"
+                   class="w-full rounded px-3 h-10 text-blue-800 font-semibold shadow-md"
+                   autocomplete="off"
                    required
             >
         </div>
 
-        <div class="my-2">
+        <div class="py-2">
             <div class="flex justify-between content-end">
                 <label class="text-sm font-semibold text-red-900">Sex</label>
                 <span id="sexHelp"
@@ -52,7 +54,7 @@
             <select id="form.sex"
                     name="sex"
                     v-model="form.sex"
-                    class="w-full rounded border px-3 py-2 text-lg border shadow-md"
+                    class="w-full rounded px-3 h-10 text-blue-800 font-semibold shadow-md"
                     required
             >
                 <option value="f">Female</option>
@@ -72,7 +74,7 @@
             <input id="form.dob"
                    type="date"
                    v-model="form.dob"
-                   class="w-full rounded border px-2 py-1 text-lg border shadow-md"
+                   class="w-full rounded px-3 h-10 text-blue-800 font-semibold shadow-md"
             >
         </div>
 
@@ -90,34 +92,86 @@
                    min="2009"
                    max="2025"
                    v-model="form.grad_year"
-                   class="w-full rounded border px-3 py-2 text-lg border shadow-md"
+                   class="w-full rounded px-3 h-10 text-blue-800 font-semibold shadow-md"
                    required
             >
         </div>
 
-        <div class="mb-2">
+        <div class="py-2">
             <div class="flex justify-between content-end">
-                <label class="text-sm font-semibold text-red-900" for="form.grad_year">Status</label>
-                <span id="statusHelp"
-                      class="text-red-600 text-xs font-semibold"
-                      v-if="form.errors.has('status')"
-                      v-text="form.errors.get('status')">
+                <label class="text-sm font-semibold text-red-900" for="form.fall_sport_id">
+                    Fall Sport
+                </label>
+                <span
+                    id="fallSportHelp"
+                    class="text-red-600 text-xs font-semibold"
+                    v-if="form.errors.has('fall_sport_id')"
+                    v-text="form.errors.get('fall_sport_id')">
                 </span>
             </div>
-            <select id="form.status"
-                    name="status"
-                    v-model="form.status"
-                    class="w-full rounded border px-3 py-2 text-lg border shadow-md"
-                    required
-            >
-                <option value="a">Active</option>
-                <option value="i">Inactive</option>
+            <select
+                class="w-full rounded px-3 h-10 text-blue-800 font-semibold shadow-md"
+                name="fall_sport_id"
+                v-model="form.fall_sport_id"
+                id="form.fall_sport_id"
+                required>
+                <option v-for="sport in fallSports" :key="sport.id" :value="sport.id">
+                    {{ sport.name }}
+                </option>
+            </select>
+        </div>
+
+        <div class="py-2">
+            <div class="flex justify-between content-end">
+                <label class="text-sm font-semibold text-red-900" for="form.winter_sport_id">
+                    Spring Sport
+                </label>
+                <span
+                    id="winterSportHelp"
+                    class="text-red-600 text-xs font-semibold"
+                    v-if="form.errors.has('winter_sport_id')"
+                    v-text="form.errors.get('winter_sport_id')">
+                </span>
+            </div>
+            <select
+                class="w-full rounded px-3 h-10 text-blue-800 font-semibold shadow-md"
+                name="winter_sport_id"
+                v-model="form.winter_sport_id"
+                id="form.winter_sport_id"
+                required>
+                <option v-for="sport in winterSports" :key="sport.id" :value="sport.id">
+                    {{ sport.name }}
+                </option>
+            </select>
+        </div>
+
+        <div class="py-2">
+            <div class="flex justify-between content-end">
+                <label class="text-sm font-semibold text-red-900" for="form.spring_sport_id">
+                    Fall Sport
+                </label>
+                <span
+                    id="springSportHelp"
+                    class="text-red-600 text-xs font-semibold"
+                    v-if="form.errors.has('spring_sport_id')"
+                    v-text="form.errors.get('spring_sport_id')">
+                </span>
+            </div>
+            <select
+                class="w-full rounded px-3 h-10 text-blue-800 font-semibold shadow-md"
+                name="spring_sport_id"
+                v-model="form.spring_sport_id"
+                id="form.spring_sport_id"
+                required>
+                <option v-for="sport in springSports" :key="sport.id" :value="sport.id">
+                    {{ sport.name }}
+                </option>
             </select>
         </div>
 
         <div class="text-right pt-2">
             <button type="submit"
-                    class="bg-green-500 text-white w-20 py-2 rounded-md"
+                    class="bg-green-600 text-white w-20 py-2 rounded-md"
                     :disabled="form.errors.any()">
                 Create
             </button>
@@ -137,16 +191,54 @@
                     sex: '',
                     dob: '',
                     grad_year: '',
-                    status: ''
-                })
+                    fall_sport_id: 1,
+                    winter_sport_id: 1,
+                    spring_sport_id: 1
+                }),
+
+                fallSports: [],
+                winterSports: [],
+                springSports: [],
             };
         },
 
         created() {
             Event.$on('cancel', () => this.resetForm());
+
+            Event.$on('getNames', () => this.getSports());
         },
 
         methods: {
+            getSports() {
+                function getFallSports() {
+                    return axios.get('api/fall/sports')
+                }
+
+                function getWinterSports() {
+                    return axios.get('api/winter/sports')
+                }
+
+                function getSpringSports() {
+                    return axios.get('api/spring/sports')
+                }
+
+                axios.all([
+                    getFallSports(),
+                    getWinterSports(),
+                    getSpringSports(),
+
+                ])
+                    .then(axios.spread((
+                        fallResponse,
+                        winterResponse,
+                        springResponse
+                    ) => {
+                        this.fallSports = fallResponse.data;
+                        this.winterSports = winterResponse.data;
+                        this.springSports = springResponse.data;
+                    }));
+            },
+
             onSubmit() {
                 this.form
                     .post('/api/athletes')
@@ -185,7 +277,9 @@
                     this.form.sex = ''
                     this.form.dob = ''
                     this.form.grad_year = ''
-                    this.form.status = ''
+                    this.form.fall_sport_id = 1
+                    this.form.winter_sport_id = 1
+                    this.form.spring_sport_id = 1
                     this.form.errors.clear();
             }
         }

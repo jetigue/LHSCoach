@@ -1899,512 +1899,6 @@ module.exports = {
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Athlete.vue?vue&type=script&lang=js&":
-/*!******************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Athlete.vue?vue&type=script&lang=js& ***!
-  \******************************************************************************************************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _PhysicalStatus__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./PhysicalStatus */ "./resources/js/components/PhysicalStatus.vue");
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-  name: "Athlete",
-  components: {
-    PhysicalStatus: _PhysicalStatus__WEBPACK_IMPORTED_MODULE_0__["default"]
-  },
-  props: ['data'],
-  data: function data() {
-    return {
-      editing: false,
-      isExpanded: false,
-      active: this.data.status === 'a',
-      age: this.data.age,
-      dob: this.data.dob,
-      first_name: this.data.first_name,
-      grad_year: this.data.grad_year,
-      grade: this.data["class"],
-      id: this.data.id,
-      last_name: this.data.last_name,
-      sex: this.data.sex,
-      status: this.data.status,
-      form: new Form({
-        first_name: this.data.first_name,
-        last_name: this.data.last_name,
-        sex: this.data.sex,
-        dob: this.data.dob,
-        grad_year: this.data.grad_year,
-        status: this.data.status
-      }),
-      fallSports: []
-    };
-  },
-  computed: {
-    sexName: function sexName() {
-      return this.sex === 'm' ? "Male" : "Female";
-    },
-    isInactive: function isInactive() {
-      if (this.status === 'i') {
-        return true;
-      }
-    },
-    fallSport: function fallSport() {
-      if (this.data.fall_sport !== null) {
-        return this.data.fall_sport.name;
-      }
-    },
-    winterSport: function winterSport() {
-      if (this.data.winter_sport !== null) {
-        return this.data.winter_sport.name;
-      }
-    },
-    springSport: function springSport() {
-      if (this.data.spring_sport !== null) {
-        return this.data.spring_sport.name;
-      }
-    }
-  },
-  methods: {
-    toggleRow: function toggleRow() {
-      this.isExpanded = !this.isExpanded;
-      this.getSports();
-    },
-    getSports: function getSports() {
-      var _this = this;
-
-      function getFallSports() {
-        return axios.get('api/sports/fall');
-      }
-
-      function getWinterSports() {
-        return axios.get('api/sports/winter');
-      }
-
-      function getSpringSports() {
-        return axios.get('api/sports/spring');
-      }
-
-      axios.all([getFallSports(), getWinterSports(), getSpringSports()]).then(axios.spread(function (fallResponse, winterResponse, springResponse) {
-        _this.fallSports = fallResponse.data;
-        _this.winterSports = winterResponse.data;
-        _this.springSports = springResponse.data;
-      }));
-    },
-    activate: function activate() {
-      axios.patch('api/athletes/' + this.data.id, {
-        status: this.status = 'a',
-        last_name: this.last_name,
-        first_name: this.first_name,
-        sex: this.sex,
-        dob: this.dob,
-        grad_year: this.grad_year
-      })["catch"](function (errors) {
-        console.log(errors);
-      });
-      this.active = true;
-    },
-    inactivate: function inactivate() {
-      axios.patch('/api/athletes/' + this.data.id, {
-        status: this.status = 'i',
-        last_name: this.last_name,
-        first_name: this.first_name,
-        sex: this.sex,
-        dob: this.dob,
-        grad_year: this.grad_year
-      })["catch"](function (errors) {
-        console.log(errors);
-      });
-      this.active = false;
-    },
-    // enrollXC() {
-    //     axios.post('/athletes/' + this.data.id + '/sports', {
-    //         athlete_id: this.data.id,
-    //     })
-    //     .then((response) => {
-    //       console.log(response);
-    //     }, (error) => {
-    //       console.log(error);
-    //     });
-    //
-    //     this.enrolledXC = true;
-    // },
-    // dropXC() {
-    //     this.enrolledXC = false
-    //     console.log('dropped')
-    // },
-    update: function update() {
-      var _this2 = this;
-
-      this.form.patch('/api/athletes/' + this.data.id).then(function (data) {
-        _this2.first_name = _this2.form.first_name;
-        _this2.last_name = _this2.form.last_name;
-        _this2.sex = _this2.form.sex;
-        _this2.grad_year = _this2.form.grad_year;
-        _this2.dob = _this2.form.dob;
-        _this2.name = _this2.form.last_name + ", " + _this2.form.first_name;
-        _this2.status = _this2.data.status;
-        _this2.editing = false;
-        _this2.isExpanded = false;
-
-        if (_this2.first_name !== _this2.data.first_name || _this2.last_name !== _this2.data.last_name || _this2.sex !== _this2.data.sex || _this2.dob !== _this2.data.dob || _this2.grad_year !== _this2.data.grad_year) {
-          var Toast = Vue.swal.mixin({
-            toast: true,
-            position: 'top-end',
-            showConfirmButton: false,
-            timer: 2500,
-            timerProgressBar: true,
-            onOpen: function onOpen(toast) {
-              toast.addEventListener('mouseenter', Vue.swal.stopTimer);
-              toast.addEventListener('mouseleave', Vue.swal.resumeTimer);
-            }
-          });
-          Toast.fire({
-            icon: 'success',
-            title: 'Athlete Updated!'
-          });
-        }
-      })["catch"](function (errors) {
-        console.log(errors);
-      });
-    },
-    destroy: function destroy() {
-      axios["delete"]('api/athletes/' + this.data.id);
-      this.$emit('deleted', this.data.id);
-    },
-    resetForm: function resetForm() {
-      this.form.first_name = this.first_name;
-      this.form.last_name = this.last_name;
-      this.form.sex = this.sex;
-      this.form.dob = this.dob;
-      this.form.grad_year = this.grad_year;
-      this.isExpanded = false;
-    }
-  }
-});
-
-/***/ }),
-
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Athletes.vue?vue&type=script&lang=js&":
-/*!*******************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Athletes.vue?vue&type=script&lang=js& ***!
-  \*******************************************************************************************************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _Collection__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../Collection */ "./resources/js/Collection.js");
-/* harmony import */ var _Athlete__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Athlete */ "./resources/js/components/Athlete.vue");
-/* harmony import */ var _forms_NewAthleteForm__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./forms/NewAthleteForm */ "./resources/js/components/forms/NewAthleteForm.vue");
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-
-
-/* harmony default export */ __webpack_exports__["default"] = (_Collection__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
-  name: "Athletes",
-  components: {
-    Athlete: _Athlete__WEBPACK_IMPORTED_MODULE_1__["default"],
-    NewAthleteForm: _forms_NewAthleteForm__WEBPACK_IMPORTED_MODULE_2__["default"]
-  },
-  props: ['data'],
-  data: function data() {
-    return {
-      search: ''
-    };
-  },
-  computed: {
-    filteredAthletes: function filteredAthletes() {
-      var _this = this;
-
-      return this.items.filter(function (athlete) {
-        return athlete.last_name.toLowerCase().match(_this.search.toLowerCase()) || athlete.first_name.toLowerCase().match(_this.search.toLowerCase());
-      });
-    }
-  },
-  methods: {
-    clearSearch: function clearSearch() {
-      this.search = '';
-    }
-  }
-}));
-
-/***/ }),
-
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Physical.vue?vue&type=script&lang=js&":
 /*!*******************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Physical.vue?vue&type=script&lang=js& ***!
@@ -2414,6 +1908,25 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -2774,6 +2287,7 @@ __webpack_require__.r(__webpack_exports__);
       restrictions: this.data.restrictions,
       notes: this.data.notes,
       athlete_id: this.data.athlete_id,
+      athleteUrl: '/athletes/' + this.data.athlete.slug,
       athletes: [],
       form: new Form({
         athlete_id: this.data.athlete_id,
@@ -2997,7 +2511,7 @@ __webpack_require__.r(__webpack_exports__);
   computed: {
     status: function status() {
       if (this.data.latest_physical) {
-        var forms = [this.confirmedCardiacForm = this.data.latest_physical.ghsa_cardiac_form === 1, this.confirmedConcussionForm = this.data.latest_physical.ghsa_concussion_form === 1, this.confirmedHistoryForm = this.data.latest_physical.history_form === 1, this.confirmedMedicalEligibilityForm = this.data.latest_physical.medical_eligibility_form === 1, this.confirmedPhysicalExamForm = this.data.latest_physical.physical_exam_form === 1, this.confirmedPhysicalForm = this.data.latest_physical.physical_form === 1, this.confirmedTransportationWaiverForm = this.data.latest_physical.transportation_waiver_form === 1];
+        var forms = [this.confirmedCardiacForm = this.data.latest_physical.ghsa_cardiac_form === 1, this.confirmedConcussionForm = this.data.latest_physical.ghsa_concussion_form === 1, this.confirmedHistoryForm = this.data.latest_physical.history_form === 1, this.confirmedMedicalEligibilityForm = this.data.latest_physical.medical_eligibility_form === 1, this.confirmedPhysicalExamForm = this.data.latest_physical.physical_exam_form === 1, this.confirmedPhysicalForm = this.data.latest_physical.physical_form === 1, this.confirmedBlanketWaiverForm = this.data.latest_physical.blanket_waiver_form === 1];
 
         if (forms.every(Boolean) && this.data.latest_physical.restrictions === null) {
           this.statusColor = '#00b300';
@@ -3118,28 +2632,15 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Sport.vue?vue&type=script&lang=js&":
-/*!****************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Sport.vue?vue&type=script&lang=js& ***!
-  \****************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ProfilePhysical.vue?vue&type=script&lang=js&":
+/*!**************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/ProfilePhysical.vue?vue&type=script&lang=js& ***!
+  \**************************************************************************************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -3211,39 +2712,538 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: "Sport",
+  name: "ProfilePhysical",
   props: ['data'],
   data: function data() {
     return {
       editing: false,
       isExpanded: false,
-      name: this.data.name,
-      season: this.data.season,
-      form: new Form({
-        name: this.data.name,
-        season: this.data.season
-      })
+      statusColor: '',
+      expirationColor: '',
+      allClear: false,
+      restrict: false,
+      notClear: false,
+      id: this.data.id,
+      exam_date: this.data.exam_date,
+      restrictions: this.data.restrictions,
+      notes: this.data.notes,
+      athlete_id: this.data.athlete_id,
+      historyFormConfirmed: this.data.history_form === 1,
+      physicalExamFormConfirmed: this.data.physical_exam_form === 1,
+      eligibilityFormConfirmed: this.data.medical_eligibility_form === 1,
+      physicalFormConfirmed: this.data.physical_form === 1,
+      blanketFormConfirmed: this.data.blanket_waiver_form === 1,
+      concussionFormConfirmed: this.data.ghsa_concussion_form === 1,
+      cardiacFormConfirmed: this.data.ghsa_cardiac_form === 1
     };
   },
   computed: {
-    sportSeason: function sportSeason() {
-      return this.season.charAt(0).toUpperCase() + this.season.slice(1);
+    status: function status() {
+      var forms = [this.historyFormConfirmed, this.physicalExamFormConfirmed, this.eligibilityFormConfirmed, this.physicalFormConfirmed, this.blanketFormConfirmed, this.concussionFormConfirmed, this.cardiacFormConfirmed];
+
+      if (forms.every(Boolean) && this.restrictions === null) {
+        this.statusColor = '#00b300';
+        this.allClear = true;
+        return "Cleared";
+      } else if (forms.every(Boolean) && this.restrictions !== null) {
+        this.statusColor = '#fd6a02';
+        this.restrict = true;
+        return "Cleared with Restrictions";
+      } else {
+        this.statusColor = '#cc0000';
+        return "Not Cleared";
+      }
+    },
+    expiration: function expiration() {
+      var examination_date = this.$moment(this.exam_date);
+      var expiration_date = this.$moment(examination_date).add(1, 'years');
+      var today = this.$moment();
+      var d = this.$moment(expiration_date).diff(today, 'days');
+
+      if (expiration_date > today && d >= 60) {
+        this.expirationColor = '#00b300';
+        return "Expires";
+      } else if (expiration_date > today && d <= 59) {
+        this.expirationColor = '#fd6a02';
+        return "Expires";
+      } else {
+        this.expirationColor = '#cc0000';
+        return "Expired";
+      }
+    }
+  },
+  methods: {
+    toggleRow: function toggleRow() {
+      this.isExpanded = !this.isExpanded;
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ProfilePhysicals.vue?vue&type=script&lang=js&":
+/*!***************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/ProfilePhysicals.vue?vue&type=script&lang=js& ***!
+  \***************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _ProfilePhysical__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ProfilePhysical */ "./resources/js/components/ProfilePhysical.vue");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: "ProfilePhysicals",
+  components: {
+    ProfilePhysical: _ProfilePhysical__WEBPACK_IMPORTED_MODULE_0__["default"]
+  },
+  props: ['data'],
+  data: function data() {
+    return {
+      recordsCount: this.data.length,
+      items: this.data
+    };
+  },
+  computed: {
+    records: {
+      get: function get() {
+        return this.recordsCount;
+      },
+      set: function set() {
+        if (this.recordsCount !== 0) {
+          return this.records = true;
+        }
+
+        return this.records = false;
+      }
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/athletes/Athlete.vue?vue&type=script&lang=js&":
+/*!***************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/athletes/Athlete.vue?vue&type=script&lang=js& ***!
+  \***************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _PhysicalStatus__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../PhysicalStatus */ "./resources/js/components/PhysicalStatus.vue");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: "Athlete",
+  components: {
+    PhysicalStatus: _PhysicalStatus__WEBPACK_IMPORTED_MODULE_0__["default"]
+  },
+  props: ['data'],
+  data: function data() {
+    return {
+      editing: false,
+      isExpanded: false,
+      active: this.data.status === 'a',
+      age: this.data.age,
+      dob: this.data.dob,
+      first_name: this.data.first_name,
+      grad_year: this.data.grad_year,
+      grade: this.data["class"],
+      id: this.data.id,
+      last_name: this.data.last_name,
+      sex: this.data.sex,
+      fall_sport_id: this.data.fall_sport_id,
+      winter_sport_id: this.data.winter_sport_id,
+      spring_sport_id: this.data.spring_sport_id,
+      athleteUrl: '/athletes/' + this.data.slug,
+      fallSportUrl: '/fall/sports/' + this.data.fall_sport.slug,
+      winterSportUrl: '/winter/sports/' + this.data.winter_sport.slug,
+      springSportUrl: '/spring/sports/' + this.data.spring_sport.slug,
+      form: new Form({
+        first_name: this.data.first_name,
+        last_name: this.data.last_name,
+        sex: this.data.sex,
+        dob: this.data.dob,
+        grad_year: this.data.grad_year,
+        fall_sport_id: this.data.fall_sport_id,
+        winter_sport_id: this.data.winter_sport_id,
+        spring_sport_id: this.data.spring_sport_id
+      }),
+      fallSports: [],
+      springSports: [],
+      winterSports: []
+    };
+  },
+  computed: {
+    sexName: function sexName() {
+      return this.sex === 'm' ? "Male" : "Female";
+    },
+    fallSport: function fallSport() {
+      if (this.data.fall_sport_id !== 1) {
+        return this.data.fall_sport.name;
+      }
+
+      return '';
+    },
+    winterSport: function winterSport() {
+      if (this.data.winter_sport_id !== 1) {
+        return this.data.winter_sport.name;
+      }
+
+      return '';
+    },
+    springSport: function springSport() {
+      if (this.data.spring_sport_id !== 1) {
+        return this.data.spring_sport.name;
+      }
+
+      return '';
     }
   },
   methods: {
     toggleRow: function toggleRow() {
       this.isExpanded = !this.isExpanded;
     },
-    update: function update() {
+    getSports: function getSports() {
       var _this = this;
 
-      this.form.patch('/api/athletes/' + this.data.id).then(function (data) {
-        _this.name = _this.form.name;
-        _this.season = _this.form.season;
-        _this.editing = false;
-        _this.isExpanded = false;
+      this.editing = true;
 
-        if (_this.name !== _this.data.name || _this.season !== _this.data.season) {
+      function getFallSports() {
+        return axios.get('api/fall/sports/');
+      }
+
+      function getWinterSports() {
+        return axios.get('api/winter/sports/');
+      }
+
+      function getSpringSports() {
+        return axios.get('api/spring/sports');
+      }
+
+      axios.all([getFallSports(), getWinterSports(), getSpringSports()]).then(axios.spread(function (fallResponse, winterResponse, springResponse) {
+        _this.fallSports = fallResponse.data;
+        _this.winterSports = winterResponse.data;
+        _this.springSports = springResponse.data;
+      }));
+    },
+    update: function update() {
+      var _this2 = this;
+
+      this.form.patch('/api/athletes/' + this.data.id).then(function (data) {
+        _this2.first_name = _this2.form.first_name;
+        _this2.last_name = _this2.form.last_name;
+        _this2.sex = _this2.form.sex;
+        _this2.grad_year = _this2.form.grad_year;
+        _this2.dob = _this2.form.dob;
+        _this2.name = _this2.form.last_name + ", " + _this2.form.first_name;
+        _this2.fall_sport_id = _this2.form.fall_sport_id;
+        _this2.winter_sport_id = _this2.form.winter_sport_id;
+        _this2.spring_sport_id = _this2.form.spring_sport_id;
+        _this2.editing = false;
+        _this2.isExpanded = false;
+
+        if (_this2.first_name !== _this2.data.first_name || _this2.last_name !== _this2.data.last_name || _this2.sex !== _this2.data.sex || _this2.dob !== _this2.data.dob || _this2.grad_year !== _this2.data.grad_year || _this2.fall_sport_id !== _this2.data.fall_sport_id || _this2.winter_sport_id !== _this2.data.winter_sport_id || _this2.spring_sport_id !== _this2.data.spring_sport_id) {
           var Toast = Vue.swal.mixin({
             toast: true,
             position: 'top-end',
@@ -3257,7 +3257,7 @@ __webpack_require__.r(__webpack_exports__);
           });
           Toast.fire({
             icon: 'success',
-            title: 'Sport Updated!'
+            title: 'Athlete Updated!'
           });
         }
       })["catch"](function (errors) {
@@ -3265,12 +3265,18 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     destroy: function destroy() {
-      axios["delete"]('api/sports/' + this.data.id);
+      axios["delete"]('api/athletes/' + this.data.id);
       this.$emit('deleted', this.data.id);
     },
     resetForm: function resetForm() {
-      this.form.name = this.name;
-      this.form.season = this.season;
+      this.form.first_name = this.first_name;
+      this.form.last_name = this.last_name;
+      this.form.sex = this.sex;
+      this.form.dob = this.dob;
+      this.form.grad_year = this.grad_year;
+      this.form.fall_sport_id = this.fall_sport_id;
+      this.form.winter_sport_id = this.winter_sport_id;
+      this.form.spring_sport_id = this.spring_sport_id;
       this.isExpanded = false;
     }
   }
@@ -3278,18 +3284,27 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Sports.vue?vue&type=script&lang=js&":
-/*!*****************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Sports.vue?vue&type=script&lang=js& ***!
-  \*****************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/athletes/Athletes.vue?vue&type=script&lang=js&":
+/*!****************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/athletes/Athletes.vue?vue&type=script&lang=js& ***!
+  \****************************************************************************************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _Collection__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../Collection */ "./resources/js/Collection.js");
-/* harmony import */ var _Sport__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Sport */ "./resources/js/components/Sport.vue");
-/* harmony import */ var _forms_NewSportForm__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./forms/NewSportForm */ "./resources/js/components/forms/NewSportForm.vue");
+/* harmony import */ var _Collection__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../Collection */ "./resources/js/Collection.js");
+/* harmony import */ var _Athlete__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Athlete */ "./resources/js/components/athletes/Athlete.vue");
+/* harmony import */ var _forms_NewAthleteForm__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../forms/NewAthleteForm */ "./resources/js/components/forms/NewAthleteForm.vue");
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -3339,10 +3354,10 @@ __webpack_require__.r(__webpack_exports__);
 
 
 /* harmony default export */ __webpack_exports__["default"] = (_Collection__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
-  name: "Sports",
+  name: "Athletes",
   components: {
-    Sport: _Sport__WEBPACK_IMPORTED_MODULE_1__["default"],
-    NewSportForm: _forms_NewSportForm__WEBPACK_IMPORTED_MODULE_2__["default"]
+    Athlete: _Athlete__WEBPACK_IMPORTED_MODULE_1__["default"],
+    NewAthleteForm: _forms_NewAthleteForm__WEBPACK_IMPORTED_MODULE_2__["default"]
   },
   props: ['data'],
   data: function data() {
@@ -3354,8 +3369,530 @@ __webpack_require__.r(__webpack_exports__);
     filteredAthletes: function filteredAthletes() {
       var _this = this;
 
-      return this.items.filter(function (sport) {
-        return sport.name.toLowerCase().match(_this.search.toLowerCase()) || sport.season.toLowerCase().match(_this.search.toLowerCase());
+      return this.items.filter(function (athlete) {
+        return athlete.last_name.toLowerCase().match(_this.search.toLowerCase()) || athlete.first_name.toLowerCase().match(_this.search.toLowerCase());
+      });
+    }
+  },
+  methods: {
+    clearSearch: function clearSearch() {
+      this.search = '';
+    }
+  }
+}));
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/athletes/SportAthlete.vue?vue&type=script&lang=js&":
+/*!********************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/athletes/SportAthlete.vue?vue&type=script&lang=js& ***!
+  \********************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _mixins_physicalsMixin__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../mixins/physicalsMixin */ "./resources/js/mixins/physicalsMixin.js");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: "SportAthlete",
+  mixins: [_mixins_physicalsMixin__WEBPACK_IMPORTED_MODULE_0__["physicalsMixin"]],
+  props: ['data'],
+  data: function data() {
+    return {
+      editing: false,
+      isExpanded: false,
+      active: this.data.status === 'a',
+      age: this.data.age,
+      dob: this.data.dob,
+      first_name: this.data.first_name,
+      grad_year: this.data.grad_year,
+      grade: this.data["class"],
+      id: this.data.id,
+      last_name: this.data.last_name,
+      sex: this.data.sex,
+      gender: this.data.gender,
+      fall_sport_id: this.data.fall_sport_id,
+      winter_sport_id: this.data.winter_sport_id,
+      spring_sport_id: this.data.spring_sport_id,
+      url: '/athletes/' + this.data.slug,
+      form: new Form({
+        first_name: this.data.first_name,
+        last_name: this.data.last_name,
+        sex: this.data.sex,
+        dob: this.data.dob,
+        grad_year: this.data.grad_year,
+        fall_sport_id: this.data.fall_sport_id,
+        winter_sport_id: this.data.winter_sport_id,
+        spring_sport_id: this.data.spring_sport_id
+      }),
+      fallSports: [],
+      springSports: [],
+      winterSports: []
+    };
+  },
+  computed: {
+    exam_date: function exam_date() {
+      if (this.data.latest_physical) {
+        return this.data.latest_physical.exam_date;
+      }
+    },
+    historyFormConfirmed: function historyFormConfirmed() {
+      if (this.data.latest_physical) {
+        return this.data.latest_physical.history_form === 1;
+      }
+    },
+    physicalExamFormConfirmed: function physicalExamFormConfirmed() {
+      if (this.data.latest_physical) {
+        return this.data.latest_physical.physical_exam_form === 1;
+      }
+    },
+    eligibilityFormConfirmed: function eligibilityFormConfirmed() {
+      if (this.data.latest_physical) {
+        return this.data.latest_physical.medical_eligibility_form === 1;
+      }
+    },
+    physicalFormConfirmed: function physicalFormConfirmed() {
+      if (this.data.latest_physical) {
+        return this.data.latest_physical.physical_form === 1;
+      }
+    },
+    blanketFormConfirmed: function blanketFormConfirmed() {
+      if (this.data.latest_physical) {
+        return this.data.latest_physical.blanket_waiver_form === 1;
+      }
+    },
+    concussionFormConfirmed: function concussionFormConfirmed() {
+      if (this.data.latest_physical) {
+        return this.data.latest_physical.ghsa_concussion_form === 1;
+      }
+    },
+    cardiacFormConfirmed: function cardiacFormConfirmed() {
+      if (this.data.latest_physical) {
+        return this.data.latest_physical.ghsa_cardiac_form === 1;
+      }
+    }
+  },
+  methods: {
+    toggleRow: function toggleRow() {
+      this.isExpanded = !this.isExpanded;
+    },
+    getSports: function getSports() {
+      var _this = this;
+
+      this.editing = true;
+
+      function getFallSports() {
+        return axios.get('/api/fall/sports/');
+      }
+
+      function getWinterSports() {
+        return axios.get('/api/winter/sports/');
+      }
+
+      function getSpringSports() {
+        return axios.get('/api/spring/sports');
+      }
+
+      axios.all([getFallSports(), getWinterSports(), getSpringSports()]).then(axios.spread(function (fallResponse, winterResponse, springResponse) {
+        _this.fallSports = fallResponse.data;
+        _this.winterSports = winterResponse.data;
+        _this.springSports = springResponse.data;
+      }));
+    },
+    update: function update() {
+      var _this2 = this;
+
+      this.form.patch('/api/athletes/' + this.data.id).then(function (data) {
+        _this2.first_name = _this2.form.first_name;
+        _this2.last_name = _this2.form.last_name;
+        _this2.sex = _this2.form.sex;
+        _this2.grad_year = _this2.form.grad_year;
+        _this2.dob = _this2.form.dob;
+        _this2.name = _this2.form.last_name + ", " + _this2.form.first_name;
+        _this2.fall_sport_id = _this2.form.fall_sport_id;
+        _this2.winter_sport_id = _this2.form.winter_sport_id;
+        _this2.spring_sport_id = _this2.form.spring_sport_id;
+        _this2.editing = false;
+        _this2.isExpanded = false;
+
+        if (_this2.first_name !== _this2.data.first_name || _this2.last_name !== _this2.data.last_name || _this2.sex !== _this2.data.sex || _this2.dob !== _this2.data.dob || _this2.grad_year !== _this2.data.grad_year || _this2.fall_sport_id !== _this2.data.fall_sport_id || _this2.winter_sport_id !== _this2.data.winter_sport_id || _this2.spring_sport_id !== _this2.data.spring_sport_id) {
+          var Toast = Vue.swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 2500,
+            timerProgressBar: true,
+            onOpen: function onOpen(toast) {
+              toast.addEventListener('mouseenter', Vue.swal.stopTimer);
+              toast.addEventListener('mouseleave', Vue.swal.resumeTimer);
+            }
+          });
+          Toast.fire({
+            icon: 'success',
+            title: 'Athlete Updated!'
+          });
+        }
+      })["catch"](function (errors) {
+        console.log(errors);
+      });
+    },
+    resetForm: function resetForm() {
+      this.form.first_name = this.first_name;
+      this.form.last_name = this.last_name;
+      this.form.sex = this.sex;
+      this.form.dob = this.dob;
+      this.form.grad_year = this.grad_year;
+      this.isExpanded = false;
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/athletes/SportAthletes.vue?vue&type=script&lang=js&":
+/*!*********************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/athletes/SportAthletes.vue?vue&type=script&lang=js& ***!
+  \*********************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Collection__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../Collection */ "./resources/js/Collection.js");
+/* harmony import */ var _SportAthlete__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./SportAthlete */ "./resources/js/components/athletes/SportAthlete.vue");
+/* harmony import */ var _PhysicalStatus__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../PhysicalStatus */ "./resources/js/components/PhysicalStatus.vue");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = (_Collection__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
+  name: "SportAthletes",
+  components: {
+    SportAthlete: _SportAthlete__WEBPACK_IMPORTED_MODULE_1__["default"],
+    PhysicalStatus: _PhysicalStatus__WEBPACK_IMPORTED_MODULE_2__["default"]
+  },
+  props: ['data'],
+  data: function data() {
+    return {
+      search: ''
+    };
+  },
+  computed: {
+    filteredAthletes: function filteredAthletes() {
+      var _this = this;
+
+      return this.items.filter(function (athlete) {
+        return athlete.last_name.toLowerCase().match(_this.search.toLowerCase()) || athlete.first_name.toLowerCase().match(_this.search.toLowerCase());
       });
     }
   },
@@ -3748,6 +4285,60 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "NewAthleteForm",
   data: function data() {
@@ -3758,8 +4349,13 @@ __webpack_require__.r(__webpack_exports__);
         sex: '',
         dob: '',
         grad_year: '',
-        status: ''
-      })
+        fall_sport_id: 1,
+        winter_sport_id: 1,
+        spring_sport_id: 1
+      }),
+      fallSports: [],
+      winterSports: [],
+      springSports: []
     };
   },
   created: function created() {
@@ -3768,10 +4364,34 @@ __webpack_require__.r(__webpack_exports__);
     Event.$on('cancel', function () {
       return _this.resetForm();
     });
+    Event.$on('getNames', function () {
+      return _this.getSports();
+    });
   },
   methods: {
-    onSubmit: function onSubmit() {
+    getSports: function getSports() {
       var _this2 = this;
+
+      function getFallSports() {
+        return axios.get('api/fall/sports');
+      }
+
+      function getWinterSports() {
+        return axios.get('api/winter/sports');
+      }
+
+      function getSpringSports() {
+        return axios.get('api/spring/sports');
+      }
+
+      axios.all([getFallSports(), getWinterSports(), getSpringSports()]).then(axios.spread(function (fallResponse, winterResponse, springResponse) {
+        _this2.fallSports = fallResponse.data;
+        _this2.winterSports = winterResponse.data;
+        _this2.springSports = springResponse.data;
+      }));
+    },
+    onSubmit: function onSubmit() {
+      var _this3 = this;
 
       this.form.post('/api/athletes').then(function (data) {
         Event.$emit('formSubmitted');
@@ -3791,9 +4411,9 @@ __webpack_require__.r(__webpack_exports__);
           title: 'Athlete Added!'
         });
 
-        _this2.$emit('created', data);
+        _this3.$emit('created', data);
 
-        _this2.resetForm();
+        _this3.resetForm();
       })["catch"](function (errors) {
         return console.log(errors);
       });
@@ -3804,7 +4424,105 @@ __webpack_require__.r(__webpack_exports__);
       this.form.sex = '';
       this.form.dob = '';
       this.form.grad_year = '';
-      this.form.status = '';
+      this.form.fall_sport_id = 1;
+      this.form.winter_sport_id = 1;
+      this.form.spring_sport_id = 1;
+      this.form.errors.clear();
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/forms/NewFallSport.vue?vue&type=script&lang=js&":
+/*!*****************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/forms/NewFallSport.vue?vue&type=script&lang=js& ***!
+  \*****************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: "NewFallSport",
+  data: function data() {
+    return {
+      form: new Form({
+        name: ''
+      })
+    };
+  },
+  created: function created() {
+    var _this = this;
+
+    Event.$on('cancel', function () {
+      return _this.resetForm();
+    });
+  },
+  methods: {
+    onSubmit: function onSubmit() {
+      var _this2 = this;
+
+      this.form.post('/api/fall/sports').then(function (data) {
+        Event.$emit('formSubmitted');
+        var Toast = Vue.swal.mixin({
+          toast: true,
+          position: 'top-end',
+          showConfirmButton: false,
+          timer: 2500,
+          timerProgressBar: true,
+          onOpen: function onOpen(toast) {
+            toast.addEventListener('mouseenter', Vue.swal.stopTimer);
+            toast.addEventListener('mouseleave', Vue.swal.resumeTimer);
+          }
+        });
+        Toast.fire({
+          icon: 'success',
+          title: 'Fall Sport Added!'
+        });
+
+        _this2.$emit('created', data);
+
+        _this2.resetForm();
+      })["catch"](function (errors) {
+        return console.log(errors);
+      });
+    },
+    resetForm: function resetForm() {
+      this.form.name = '';
       this.form.errors.clear();
     }
   }
@@ -3821,6 +4539,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
 //
 //
 //
@@ -4244,9 +4963,429 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/forms/NewSportForm.vue?vue&type=script&lang=js&":
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/forms/NewSpringSport.vue?vue&type=script&lang=js&":
+/*!*******************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/forms/NewSpringSport.vue?vue&type=script&lang=js& ***!
+  \*******************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: "NewSpringSport",
+  data: function data() {
+    return {
+      form: new Form({
+        name: ''
+      })
+    };
+  },
+  created: function created() {
+    var _this = this;
+
+    Event.$on('cancel', function () {
+      return _this.resetForm();
+    });
+  },
+  methods: {
+    onSubmit: function onSubmit() {
+      var _this2 = this;
+
+      this.form.post('/api/spring/sports').then(function (data) {
+        Event.$emit('formSubmitted');
+        var Toast = Vue.swal.mixin({
+          toast: true,
+          position: 'top-end',
+          showConfirmButton: false,
+          timer: 2500,
+          timerProgressBar: true,
+          onOpen: function onOpen(toast) {
+            toast.addEventListener('mouseenter', Vue.swal.stopTimer);
+            toast.addEventListener('mouseleave', Vue.swal.resumeTimer);
+          }
+        });
+        Toast.fire({
+          icon: 'success',
+          title: 'Fall Sport Added!'
+        });
+
+        _this2.$emit('created', data);
+
+        _this2.resetForm();
+      })["catch"](function (errors) {
+        return console.log(errors);
+      });
+    },
+    resetForm: function resetForm() {
+      this.form.name = '';
+      this.form.errors.clear();
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/forms/NewWinterSport.vue?vue&type=script&lang=js&":
+/*!*******************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/forms/NewWinterSport.vue?vue&type=script&lang=js& ***!
+  \*******************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: "NewWinterSport",
+  data: function data() {
+    return {
+      form: new Form({
+        name: ''
+      })
+    };
+  },
+  created: function created() {
+    var _this = this;
+
+    Event.$on('cancel', function () {
+      return _this.resetForm();
+    });
+  },
+  methods: {
+    onSubmit: function onSubmit() {
+      var _this2 = this;
+
+      this.form.post('/api/winter/sports').then(function (data) {
+        Event.$emit('formSubmitted');
+        var Toast = Vue.swal.mixin({
+          toast: true,
+          position: 'top-end',
+          showConfirmButton: false,
+          timer: 2500,
+          timerProgressBar: true,
+          onOpen: function onOpen(toast) {
+            toast.addEventListener('mouseenter', Vue.swal.stopTimer);
+            toast.addEventListener('mouseleave', Vue.swal.resumeTimer);
+          }
+        });
+        Toast.fire({
+          icon: 'success',
+          title: 'Winter Sport Added!'
+        });
+
+        _this2.$emit('created', data);
+
+        _this2.resetForm();
+      })["catch"](function (errors) {
+        return console.log(errors);
+      });
+    },
+    resetForm: function resetForm() {
+      this.form.name = '';
+      this.form.errors.clear();
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/sports/FallSport.vue?vue&type=script&lang=js&":
+/*!***************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/sports/FallSport.vue?vue&type=script&lang=js& ***!
+  \***************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: "FallSport",
+  props: ['data'],
+  data: function data() {
+    return {
+      editing: false,
+      isExpanded: false,
+      name: this.data.name,
+      url: '/fall/sports/' + this.data.slug,
+      form: new Form({
+        name: this.data.name
+      })
+    };
+  },
+  computed: {},
+  methods: {
+    toggleRow: function toggleRow() {
+      this.isExpanded = !this.isExpanded;
+    },
+    update: function update() {
+      var _this = this;
+
+      this.form.patch('/api/fall/sports/' + this.data.id).then(function (data) {
+        _this.name = _this.form.name;
+        _this.editing = false;
+        _this.isExpanded = false;
+
+        if (_this.name !== _this.data.name) {
+          var Toast = Vue.swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 2500,
+            timerProgressBar: true,
+            onOpen: function onOpen(toast) {
+              toast.addEventListener('mouseenter', Vue.swal.stopTimer);
+              toast.addEventListener('mouseleave', Vue.swal.resumeTimer);
+            }
+          });
+          Toast.fire({
+            icon: 'success',
+            title: 'Fall Sport Updated!'
+          });
+        }
+      })["catch"](function (errors) {
+        console.log(errors);
+      });
+    },
+    destroy: function destroy() {
+      axios["delete"]('api/fall/sports/' + this.data.id);
+      this.$emit('deleted', this.data.id);
+    },
+    resetForm: function resetForm() {
+      this.form.name = this.name;
+      this.isExpanded = false;
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/sports/FallSports.vue?vue&type=script&lang=js&":
+/*!****************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/sports/FallSports.vue?vue&type=script&lang=js& ***!
+  \****************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Collection__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../Collection */ "./resources/js/Collection.js");
+/* harmony import */ var _FallSport__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./FallSport */ "./resources/js/components/sports/FallSport.vue");
+/* harmony import */ var _forms_NewFallSport__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../forms/NewFallSport */ "./resources/js/components/forms/NewFallSport.vue");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = (_Collection__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
+  name: "FallSports",
+  components: {
+    FallSport: _FallSport__WEBPACK_IMPORTED_MODULE_1__["default"],
+    NewFallSport: _forms_NewFallSport__WEBPACK_IMPORTED_MODULE_2__["default"]
+  },
+  props: ['data'],
+  data: function data() {
+    return {
+      active: false
+    };
+  },
+  created: function created() {
+    var _this = this;
+
+    Event.$on('formSubmitted', function () {
+      return _this.close();
+    });
+  },
+  methods: {
+    close: function close() {
+      Event.$emit('cancel');
+      this.active = false;
+    }
+  }
+}));
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/sports/SpringSport.vue?vue&type=script&lang=js&":
 /*!*****************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/forms/NewSportForm.vue?vue&type=script&lang=js& ***!
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/sports/SpringSport.vue?vue&type=script&lang=js& ***!
   \*****************************************************************************************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -4307,59 +5446,396 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: "NewAthleteForm",
+  name: "SpringSport",
+  props: ['data'],
   data: function data() {
     return {
+      editing: false,
+      isExpanded: false,
+      name: this.data.name,
+      url: '/spring/sports/' + this.data.slug,
       form: new Form({
-        name: '',
-        season: ''
+        name: this.data.name
       })
+    };
+  },
+  computed: {},
+  methods: {
+    toggleRow: function toggleRow() {
+      this.isExpanded = !this.isExpanded;
+    },
+    update: function update() {
+      var _this = this;
+
+      this.form.patch('/api/spring/sports/' + this.data.id).then(function (data) {
+        _this.name = _this.form.name;
+        _this.editing = false;
+        _this.isExpanded = false;
+
+        if (_this.name !== _this.data.name) {
+          var Toast = Vue.swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 2500,
+            timerProgressBar: true,
+            onOpen: function onOpen(toast) {
+              toast.addEventListener('mouseenter', Vue.swal.stopTimer);
+              toast.addEventListener('mouseleave', Vue.swal.resumeTimer);
+            }
+          });
+          Toast.fire({
+            icon: 'success',
+            title: 'Spring Sport Updated!'
+          });
+        }
+      })["catch"](function (errors) {
+        console.log(errors);
+      });
+    },
+    destroy: function destroy() {
+      axios["delete"]('api/spring/sports/' + this.data.id);
+      this.$emit('deleted', this.data.id);
+    },
+    resetForm: function resetForm() {
+      this.form.name = this.name;
+      this.isExpanded = false;
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/sports/SpringSports.vue?vue&type=script&lang=js&":
+/*!******************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/sports/SpringSports.vue?vue&type=script&lang=js& ***!
+  \******************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Collection__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../Collection */ "./resources/js/Collection.js");
+/* harmony import */ var _SpringSport__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./SpringSport */ "./resources/js/components/sports/SpringSport.vue");
+/* harmony import */ var _forms_NewSpringSport__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../forms/NewSpringSport */ "./resources/js/components/forms/NewSpringSport.vue");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = (_Collection__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
+  name: "SpringSports",
+  components: {
+    SpringSport: _SpringSport__WEBPACK_IMPORTED_MODULE_1__["default"],
+    NewSpringSport: _forms_NewSpringSport__WEBPACK_IMPORTED_MODULE_2__["default"]
+  },
+  props: ['data'],
+  data: function data() {
+    return {
+      active: false
     };
   },
   created: function created() {
     var _this = this;
 
-    Event.$on('cancel', function () {
-      return _this.resetForm();
+    Event.$on('formSubmitted', function () {
+      return _this.close();
     });
   },
   methods: {
-    onSubmit: function onSubmit() {
-      var _this2 = this;
+    close: function close() {
+      Event.$emit('cancel');
+      this.active = false;
+    }
+  }
+}));
 
-      this.form.post('/api/sports').then(function (data) {
-        Event.$emit('formSubmitted');
-        var Toast = Vue.swal.mixin({
-          toast: true,
-          position: 'top-end',
-          showConfirmButton: false,
-          timer: 2500,
-          timerProgressBar: true,
-          onOpen: function onOpen(toast) {
-            toast.addEventListener('mouseenter', Vue.swal.stopTimer);
-            toast.addEventListener('mouseleave', Vue.swal.resumeTimer);
-          }
-        });
-        Toast.fire({
-          icon: 'success',
-          title: 'Sport Added!'
-        });
+/***/ }),
 
-        _this2.$emit('created', data);
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/sports/WinterSport.vue?vue&type=script&lang=js&":
+/*!*****************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/sports/WinterSport.vue?vue&type=script&lang=js& ***!
+  \*****************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-        _this2.resetForm();
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: "WinterSport",
+  props: ['data'],
+  data: function data() {
+    return {
+      editing: false,
+      isExpanded: false,
+      name: this.data.name,
+      url: '/winter/sports/' + this.data.slug,
+      form: new Form({
+        name: this.data.name
+      })
+    };
+  },
+  computed: {},
+  methods: {
+    toggleRow: function toggleRow() {
+      this.isExpanded = !this.isExpanded;
+    },
+    update: function update() {
+      var _this = this;
+
+      this.form.patch('/api/winter/sports/' + this.data.id).then(function (data) {
+        _this.name = _this.form.name;
+        _this.editing = false;
+        _this.isExpanded = false;
+
+        if (_this.name !== _this.data.name) {
+          var Toast = Vue.swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 2500,
+            timerProgressBar: true,
+            onOpen: function onOpen(toast) {
+              toast.addEventListener('mouseenter', Vue.swal.stopTimer);
+              toast.addEventListener('mouseleave', Vue.swal.resumeTimer);
+            }
+          });
+          Toast.fire({
+            icon: 'success',
+            title: 'Winter Sport Updated!'
+          });
+        }
       })["catch"](function (errors) {
-        return console.log(errors);
+        console.log(errors);
       });
     },
+    destroy: function destroy() {
+      axios["delete"]('api/winter/sports/' + this.data.id);
+      this.$emit('deleted', this.data.id);
+    },
     resetForm: function resetForm() {
-      this.form.name = '';
-      this.form.season = '';
-      this.form.errors.clear();
+      this.form.name = this.name;
+      this.isExpanded = false;
     }
   }
 });
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/sports/WinterSports.vue?vue&type=script&lang=js&":
+/*!******************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/sports/WinterSports.vue?vue&type=script&lang=js& ***!
+  \******************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Collection__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../Collection */ "./resources/js/Collection.js");
+/* harmony import */ var _WinterSport__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./WinterSport */ "./resources/js/components/sports/WinterSport.vue");
+/* harmony import */ var _forms_NewWinterSport__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../forms/NewWinterSport */ "./resources/js/components/forms/NewWinterSport.vue");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = (_Collection__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
+  name: "WinterSports",
+  components: {
+    WinterSport: _WinterSport__WEBPACK_IMPORTED_MODULE_1__["default"],
+    NewWinterSport: _forms_NewWinterSport__WEBPACK_IMPORTED_MODULE_2__["default"]
+  },
+  props: ['data'],
+  data: function data() {
+    return {
+      active: false
+    };
+  },
+  created: function created() {
+    var _this = this;
+
+    Event.$on('formSubmitted', function () {
+      return _this.close();
+    });
+  },
+  methods: {
+    close: function close() {
+      Event.$emit('cancel');
+      this.active = false;
+    }
+  }
+}));
 
 /***/ }),
 
@@ -25844,785 +27320,6 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Athlete.vue?vue&type=template&id=a69208b8&scoped=true&":
-/*!**********************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Athlete.vue?vue&type=template&id=a69208b8&scoped=true& ***!
-  \**********************************************************************************************************************************************************************************************************************/
-/*! exports provided: render, staticRenderFns */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("div", {}, [
-    _vm.editing
-      ? _c("div", { staticClass: "p-3" }, [
-          _c("div", { staticClass: "w-full lg:w-1/2 mx-auto" }, [
-            _c(
-              "form",
-              {
-                staticClass:
-                  "bg-gray-200 shadow-md rounded px-8 pt-6 pb-8 mb-4",
-                attrs: {
-                  action: "api/athletes/id",
-                  method: "POST",
-                  id: "editAthlete"
-                },
-                on: {
-                  submit: function($event) {
-                    $event.preventDefault()
-                    return _vm.update($event)
-                  },
-                  keydown: function($event) {
-                    return _vm.form.errors.clear()
-                  }
-                }
-              },
-              [
-                _c("div", { staticClass: "flex items-center mb-4" }, [
-                  _vm._m(0),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "w-full text-gray-800 px-4" }, [
-                    _c("p", { domProps: { textContent: _vm._s(_vm.id) } })
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "py-2" }, [
-                  _c(
-                    "div",
-                    { staticClass: "flex justify-between content-end" },
-                    [
-                      _c(
-                        "label",
-                        {
-                          staticClass: "text-sm font-semibold text-red-900",
-                          attrs: { for: "form.first_name" }
-                        },
-                        [
-                          _vm._v(
-                            "\n                                First Name\n                            "
-                          )
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _vm.form.errors.has("first_name")
-                        ? _c("span", {
-                            staticClass: "text-red-600 text-xs font-semibold",
-                            attrs: { id: "first_nameHelp" },
-                            domProps: {
-                              textContent: _vm._s(
-                                _vm.form.errors.get("first_name")
-                              )
-                            }
-                          })
-                        : _vm._e()
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.form.first_name,
-                        expression: "form.first_name"
-                      }
-                    ],
-                    staticClass:
-                      "w-full rounded border px-3 py-2 text-lg border shadow-md",
-                    attrs: {
-                      id: "form.first_name",
-                      type: "text",
-                      required: ""
-                    },
-                    domProps: { value: _vm.form.first_name },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.$set(_vm.form, "first_name", $event.target.value)
-                      }
-                    }
-                  })
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "py-2" }, [
-                  _c(
-                    "div",
-                    { staticClass: "flex justify-between content-end" },
-                    [
-                      _c(
-                        "label",
-                        {
-                          staticClass: "text-sm font-semibold text-red-900",
-                          attrs: { for: "form.last_name" }
-                        },
-                        [
-                          _vm._v(
-                            "\n                                Last Name\n                            "
-                          )
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _vm.form.errors.has("last_name")
-                        ? _c("span", {
-                            staticClass: "text-red-600 text-xs font-semibold",
-                            attrs: { id: "last_nameHelp" },
-                            domProps: {
-                              textContent: _vm._s(
-                                _vm.form.errors.get("last_name")
-                              )
-                            }
-                          })
-                        : _vm._e()
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.form.last_name,
-                        expression: "form.last_name"
-                      }
-                    ],
-                    staticClass:
-                      "w-full rounded border px-3 py-2 text-lg border shadow-md",
-                    attrs: { id: "form.last_name", type: "text", required: "" },
-                    domProps: { value: _vm.form.last_name },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.$set(_vm.form, "last_name", $event.target.value)
-                      }
-                    }
-                  })
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "my-2" }, [
-                  _c(
-                    "div",
-                    { staticClass: "flex justify-between content-end" },
-                    [
-                      _c(
-                        "label",
-                        { staticClass: "text-sm font-semibold text-red-900" },
-                        [_vm._v("Sex")]
-                      ),
-                      _vm._v(" "),
-                      _vm.form.errors.has("sex")
-                        ? _c("span", {
-                            staticClass: "text-red-600 text-xs font-semibold",
-                            attrs: { id: "sexHelp" },
-                            domProps: {
-                              textContent: _vm._s(_vm.form.errors.get("sex"))
-                            }
-                          })
-                        : _vm._e()
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "select",
-                    {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.form.sex,
-                          expression: "form.sex"
-                        }
-                      ],
-                      staticClass:
-                        "w-full rounded border px-3 py-2 text-lg border shadow-md",
-                      attrs: { id: "form.sex", name: "sex", required: "" },
-                      on: {
-                        change: function($event) {
-                          var $$selectedVal = Array.prototype.filter
-                            .call($event.target.options, function(o) {
-                              return o.selected
-                            })
-                            .map(function(o) {
-                              var val = "_value" in o ? o._value : o.value
-                              return val
-                            })
-                          _vm.$set(
-                            _vm.form,
-                            "sex",
-                            $event.target.multiple
-                              ? $$selectedVal
-                              : $$selectedVal[0]
-                          )
-                        }
-                      }
-                    },
-                    [
-                      _c("option", { attrs: { value: "f" } }, [
-                        _vm._v("Female")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "m" } }, [_vm._v("Male")])
-                    ]
-                  )
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "py-2" }, [
-                  _c(
-                    "div",
-                    { staticClass: "flex justify-between content-end" },
-                    [
-                      _c(
-                        "label",
-                        {
-                          staticClass: "text-sm font-semibold text-red-900",
-                          attrs: { for: "form.dob" }
-                        },
-                        [_vm._v("Date of Birth")]
-                      ),
-                      _vm._v(" "),
-                      _vm.form.errors.has("dob")
-                        ? _c("span", {
-                            staticClass: "text-red-600 text-xs font-semibold",
-                            attrs: { id: "dobHelp" },
-                            domProps: {
-                              textContent: _vm._s(_vm.form.errors.get("dob"))
-                            }
-                          })
-                        : _vm._e()
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.form.dob,
-                        expression: "form.dob"
-                      }
-                    ],
-                    staticClass:
-                      "w-full rounded border px-2 py-1 text-lg border shadow-md",
-                    attrs: { id: "form.dob", type: "date" },
-                    domProps: { value: _vm.form.dob },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.$set(_vm.form, "dob", $event.target.value)
-                      }
-                    }
-                  })
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "py-2" }, [
-                  _c(
-                    "div",
-                    { staticClass: "flex justify-between content-end" },
-                    [
-                      _c(
-                        "label",
-                        {
-                          staticClass: "text-sm font-semibold text-red-900",
-                          attrs: { for: "form.grad_year" }
-                        },
-                        [_vm._v("Graduation Year")]
-                      ),
-                      _vm._v(" "),
-                      _vm.form.errors.has("grad_year")
-                        ? _c("span", {
-                            staticClass: "text-red-600 text-xs font-semibold",
-                            attrs: { id: "grad_yearHelp" },
-                            domProps: {
-                              textContent: _vm._s(
-                                _vm.form.errors.get("grad_year")
-                              )
-                            }
-                          })
-                        : _vm._e()
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.form.grad_year,
-                        expression: "form.grad_year"
-                      }
-                    ],
-                    staticClass:
-                      "w-full rounded border px-3 py-2 text-lg border shadow-md",
-                    attrs: {
-                      id: "form.grad_year",
-                      type: "number",
-                      min: "2009",
-                      max: "2025",
-                      required: ""
-                    },
-                    domProps: { value: _vm.form.grad_year },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.$set(_vm.form, "grad_year", $event.target.value)
-                      }
-                    }
-                  })
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "py-2" }, [
-                  _c(
-                    "div",
-                    { staticClass: "flex justify-between content-end" },
-                    [
-                      _c(
-                        "label",
-                        { staticClass: "text-sm font-semibold text-red-900" },
-                        [
-                          _vm._v(
-                            "\n                                Fall Sport\n                            "
-                          )
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _vm.form.errors.has("fall_sport_id")
-                        ? _c("span", {
-                            staticClass: "text-red-600 text-xs font-semibold",
-                            attrs: { id: "fallSportHelp" },
-                            domProps: {
-                              textContent: _vm._s(
-                                _vm.form.errors.get("fall_sport_id")
-                              )
-                            }
-                          })
-                        : _vm._e()
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "select",
-                    {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.form.fall_sport_id,
-                          expression: "form.fall_sport_id"
-                        }
-                      ],
-                      staticClass: "form-input",
-                      attrs: { name: "fall_sport_id", required: "" },
-                      on: {
-                        change: function($event) {
-                          var $$selectedVal = Array.prototype.filter
-                            .call($event.target.options, function(o) {
-                              return o.selected
-                            })
-                            .map(function(o) {
-                              var val = "_value" in o ? o._value : o.value
-                              return val
-                            })
-                          _vm.$set(
-                            _vm.form,
-                            "fall_sport_id",
-                            $event.target.multiple
-                              ? $$selectedVal
-                              : $$selectedVal[0]
-                          )
-                        }
-                      }
-                    },
-                    _vm._l(_vm.fallSports, function(sport) {
-                      return _c(
-                        "option",
-                        { key: sport.id, domProps: { value: sport.id } },
-                        [
-                          _vm._v(
-                            "\n                                " +
-                              _vm._s(sport.name) +
-                              "\n                            "
-                          )
-                        ]
-                      )
-                    }),
-                    0
-                  )
-                ]),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  { staticClass: " pt-2 flex items-center justify-end" },
-                  [
-                    _c(
-                      "update-button",
-                      {
-                        staticClass: "mr-4",
-                        attrs: { disabled: _vm.form.errors.any() }
-                      },
-                      [
-                        _vm._v(
-                          "\n                            Update\n                        "
-                        )
-                      ]
-                    ),
-                    _vm._v(" "),
-                    _c("cancel-button", { on: { clicked: _vm.resetForm } })
-                  ],
-                  1
-                )
-              ]
-            )
-          ])
-        ])
-      : _c("div", { staticClass: "flex py-1 items-center hover:bg-gray-200" }, [
-          _c("div", { staticClass: "flex flex-col w-full" }, [
-            _c("div", { staticClass: "flex w-full" }, [
-              _c(
-                "div",
-                {
-                  staticClass: "flex pt-1 w-11/12 px-2",
-                  class: { "font-semibold": _vm.active }
-                },
-                [
-                  _c("div", { staticClass: "flex w-1/3" }, [
-                    _vm._v(
-                      "\n                            " +
-                        _vm._s(_vm.last_name) +
-                        ", " +
-                        _vm._s(_vm.first_name) +
-                        "\n                        "
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "flex w-1/3" }, [
-                    _vm.fallSport
-                      ? _c("div", { staticClass: "px-2" }, [
-                          _vm._v(_vm._s(_vm.fallSport))
-                        ])
-                      : _vm._e(),
-                    _vm._v(" "),
-                    _vm.winterSport
-                      ? _c("div", { staticClass: "px-2" }, [
-                          _vm._v(_vm._s(_vm.winterSport))
-                        ])
-                      : _vm._e(),
-                    _vm._v(" "),
-                    _vm.springSport
-                      ? _c("div", { staticClass: "px-2" }, [
-                          _vm._v(_vm._s(_vm.springSport))
-                        ])
-                      : _vm._e()
-                  ]),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    { staticClass: "flex w-1/3 px-2" },
-                    [_c("physical-status", { attrs: { data: _vm.data } })],
-                    1
-                  )
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "flex w-1/12 pt-1 justify-end px-4" },
-                [_c("expand-button", { on: { toggleRow: _vm.toggleRow } })],
-                1
-              )
-            ]),
-            _vm._v(" "),
-            _vm.isExpanded
-              ? _c("div", { staticClass: "p-2" }, [
-                  _c("div", { staticClass: "flex w-11/12 flex-wrap px-4" }, [
-                    _c(
-                      "div",
-                      { staticClass: "flex flex-col w-full lg:w-1/3" },
-                      [
-                        _c("p", { staticClass: "text-gray-500 w-full py-1" }, [
-                          _vm._v("Sex:\n                                "),
-                          _c(
-                            "span",
-                            { staticClass: "text-gray-800 font-semibold" },
-                            [_vm._v(_vm._s(_vm.sexName))]
-                          )
-                        ]),
-                        _vm._v(" "),
-                        _c("p", { staticClass: "text-gray-500 w-full py-1" }, [
-                          _vm._v("DOB:\n                                "),
-                          _c(
-                            "span",
-                            { staticClass: "text-gray-800 font-semibold" },
-                            [
-                              _vm._v(
-                                _vm._s(_vm._f("moment")(_vm.dob, "MM/DD/YYYY"))
-                              )
-                            ]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "span",
-                            {
-                              staticClass: "text-gray-500 text-sm font-semibold"
-                            },
-                            [_vm._v(_vm._s(_vm.age) + " years old")]
-                          )
-                        ]),
-                        _vm._v(" "),
-                        _c("p", { staticClass: "text-gray-500 w-full py-1" }, [
-                          _vm._v("Class:\n                                "),
-                          _c(
-                            "span",
-                            { staticClass: "text-gray-800 font-semibold" },
-                            [_vm._v(_vm._s(_vm.grad_year))]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "span",
-                            {
-                              staticClass: "text-gray-500 text-sm font-semibold"
-                            },
-                            [_vm._v(_vm._s(_vm.grade))]
-                          )
-                        ]),
-                        _vm._v(" "),
-                        _c("p", { staticClass: "text-gray-500 w-full py-1" }, [
-                          _vm._v("Active:\n                                "),
-                          _vm.active
-                            ? _c("a", { on: { click: _vm.inactivate } }, [
-                                _vm._m(1)
-                              ])
-                            : _c("a", { on: { click: _vm.activate } }, [
-                                _vm._m(2)
-                              ])
-                        ])
-                      ]
-                    ),
-                    _vm._v(" "),
-                    _vm._m(3)
-                  ]),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    { staticClass: "flex justify-start cursor-pointer pt-1" },
-                    [
-                      _c("edit-button", {
-                        on: {
-                          clicked: function($event) {
-                            _vm.editing = true
-                          }
-                        }
-                      }),
-                      _vm._v(" "),
-                      _c("delete-button", { on: { clicked: _vm.destroy } })
-                    ],
-                    1
-                  )
-                ])
-              : _vm._e()
-          ])
-        ])
-  ])
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-label ml-1" }, [
-      _c("p", [_vm._v("id")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "span",
-      { staticClass: "text-lg", staticStyle: { color: "green" } },
-      [_c("i", { staticClass: "fas fa-check-square" })]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("span", { staticClass: "text-lg text-gray-500" }, [
-      _c("i", { staticClass: "far fa-square bg-white" })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "flex w-2/3" }, [
-      _c("div", { staticClass: "flex w-full" }, [
-        _c("div", { staticClass: "flex flex-col w-1/3" }, [
-          _vm._v(
-            "\n                                    Hello\n\n                                "
-          )
-        ])
-      ])
-    ])
-  }
-]
-render._withStripped = true
-
-
-
-/***/ }),
-
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Athletes.vue?vue&type=template&id=2457cc02&scoped=true&":
-/*!***********************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Athletes.vue?vue&type=template&id=2457cc02&scoped=true& ***!
-  \***********************************************************************************************************************************************************************************************************************/
-/*! exports provided: render, staticRenderFns */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "flex flex-col w-full" }, [
-    _c("div", { staticClass: "flex justify-end w-full" }, [
-      _c("div", { staticClass: "flex md:w-1/2 lg:w-1/3" }, [
-        _c("input", {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.search,
-              expression: "search"
-            }
-          ],
-          staticClass:
-            "flex w-full rounded-md border px-3 py-2 text-lg border shadow",
-          attrs: { type: "text", placeholder: "Find an athlete..." },
-          domProps: { value: _vm.search },
-          on: {
-            input: function($event) {
-              if ($event.target.composing) {
-                return
-              }
-              _vm.search = $event.target.value
-            }
-          }
-        }),
-        _vm._v(" "),
-        _c(
-          "button",
-          {
-            staticClass:
-              "w-20 py-2 ml-2 bg-green-500 text-white text-sm font-bold rounded-md border-2 border-green-400",
-            on: { click: _vm.clearSearch }
-          },
-          [_vm._v("\n                Clear\n            ")]
-        )
-      ])
-    ]),
-    _vm._v(" "),
-    _c(
-      "header",
-      {
-        staticClass: "w-full md:w-1/2 font-thin lg:text-5xl py-4 text-red-900"
-      },
-      [_vm._v("Athletes")]
-    ),
-    _vm._v(" "),
-    _c("div", {}, [
-      _c("div", { staticClass: "flex" }, [
-        _vm._m(0),
-        _vm._v(" "),
-        _c(
-          "div",
-          { staticClass: "flex w-1/12 justify-end px-2 items-center" },
-          [
-            _c(
-              "create-button",
-              { attrs: { title: "Create New Athlete" } },
-              [_c("new-athlete-form", { on: { created: _vm.add } })],
-              1
-            )
-          ],
-          1
-        )
-      ]),
-      _vm._v(" "),
-      _vm.records
-        ? _c(
-            "div",
-            { staticClass: "divide-y border-t border-b" },
-            _vm._l(_vm.filteredAthletes, function(athlete, index) {
-              return _c(
-                "div",
-                { key: athlete.id },
-                [
-                  _c("athlete", {
-                    attrs: { data: athlete },
-                    on: {
-                      deleted: function($event) {
-                        return _vm.remove(index)
-                      }
-                    }
-                  })
-                ],
-                1
-              )
-            }),
-            0
-          )
-        : _c("div", { staticClass: "flex flex-col text-center" }, [
-            _c("p", { staticClass: "text-2xl text-tertiary p-4" }, [
-              _vm._v("No Athletes Listed")
-            ])
-          ])
-    ])
-  ])
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      { staticClass: "flex w-11/12 px-2 text-gray-500 font-semibold" },
-      [
-        _c("div", { staticClass: "w-1/3" }, [_c("p", {}, [_vm._v("Name")])]),
-        _vm._v(" "),
-        _c("div", { staticClass: "w-1/3" }, [
-          _c("p", { staticClass: "px-2" }, [_vm._v("Sports")])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "px-2 w-1/3" }, [
-          _c("p", {}, [_vm._v("Physical Status")])
-        ])
-      ]
-    )
-  }
-]
-render._withStripped = true
-
-
-
-/***/ }),
-
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Physical.vue?vue&type=template&id=7b6e9a7c&scoped=true&":
 /*!***********************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Physical.vue?vue&type=template&id=7b6e9a7c&scoped=true& ***!
@@ -26646,7 +27343,7 @@ var render = function() {
               "form",
               {
                 staticClass:
-                  "bg-gray-200 shadow-md rounded px-8 pt-6 pb-8 mb-4",
+                  "bg-gray-100 shadow-md rounded px-8 pt-6 pb-8 mb-4",
                 attrs: {
                   action: "api/physicals/id",
                   method: "POST",
@@ -27257,21 +27954,54 @@ var render = function() {
             )
           ])
         ])
-      : _c("div", { staticClass: "flex py-1 items-center hover:bg-gray-200" }, [
+      : _c("div", { staticClass: "flex py-1 items-center hover:bg-gray-100" }, [
           _c("div", { staticClass: "flex flex-col w-full" }, [
             _c("div", { staticClass: "flex w-full" }, [
-              _c("div", { staticClass: "flex pt-1 w-11/12" }, [
-                _c("div", { staticClass: "flex w-1/3" }, [
-                  _vm._v(
-                    "\n                        " +
-                      _vm._s(_vm.last_name) +
-                      ", " +
-                      _vm._s(_vm.first_name) +
-                      "\n                    "
+              _c("div", { staticClass: "flex pt-1 w-11/12 px-2 flex-wrap" }, [
+                _c("div", { staticClass: "flex w-full lg:w-1/3" }, [
+                  _c(
+                    "a",
+                    {
+                      staticClass: "hover:font-semibold hover:underline",
+                      attrs: { href: _vm.athleteUrl }
+                    },
+                    [
+                      _vm._v(
+                        "\n                            " +
+                          _vm._s(_vm.last_name) +
+                          ", " +
+                          _vm._s(_vm.first_name) +
+                          "\n                        "
+                      )
+                    ]
                   )
                 ]),
                 _vm._v(" "),
-                _c("div", { staticClass: "flex w-1/3 px-2" }, [
+                _c("div", { staticClass: "flex w-full lg:w-1/3 px-2" }, [
+                  _c(
+                    "div",
+                    {
+                      staticClass: "w-full",
+                      style: { color: _vm.statusColor }
+                    },
+                    [
+                      _vm._v(
+                        "\n                                " +
+                          _vm._s(_vm.status) +
+                          "\n                            "
+                      ),
+                      _vm.allClear
+                        ? _c("span", [_c("i", { staticClass: "fas fa-check" })])
+                        : _vm.restrict
+                        ? _c("span", [
+                            _c("i", { staticClass: "fas fa-exclamation" })
+                          ])
+                        : _c("span", [_c("i", { staticClass: "fas fa-times" })])
+                    ]
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "flex w-full lg:w-1/3 px-2" }, [
                   _c(
                     "div",
                     {
@@ -27297,30 +28027,6 @@ var render = function() {
                       ])
                     ]
                   )
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "flex w-1/3 px-2" }, [
-                  _c(
-                    "div",
-                    {
-                      staticClass: "w-full",
-                      style: { color: _vm.statusColor }
-                    },
-                    [
-                      _vm._v(
-                        "\n                                " +
-                          _vm._s(_vm.status) +
-                          "\n                            "
-                      ),
-                      _vm.allClear
-                        ? _c("span", [_c("i", { staticClass: "fas fa-check" })])
-                        : _vm.restrict
-                        ? _c("span", [
-                            _c("i", { staticClass: "fas fa-exclamation" })
-                          ])
-                        : _c("span", [_c("i", { staticClass: "fas fa-times" })])
-                    ]
-                  )
                 ])
               ]),
               _vm._v(" "),
@@ -27335,7 +28041,7 @@ var render = function() {
             _vm.isExpanded
               ? _c("div", { staticClass: "p-2" }, [
                   _c("div", { staticClass: "flex w-11/12 flex-wrap px-4" }, [
-                    _c("div", { staticClass: "w-1/3" }, [
+                    _c("div", { staticClass: "w-full lg:w-1/3" }, [
                       _c("p", { staticClass: "text-gray-500 w-full py-1" }, [
                         _vm._v("Exam Date:\n                            "),
                         _c(
@@ -27379,7 +28085,139 @@ var render = function() {
                           [_vm._v(_vm._s(_vm.notes))]
                         )
                       ])
-                    ])
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "w-full lg:w-1/3" }, [
+                      this.expiration === "Expired"
+                        ? _c("div", [
+                            _c(
+                              "p",
+                              {
+                                staticClass:
+                                  "lg:px-1 font-sm font-semibold text-red-700"
+                              },
+                              [_vm._v("All Forms Have Expired")]
+                            )
+                          ])
+                        : this.status === "Not Cleared"
+                        ? _c("div", [
+                            _c(
+                              "p",
+                              { staticClass: "text-gray-500 w-full py-1 px-1" },
+                              [_vm._v("Missing:")]
+                            ),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "text-sm px-1" }, [
+                              _c(
+                                "p",
+                                {
+                                  directives: [
+                                    {
+                                      name: "show",
+                                      rawName: "v-show",
+                                      value: !_vm.historyFormConfirmed,
+                                      expression: "!historyFormConfirmed"
+                                    }
+                                  ]
+                                },
+                                [_vm._v("Medical History Form")]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "p",
+                                {
+                                  directives: [
+                                    {
+                                      name: "show",
+                                      rawName: "v-show",
+                                      value: !_vm.physicalExamFormConfirmed,
+                                      expression: "!physicalExamFormConfirmed"
+                                    }
+                                  ]
+                                },
+                                [_vm._v("Physical Exam Form")]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "p",
+                                {
+                                  directives: [
+                                    {
+                                      name: "show",
+                                      rawName: "v-show",
+                                      value: !_vm.eligibilityFormConfirmed,
+                                      expression: "!eligibilityFormConfirmed"
+                                    }
+                                  ]
+                                },
+                                [_vm._v("Elegibility Form")]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "p",
+                                {
+                                  directives: [
+                                    {
+                                      name: "show",
+                                      rawName: "v-show",
+                                      value: !_vm.physicalFormConfirmed,
+                                      expression: "!physicalFormConfirmed"
+                                    }
+                                  ]
+                                },
+                                [_vm._v("LHS Physical Form")]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "p",
+                                {
+                                  directives: [
+                                    {
+                                      name: "show",
+                                      rawName: "v-show",
+                                      value: !_vm.blanketFormConfirmed,
+                                      expression: "!blanketFormConfirmed"
+                                    }
+                                  ]
+                                },
+                                [_vm._v("Blanket Waiver Form")]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "p",
+                                {
+                                  directives: [
+                                    {
+                                      name: "show",
+                                      rawName: "v-show",
+                                      value: !_vm.concussionFormConfirmed,
+                                      expression: "!concussionFormConfirmed"
+                                    }
+                                  ]
+                                },
+                                [_vm._v("Concussion Form")]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "p",
+                                {
+                                  directives: [
+                                    {
+                                      name: "show",
+                                      rawName: "v-show",
+                                      value: !_vm.cardiacFormConfirmed,
+                                      expression: "!cardiacFormConfirmed"
+                                    }
+                                  ]
+                                },
+                                [_vm._v("Cardiac Form")]
+                              )
+                            ])
+                          ])
+                        : _vm._e()
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "w-1/3" })
                   ]),
                   _vm._v(" "),
                   _c(
@@ -27767,7 +28605,8 @@ var render = function() {
     _c(
       "header",
       {
-        staticClass: "w-full md:w-1/2 font-thin lg:text-5xl py-4 text-red-900"
+        staticClass:
+          "w-full md:w-1/2 font-thin text-2xl lg:text-5xl py-4 text-red-900"
       },
       [_vm._v("Physicals")]
     ),
@@ -27831,14 +28670,16 @@ var staticRenderFns = [
       "div",
       { staticClass: "flex w-11/12 px-2 text-gray-500 font-semibold" },
       [
-        _c("div", { staticClass: "w-1/3" }, [_c("p", {}, [_vm._v("Name")])]),
-        _vm._v(" "),
-        _c("div", { staticClass: "w-1/3" }, [
-          _c("p", { staticClass: "px-2" }, [_vm._v("Expiration Status")])
+        _c("div", { staticClass: "w-full lg:w-1/3" }, [
+          _c("p", {}, [_vm._v("Name")])
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "px-2 w-1/3" }, [
+        _c("div", { staticClass: "hidden lg:flex px-2 lg:w-1/3" }, [
           _c("p", {}, [_vm._v("Physical Status")])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "hidden lg:flex lg:w-1/3" }, [
+          _c("p", { staticClass: "px-2" }, [_vm._v("Expiration Status")])
         ])
       ]
     )
@@ -27850,10 +28691,361 @@ render._withStripped = true
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Sport.vue?vue&type=template&id=cf0273ce&scoped=true&":
-/*!********************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Sport.vue?vue&type=template&id=cf0273ce&scoped=true& ***!
-  \********************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ProfilePhysical.vue?vue&type=template&id=063d5bf6&scoped=true&":
+/*!******************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/ProfilePhysical.vue?vue&type=template&id=063d5bf6&scoped=true& ***!
+  \******************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", {}, [
+    _c("div", { staticClass: "flex py-1 items-center hover:bg-gray-100" }, [
+      _c("div", { staticClass: "flex flex-col w-full" }, [
+        _c("div", { staticClass: "flex w-full" }, [
+          _c("div", { staticClass: "flex pt-1 w-11/12 px-2 flex-wrap" }, [
+            _c("div", { staticClass: "w-full lg:flex lg:w-1/3" }, [
+              _vm._v(
+                "\n                        " +
+                  _vm._s(_vm._f("moment")(_vm.exam_date, "MM/DD/YYYY")) +
+                  "\n                    "
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "w-full lg:flex lg:w-1/3 px-2" }, [
+              _c(
+                "div",
+                { staticClass: "w-full", style: { color: _vm.statusColor } },
+                [
+                  _vm._v(
+                    "\n                                " +
+                      _vm._s(_vm.status) +
+                      "\n                            "
+                  ),
+                  _vm.allClear
+                    ? _c("span", [_c("i", { staticClass: "fas fa-check" })])
+                    : _vm.restrict
+                    ? _c("span", [
+                        _c("i", { staticClass: "fas fa-exclamation" })
+                      ])
+                    : _c("span", [_c("i", { staticClass: "fas fa-times" })])
+                ]
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "w-full lg:flex lg:w-1/3 px-2" }, [
+              _c(
+                "div",
+                {
+                  staticClass: "w-full",
+                  style: { color: _vm.expirationColor }
+                },
+                [
+                  _vm._v(
+                    "\n                            " +
+                      _vm._s(_vm.expiration) +
+                      "\n                            "
+                  ),
+                  _c("span", [
+                    _vm._v(
+                      _vm._s(
+                        _vm._f("moment")(
+                          _vm._f("moment")(_vm.exam_date, "add", "1 year"),
+                          "from",
+                          "now"
+                        )
+                      )
+                    )
+                  ])
+                ]
+              )
+            ])
+          ]),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "flex w-1/12 pt-1 justify-end px-4" },
+            [_c("expand-button", { on: { toggleRow: _vm.toggleRow } })],
+            1
+          )
+        ]),
+        _vm._v(" "),
+        _vm.isExpanded
+          ? _c("div", { staticClass: "p-2" }, [
+              _c("div", { staticClass: "flex w-11/12 flex-wrap lg:px-2" }, [
+                _c("div", { staticClass: "w-full lg:flex-col lg:w-1/3" }, [
+                  _c("p", { staticClass: "text-gray-500 w-full py-1" }, [
+                    _vm._v("Restrictions:\n                            "),
+                    _c(
+                      "span",
+                      {
+                        staticClass:
+                          "text-gray-800 font-semibold text-orange-500"
+                      },
+                      [
+                        _vm._v(
+                          "\n                                " +
+                            _vm._s(_vm.restrictions) +
+                            "\n                            "
+                        )
+                      ]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("p", { staticClass: "text-gray-500 w-full py-1" }, [
+                    _vm._v("Notes:\n                            "),
+                    _c("span", { staticClass: "text-gray-800 font-semibold" }, [
+                      _vm._v(_vm._s(_vm.notes))
+                    ])
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "w-full lg:flex lg:w-1/3 lg:px-2" }, [
+                  this.expiration === "Expired"
+                    ? _c("div", [
+                        _c(
+                          "p",
+                          { staticClass: "text-sm font-semibold text-red-700" },
+                          [_vm._v("All Forms Have Expired")]
+                        )
+                      ])
+                    : this.status === "Not Cleared"
+                    ? _c("div", [
+                        _c(
+                          "p",
+                          { staticClass: "text-gray-500 w-full py-1 px-1" },
+                          [_vm._v("Missing:")]
+                        ),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "text-sm px-1" }, [
+                          _c(
+                            "p",
+                            {
+                              directives: [
+                                {
+                                  name: "show",
+                                  rawName: "v-show",
+                                  value: !_vm.historyFormConfirmed,
+                                  expression: "!historyFormConfirmed"
+                                }
+                              ]
+                            },
+                            [_vm._v("Medical History Form")]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "p",
+                            {
+                              directives: [
+                                {
+                                  name: "show",
+                                  rawName: "v-show",
+                                  value: !_vm.physicalExamFormConfirmed,
+                                  expression: "!physicalExamFormConfirmed"
+                                }
+                              ]
+                            },
+                            [_vm._v("Physical Exam Form")]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "p",
+                            {
+                              directives: [
+                                {
+                                  name: "show",
+                                  rawName: "v-show",
+                                  value: !_vm.eligibilityFormConfirmed,
+                                  expression: "!eligibilityFormConfirmed"
+                                }
+                              ]
+                            },
+                            [_vm._v("Elegibility Form")]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "p",
+                            {
+                              directives: [
+                                {
+                                  name: "show",
+                                  rawName: "v-show",
+                                  value: !_vm.physicalFormConfirmed,
+                                  expression: "!physicalFormConfirmed"
+                                }
+                              ]
+                            },
+                            [_vm._v("LHS Physical Form")]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "p",
+                            {
+                              directives: [
+                                {
+                                  name: "show",
+                                  rawName: "v-show",
+                                  value: !_vm.blanketFormConfirmed,
+                                  expression: "!blanketFormConfirmed"
+                                }
+                              ]
+                            },
+                            [_vm._v("Blanket Waiver Form")]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "p",
+                            {
+                              directives: [
+                                {
+                                  name: "show",
+                                  rawName: "v-show",
+                                  value: !_vm.concussionFormConfirmed,
+                                  expression: "!concussionFormConfirmed"
+                                }
+                              ]
+                            },
+                            [_vm._v("Concussion Form")]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "p",
+                            {
+                              directives: [
+                                {
+                                  name: "show",
+                                  rawName: "v-show",
+                                  value: !_vm.cardiacFormConfirmed,
+                                  expression: "!cardiacFormConfirmed"
+                                }
+                              ]
+                            },
+                            [_vm._v("Cardiac Form")]
+                          )
+                        ])
+                      ])
+                    : _vm._e()
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "w-full lg:flex lg:w-1/3" })
+              ])
+            ])
+          : _vm._e()
+      ])
+    ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ProfilePhysicals.vue?vue&type=template&id=ba16e084&scoped=true&":
+/*!*******************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/ProfilePhysicals.vue?vue&type=template&id=ba16e084&scoped=true& ***!
+  \*******************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "flex flex-col w-full mt-4 lg:mt-10" }, [
+    _c(
+      "header",
+      {
+        staticClass:
+          "w-full md:w-1/2 font-thin text-xl lg:text-3xl py-2 text-red-900"
+      },
+      [_vm._v("Physicals")]
+    ),
+    _vm._v(" "),
+    _c("div", {}, [
+      _vm._m(0),
+      _vm._v(" "),
+      _vm.records
+        ? _c(
+            "div",
+            { staticClass: "divide-y border-t border-b" },
+            _vm._l(_vm.items, function(physical, index) {
+              return _c(
+                "div",
+                { key: physical.id },
+                [
+                  _c("profile-physical", {
+                    attrs: { data: physical },
+                    on: {
+                      deleted: function($event) {
+                        return _vm.remove(index)
+                      }
+                    }
+                  })
+                ],
+                1
+              )
+            }),
+            0
+          )
+        : _c("div", { staticClass: "flex flex-col text-center" }, [
+            _c("p", { staticClass: "text-2xl text-tertiary p-4" }, [
+              _vm._v("No Physicals Listed")
+            ])
+          ])
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "flex" }, [
+      _c(
+        "div",
+        { staticClass: "flex w-11/12 px-2 text-gray-500 font-semibold" },
+        [
+          _c("div", { staticClass: "w-full lg:w-1/3" }, [
+            _c("p", {}, [_vm._v("Exam Date")])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "hidden lg:flex lg:px-2 lg:w-1/3" }, [
+            _c("p", {}, [_vm._v("Physical Status")])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "hidden lg:flex lg:w-1/3" }, [
+            _c("p", { staticClass: "px-2" }, [_vm._v("Expiration Status")])
+          ])
+        ]
+      ),
+      _vm._v(" "),
+      _c("div", { staticClass: "flex w-1/12 justify-end px-2 items-center" })
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/athletes/Athlete.vue?vue&type=template&id=b14d3522&scoped=true&":
+/*!*******************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/athletes/Athlete.vue?vue&type=template&id=b14d3522&scoped=true& ***!
+  \*******************************************************************************************************************************************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -27873,11 +29065,11 @@ var render = function() {
               "form",
               {
                 staticClass:
-                  "bg-gray-200 shadow-md rounded px-8 pt-6 pb-8 mb-4",
+                  "bg-gray-100 shadow-md rounded px-8 pt-6 pb-8 mb-4",
                 attrs: {
                   action: "api/athletes/id",
                   method: "POST",
-                  id: "editSport"
+                  id: "editAthlete"
                 },
                 on: {
                   submit: function($event) {
@@ -27890,6 +29082,14 @@ var render = function() {
                 }
               },
               [
+                _c("div", { staticClass: "flex items-center mb-4" }, [
+                  _vm._m(0),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "w-full text-gray-800 px-4" }, [
+                    _c("p", { domProps: { textContent: _vm._s(_vm.id) } })
+                  ])
+                ]),
+                _vm._v(" "),
                 _c("div", { staticClass: "py-2" }, [
                   _c(
                     "div",
@@ -27899,21 +29099,23 @@ var render = function() {
                         "label",
                         {
                           staticClass: "text-sm font-semibold text-red-900",
-                          attrs: { for: "form.name" }
+                          attrs: { for: "form.first_name" }
                         },
                         [
                           _vm._v(
-                            "\n                            Name\n                        "
+                            "\n                            First Name\n                        "
                           )
                         ]
                       ),
                       _vm._v(" "),
-                      _vm.form.errors.has("name")
+                      _vm.form.errors.has("first_name")
                         ? _c("span", {
                             staticClass: "text-red-600 text-xs font-semibold",
-                            attrs: { id: "nameHelp" },
+                            attrs: { id: "first_nameHelp" },
                             domProps: {
-                              textContent: _vm._s(_vm.form.errors.get("name"))
+                              textContent: _vm._s(
+                                _vm.form.errors.get("first_name")
+                              )
                             }
                           })
                         : _vm._e()
@@ -27925,26 +29127,92 @@ var render = function() {
                       {
                         name: "model",
                         rawName: "v-model",
-                        value: _vm.form.name,
-                        expression: "form.name"
+                        value: _vm.form.first_name,
+                        expression: "form.first_name"
                       }
                     ],
                     staticClass:
-                      "w-full rounded border px-3 py-2 text-lg border shadow-md",
-                    attrs: { id: "form.name", type: "text", required: "" },
-                    domProps: { value: _vm.form.name },
+                      "w-full rounded px-3 h-10 text-blue-800 font-semibold shadow-md",
+                    attrs: {
+                      id: "form.first_name",
+                      type: "text",
+                      autocomplete: "off",
+                      required: ""
+                    },
+                    domProps: { value: _vm.form.first_name },
                     on: {
                       input: function($event) {
                         if ($event.target.composing) {
                           return
                         }
-                        _vm.$set(_vm.form, "name", $event.target.value)
+                        _vm.$set(_vm.form, "first_name", $event.target.value)
                       }
                     }
                   })
                 ]),
                 _vm._v(" "),
-                _c("div", { staticClass: "my-2" }, [
+                _c("div", { staticClass: "py-2" }, [
+                  _c(
+                    "div",
+                    { staticClass: "flex justify-between content-end" },
+                    [
+                      _c(
+                        "label",
+                        {
+                          staticClass: "text-sm font-semibold text-red-900",
+                          attrs: { for: "form.last_name" }
+                        },
+                        [
+                          _vm._v(
+                            "\n                            Last Name\n                        "
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _vm.form.errors.has("last_name")
+                        ? _c("span", {
+                            staticClass: "text-red-600 text-xs font-semibold",
+                            attrs: { id: "last_nameHelp" },
+                            domProps: {
+                              textContent: _vm._s(
+                                _vm.form.errors.get("last_name")
+                              )
+                            }
+                          })
+                        : _vm._e()
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.form.last_name,
+                        expression: "form.last_name"
+                      }
+                    ],
+                    staticClass:
+                      "w-full rounded px-3 h-10 text-blue-800 font-semibold shadow-md",
+                    attrs: {
+                      id: "form.last_name",
+                      type: "text",
+                      autocomplete: "off",
+                      required: ""
+                    },
+                    domProps: { value: _vm.form.last_name },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(_vm.form, "last_name", $event.target.value)
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "py-2" }, [
                   _c(
                     "div",
                     { staticClass: "flex justify-between content-end" },
@@ -27952,15 +29220,15 @@ var render = function() {
                       _c(
                         "label",
                         { staticClass: "text-sm font-semibold text-red-900" },
-                        [_vm._v("Season")]
+                        [_vm._v("Sex")]
                       ),
                       _vm._v(" "),
-                      _vm.form.errors.has("season")
+                      _vm.form.errors.has("sex")
                         ? _c("span", {
                             staticClass: "text-red-600 text-xs font-semibold",
-                            attrs: { id: "seasonHelp" },
+                            attrs: { id: "sexHelp" },
                             domProps: {
-                              textContent: _vm._s(_vm.form.errors.get("season"))
+                              textContent: _vm._s(_vm.form.errors.get("sex"))
                             }
                           })
                         : _vm._e()
@@ -27974,15 +29242,199 @@ var render = function() {
                         {
                           name: "model",
                           rawName: "v-model",
-                          value: _vm.form.season,
-                          expression: "form.season"
+                          value: _vm.form.sex,
+                          expression: "form.sex"
                         }
                       ],
                       staticClass:
-                        "w-full rounded border px-3 py-2 text-lg border shadow-md ",
+                        "w-full rounded px-3 h-10 text-blue-800 font-semibold shadow-md",
+                      attrs: { id: "form.sex", name: "sex", required: "" },
+                      on: {
+                        change: function($event) {
+                          var $$selectedVal = Array.prototype.filter
+                            .call($event.target.options, function(o) {
+                              return o.selected
+                            })
+                            .map(function(o) {
+                              var val = "_value" in o ? o._value : o.value
+                              return val
+                            })
+                          _vm.$set(
+                            _vm.form,
+                            "sex",
+                            $event.target.multiple
+                              ? $$selectedVal
+                              : $$selectedVal[0]
+                          )
+                        }
+                      }
+                    },
+                    [
+                      _c("option", { attrs: { value: "f" } }, [
+                        _vm._v("Female")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "m" } }, [_vm._v("Male")])
+                    ]
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "py-2" }, [
+                  _c(
+                    "div",
+                    { staticClass: "flex justify-between content-end" },
+                    [
+                      _c(
+                        "label",
+                        {
+                          staticClass: "text-sm font-semibold text-red-900",
+                          attrs: { for: "form.dob" }
+                        },
+                        [_vm._v("Date of Birth")]
+                      ),
+                      _vm._v(" "),
+                      _vm.form.errors.has("dob")
+                        ? _c("span", {
+                            staticClass: "text-red-600 text-xs font-semibold",
+                            attrs: { id: "dobHelp" },
+                            domProps: {
+                              textContent: _vm._s(_vm.form.errors.get("dob"))
+                            }
+                          })
+                        : _vm._e()
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.form.dob,
+                        expression: "form.dob"
+                      }
+                    ],
+                    staticClass:
+                      "w-full rounded px-3 h-10 text-blue-800 font-semibold shadow-md",
+                    attrs: { id: "form.dob", type: "date" },
+                    domProps: { value: _vm.form.dob },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(_vm.form, "dob", $event.target.value)
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "py-2" }, [
+                  _c(
+                    "div",
+                    { staticClass: "flex justify-between content-end" },
+                    [
+                      _c(
+                        "label",
+                        {
+                          staticClass: "text-sm font-semibold text-red-900",
+                          attrs: { for: "form.grad_year" }
+                        },
+                        [_vm._v("Graduation Year")]
+                      ),
+                      _vm._v(" "),
+                      _vm.form.errors.has("grad_year")
+                        ? _c("span", {
+                            staticClass: "text-red-600 text-xs font-semibold",
+                            attrs: { id: "grad_yearHelp" },
+                            domProps: {
+                              textContent: _vm._s(
+                                _vm.form.errors.get("grad_year")
+                              )
+                            }
+                          })
+                        : _vm._e()
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.form.grad_year,
+                        expression: "form.grad_year"
+                      }
+                    ],
+                    staticClass:
+                      "w-full rounded px-3 h-10 text-blue-800 font-semibold shadow-md",
+                    attrs: {
+                      id: "form.grad_year",
+                      type: "number",
+                      min: "2009",
+                      max: "2025",
+                      required: ""
+                    },
+                    domProps: { value: _vm.form.grad_year },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(_vm.form, "grad_year", $event.target.value)
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "py-2" }, [
+                  _c(
+                    "div",
+                    { staticClass: "flex justify-between content-end" },
+                    [
+                      _c(
+                        "label",
+                        {
+                          staticClass: "text-sm font-semibold text-red-900",
+                          attrs: { for: "form.fall_sport_id" }
+                        },
+                        [
+                          _vm._v(
+                            "\n                            Fall Sport\n                        "
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _vm.form.errors.has("fall_sport_id")
+                        ? _c("span", {
+                            staticClass: "text-red-600 text-xs font-semibold",
+                            attrs: { id: "fallSportHelp" },
+                            domProps: {
+                              textContent: _vm._s(
+                                _vm.form.errors.get("fall_sport_id")
+                              )
+                            }
+                          })
+                        : _vm._e()
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "select",
+                    {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.form.fall_sport_id,
+                          expression: "form.fall_sport_id"
+                        }
+                      ],
+                      staticClass:
+                        "w-full rounded px-3 h-10 text-blue-800 font-semibold shadow-md",
                       attrs: {
-                        id: "form.season",
-                        name: "season",
+                        name: "fall_sport_id",
+                        id: "form.fall_sport_id",
                         required: ""
                       },
                       on: {
@@ -27997,7 +29449,7 @@ var render = function() {
                             })
                           _vm.$set(
                             _vm.form,
-                            "season",
+                            "fall_sport_id",
                             $event.target.multiple
                               ? $$selectedVal
                               : $$selectedVal[0]
@@ -28005,19 +29457,194 @@ var render = function() {
                         }
                       }
                     },
+                    _vm._l(_vm.fallSports, function(sport) {
+                      return _c(
+                        "option",
+                        { key: sport.id, domProps: { value: sport.id } },
+                        [
+                          _vm._v(
+                            "\n                            " +
+                              _vm._s(sport.name) +
+                              "\n                        "
+                          )
+                        ]
+                      )
+                    }),
+                    0
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "py-2" }, [
+                  _c(
+                    "div",
+                    { staticClass: "flex justify-between content-end" },
                     [
-                      _c("option", { attrs: { value: "fall" } }, [
-                        _vm._v("Fall")
-                      ]),
+                      _c(
+                        "label",
+                        {
+                          staticClass: "text-sm font-semibold text-red-900",
+                          attrs: { for: "form.winter_sport_id" }
+                        },
+                        [
+                          _vm._v(
+                            "\n                            Winter Sport\n                        "
+                          )
+                        ]
+                      ),
                       _vm._v(" "),
-                      _c("option", { attrs: { value: "winter" } }, [
-                        _vm._v("Winter")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "spring" } }, [
-                        _vm._v("Spring")
-                      ])
+                      _vm.form.errors.has("winter_sport_id")
+                        ? _c("span", {
+                            staticClass: "text-red-600 text-xs font-semibold",
+                            attrs: { id: "winterSportHelp" },
+                            domProps: {
+                              textContent: _vm._s(
+                                _vm.form.errors.get("winter_sport_id")
+                              )
+                            }
+                          })
+                        : _vm._e()
                     ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "select",
+                    {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.form.winter_sport_id,
+                          expression: "form.winter_sport_id"
+                        }
+                      ],
+                      staticClass:
+                        "w-full rounded px-3 h-10 text-blue-800 font-semibold shadow-md",
+                      attrs: {
+                        name: "winter_sport_id",
+                        id: "form.winter_sport_id",
+                        required: ""
+                      },
+                      on: {
+                        change: function($event) {
+                          var $$selectedVal = Array.prototype.filter
+                            .call($event.target.options, function(o) {
+                              return o.selected
+                            })
+                            .map(function(o) {
+                              var val = "_value" in o ? o._value : o.value
+                              return val
+                            })
+                          _vm.$set(
+                            _vm.form,
+                            "winter_sport_id",
+                            $event.target.multiple
+                              ? $$selectedVal
+                              : $$selectedVal[0]
+                          )
+                        }
+                      }
+                    },
+                    _vm._l(_vm.winterSports, function(sport) {
+                      return _c(
+                        "option",
+                        { key: sport.id, domProps: { value: sport.id } },
+                        [
+                          _vm._v(
+                            "\n                            " +
+                              _vm._s(sport.name) +
+                              "\n                        "
+                          )
+                        ]
+                      )
+                    }),
+                    0
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "py-2" }, [
+                  _c(
+                    "div",
+                    { staticClass: "flex justify-between content-end" },
+                    [
+                      _c(
+                        "label",
+                        {
+                          staticClass: "text-sm font-semibold text-red-900",
+                          attrs: { for: "form.spring_sport_id" }
+                        },
+                        [
+                          _vm._v(
+                            "\n                            Spring Sport\n                        "
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _vm.form.errors.has("spring_sport_id")
+                        ? _c("span", {
+                            staticClass: "text-red-600 text-xs font-semibold",
+                            attrs: { id: "springSportHelp" },
+                            domProps: {
+                              textContent: _vm._s(
+                                _vm.form.errors.get("spring_sport_id")
+                              )
+                            }
+                          })
+                        : _vm._e()
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "select",
+                    {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.form.spring_sport_id,
+                          expression: "form.spring_sport_id"
+                        }
+                      ],
+                      staticClass:
+                        "w-full rounded px-3 h-10 text-blue-800 font-semibold shadow-md",
+                      attrs: {
+                        name: "spring_sport_id",
+                        id: "form.spring_sport_id",
+                        required: ""
+                      },
+                      on: {
+                        change: function($event) {
+                          var $$selectedVal = Array.prototype.filter
+                            .call($event.target.options, function(o) {
+                              return o.selected
+                            })
+                            .map(function(o) {
+                              var val = "_value" in o ? o._value : o.value
+                              return val
+                            })
+                          _vm.$set(
+                            _vm.form,
+                            "spring_sport_id",
+                            $event.target.multiple
+                              ? $$selectedVal
+                              : $$selectedVal[0]
+                          )
+                        }
+                      }
+                    },
+                    _vm._l(_vm.springSports, function(sport) {
+                      return _c(
+                        "option",
+                        { key: sport.id, domProps: { value: sport.id } },
+                        [
+                          _vm._v(
+                            "\n                            " +
+                              _vm._s(sport.name) +
+                              "\n                        "
+                          )
+                        ]
+                      )
+                    }),
+                    0
                   )
                 ]),
                 _vm._v(" "),
@@ -28046,25 +29673,146 @@ var render = function() {
             )
           ])
         ])
-      : _c("div", { staticClass: "flex py-1 items-center hover:bg-gray-200" }, [
+      : _c("div", { staticClass: "flex py-1 items-center hover:bg-gray-100" }, [
           _c("div", { staticClass: "flex flex-col w-full" }, [
             _c("div", { staticClass: "flex w-full" }, [
-              _c("div", { staticClass: "flex pt-1 w-11/12" }, [
-                _c("div", { staticClass: "flex w-1/3" }, [
+              _c("div", { staticClass: "flex pt-1 w-11/12 px-2 flex-wrap" }, [
+                _c("div", { staticClass: "flex w-full lg:w-1/3" }, [
+                  _c(
+                    "a",
+                    {
+                      staticClass: "hover:font-semibold hover:underline",
+                      attrs: { href: _vm.athleteUrl }
+                    },
+                    [
+                      _vm._v(
+                        "\n                            " +
+                          _vm._s(_vm.last_name) +
+                          ", " +
+                          _vm._s(_vm.first_name) +
+                          "\n                        "
+                      )
+                    ]
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "hidden lg:flex lg:w-1/6" }, [
                   _vm._v(
                     "\n                        " +
-                      _vm._s(_vm.name) +
+                      _vm._s(_vm.sexName) +
                       "\n                    "
                   )
                 ]),
                 _vm._v(" "),
-                _c("div", { staticClass: "flex w-1/6" }, [
+                _c("div", { staticClass: "hidden lg:flex lg:w-1/6" }, [
                   _vm._v(
-                    "\n                        " +
-                      _vm._s(_vm.sportSeason) +
+                    "\n                         " +
+                      _vm._s(_vm.grade) +
                       "\n                    "
                   )
-                ])
+                ]),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "flex flex-col w-full text-gray-700 lg:text-black lg:flex-row lg:w-1/3"
+                  },
+                  [
+                    _c(
+                      "span",
+                      {
+                        directives: [
+                          {
+                            name: "show",
+                            rawName: "v-show",
+                            value: _vm.fallSport,
+                            expression: "fallSport"
+                          }
+                        ],
+                        staticClass: "px-2"
+                      },
+                      [
+                        _c(
+                          "a",
+                          {
+                            staticClass: "hover:font-semibold hover:underline",
+                            attrs: { href: _vm.fallSportUrl }
+                          },
+                          [
+                            _vm._v(
+                              "\n                                " +
+                                _vm._s(_vm.fallSport) +
+                                "\n                            "
+                            )
+                          ]
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "span",
+                      {
+                        directives: [
+                          {
+                            name: "show",
+                            rawName: "v-show",
+                            value: _vm.winterSport,
+                            expression: "winterSport"
+                          }
+                        ],
+                        staticClass: "px-2"
+                      },
+                      [
+                        _c(
+                          "a",
+                          {
+                            staticClass: "hover:font-semibold hover:underline",
+                            attrs: { href: _vm.winterSportUrl }
+                          },
+                          [
+                            _vm._v(
+                              "\n                                " +
+                                _vm._s(_vm.winterSport) +
+                                "\n                            "
+                            )
+                          ]
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "span",
+                      {
+                        directives: [
+                          {
+                            name: "show",
+                            rawName: "v-show",
+                            value: _vm.springSport,
+                            expression: "springSport"
+                          }
+                        ],
+                        staticClass: "px-2"
+                      },
+                      [
+                        _c(
+                          "a",
+                          {
+                            staticClass: "hover:font-semibold hover:underline",
+                            attrs: { href: _vm.springSportUrl }
+                          },
+                          [
+                            _vm._v(
+                              "\n                                " +
+                                _vm._s(_vm.springSport) +
+                                "\n                            "
+                            )
+                          ]
+                        )
+                      ]
+                    )
+                  ]
+                )
               ]),
               _vm._v(" "),
               _c(
@@ -28076,18 +29824,69 @@ var render = function() {
             ]),
             _vm._v(" "),
             _vm.isExpanded
-              ? _c("div", { staticClass: "pt-2" }, [
+              ? _c("div", { staticClass: "p-2" }, [
+                  _c("div", { staticClass: "flex w-11/12 flex-wrap px-4" }, [
+                    _c(
+                      "div",
+                      { staticClass: "flex flex-col w-full lg:w-1/3" },
+                      [
+                        _c("p", { staticClass: "text-gray-500 w-full py-1" }, [
+                          _vm._v("Sex:\n                            "),
+                          _c(
+                            "span",
+                            { staticClass: "text-gray-800 font-semibold" },
+                            [_vm._v(_vm._s(_vm.sexName))]
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c("p", { staticClass: "text-gray-500 w-full py-1" }, [
+                          _vm._v("DOB:\n                            "),
+                          _c(
+                            "span",
+                            { staticClass: "text-gray-800 font-semibold" },
+                            [
+                              _vm._v(
+                                _vm._s(_vm._f("moment")(_vm.dob, "MM/DD/YYYY"))
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "span",
+                            {
+                              staticClass: "text-gray-500 text-sm font-semibold"
+                            },
+                            [_vm._v(_vm._s(_vm.age) + " years old")]
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c("p", { staticClass: "text-gray-500 w-full py-1" }, [
+                          _vm._v("Class:\n                            "),
+                          _c(
+                            "span",
+                            { staticClass: "text-gray-800 font-semibold" },
+                            [_vm._v(_vm._s(_vm.grad_year))]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "span",
+                            {
+                              staticClass: "text-gray-500 text-sm font-semibold"
+                            },
+                            [_vm._v(_vm._s(_vm.grade))]
+                          )
+                        ])
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _vm._m(1)
+                  ]),
+                  _vm._v(" "),
                   _c(
                     "div",
-                    { staticClass: "flex justify-start cursor-pointer" },
+                    { staticClass: "flex justify-start cursor-pointer pt-1" },
                     [
-                      _c("edit-button", {
-                        on: {
-                          clicked: function($event) {
-                            _vm.editing = true
-                          }
-                        }
-                      }),
+                      _c("edit-button", { on: { clicked: _vm.getSports } }),
                       _vm._v(" "),
                       _c("delete-button", { on: { clicked: _vm.destroy } })
                     ],
@@ -28099,17 +29898,36 @@ var render = function() {
         ])
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-label ml-1" }, [
+      _c("p", [_vm._v("id")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "flex w-2/3" }, [
+      _c("div", { staticClass: "flex w-full" }, [
+        _c("div", { staticClass: "flex flex-col w-1/3" })
+      ])
+    ])
+  }
+]
 render._withStripped = true
 
 
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Sports.vue?vue&type=template&id=7b059e2a&scoped=true&":
-/*!*********************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Sports.vue?vue&type=template&id=7b059e2a&scoped=true& ***!
-  \*********************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/athletes/Athletes.vue?vue&type=template&id=477ee994&scoped=true&":
+/*!********************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/athletes/Athletes.vue?vue&type=template&id=477ee994&scoped=true& ***!
+  \********************************************************************************************************************************************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -28135,7 +29953,7 @@ var render = function() {
           ],
           staticClass:
             "flex w-full rounded-md border px-3 py-2 text-lg border shadow",
-          attrs: { type: "text", placeholder: "Find a sport..." },
+          attrs: { type: "text", placeholder: "Find an athlete..." },
           domProps: { value: _vm.search },
           on: {
             input: function($event) {
@@ -28162,23 +29980,24 @@ var render = function() {
     _c(
       "header",
       {
-        staticClass: "w-full md:w-1/2 font-thin lg:text-5xl py-4 text-red-900"
+        staticClass:
+          "w-full md:w-1/2 font-thin text-2xl lg:text-5xl py-4 text-red-900"
       },
-      [_vm._v("Sports")]
+      [_vm._v("Athletes")]
     ),
     _vm._v(" "),
-    _c("div", {}, [
+    _c("div", { staticClass: "w-full" }, [
       _c("div", { staticClass: "flex" }, [
         _vm._m(0),
         _vm._v(" "),
         _c(
           "div",
-          { staticClass: "flex w-2/12 justify-end px-2 items-center" },
+          { staticClass: "flex w-1/12 justify-end px-2 items-center" },
           [
             _c(
               "create-button",
-              { attrs: { title: "Create New Sport" } },
-              [_c("new-sport-form", { on: { created: _vm.add } })],
+              { attrs: { title: "Create New Athlete" } },
+              [_c("new-athlete-form", { on: { created: _vm.add } })],
               1
             )
           ],
@@ -28190,13 +30009,13 @@ var render = function() {
         ? _c(
             "div",
             { staticClass: "divide-y border-t border-b" },
-            _vm._l(_vm.filteredAthletes, function(sport, index) {
+            _vm._l(_vm.filteredAthletes, function(athlete, index) {
               return _c(
                 "div",
-                { key: sport.id },
+                { key: athlete.id },
                 [
-                  _c("sport", {
-                    attrs: { data: sport },
+                  _c("athlete", {
+                    attrs: { data: athlete },
                     on: {
                       deleted: function($event) {
                         return _vm.remove(index)
@@ -28211,7 +30030,7 @@ var render = function() {
           )
         : _c("div", { staticClass: "flex flex-col text-center" }, [
             _c("p", { staticClass: "text-2xl text-tertiary p-4" }, [
-              _vm._v("No Sports Listed")
+              _vm._v("No Athletes Listed")
             ])
           ])
     ])
@@ -28222,10 +30041,1076 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "flex w-10/12" }, [
-      _c("div", {}, [
-        _c("p", { staticClass: "text-red-900 font-thin" }, [_vm._v("Name")])
+    return _c(
+      "div",
+      { staticClass: "flex w-11/12 px-2 text-gray-500 font-semibold" },
+      [
+        _c("div", { staticClass: "w-full lg:w-1/3" }, [
+          _c("p", {}, [_vm._v("Name")])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "hidden lg:flex lg:w-1/6" }, [
+          _c("p", {}, [_vm._v("Sex")])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "hidden lg:flex lg:w-1/6" }, [
+          _c("p", {}, [_vm._v("Class")])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "hidden lg:flex lg:w-1/3 px-2" }, [
+          _c("p", {}, [_vm._v("Sports")])
+        ])
+      ]
+    )
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/athletes/SportAthlete.vue?vue&type=template&id=685559aa&scoped=true&":
+/*!************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/athletes/SportAthlete.vue?vue&type=template&id=685559aa&scoped=true& ***!
+  \************************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", {}, [
+    _vm.editing
+      ? _c("div", { staticClass: "p-3" }, [
+          _c("div", { staticClass: "w-full lg:w-1/2 mx-auto" }, [
+            _c(
+              "form",
+              {
+                staticClass:
+                  "bg-gray-100 shadow-md rounded px-8 pt-6 pb-8 mb-4",
+                attrs: {
+                  action: "api/athletes/id",
+                  method: "POST",
+                  id: "editSportAthlete"
+                },
+                on: {
+                  submit: function($event) {
+                    $event.preventDefault()
+                    return _vm.update($event)
+                  },
+                  keydown: function($event) {
+                    return _vm.form.errors.clear()
+                  }
+                }
+              },
+              [
+                _c("div", { staticClass: "flex items-center mb-4" }, [
+                  _vm._m(0),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "w-full text-gray-800 px-4" }, [
+                    _c("p", { domProps: { textContent: _vm._s(_vm.id) } })
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "py-2" }, [
+                  _c(
+                    "div",
+                    { staticClass: "flex justify-between content-end" },
+                    [
+                      _c(
+                        "label",
+                        {
+                          staticClass: "text-sm font-semibold text-red-900",
+                          attrs: { for: "form.first_name" }
+                        },
+                        [
+                          _vm._v(
+                            "\n                            First Name\n                        "
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _vm.form.errors.has("first_name")
+                        ? _c("span", {
+                            staticClass: "text-red-600 text-xs font-semibold",
+                            attrs: { id: "first_nameHelp" },
+                            domProps: {
+                              textContent: _vm._s(
+                                _vm.form.errors.get("first_name")
+                              )
+                            }
+                          })
+                        : _vm._e()
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.form.first_name,
+                        expression: "form.first_name"
+                      }
+                    ],
+                    staticClass:
+                      "w-full rounded px-3 h-10 text-blue-800 font-semibold shadow-md",
+                    attrs: {
+                      id: "form.first_name",
+                      type: "text",
+                      autocomplete: "off",
+                      required: ""
+                    },
+                    domProps: { value: _vm.form.first_name },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(_vm.form, "first_name", $event.target.value)
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "py-2" }, [
+                  _c(
+                    "div",
+                    { staticClass: "flex justify-between content-end" },
+                    [
+                      _c(
+                        "label",
+                        {
+                          staticClass: "text-sm font-semibold text-red-900",
+                          attrs: { for: "form.last_name" }
+                        },
+                        [
+                          _vm._v(
+                            "\n                            Last Name\n                        "
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _vm.form.errors.has("last_name")
+                        ? _c("span", {
+                            staticClass: "text-red-600 text-xs font-semibold",
+                            attrs: { id: "last_nameHelp" },
+                            domProps: {
+                              textContent: _vm._s(
+                                _vm.form.errors.get("last_name")
+                              )
+                            }
+                          })
+                        : _vm._e()
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.form.last_name,
+                        expression: "form.last_name"
+                      }
+                    ],
+                    staticClass:
+                      "w-full rounded px-3 h-10 text-blue-800 font-semibold shadow-md",
+                    attrs: {
+                      id: "form.last_name",
+                      type: "text",
+                      autocomplete: "off",
+                      required: ""
+                    },
+                    domProps: { value: _vm.form.last_name },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(_vm.form, "last_name", $event.target.value)
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "py-2" }, [
+                  _c(
+                    "div",
+                    { staticClass: "flex justify-between content-end" },
+                    [
+                      _c(
+                        "label",
+                        { staticClass: "text-sm font-semibold text-red-900" },
+                        [_vm._v("Sex")]
+                      ),
+                      _vm._v(" "),
+                      _vm.form.errors.has("sex")
+                        ? _c("span", {
+                            staticClass: "text-red-600 text-xs font-semibold",
+                            attrs: { id: "sexHelp" },
+                            domProps: {
+                              textContent: _vm._s(_vm.form.errors.get("sex"))
+                            }
+                          })
+                        : _vm._e()
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "select",
+                    {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.form.sex,
+                          expression: "form.sex"
+                        }
+                      ],
+                      staticClass:
+                        "w-full rounded px-3 h-10 text-blue-800 font-semibold shadow-md",
+                      attrs: { id: "form.sex", name: "sex", required: "" },
+                      on: {
+                        change: function($event) {
+                          var $$selectedVal = Array.prototype.filter
+                            .call($event.target.options, function(o) {
+                              return o.selected
+                            })
+                            .map(function(o) {
+                              var val = "_value" in o ? o._value : o.value
+                              return val
+                            })
+                          _vm.$set(
+                            _vm.form,
+                            "sex",
+                            $event.target.multiple
+                              ? $$selectedVal
+                              : $$selectedVal[0]
+                          )
+                        }
+                      }
+                    },
+                    [
+                      _c("option", { attrs: { value: "f" } }, [
+                        _vm._v("Female")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "m" } }, [_vm._v("Male")])
+                    ]
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "py-2" }, [
+                  _c(
+                    "div",
+                    { staticClass: "flex justify-between content-end" },
+                    [
+                      _c(
+                        "label",
+                        {
+                          staticClass: "text-sm font-semibold text-red-900",
+                          attrs: { for: "form.dob" }
+                        },
+                        [_vm._v("Date of Birth")]
+                      ),
+                      _vm._v(" "),
+                      _vm.form.errors.has("dob")
+                        ? _c("span", {
+                            staticClass: "text-red-600 text-xs font-semibold",
+                            attrs: { id: "dobHelp" },
+                            domProps: {
+                              textContent: _vm._s(_vm.form.errors.get("dob"))
+                            }
+                          })
+                        : _vm._e()
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.form.dob,
+                        expression: "form.dob"
+                      }
+                    ],
+                    staticClass:
+                      "w-full rounded px-3 h-10 text-blue-800 font-semibold shadow-md",
+                    attrs: { id: "form.dob", type: "date" },
+                    domProps: { value: _vm.form.dob },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(_vm.form, "dob", $event.target.value)
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "py-2" }, [
+                  _c(
+                    "div",
+                    { staticClass: "flex justify-between content-end" },
+                    [
+                      _c(
+                        "label",
+                        {
+                          staticClass: "text-sm font-semibold text-red-900",
+                          attrs: { for: "form.grad_year" }
+                        },
+                        [_vm._v("Graduation Year")]
+                      ),
+                      _vm._v(" "),
+                      _vm.form.errors.has("grad_year")
+                        ? _c("span", {
+                            staticClass: "text-red-600 text-xs font-semibold",
+                            attrs: { id: "grad_yearHelp" },
+                            domProps: {
+                              textContent: _vm._s(
+                                _vm.form.errors.get("grad_year")
+                              )
+                            }
+                          })
+                        : _vm._e()
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.form.grad_year,
+                        expression: "form.grad_year"
+                      }
+                    ],
+                    staticClass:
+                      "w-full rounded px-3 h-10 text-blue-800 font-semibold shadow-md",
+                    attrs: {
+                      id: "form.grad_year",
+                      type: "number",
+                      min: "2009",
+                      max: "2025",
+                      required: ""
+                    },
+                    domProps: { value: _vm.form.grad_year },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(_vm.form, "grad_year", $event.target.value)
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "py-2" }, [
+                  _c(
+                    "div",
+                    { staticClass: "flex justify-between content-end" },
+                    [
+                      _c(
+                        "label",
+                        {
+                          staticClass: "text-sm font-semibold text-red-900",
+                          attrs: { for: "form.fall_sport_id" }
+                        },
+                        [
+                          _vm._v(
+                            "\n                            Fall Sport\n                        "
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _vm.form.errors.has("fall_sport_id")
+                        ? _c("span", {
+                            staticClass: "text-red-600 text-xs font-semibold",
+                            attrs: { id: "fallSportHelp" },
+                            domProps: {
+                              textContent: _vm._s(
+                                _vm.form.errors.get("fall_sport_id")
+                              )
+                            }
+                          })
+                        : _vm._e()
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "select",
+                    {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.form.fall_sport_id,
+                          expression: "form.fall_sport_id"
+                        }
+                      ],
+                      staticClass:
+                        "w-full rounded px-3 h-10 text-blue-800 font-semibold shadow-md",
+                      attrs: {
+                        name: "fall_sport_id",
+                        id: "form.fall_sport_id",
+                        required: ""
+                      },
+                      on: {
+                        change: function($event) {
+                          var $$selectedVal = Array.prototype.filter
+                            .call($event.target.options, function(o) {
+                              return o.selected
+                            })
+                            .map(function(o) {
+                              var val = "_value" in o ? o._value : o.value
+                              return val
+                            })
+                          _vm.$set(
+                            _vm.form,
+                            "fall_sport_id",
+                            $event.target.multiple
+                              ? $$selectedVal
+                              : $$selectedVal[0]
+                          )
+                        }
+                      }
+                    },
+                    _vm._l(_vm.fallSports, function(sport) {
+                      return _c(
+                        "option",
+                        { key: sport.id, domProps: { value: sport.id } },
+                        [
+                          _vm._v(
+                            "\n                            " +
+                              _vm._s(sport.name) +
+                              "\n                        "
+                          )
+                        ]
+                      )
+                    }),
+                    0
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "py-2" }, [
+                  _c(
+                    "div",
+                    { staticClass: "flex justify-between content-end" },
+                    [
+                      _c(
+                        "label",
+                        {
+                          staticClass: "text-sm font-semibold text-red-900",
+                          attrs: { for: "form.winter_sport_id" }
+                        },
+                        [
+                          _vm._v(
+                            "\n                            Winter Sport\n                        "
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _vm.form.errors.has("winter_sport_id")
+                        ? _c("span", {
+                            staticClass: "text-red-600 text-xs font-semibold",
+                            attrs: { id: "winterSportHelp" },
+                            domProps: {
+                              textContent: _vm._s(
+                                _vm.form.errors.get("winter_sport_id")
+                              )
+                            }
+                          })
+                        : _vm._e()
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "select",
+                    {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.form.winter_sport_id,
+                          expression: "form.winter_sport_id"
+                        }
+                      ],
+                      staticClass:
+                        "w-full rounded px-3 h-10 text-blue-800 font-semibold shadow-md",
+                      attrs: {
+                        name: "winter_sport_id",
+                        id: "form.winter_sport_id",
+                        required: ""
+                      },
+                      on: {
+                        change: function($event) {
+                          var $$selectedVal = Array.prototype.filter
+                            .call($event.target.options, function(o) {
+                              return o.selected
+                            })
+                            .map(function(o) {
+                              var val = "_value" in o ? o._value : o.value
+                              return val
+                            })
+                          _vm.$set(
+                            _vm.form,
+                            "winter_sport_id",
+                            $event.target.multiple
+                              ? $$selectedVal
+                              : $$selectedVal[0]
+                          )
+                        }
+                      }
+                    },
+                    _vm._l(_vm.winterSports, function(sport) {
+                      return _c(
+                        "option",
+                        { key: sport.id, domProps: { value: sport.id } },
+                        [
+                          _vm._v(
+                            "\n                            " +
+                              _vm._s(sport.name) +
+                              "\n                        "
+                          )
+                        ]
+                      )
+                    }),
+                    0
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "py-2" }, [
+                  _c(
+                    "div",
+                    { staticClass: "flex justify-between content-end" },
+                    [
+                      _c(
+                        "label",
+                        {
+                          staticClass: "text-sm font-semibold text-red-900",
+                          attrs: { for: "form.spring_sport_id" }
+                        },
+                        [
+                          _vm._v(
+                            "\n                            Spring Sport\n                        "
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _vm.form.errors.has("spring_sport_id")
+                        ? _c("span", {
+                            staticClass: "text-red-600 text-xs font-semibold",
+                            attrs: { id: "springSportHelp" },
+                            domProps: {
+                              textContent: _vm._s(
+                                _vm.form.errors.get("spring_sport_id")
+                              )
+                            }
+                          })
+                        : _vm._e()
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "select",
+                    {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.form.spring_sport_id,
+                          expression: "form.spring_sport_id"
+                        }
+                      ],
+                      staticClass:
+                        "w-full rounded px-3 h-10 text-blue-800 font-semibold shadow-md",
+                      attrs: {
+                        name: "spring_sport_id",
+                        id: "form.spring_sport_id",
+                        required: ""
+                      },
+                      on: {
+                        change: function($event) {
+                          var $$selectedVal = Array.prototype.filter
+                            .call($event.target.options, function(o) {
+                              return o.selected
+                            })
+                            .map(function(o) {
+                              var val = "_value" in o ? o._value : o.value
+                              return val
+                            })
+                          _vm.$set(
+                            _vm.form,
+                            "spring_sport_id",
+                            $event.target.multiple
+                              ? $$selectedVal
+                              : $$selectedVal[0]
+                          )
+                        }
+                      }
+                    },
+                    _vm._l(_vm.springSports, function(sport) {
+                      return _c(
+                        "option",
+                        { key: sport.id, domProps: { value: sport.id } },
+                        [
+                          _vm._v(
+                            "\n                            " +
+                              _vm._s(sport.name) +
+                              "\n                        "
+                          )
+                        ]
+                      )
+                    }),
+                    0
+                  )
+                ]),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: " pt-2 flex items-center justify-end" },
+                  [
+                    _c(
+                      "update-button",
+                      {
+                        staticClass: "mr-4",
+                        attrs: { disabled: _vm.form.errors.any() }
+                      },
+                      [
+                        _vm._v(
+                          "\n                        Update\n                    "
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c("cancel-button", { on: { clicked: _vm.resetForm } })
+                  ],
+                  1
+                )
+              ]
+            )
+          ])
+        ])
+      : _c("div", { staticClass: "flex py-1 items-center hover:bg-gray-100" }, [
+          _c("div", { staticClass: "flex flex-col w-full" }, [
+            _c("div", { staticClass: "flex w-full" }, [
+              _c("div", { staticClass: "flex pt-1 w-11/12 px-2" }, [
+                _c("div", { staticClass: "flex w-full lg:w-1/3" }, [
+                  _c(
+                    "a",
+                    {
+                      staticClass: "hover:font-semibold hover:underline",
+                      attrs: { href: _vm.url }
+                    },
+                    [
+                      _vm._v(
+                        "\n                            " +
+                          _vm._s(_vm.last_name) +
+                          ", " +
+                          _vm._s(_vm.first_name) +
+                          "\n                        "
+                      )
+                    ]
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "flex w-1/3 px-2" }, [
+                  _c(
+                    "div",
+                    {
+                      staticClass: "w-full",
+                      style: { color: _vm.statusColor }
+                    },
+                    [
+                      _vm._v(
+                        "\n                                    " +
+                          _vm._s(_vm.physicalStatus) +
+                          "\n                            "
+                      ),
+                      _vm.allClear
+                        ? _c("span", [_c("i", { staticClass: "fas fa-check" })])
+                        : _vm.restrict
+                        ? _c("span", [
+                            _c("i", { staticClass: "fas fa-exclamation" })
+                          ])
+                        : _c("span", [_c("i", { staticClass: "fas fa-times" })])
+                    ]
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "flex w-1/3 px-2" }, [
+                  this.data.latest_physical
+                    ? _c(
+                        "div",
+                        {
+                          staticClass: "w-full",
+                          style: { color: _vm.expirationColor }
+                        },
+                        [
+                          _vm._v(
+                            "\n                            " +
+                              _vm._s(_vm.expiration) +
+                              "\n                            "
+                          ),
+                          _c("span", [
+                            _vm._v(
+                              _vm._s(
+                                _vm._f("moment")(
+                                  _vm._f("moment")(
+                                    _vm.exam_date,
+                                    "add",
+                                    "1 year"
+                                  ),
+                                  "from",
+                                  "now"
+                                )
+                              )
+                            )
+                          ])
+                        ]
+                      )
+                    : _c("div", { staticClass: "w-full text-gray-500" }, [
+                        _vm._v(
+                          "\n                            No Physical on File\n                        "
+                        )
+                      ])
+                ])
+              ]),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "flex w-1/12 pt-1 justify-end px-4" },
+                [_c("expand-button", { on: { toggleRow: _vm.toggleRow } })],
+                1
+              )
+            ]),
+            _vm._v(" "),
+            _vm.isExpanded
+              ? _c("div", { staticClass: "p-2" }, [
+                  _c("div", { staticClass: "flex w-11/12 flex-wrap px-4" }, [
+                    _c(
+                      "div",
+                      { staticClass: "flex flex-col w-full lg:w-1/3" },
+                      [
+                        _c("p", { staticClass: "text-gray-500 w-full py-1" }, [
+                          _vm._v("Sex:\n                            "),
+                          _c(
+                            "span",
+                            { staticClass: "text-gray-800 font-semibold" },
+                            [_vm._v(_vm._s(_vm.gender))]
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c("p", { staticClass: "text-gray-500 w-full py-1" }, [
+                          _vm._v("DOB:\n                            "),
+                          _c(
+                            "span",
+                            { staticClass: "text-gray-800 font-semibold" },
+                            [
+                              _vm._v(
+                                _vm._s(_vm._f("moment")(_vm.dob, "MM/DD/YYYY"))
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "span",
+                            {
+                              staticClass: "text-gray-500 text-sm font-semibold"
+                            },
+                            [_vm._v(_vm._s(_vm.age) + " years old")]
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c("p", { staticClass: "text-gray-500 w-full py-1" }, [
+                          _vm._v("Class:\n                            "),
+                          _c(
+                            "span",
+                            { staticClass: "text-gray-800 font-semibold" },
+                            [_vm._v(_vm._s(_vm.grad_year))]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "span",
+                            {
+                              staticClass: "text-gray-500 text-sm font-semibold"
+                            },
+                            [_vm._v(_vm._s(_vm.grade))]
+                          )
+                        ])
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "flex w-2/3" }, [
+                      _c("div", { staticClass: "flex w-full" }, [
+                        this.physicalStatus === "Not Cleared"
+                          ? _c("div", [
+                              _c(
+                                "p",
+                                {
+                                  staticClass: "text-gray-500 w-full py-1 px-1"
+                                },
+                                [_vm._v("Missing:")]
+                              ),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "text-sm px-1" }, [
+                                _c(
+                                  "p",
+                                  {
+                                    directives: [
+                                      {
+                                        name: "show",
+                                        rawName: "v-show",
+                                        value: !_vm.historyFormConfirmed,
+                                        expression: "!historyFormConfirmed"
+                                      }
+                                    ]
+                                  },
+                                  [_vm._v("Medical History Form")]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "p",
+                                  {
+                                    directives: [
+                                      {
+                                        name: "show",
+                                        rawName: "v-show",
+                                        value: !_vm.physicalExamFormConfirmed,
+                                        expression: "!physicalExamFormConfirmed"
+                                      }
+                                    ]
+                                  },
+                                  [_vm._v("Physical Exam Form")]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "p",
+                                  {
+                                    directives: [
+                                      {
+                                        name: "show",
+                                        rawName: "v-show",
+                                        value: !_vm.eligibilityFormConfirmed,
+                                        expression: "!eligibilityFormConfirmed"
+                                      }
+                                    ]
+                                  },
+                                  [_vm._v("Elegibility Form")]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "p",
+                                  {
+                                    directives: [
+                                      {
+                                        name: "show",
+                                        rawName: "v-show",
+                                        value: !_vm.physicalFormConfirmed,
+                                        expression: "!physicalFormConfirmed"
+                                      }
+                                    ]
+                                  },
+                                  [_vm._v("LHS Physical Form")]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "p",
+                                  {
+                                    directives: [
+                                      {
+                                        name: "show",
+                                        rawName: "v-show",
+                                        value: !_vm.blanketFormConfirmed,
+                                        expression: "!blanketFormConfirmed"
+                                      }
+                                    ]
+                                  },
+                                  [_vm._v("Blanket Waiver Form")]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "p",
+                                  {
+                                    directives: [
+                                      {
+                                        name: "show",
+                                        rawName: "v-show",
+                                        value: !_vm.concussionFormConfirmed,
+                                        expression: "!concussionFormConfirmed"
+                                      }
+                                    ]
+                                  },
+                                  [_vm._v("Concussion Form")]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "p",
+                                  {
+                                    directives: [
+                                      {
+                                        name: "show",
+                                        rawName: "v-show",
+                                        value: !_vm.cardiacFormConfirmed,
+                                        expression: "!cardiacFormConfirmed"
+                                      }
+                                    ]
+                                  },
+                                  [_vm._v("Cardiac Form")]
+                                )
+                              ])
+                            ])
+                          : _vm._e()
+                      ])
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    { staticClass: "flex justify-start cursor-pointer pt-1" },
+                    [_c("edit-button", { on: { clicked: _vm.getSports } })],
+                    1
+                  )
+                ])
+              : _vm._e()
+          ])
+        ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-label ml-1" }, [
+      _c("p", [_vm._v("id")])
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/athletes/SportAthletes.vue?vue&type=template&id=9afe9950&scoped=true&":
+/*!*************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/athletes/SportAthletes.vue?vue&type=template&id=9afe9950&scoped=true& ***!
+  \*************************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "flex flex-col w-full" }, [
+    _c("div", { staticClass: "flex justify-end w-full" }, [
+      _c("div", { staticClass: "flex md:w-1/2 lg:w-1/3 mb-8" }, [
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.search,
+              expression: "search"
+            }
+          ],
+          staticClass:
+            "flex w-full rounded-md border px-3 py-2 text-lg border shadow",
+          attrs: { type: "text", placeholder: "Find an athlete..." },
+          domProps: { value: _vm.search },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.search = $event.target.value
+            }
+          }
+        }),
+        _vm._v(" "),
+        _c(
+          "button",
+          {
+            staticClass:
+              "w-20 py-2 ml-2 bg-green-500 text-white text-sm font-bold rounded-md border-2 border-green-400",
+            on: { click: _vm.clearSearch }
+          },
+          [_vm._v("\n                Clear\n            ")]
+        )
       ])
+    ]),
+    _vm._v(" "),
+    _c("div", {}, [
+      _vm._m(0),
+      _vm._v(" "),
+      _vm.records
+        ? _c(
+            "div",
+            { staticClass: "divide-y border-t border-b" },
+            _vm._l(_vm.filteredAthletes, function(athlete, index) {
+              return _c(
+                "div",
+                { key: athlete.id },
+                [
+                  _c("sport-athlete", {
+                    attrs: { data: athlete },
+                    on: {
+                      deleted: function($event) {
+                        return _vm.remove(index)
+                      }
+                    }
+                  })
+                ],
+                1
+              )
+            }),
+            0
+          )
+        : _c("div", { staticClass: "flex flex-col text-center" }, [
+            _c("p", { staticClass: "text-2xl text-tertiary p-4" }, [
+              _vm._v("No Athletes Listed")
+            ])
+          ])
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "flex" }, [
+      _c(
+        "div",
+        { staticClass: "flex w-11/12 px-2 text-gray-500 font-semibold" },
+        [
+          _c("div", { staticClass: "w-1/3" }, [_c("p", {}, [_vm._v("Name")])]),
+          _vm._v(" "),
+          _c("div", { staticClass: "w-1/3" }, [
+            _c("p", { staticClass: "px-2" }, [_vm._v("Physical Status")])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "px-2 w-1/3" }, [
+            _c("p", {}, [_vm._v("Expiration")])
+          ])
+        ]
+      )
     ])
   }
 ]
@@ -28389,7 +31274,7 @@ var render = function() {
                 _vm._v(" "),
                 _c(
                   "section",
-                  { staticClass: "my-3 p-4 bg-gray-200 rounded-lg" },
+                  { staticClass: "my-3 p-4 bg-gray-100 rounded-lg" },
                   [_vm._t("default")],
                   2
                 ),
@@ -28616,8 +31501,13 @@ var render = function() {
             }
           ],
           staticClass:
-            "w-full rounded border px-3 py-2 text-lg border shadow-md",
-          attrs: { id: "form.first_name", type: "text", required: "" },
+            "w-full rounded px-3 h-10 text-blue-800 font-semibold shadow-md",
+          attrs: {
+            id: "form.first_name",
+            type: "text",
+            autocomplete: "off",
+            required: ""
+          },
           domProps: { value: _vm.form.first_name },
           on: {
             input: function($event) {
@@ -28662,8 +31552,13 @@ var render = function() {
             }
           ],
           staticClass:
-            "w-full rounded border px-3 py-2 text-lg border shadow-md",
-          attrs: { id: "form.last_name", type: "text", required: "" },
+            "w-full rounded px-3 h-10 text-blue-800 font-semibold shadow-md",
+          attrs: {
+            id: "form.last_name",
+            type: "text",
+            autocomplete: "off",
+            required: ""
+          },
           domProps: { value: _vm.form.last_name },
           on: {
             input: function($event) {
@@ -28676,7 +31571,7 @@ var render = function() {
         })
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "my-2" }, [
+      _c("div", { staticClass: "py-2" }, [
         _c("div", { staticClass: "flex justify-between content-end" }, [
           _c("label", { staticClass: "text-sm font-semibold text-red-900" }, [
             _vm._v("Sex")
@@ -28703,7 +31598,7 @@ var render = function() {
               }
             ],
             staticClass:
-              "w-full rounded border px-3 py-2 text-lg border shadow-md",
+              "w-full rounded px-3 h-10 text-blue-800 font-semibold shadow-md",
             attrs: { id: "form.sex", name: "sex", required: "" },
             on: {
               change: function($event) {
@@ -28761,7 +31656,7 @@ var render = function() {
             }
           ],
           staticClass:
-            "w-full rounded border px-2 py-1 text-lg border shadow-md",
+            "w-full rounded px-3 h-10 text-blue-800 font-semibold shadow-md",
           attrs: { id: "form.dob", type: "date" },
           domProps: { value: _vm.form.dob },
           on: {
@@ -28807,7 +31702,7 @@ var render = function() {
             }
           ],
           staticClass:
-            "w-full rounded border px-3 py-2 text-lg border shadow-md",
+            "w-full rounded px-3 h-10 text-blue-800 font-semibold shadow-md",
           attrs: {
             id: "form.grad_year",
             type: "number",
@@ -28827,22 +31722,24 @@ var render = function() {
         })
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "mb-2" }, [
+      _c("div", { staticClass: "py-2" }, [
         _c("div", { staticClass: "flex justify-between content-end" }, [
           _c(
             "label",
             {
               staticClass: "text-sm font-semibold text-red-900",
-              attrs: { for: "form.grad_year" }
+              attrs: { for: "form.fall_sport_id" }
             },
-            [_vm._v("Status")]
+            [_vm._v("\n                Fall Sport\n            ")]
           ),
           _vm._v(" "),
-          _vm.form.errors.has("status")
+          _vm.form.errors.has("fall_sport_id")
             ? _c("span", {
                 staticClass: "text-red-600 text-xs font-semibold",
-                attrs: { id: "statusHelp" },
-                domProps: { textContent: _vm._s(_vm.form.errors.get("status")) }
+                attrs: { id: "fallSportHelp" },
+                domProps: {
+                  textContent: _vm._s(_vm.form.errors.get("fall_sport_id"))
+                }
               })
             : _vm._e()
         ]),
@@ -28854,13 +31751,17 @@ var render = function() {
               {
                 name: "model",
                 rawName: "v-model",
-                value: _vm.form.status,
-                expression: "form.status"
+                value: _vm.form.fall_sport_id,
+                expression: "form.fall_sport_id"
               }
             ],
             staticClass:
-              "w-full rounded border px-3 py-2 text-lg border shadow-md",
-            attrs: { id: "form.status", name: "status", required: "" },
+              "w-full rounded px-3 h-10 text-blue-800 font-semibold shadow-md",
+            attrs: {
+              name: "fall_sport_id",
+              id: "form.fall_sport_id",
+              required: ""
+            },
             on: {
               change: function($event) {
                 var $$selectedVal = Array.prototype.filter
@@ -28873,18 +31774,265 @@ var render = function() {
                   })
                 _vm.$set(
                   _vm.form,
-                  "status",
+                  "fall_sport_id",
                   $event.target.multiple ? $$selectedVal : $$selectedVal[0]
                 )
               }
             }
           },
-          [
-            _c("option", { attrs: { value: "a" } }, [_vm._v("Active")]),
-            _vm._v(" "),
-            _c("option", { attrs: { value: "i" } }, [_vm._v("Inactive")])
-          ]
+          _vm._l(_vm.fallSports, function(sport) {
+            return _c(
+              "option",
+              { key: sport.id, domProps: { value: sport.id } },
+              [
+                _vm._v(
+                  "\n                " + _vm._s(sport.name) + "\n            "
+                )
+              ]
+            )
+          }),
+          0
         )
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "py-2" }, [
+        _c("div", { staticClass: "flex justify-between content-end" }, [
+          _c(
+            "label",
+            {
+              staticClass: "text-sm font-semibold text-red-900",
+              attrs: { for: "form.winter_sport_id" }
+            },
+            [_vm._v("\n                Spring Sport\n            ")]
+          ),
+          _vm._v(" "),
+          _vm.form.errors.has("winter_sport_id")
+            ? _c("span", {
+                staticClass: "text-red-600 text-xs font-semibold",
+                attrs: { id: "winterSportHelp" },
+                domProps: {
+                  textContent: _vm._s(_vm.form.errors.get("winter_sport_id"))
+                }
+              })
+            : _vm._e()
+        ]),
+        _vm._v(" "),
+        _c(
+          "select",
+          {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.form.winter_sport_id,
+                expression: "form.winter_sport_id"
+              }
+            ],
+            staticClass:
+              "w-full rounded px-3 h-10 text-blue-800 font-semibold shadow-md",
+            attrs: {
+              name: "winter_sport_id",
+              id: "form.winter_sport_id",
+              required: ""
+            },
+            on: {
+              change: function($event) {
+                var $$selectedVal = Array.prototype.filter
+                  .call($event.target.options, function(o) {
+                    return o.selected
+                  })
+                  .map(function(o) {
+                    var val = "_value" in o ? o._value : o.value
+                    return val
+                  })
+                _vm.$set(
+                  _vm.form,
+                  "winter_sport_id",
+                  $event.target.multiple ? $$selectedVal : $$selectedVal[0]
+                )
+              }
+            }
+          },
+          _vm._l(_vm.winterSports, function(sport) {
+            return _c(
+              "option",
+              { key: sport.id, domProps: { value: sport.id } },
+              [
+                _vm._v(
+                  "\n                " + _vm._s(sport.name) + "\n            "
+                )
+              ]
+            )
+          }),
+          0
+        )
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "py-2" }, [
+        _c("div", { staticClass: "flex justify-between content-end" }, [
+          _c(
+            "label",
+            {
+              staticClass: "text-sm font-semibold text-red-900",
+              attrs: { for: "form.spring_sport_id" }
+            },
+            [_vm._v("\n                Fall Sport\n            ")]
+          ),
+          _vm._v(" "),
+          _vm.form.errors.has("spring_sport_id")
+            ? _c("span", {
+                staticClass: "text-red-600 text-xs font-semibold",
+                attrs: { id: "springSportHelp" },
+                domProps: {
+                  textContent: _vm._s(_vm.form.errors.get("spring_sport_id"))
+                }
+              })
+            : _vm._e()
+        ]),
+        _vm._v(" "),
+        _c(
+          "select",
+          {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.form.spring_sport_id,
+                expression: "form.spring_sport_id"
+              }
+            ],
+            staticClass:
+              "w-full rounded px-3 h-10 text-blue-800 font-semibold shadow-md",
+            attrs: {
+              name: "spring_sport_id",
+              id: "form.spring_sport_id",
+              required: ""
+            },
+            on: {
+              change: function($event) {
+                var $$selectedVal = Array.prototype.filter
+                  .call($event.target.options, function(o) {
+                    return o.selected
+                  })
+                  .map(function(o) {
+                    var val = "_value" in o ? o._value : o.value
+                    return val
+                  })
+                _vm.$set(
+                  _vm.form,
+                  "spring_sport_id",
+                  $event.target.multiple ? $$selectedVal : $$selectedVal[0]
+                )
+              }
+            }
+          },
+          _vm._l(_vm.springSports, function(sport) {
+            return _c(
+              "option",
+              { key: sport.id, domProps: { value: sport.id } },
+              [
+                _vm._v(
+                  "\n                " + _vm._s(sport.name) + "\n            "
+                )
+              ]
+            )
+          }),
+          0
+        )
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "text-right pt-2" }, [
+        _c(
+          "button",
+          {
+            staticClass: "bg-green-600 text-white w-20 py-2 rounded-md",
+            attrs: { type: "submit", disabled: _vm.form.errors.any() }
+          },
+          [_vm._v("\n            Create\n        ")]
+        )
+      ])
+    ]
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/forms/NewFallSport.vue?vue&type=template&id=a1d893f8&scoped=true&":
+/*!*********************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/forms/NewFallSport.vue?vue&type=template&id=a1d893f8&scoped=true& ***!
+  \*********************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "form",
+    {
+      attrs: { action: "/api/fall/sports", method: "POST", id: "newFallSport" },
+      on: {
+        submit: function($event) {
+          $event.preventDefault()
+          return _vm.onSubmit($event)
+        },
+        keydown: function($event) {
+          return _vm.form.errors.clear()
+        }
+      }
+    },
+    [
+      _c("div", { staticClass: "py-2" }, [
+        _c("div", { staticClass: "flex justify-between content-end" }, [
+          _c(
+            "label",
+            {
+              staticClass: "text-sm font-semibold text-red-900",
+              attrs: { for: "form.name" }
+            },
+            [_vm._v("\n                Name\n            ")]
+          ),
+          _vm._v(" "),
+          _vm.form.errors.has("name")
+            ? _c("span", {
+                staticClass: "text-red-600 text-xs font-semibold",
+                attrs: { id: "nameHelp" },
+                domProps: { textContent: _vm._s(_vm.form.errors.get("name")) }
+              })
+            : _vm._e()
+        ]),
+        _vm._v(" "),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.form.name,
+              expression: "form.name"
+            }
+          ],
+          staticClass:
+            "w-full rounded border px-3 py-2 text-lg border shadow-md",
+          attrs: { id: "form.name", type: "text", required: "" },
+          domProps: { value: _vm.form.name },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.$set(_vm.form, "name", $event.target.value)
+            }
+          }
+        })
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "text-right pt-2" }, [
@@ -29412,7 +32560,10 @@ var render = function() {
           ],
           staticClass:
             "w-full rounded border px-3 py-2 text-lg border shadow-md",
-          attrs: { id: "form.notes" },
+          attrs: {
+            id: "form.notes",
+            placeholder: "Any medical conditions, concerns, etc."
+          },
           domProps: { value: _vm.form.notes },
           on: {
             input: function($event) {
@@ -29704,10 +32855,10 @@ render._withStripped = true
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/forms/NewSportForm.vue?vue&type=template&id=6dee6fba&scoped=true&":
-/*!*********************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/forms/NewSportForm.vue?vue&type=template&id=6dee6fba&scoped=true& ***!
-  \*********************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/forms/NewSpringSport.vue?vue&type=template&id=06b84ef2&scoped=true&":
+/*!***********************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/forms/NewSpringSport.vue?vue&type=template&id=06b84ef2&scoped=true& ***!
+  \***********************************************************************************************************************************************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -29722,7 +32873,11 @@ var render = function() {
   return _c(
     "form",
     {
-      attrs: { action: "/api/athletes", method: "POST", id: "newSport" },
+      attrs: {
+        action: "/api/spring/sports",
+        method: "POST",
+        id: "newSpringSport"
+      },
       on: {
         submit: function($event) {
           $event.preventDefault()
@@ -29778,61 +32933,102 @@ var render = function() {
         })
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "my-2" }, [
+      _c("div", { staticClass: "text-right pt-2" }, [
+        _c(
+          "button",
+          {
+            staticClass: "bg-green-500 text-white w-20 py-2 rounded-md",
+            attrs: { type: "submit", disabled: _vm.form.errors.any() }
+          },
+          [_vm._v("\n            Create\n        ")]
+        )
+      ])
+    ]
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/forms/NewWinterSport.vue?vue&type=template&id=1ec9093a&scoped=true&":
+/*!***********************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/forms/NewWinterSport.vue?vue&type=template&id=1ec9093a&scoped=true& ***!
+  \***********************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "form",
+    {
+      attrs: {
+        action: "/api/winter/sports",
+        method: "POST",
+        id: "newWinterSport"
+      },
+      on: {
+        submit: function($event) {
+          $event.preventDefault()
+          return _vm.onSubmit($event)
+        },
+        keydown: function($event) {
+          return _vm.form.errors.clear()
+        }
+      }
+    },
+    [
+      _c("div", { staticClass: "py-2" }, [
         _c("div", { staticClass: "flex justify-between content-end" }, [
-          _c("label", { staticClass: "text-sm font-semibold text-red-900" }, [
-            _vm._v("Season")
-          ]),
+          _c(
+            "label",
+            {
+              staticClass: "text-sm font-semibold text-red-900",
+              attrs: { for: "form.name" }
+            },
+            [_vm._v("\n                Name\n            ")]
+          ),
           _vm._v(" "),
-          _vm.form.errors.has("season")
+          _vm.form.errors.has("name")
             ? _c("span", {
                 staticClass: "text-red-600 text-xs font-semibold",
-                attrs: { id: "seasonHelp" },
-                domProps: { textContent: _vm._s(_vm.form.errors.get("season")) }
+                attrs: { id: "nameHelp" },
+                domProps: { textContent: _vm._s(_vm.form.errors.get("name")) }
               })
             : _vm._e()
         ]),
         _vm._v(" "),
-        _c(
-          "select",
-          {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.form.season,
-                expression: "form.season"
-              }
-            ],
-            staticClass:
-              "w-full rounded border px-3 py-2 text-lg border shadow-md ",
-            attrs: { id: "form.season", name: "season", required: "" },
-            on: {
-              change: function($event) {
-                var $$selectedVal = Array.prototype.filter
-                  .call($event.target.options, function(o) {
-                    return o.selected
-                  })
-                  .map(function(o) {
-                    var val = "_value" in o ? o._value : o.value
-                    return val
-                  })
-                _vm.$set(
-                  _vm.form,
-                  "season",
-                  $event.target.multiple ? $$selectedVal : $$selectedVal[0]
-                )
-              }
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.form.name,
+              expression: "form.name"
             }
-          },
-          [
-            _c("option", { attrs: { value: "fall" } }, [_vm._v("Fall")]),
-            _vm._v(" "),
-            _c("option", { attrs: { value: "winter" } }, [_vm._v("Winter")]),
-            _vm._v(" "),
-            _c("option", { attrs: { value: "spring" } }, [_vm._v("Spring")])
-          ]
-        )
+          ],
+          staticClass:
+            "w-full rounded border px-3 py-2 text-lg border shadow-md",
+          attrs: { id: "form.name", type: "text", required: "" },
+          domProps: { value: _vm.form.name },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.$set(_vm.form, "name", $event.target.value)
+            }
+          }
+        })
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "text-right pt-2" }, [
@@ -29849,6 +33045,1110 @@ var render = function() {
   )
 }
 var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/sports/FallSport.vue?vue&type=template&id=a1ecc058&scoped=true&":
+/*!*******************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/sports/FallSport.vue?vue&type=template&id=a1ecc058&scoped=true& ***!
+  \*******************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", {}, [
+    _vm.editing
+      ? _c("div", { staticClass: "p-3" }, [
+          _c("div", { staticClass: "w-full mx-auto" }, [
+            _c(
+              "form",
+              {
+                staticClass:
+                  "bg-gray-100 shadow-md rounded px-8 pt-6 pb-8 mb-4",
+                attrs: {
+                  action: "api/fall/sports/id",
+                  method: "POST",
+                  id: "editFallSport"
+                },
+                on: {
+                  submit: function($event) {
+                    $event.preventDefault()
+                    return _vm.update($event)
+                  },
+                  keydown: function($event) {
+                    return _vm.form.errors.clear()
+                  }
+                }
+              },
+              [
+                _c("div", { staticClass: "py-2" }, [
+                  _c(
+                    "div",
+                    { staticClass: "flex justify-between content-end" },
+                    [
+                      _c(
+                        "label",
+                        {
+                          staticClass: "text-sm font-semibold text-red-900",
+                          attrs: { for: "form.name" }
+                        },
+                        [
+                          _vm._v(
+                            "\n                            Name\n                        "
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _vm.form.errors.has("name")
+                        ? _c("span", {
+                            staticClass: "text-red-600 text-xs font-semibold",
+                            attrs: { id: "nameHelp" },
+                            domProps: {
+                              textContent: _vm._s(_vm.form.errors.get("name"))
+                            }
+                          })
+                        : _vm._e()
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.form.name,
+                        expression: "form.name"
+                      }
+                    ],
+                    staticClass:
+                      "w-full rounded border px-3 py-2 text-lg border shadow-md",
+                    attrs: { id: "form.name", type: "text", required: "" },
+                    domProps: { value: _vm.form.name },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(_vm.form, "name", $event.target.value)
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: " pt-2 flex items-center justify-end" },
+                  [
+                    _c(
+                      "update-button",
+                      {
+                        staticClass: "mr-4",
+                        attrs: { disabled: _vm.form.errors.any() }
+                      },
+                      [
+                        _vm._v(
+                          "\n                        Update\n                    "
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c("cancel-button", { on: { clicked: _vm.resetForm } })
+                  ],
+                  1
+                )
+              ]
+            )
+          ])
+        ])
+      : _c("div", { staticClass: "flex py-1 items-center hover:bg-gray-100" }, [
+          _c("div", { staticClass: "flex flex-col w-full" }, [
+            _c("div", { staticClass: "flex w-full" }, [
+              _c("div", { staticClass: "flex pt-1 w-11/12 px-2" }, [
+                _c("div", { staticClass: "flex" }, [
+                  _c(
+                    "a",
+                    {
+                      staticClass: "hover:font-semibold hover:underline",
+                      attrs: { href: _vm.url }
+                    },
+                    [
+                      _vm._v(
+                        "\n                            " +
+                          _vm._s(_vm.name) +
+                          "\n                        "
+                      )
+                    ]
+                  )
+                ])
+              ]),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "flex w-1/12 pt-1 justify-end px-4" },
+                [_c("expand-button", { on: { toggleRow: _vm.toggleRow } })],
+                1
+              )
+            ]),
+            _vm._v(" "),
+            _vm.isExpanded
+              ? _c("div", { staticClass: "p-2" }, [
+                  _c(
+                    "div",
+                    { staticClass: "flex justify-start cursor-pointer" },
+                    [
+                      _c("edit-button", {
+                        on: {
+                          clicked: function($event) {
+                            _vm.editing = true
+                          }
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("delete-button", { on: { clicked: _vm.destroy } })
+                    ],
+                    1
+                  )
+                ])
+              : _vm._e()
+          ])
+        ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/sports/FallSports.vue?vue&type=template&id=35d5fbcf&scoped=true&":
+/*!********************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/sports/FallSports.vue?vue&type=template&id=35d5fbcf&scoped=true& ***!
+  \********************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "flex flex-col w-full" }, [
+    _c(
+      "header",
+      { staticClass: "w-full lg:text-2xl py-4 text-gray-900 text-center" },
+      [_vm._v("Fall Sports")]
+    ),
+    _vm._v(" "),
+    _c("div", {}, [
+      _c("div", { staticClass: "flex" }, [
+        _vm._m(0),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "flex w-2/12 justify-end px-2 items-center" },
+          [
+            _c(
+              "button",
+              {
+                staticClass: "flex",
+                attrs: { type: "button" },
+                on: {
+                  click: function($event) {
+                    _vm.active = true
+                  }
+                }
+              },
+              [_c("i", { staticClass: "fas fa-plus text-red-900 pt-1 px-2" })]
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                directives: [
+                  {
+                    name: "show",
+                    rawName: "v-show",
+                    value: _vm.active,
+                    expression: "active"
+                  }
+                ],
+                staticClass:
+                  "flex w-full fixed inset-0 overflow-auto z-50 bg-gray-700 bg-opacity-75"
+              },
+              [
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "relative bg-white w-full md:w-2/3 lg:w-1/3 h-full md:h-auto m-auto md:rounded flex flex-col p-4"
+                  },
+                  [
+                    _c(
+                      "header",
+                      {
+                        staticClass:
+                          "border-b-2 border-red-900 flex justify-between items-center"
+                      },
+                      [
+                        _vm._m(1),
+                        _vm._v(" "),
+                        _c(
+                          "button",
+                          {
+                            attrs: { type: "button", "aria-label": "close" },
+                            on: { click: _vm.close }
+                          },
+                          [
+                            _c("i", {
+                              staticClass: "fas fa-times text-xl text-gray-700"
+                            })
+                          ]
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "section",
+                      { staticClass: "my-3 p-4 bg-gray-200 rounded-lg" },
+                      [_c("new-fall-sport", { on: { created: _vm.add } })],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "footer",
+                      {
+                        staticClass:
+                          "border-t-2 border-red-900 flex justify-end"
+                      },
+                      [
+                        _c(
+                          "button",
+                          {
+                            staticClass: "py-2 text-gray-800 text-sm",
+                            attrs: { type: "button" },
+                            on: { click: _vm.close }
+                          },
+                          [
+                            _vm._v(
+                              "\n                                Cancel\n                            "
+                            )
+                          ]
+                        )
+                      ]
+                    )
+                  ]
+                )
+              ]
+            )
+          ]
+        )
+      ]),
+      _vm._v(" "),
+      _vm.records
+        ? _c(
+            "div",
+            { staticClass: "divide-y border-t border-b" },
+            _vm._l(_vm.items, function(fallSport, index) {
+              return _c(
+                "div",
+                { key: fallSport.id },
+                [
+                  _c("fall-sport", {
+                    attrs: { data: fallSport },
+                    on: {
+                      deleted: function($event) {
+                        return _vm.remove(index)
+                      }
+                    }
+                  })
+                ],
+                1
+              )
+            }),
+            0
+          )
+        : _c("div", { staticClass: "flex flex-col text-center" }, [
+            _c("p", { staticClass: "text-2xl text-tertiary p-4" }, [
+              _vm._v("No Sports Listed")
+            ])
+          ])
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      { staticClass: "flex w-10/12 px-2 text-gray-500 font-semibold" },
+      [_c("div", { staticClass: "w-1/3" }, [_c("p", {}, [_vm._v("Name")])])]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", [
+      _c("p", { staticClass: "font-thin text-2xl text-black" }, [
+        _vm._v(
+          "\n                                    Create New Fall Sport\n                                "
+        )
+      ])
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/sports/SpringSport.vue?vue&type=template&id=3e49f67c&scoped=true&":
+/*!*********************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/sports/SpringSport.vue?vue&type=template&id=3e49f67c&scoped=true& ***!
+  \*********************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", {}, [
+    _vm.editing
+      ? _c("div", { staticClass: "p-3" }, [
+          _c("div", { staticClass: "w-full mx-auto" }, [
+            _c(
+              "form",
+              {
+                staticClass:
+                  "bg-gray-100 shadow-md rounded px-8 pt-6 pb-8 mb-4",
+                attrs: {
+                  action: "api/spring/sports/id",
+                  method: "POST",
+                  id: "editSpringSport"
+                },
+                on: {
+                  submit: function($event) {
+                    $event.preventDefault()
+                    return _vm.update($event)
+                  },
+                  keydown: function($event) {
+                    return _vm.form.errors.clear()
+                  }
+                }
+              },
+              [
+                _c("div", { staticClass: "py-2" }, [
+                  _c(
+                    "div",
+                    { staticClass: "flex justify-between content-end" },
+                    [
+                      _c(
+                        "label",
+                        {
+                          staticClass: "text-sm font-semibold text-red-900",
+                          attrs: { for: "form.name" }
+                        },
+                        [
+                          _vm._v(
+                            "\n                            Name\n                        "
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _vm.form.errors.has("name")
+                        ? _c("span", {
+                            staticClass: "text-red-600 text-xs font-semibold",
+                            attrs: { id: "nameHelp" },
+                            domProps: {
+                              textContent: _vm._s(_vm.form.errors.get("name"))
+                            }
+                          })
+                        : _vm._e()
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.form.name,
+                        expression: "form.name"
+                      }
+                    ],
+                    staticClass:
+                      "w-full rounded border px-3 py-2 text-lg border shadow-md",
+                    attrs: { id: "form.name", type: "text", required: "" },
+                    domProps: { value: _vm.form.name },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(_vm.form, "name", $event.target.value)
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: " pt-2 flex items-center justify-end" },
+                  [
+                    _c(
+                      "update-button",
+                      {
+                        staticClass: "mr-4",
+                        attrs: { disabled: _vm.form.errors.any() }
+                      },
+                      [
+                        _vm._v(
+                          "\n                        Update\n                    "
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c("cancel-button", { on: { clicked: _vm.resetForm } })
+                  ],
+                  1
+                )
+              ]
+            )
+          ])
+        ])
+      : _c("div", { staticClass: "flex py-1 items-center hover:bg-gray-100" }, [
+          _c("div", { staticClass: "flex flex-col w-full" }, [
+            _c("div", { staticClass: "flex w-full" }, [
+              _c("div", { staticClass: "flex pt-1 w-11/12 px-2" }, [
+                _c("div", { staticClass: "flex" }, [
+                  _c(
+                    "a",
+                    {
+                      staticClass: "hover:font-semibold hover:underline",
+                      attrs: { href: _vm.url }
+                    },
+                    [
+                      _vm._v(
+                        "\n                            " +
+                          _vm._s(_vm.name) +
+                          "\n                        "
+                      )
+                    ]
+                  )
+                ])
+              ]),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "flex w-1/12 pt-1 justify-end px-4" },
+                [_c("expand-button", { on: { toggleRow: _vm.toggleRow } })],
+                1
+              )
+            ]),
+            _vm._v(" "),
+            _vm.isExpanded
+              ? _c("div", { staticClass: "p-2" }, [
+                  _c(
+                    "div",
+                    { staticClass: "flex justify-start cursor-pointer" },
+                    [
+                      _c("edit-button", {
+                        on: {
+                          clicked: function($event) {
+                            _vm.editing = true
+                          }
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("delete-button", { on: { clicked: _vm.destroy } })
+                    ],
+                    1
+                  )
+                ])
+              : _vm._e()
+          ])
+        ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/sports/SpringSports.vue?vue&type=template&id=3e3134a1&":
+/*!**********************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/sports/SpringSports.vue?vue&type=template&id=3e3134a1& ***!
+  \**********************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "flex flex-col w-full" }, [
+    _c(
+      "header",
+      { staticClass: "w-full lg:text-2xl py-4 text-gray-900 text-center" },
+      [_vm._v("Spring Sports")]
+    ),
+    _vm._v(" "),
+    _c("div", {}, [
+      _c("div", { staticClass: "flex" }, [
+        _vm._m(0),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "flex w-2/12 justify-end px-2 items-center" },
+          [
+            _c(
+              "button",
+              {
+                staticClass: "flex",
+                attrs: { type: "button" },
+                on: {
+                  click: function($event) {
+                    _vm.active = true
+                  }
+                }
+              },
+              [_c("i", { staticClass: "fas fa-plus text-red-900 pt-1 px-2" })]
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                directives: [
+                  {
+                    name: "show",
+                    rawName: "v-show",
+                    value: _vm.active,
+                    expression: "active"
+                  }
+                ],
+                staticClass:
+                  "flex w-full fixed inset-0 overflow-auto z-50 bg-gray-700 bg-opacity-75"
+              },
+              [
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "relative bg-white w-full md:w-2/3 lg:w-1/3 h-full md:h-auto m-auto md:rounded flex flex-col p-4"
+                  },
+                  [
+                    _c(
+                      "header",
+                      {
+                        staticClass:
+                          "border-b-2 border-red-900 flex justify-between items-center"
+                      },
+                      [
+                        _vm._m(1),
+                        _vm._v(" "),
+                        _c(
+                          "button",
+                          {
+                            attrs: { type: "button", "aria-label": "close" },
+                            on: { click: _vm.close }
+                          },
+                          [
+                            _c("i", {
+                              staticClass: "fas fa-times text-xl text-gray-700"
+                            })
+                          ]
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "section",
+                      { staticClass: "my-3 p-4 bg-gray-200 rounded-lg" },
+                      [_c("new-spring-sport", { on: { created: _vm.add } })],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "footer",
+                      {
+                        staticClass:
+                          "border-t-2 border-red-900 flex justify-end"
+                      },
+                      [
+                        _c(
+                          "button",
+                          {
+                            staticClass: "py-2 text-gray-800 text-sm",
+                            attrs: { type: "button" },
+                            on: { click: _vm.close }
+                          },
+                          [
+                            _vm._v(
+                              "\n                                Cancel\n                            "
+                            )
+                          ]
+                        )
+                      ]
+                    )
+                  ]
+                )
+              ]
+            )
+          ]
+        )
+      ]),
+      _vm._v(" "),
+      _vm.records
+        ? _c(
+            "div",
+            { staticClass: "divide-y border-t border-b" },
+            _vm._l(_vm.items, function(springSport, index) {
+              return _c(
+                "div",
+                { key: springSport.id },
+                [
+                  _c("spring-sport", {
+                    attrs: { data: springSport },
+                    on: {
+                      deleted: function($event) {
+                        return _vm.remove(index)
+                      }
+                    }
+                  })
+                ],
+                1
+              )
+            }),
+            0
+          )
+        : _c("div", { staticClass: "flex flex-col text-center" }, [
+            _c("p", { staticClass: "text-2xl text-tertiary p-4" }, [
+              _vm._v("No Sports Listed")
+            ])
+          ])
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      { staticClass: "flex w-10/12 px-2 text-gray-500 font-semibold" },
+      [_c("div", { staticClass: "w-1/3" }, [_c("p", {}, [_vm._v("Name")])])]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", [
+      _c("p", { staticClass: "font-thin text-2xl text-black" }, [
+        _vm._v(
+          "\n                                    Create New Spring Sport\n                                "
+        )
+      ])
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/sports/WinterSport.vue?vue&type=template&id=0e2881ec&scoped=true&":
+/*!*********************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/sports/WinterSport.vue?vue&type=template&id=0e2881ec&scoped=true& ***!
+  \*********************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", {}, [
+    _vm.editing
+      ? _c("div", { staticClass: "p-3" }, [
+          _c("div", { staticClass: "w-full mx-auto" }, [
+            _c(
+              "form",
+              {
+                staticClass:
+                  "bg-gray-100 shadow-md rounded px-8 pt-6 pb-8 mb-4",
+                attrs: {
+                  action: "api/winter/sports/id",
+                  method: "POST",
+                  id: "editWinterSport"
+                },
+                on: {
+                  submit: function($event) {
+                    $event.preventDefault()
+                    return _vm.update($event)
+                  },
+                  keydown: function($event) {
+                    return _vm.form.errors.clear()
+                  }
+                }
+              },
+              [
+                _c("div", { staticClass: "py-2" }, [
+                  _c(
+                    "div",
+                    { staticClass: "flex justify-between content-end" },
+                    [
+                      _c(
+                        "label",
+                        {
+                          staticClass: "text-sm font-semibold text-red-900",
+                          attrs: { for: "form.name" }
+                        },
+                        [
+                          _vm._v(
+                            "\n                            Name\n                        "
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _vm.form.errors.has("name")
+                        ? _c("span", {
+                            staticClass: "text-red-600 text-xs font-semibold",
+                            attrs: { id: "nameHelp" },
+                            domProps: {
+                              textContent: _vm._s(_vm.form.errors.get("name"))
+                            }
+                          })
+                        : _vm._e()
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.form.name,
+                        expression: "form.name"
+                      }
+                    ],
+                    staticClass:
+                      "w-full rounded border px-3 py-2 text-lg border shadow-md",
+                    attrs: { id: "form.name", type: "text", required: "" },
+                    domProps: { value: _vm.form.name },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(_vm.form, "name", $event.target.value)
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: " pt-2 flex items-center justify-end" },
+                  [
+                    _c(
+                      "update-button",
+                      {
+                        staticClass: "mr-4",
+                        attrs: { disabled: _vm.form.errors.any() }
+                      },
+                      [
+                        _vm._v(
+                          "\n                        Update\n                    "
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c("cancel-button", { on: { clicked: _vm.resetForm } })
+                  ],
+                  1
+                )
+              ]
+            )
+          ])
+        ])
+      : _c("div", { staticClass: "flex py-1 items-center hover:bg-gray-100" }, [
+          _c("div", { staticClass: "flex flex-col w-full" }, [
+            _c("div", { staticClass: "flex w-full" }, [
+              _c("div", { staticClass: "flex pt-1 w-11/12 px-2" }, [
+                _c("div", { staticClass: "flex" }, [
+                  _c(
+                    "a",
+                    {
+                      staticClass: "hover:font-semibold hover:underline",
+                      attrs: { href: _vm.url }
+                    },
+                    [
+                      _vm._v(
+                        "\n                            " +
+                          _vm._s(_vm.name) +
+                          "\n                        "
+                      )
+                    ]
+                  )
+                ])
+              ]),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "flex w-1/12 pt-1 justify-end px-4" },
+                [_c("expand-button", { on: { toggleRow: _vm.toggleRow } })],
+                1
+              )
+            ]),
+            _vm._v(" "),
+            _vm.isExpanded
+              ? _c("div", { staticClass: "p-2" }, [
+                  _c(
+                    "div",
+                    { staticClass: "flex justify-start cursor-pointer" },
+                    [
+                      _c("edit-button", {
+                        on: {
+                          clicked: function($event) {
+                            _vm.editing = true
+                          }
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("delete-button", { on: { clicked: _vm.destroy } })
+                    ],
+                    1
+                  )
+                ])
+              : _vm._e()
+          ])
+        ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/sports/WinterSports.vue?vue&type=template&id=2837c359&":
+/*!**********************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/sports/WinterSports.vue?vue&type=template&id=2837c359& ***!
+  \**********************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "flex flex-col w-full" }, [
+    _c(
+      "header",
+      { staticClass: "w-full lg:text-2xl py-4 text-gray-900 text-center" },
+      [_vm._v("Winter Sports")]
+    ),
+    _vm._v(" "),
+    _c("div", {}, [
+      _c("div", { staticClass: "flex" }, [
+        _vm._m(0),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "flex w-2/12 justify-end px-2 items-center" },
+          [
+            _c(
+              "button",
+              {
+                staticClass: "flex",
+                attrs: { type: "button" },
+                on: {
+                  click: function($event) {
+                    _vm.active = true
+                  }
+                }
+              },
+              [_c("i", { staticClass: "fas fa-plus text-red-900 pt-1 px-2" })]
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                directives: [
+                  {
+                    name: "show",
+                    rawName: "v-show",
+                    value: _vm.active,
+                    expression: "active"
+                  }
+                ],
+                staticClass:
+                  "flex w-full fixed inset-0 overflow-auto z-50 bg-gray-700 bg-opacity-75"
+              },
+              [
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "relative bg-white w-full md:w-2/3 lg:w-1/3 h-full md:h-auto m-auto md:rounded flex flex-col p-4"
+                  },
+                  [
+                    _c(
+                      "header",
+                      {
+                        staticClass:
+                          "border-b-2 border-red-900 flex justify-between items-center"
+                      },
+                      [
+                        _vm._m(1),
+                        _vm._v(" "),
+                        _c(
+                          "button",
+                          {
+                            attrs: { type: "button", "aria-label": "close" },
+                            on: { click: _vm.close }
+                          },
+                          [
+                            _c("i", {
+                              staticClass: "fas fa-times text-xl text-gray-700"
+                            })
+                          ]
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "section",
+                      { staticClass: "my-3 p-4 bg-gray-200 rounded-lg" },
+                      [_c("new-winter-sport", { on: { created: _vm.add } })],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "footer",
+                      {
+                        staticClass:
+                          "border-t-2 border-red-900 flex justify-end"
+                      },
+                      [
+                        _c(
+                          "button",
+                          {
+                            staticClass: "py-2 text-gray-800 text-sm",
+                            attrs: { type: "button" },
+                            on: { click: _vm.close }
+                          },
+                          [
+                            _vm._v(
+                              "\n                                Cancel\n                            "
+                            )
+                          ]
+                        )
+                      ]
+                    )
+                  ]
+                )
+              ]
+            )
+          ]
+        )
+      ]),
+      _vm._v(" "),
+      _vm.records
+        ? _c(
+            "div",
+            { staticClass: "divide-y border-t border-b" },
+            _vm._l(_vm.items, function(winterSport, index) {
+              return _c(
+                "div",
+                { key: winterSport.id },
+                [
+                  _c("winter-sport", {
+                    attrs: { data: winterSport },
+                    on: {
+                      deleted: function($event) {
+                        return _vm.remove(index)
+                      }
+                    }
+                  })
+                ],
+                1
+              )
+            }),
+            0
+          )
+        : _c("div", { staticClass: "flex flex-col text-center" }, [
+            _c("p", { staticClass: "text-2xl text-tertiary p-4" }, [
+              _vm._v("No Sports Listed")
+            ])
+          ])
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      { staticClass: "flex w-10/12 px-2 text-gray-500 font-semibold" },
+      [_c("div", { staticClass: "w-1/3" }, [_c("p", {}, [_vm._v("Name")])])]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", [
+      _c("p", { staticClass: "font-thin text-2xl text-black" }, [
+        _vm._v(
+          "\n                                    Create New Winter Sport\n                                "
+        )
+      ])
+    ])
+  }
+]
 render._withStripped = true
 
 
@@ -46952,8 +51252,6 @@ module.exports = function(module) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var vue_sweetalert2__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue-sweetalert2 */ "./node_modules/vue-sweetalert2/dist/index.js");
-
 /* harmony default export */ __webpack_exports__["default"] = (Vue.extend({
   props: ['data'],
   data: function data() {
@@ -47058,144 +51356,6 @@ window.flash = function (message) {
 
 window.Form = _utilities_Form__WEBPACK_IMPORTED_MODULE_3__["default"];
 window.Errors = _utilities_Errors__WEBPACK_IMPORTED_MODULE_4__["default"];
-
-/***/ }),
-
-/***/ "./resources/js/components/Athlete.vue":
-/*!*********************************************!*\
-  !*** ./resources/js/components/Athlete.vue ***!
-  \*********************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _Athlete_vue_vue_type_template_id_a69208b8_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Athlete.vue?vue&type=template&id=a69208b8&scoped=true& */ "./resources/js/components/Athlete.vue?vue&type=template&id=a69208b8&scoped=true&");
-/* harmony import */ var _Athlete_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Athlete.vue?vue&type=script&lang=js& */ "./resources/js/components/Athlete.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
-
-
-
-
-
-/* normalize component */
-
-var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
-  _Athlete_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _Athlete_vue_vue_type_template_id_a69208b8_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _Athlete_vue_vue_type_template_id_a69208b8_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
-  false,
-  null,
-  "a69208b8",
-  null
-  
-)
-
-/* hot reload */
-if (false) { var api; }
-component.options.__file = "resources/js/components/Athlete.vue"
-/* harmony default export */ __webpack_exports__["default"] = (component.exports);
-
-/***/ }),
-
-/***/ "./resources/js/components/Athlete.vue?vue&type=script&lang=js&":
-/*!**********************************************************************!*\
-  !*** ./resources/js/components/Athlete.vue?vue&type=script&lang=js& ***!
-  \**********************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Athlete_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./Athlete.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Athlete.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Athlete_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
-
-/***/ }),
-
-/***/ "./resources/js/components/Athlete.vue?vue&type=template&id=a69208b8&scoped=true&":
-/*!****************************************************************************************!*\
-  !*** ./resources/js/components/Athlete.vue?vue&type=template&id=a69208b8&scoped=true& ***!
-  \****************************************************************************************/
-/*! exports provided: render, staticRenderFns */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Athlete_vue_vue_type_template_id_a69208b8_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./Athlete.vue?vue&type=template&id=a69208b8&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Athlete.vue?vue&type=template&id=a69208b8&scoped=true&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Athlete_vue_vue_type_template_id_a69208b8_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Athlete_vue_vue_type_template_id_a69208b8_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
-
-
-
-/***/ }),
-
-/***/ "./resources/js/components/Athletes.vue":
-/*!**********************************************!*\
-  !*** ./resources/js/components/Athletes.vue ***!
-  \**********************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _Athletes_vue_vue_type_template_id_2457cc02_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Athletes.vue?vue&type=template&id=2457cc02&scoped=true& */ "./resources/js/components/Athletes.vue?vue&type=template&id=2457cc02&scoped=true&");
-/* harmony import */ var _Athletes_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Athletes.vue?vue&type=script&lang=js& */ "./resources/js/components/Athletes.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
-
-
-
-
-
-/* normalize component */
-
-var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
-  _Athletes_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _Athletes_vue_vue_type_template_id_2457cc02_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _Athletes_vue_vue_type_template_id_2457cc02_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
-  false,
-  null,
-  "2457cc02",
-  null
-  
-)
-
-/* hot reload */
-if (false) { var api; }
-component.options.__file = "resources/js/components/Athletes.vue"
-/* harmony default export */ __webpack_exports__["default"] = (component.exports);
-
-/***/ }),
-
-/***/ "./resources/js/components/Athletes.vue?vue&type=script&lang=js&":
-/*!***********************************************************************!*\
-  !*** ./resources/js/components/Athletes.vue?vue&type=script&lang=js& ***!
-  \***********************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Athletes_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./Athletes.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Athletes.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Athletes_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
-
-/***/ }),
-
-/***/ "./resources/js/components/Athletes.vue?vue&type=template&id=2457cc02&scoped=true&":
-/*!*****************************************************************************************!*\
-  !*** ./resources/js/components/Athletes.vue?vue&type=template&id=2457cc02&scoped=true& ***!
-  \*****************************************************************************************/
-/*! exports provided: render, staticRenderFns */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Athletes_vue_vue_type_template_id_2457cc02_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./Athletes.vue?vue&type=template&id=2457cc02&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Athletes.vue?vue&type=template&id=2457cc02&scoped=true&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Athletes_vue_vue_type_template_id_2457cc02_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Athletes_vue_vue_type_template_id_2457cc02_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
-
-
 
 /***/ }),
 
@@ -47406,17 +51566,17 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/components/Sport.vue":
-/*!*******************************************!*\
-  !*** ./resources/js/components/Sport.vue ***!
-  \*******************************************/
+/***/ "./resources/js/components/ProfilePhysical.vue":
+/*!*****************************************************!*\
+  !*** ./resources/js/components/ProfilePhysical.vue ***!
+  \*****************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _Sport_vue_vue_type_template_id_cf0273ce_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Sport.vue?vue&type=template&id=cf0273ce&scoped=true& */ "./resources/js/components/Sport.vue?vue&type=template&id=cf0273ce&scoped=true&");
-/* harmony import */ var _Sport_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Sport.vue?vue&type=script&lang=js& */ "./resources/js/components/Sport.vue?vue&type=script&lang=js&");
+/* harmony import */ var _ProfilePhysical_vue_vue_type_template_id_063d5bf6_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ProfilePhysical.vue?vue&type=template&id=063d5bf6&scoped=true& */ "./resources/js/components/ProfilePhysical.vue?vue&type=template&id=063d5bf6&scoped=true&");
+/* harmony import */ var _ProfilePhysical_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ProfilePhysical.vue?vue&type=script&lang=js& */ "./resources/js/components/ProfilePhysical.vue?vue&type=script&lang=js&");
 /* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -47426,66 +51586,66 @@ __webpack_require__.r(__webpack_exports__);
 /* normalize component */
 
 var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
-  _Sport_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _Sport_vue_vue_type_template_id_cf0273ce_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _Sport_vue_vue_type_template_id_cf0273ce_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  _ProfilePhysical_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _ProfilePhysical_vue_vue_type_template_id_063d5bf6_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _ProfilePhysical_vue_vue_type_template_id_063d5bf6_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
   false,
   null,
-  "cf0273ce",
+  "063d5bf6",
   null
   
 )
 
 /* hot reload */
 if (false) { var api; }
-component.options.__file = "resources/js/components/Sport.vue"
+component.options.__file = "resources/js/components/ProfilePhysical.vue"
 /* harmony default export */ __webpack_exports__["default"] = (component.exports);
 
 /***/ }),
 
-/***/ "./resources/js/components/Sport.vue?vue&type=script&lang=js&":
-/*!********************************************************************!*\
-  !*** ./resources/js/components/Sport.vue?vue&type=script&lang=js& ***!
-  \********************************************************************/
+/***/ "./resources/js/components/ProfilePhysical.vue?vue&type=script&lang=js&":
+/*!******************************************************************************!*\
+  !*** ./resources/js/components/ProfilePhysical.vue?vue&type=script&lang=js& ***!
+  \******************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Sport_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./Sport.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Sport.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Sport_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ProfilePhysical_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./ProfilePhysical.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ProfilePhysical.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ProfilePhysical_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
-/***/ "./resources/js/components/Sport.vue?vue&type=template&id=cf0273ce&scoped=true&":
-/*!**************************************************************************************!*\
-  !*** ./resources/js/components/Sport.vue?vue&type=template&id=cf0273ce&scoped=true& ***!
-  \**************************************************************************************/
+/***/ "./resources/js/components/ProfilePhysical.vue?vue&type=template&id=063d5bf6&scoped=true&":
+/*!************************************************************************************************!*\
+  !*** ./resources/js/components/ProfilePhysical.vue?vue&type=template&id=063d5bf6&scoped=true& ***!
+  \************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Sport_vue_vue_type_template_id_cf0273ce_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./Sport.vue?vue&type=template&id=cf0273ce&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Sport.vue?vue&type=template&id=cf0273ce&scoped=true&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Sport_vue_vue_type_template_id_cf0273ce_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ProfilePhysical_vue_vue_type_template_id_063d5bf6_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./ProfilePhysical.vue?vue&type=template&id=063d5bf6&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ProfilePhysical.vue?vue&type=template&id=063d5bf6&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ProfilePhysical_vue_vue_type_template_id_063d5bf6_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Sport_vue_vue_type_template_id_cf0273ce_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ProfilePhysical_vue_vue_type_template_id_063d5bf6_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 
 /***/ }),
 
-/***/ "./resources/js/components/Sports.vue":
-/*!********************************************!*\
-  !*** ./resources/js/components/Sports.vue ***!
-  \********************************************/
+/***/ "./resources/js/components/ProfilePhysicals.vue":
+/*!******************************************************!*\
+  !*** ./resources/js/components/ProfilePhysicals.vue ***!
+  \******************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _Sports_vue_vue_type_template_id_7b059e2a_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Sports.vue?vue&type=template&id=7b059e2a&scoped=true& */ "./resources/js/components/Sports.vue?vue&type=template&id=7b059e2a&scoped=true&");
-/* harmony import */ var _Sports_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Sports.vue?vue&type=script&lang=js& */ "./resources/js/components/Sports.vue?vue&type=script&lang=js&");
+/* harmony import */ var _ProfilePhysicals_vue_vue_type_template_id_ba16e084_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ProfilePhysicals.vue?vue&type=template&id=ba16e084&scoped=true& */ "./resources/js/components/ProfilePhysicals.vue?vue&type=template&id=ba16e084&scoped=true&");
+/* harmony import */ var _ProfilePhysicals_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ProfilePhysicals.vue?vue&type=script&lang=js& */ "./resources/js/components/ProfilePhysicals.vue?vue&type=script&lang=js&");
 /* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -47495,50 +51655,326 @@ __webpack_require__.r(__webpack_exports__);
 /* normalize component */
 
 var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
-  _Sports_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _Sports_vue_vue_type_template_id_7b059e2a_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _Sports_vue_vue_type_template_id_7b059e2a_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  _ProfilePhysicals_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _ProfilePhysicals_vue_vue_type_template_id_ba16e084_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _ProfilePhysicals_vue_vue_type_template_id_ba16e084_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
   false,
   null,
-  "7b059e2a",
+  "ba16e084",
   null
   
 )
 
 /* hot reload */
 if (false) { var api; }
-component.options.__file = "resources/js/components/Sports.vue"
+component.options.__file = "resources/js/components/ProfilePhysicals.vue"
 /* harmony default export */ __webpack_exports__["default"] = (component.exports);
 
 /***/ }),
 
-/***/ "./resources/js/components/Sports.vue?vue&type=script&lang=js&":
-/*!*********************************************************************!*\
-  !*** ./resources/js/components/Sports.vue?vue&type=script&lang=js& ***!
-  \*********************************************************************/
+/***/ "./resources/js/components/ProfilePhysicals.vue?vue&type=script&lang=js&":
+/*!*******************************************************************************!*\
+  !*** ./resources/js/components/ProfilePhysicals.vue?vue&type=script&lang=js& ***!
+  \*******************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Sports_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./Sports.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Sports.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Sports_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ProfilePhysicals_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./ProfilePhysicals.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ProfilePhysicals.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ProfilePhysicals_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
-/***/ "./resources/js/components/Sports.vue?vue&type=template&id=7b059e2a&scoped=true&":
-/*!***************************************************************************************!*\
-  !*** ./resources/js/components/Sports.vue?vue&type=template&id=7b059e2a&scoped=true& ***!
-  \***************************************************************************************/
+/***/ "./resources/js/components/ProfilePhysicals.vue?vue&type=template&id=ba16e084&scoped=true&":
+/*!*************************************************************************************************!*\
+  !*** ./resources/js/components/ProfilePhysicals.vue?vue&type=template&id=ba16e084&scoped=true& ***!
+  \*************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Sports_vue_vue_type_template_id_7b059e2a_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./Sports.vue?vue&type=template&id=7b059e2a&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Sports.vue?vue&type=template&id=7b059e2a&scoped=true&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Sports_vue_vue_type_template_id_7b059e2a_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ProfilePhysicals_vue_vue_type_template_id_ba16e084_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./ProfilePhysicals.vue?vue&type=template&id=ba16e084&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ProfilePhysicals.vue?vue&type=template&id=ba16e084&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ProfilePhysicals_vue_vue_type_template_id_ba16e084_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Sports_vue_vue_type_template_id_7b059e2a_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ProfilePhysicals_vue_vue_type_template_id_ba16e084_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/athletes/Athlete.vue":
+/*!******************************************************!*\
+  !*** ./resources/js/components/athletes/Athlete.vue ***!
+  \******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Athlete_vue_vue_type_template_id_b14d3522_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Athlete.vue?vue&type=template&id=b14d3522&scoped=true& */ "./resources/js/components/athletes/Athlete.vue?vue&type=template&id=b14d3522&scoped=true&");
+/* harmony import */ var _Athlete_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Athlete.vue?vue&type=script&lang=js& */ "./resources/js/components/athletes/Athlete.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _Athlete_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _Athlete_vue_vue_type_template_id_b14d3522_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _Athlete_vue_vue_type_template_id_b14d3522_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  "b14d3522",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/athletes/Athlete.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/athletes/Athlete.vue?vue&type=script&lang=js&":
+/*!*******************************************************************************!*\
+  !*** ./resources/js/components/athletes/Athlete.vue?vue&type=script&lang=js& ***!
+  \*******************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Athlete_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./Athlete.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/athletes/Athlete.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Athlete_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/athletes/Athlete.vue?vue&type=template&id=b14d3522&scoped=true&":
+/*!*************************************************************************************************!*\
+  !*** ./resources/js/components/athletes/Athlete.vue?vue&type=template&id=b14d3522&scoped=true& ***!
+  \*************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Athlete_vue_vue_type_template_id_b14d3522_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./Athlete.vue?vue&type=template&id=b14d3522&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/athletes/Athlete.vue?vue&type=template&id=b14d3522&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Athlete_vue_vue_type_template_id_b14d3522_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Athlete_vue_vue_type_template_id_b14d3522_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/athletes/Athletes.vue":
+/*!*******************************************************!*\
+  !*** ./resources/js/components/athletes/Athletes.vue ***!
+  \*******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Athletes_vue_vue_type_template_id_477ee994_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Athletes.vue?vue&type=template&id=477ee994&scoped=true& */ "./resources/js/components/athletes/Athletes.vue?vue&type=template&id=477ee994&scoped=true&");
+/* harmony import */ var _Athletes_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Athletes.vue?vue&type=script&lang=js& */ "./resources/js/components/athletes/Athletes.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _Athletes_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _Athletes_vue_vue_type_template_id_477ee994_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _Athletes_vue_vue_type_template_id_477ee994_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  "477ee994",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/athletes/Athletes.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/athletes/Athletes.vue?vue&type=script&lang=js&":
+/*!********************************************************************************!*\
+  !*** ./resources/js/components/athletes/Athletes.vue?vue&type=script&lang=js& ***!
+  \********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Athletes_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./Athletes.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/athletes/Athletes.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Athletes_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/athletes/Athletes.vue?vue&type=template&id=477ee994&scoped=true&":
+/*!**************************************************************************************************!*\
+  !*** ./resources/js/components/athletes/Athletes.vue?vue&type=template&id=477ee994&scoped=true& ***!
+  \**************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Athletes_vue_vue_type_template_id_477ee994_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./Athletes.vue?vue&type=template&id=477ee994&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/athletes/Athletes.vue?vue&type=template&id=477ee994&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Athletes_vue_vue_type_template_id_477ee994_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Athletes_vue_vue_type_template_id_477ee994_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/athletes/SportAthlete.vue":
+/*!***********************************************************!*\
+  !*** ./resources/js/components/athletes/SportAthlete.vue ***!
+  \***********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _SportAthlete_vue_vue_type_template_id_685559aa_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./SportAthlete.vue?vue&type=template&id=685559aa&scoped=true& */ "./resources/js/components/athletes/SportAthlete.vue?vue&type=template&id=685559aa&scoped=true&");
+/* harmony import */ var _SportAthlete_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./SportAthlete.vue?vue&type=script&lang=js& */ "./resources/js/components/athletes/SportAthlete.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _SportAthlete_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _SportAthlete_vue_vue_type_template_id_685559aa_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _SportAthlete_vue_vue_type_template_id_685559aa_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  "685559aa",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/athletes/SportAthlete.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/athletes/SportAthlete.vue?vue&type=script&lang=js&":
+/*!************************************************************************************!*\
+  !*** ./resources/js/components/athletes/SportAthlete.vue?vue&type=script&lang=js& ***!
+  \************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_SportAthlete_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./SportAthlete.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/athletes/SportAthlete.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_SportAthlete_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/athletes/SportAthlete.vue?vue&type=template&id=685559aa&scoped=true&":
+/*!******************************************************************************************************!*\
+  !*** ./resources/js/components/athletes/SportAthlete.vue?vue&type=template&id=685559aa&scoped=true& ***!
+  \******************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_SportAthlete_vue_vue_type_template_id_685559aa_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./SportAthlete.vue?vue&type=template&id=685559aa&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/athletes/SportAthlete.vue?vue&type=template&id=685559aa&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_SportAthlete_vue_vue_type_template_id_685559aa_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_SportAthlete_vue_vue_type_template_id_685559aa_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/athletes/SportAthletes.vue":
+/*!************************************************************!*\
+  !*** ./resources/js/components/athletes/SportAthletes.vue ***!
+  \************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _SportAthletes_vue_vue_type_template_id_9afe9950_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./SportAthletes.vue?vue&type=template&id=9afe9950&scoped=true& */ "./resources/js/components/athletes/SportAthletes.vue?vue&type=template&id=9afe9950&scoped=true&");
+/* harmony import */ var _SportAthletes_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./SportAthletes.vue?vue&type=script&lang=js& */ "./resources/js/components/athletes/SportAthletes.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _SportAthletes_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _SportAthletes_vue_vue_type_template_id_9afe9950_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _SportAthletes_vue_vue_type_template_id_9afe9950_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  "9afe9950",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/athletes/SportAthletes.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/athletes/SportAthletes.vue?vue&type=script&lang=js&":
+/*!*************************************************************************************!*\
+  !*** ./resources/js/components/athletes/SportAthletes.vue?vue&type=script&lang=js& ***!
+  \*************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_SportAthletes_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./SportAthletes.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/athletes/SportAthletes.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_SportAthletes_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/athletes/SportAthletes.vue?vue&type=template&id=9afe9950&scoped=true&":
+/*!*******************************************************************************************************!*\
+  !*** ./resources/js/components/athletes/SportAthletes.vue?vue&type=template&id=9afe9950&scoped=true& ***!
+  \*******************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_SportAthletes_vue_vue_type_template_id_9afe9950_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./SportAthletes.vue?vue&type=template&id=9afe9950&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/athletes/SportAthletes.vue?vue&type=template&id=9afe9950&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_SportAthletes_vue_vue_type_template_id_9afe9950_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_SportAthletes_vue_vue_type_template_id_9afe9950_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 
@@ -48027,6 +52463,75 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/forms/NewFallSport.vue":
+/*!********************************************************!*\
+  !*** ./resources/js/components/forms/NewFallSport.vue ***!
+  \********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _NewFallSport_vue_vue_type_template_id_a1d893f8_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./NewFallSport.vue?vue&type=template&id=a1d893f8&scoped=true& */ "./resources/js/components/forms/NewFallSport.vue?vue&type=template&id=a1d893f8&scoped=true&");
+/* harmony import */ var _NewFallSport_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./NewFallSport.vue?vue&type=script&lang=js& */ "./resources/js/components/forms/NewFallSport.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _NewFallSport_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _NewFallSport_vue_vue_type_template_id_a1d893f8_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _NewFallSport_vue_vue_type_template_id_a1d893f8_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  "a1d893f8",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/forms/NewFallSport.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/forms/NewFallSport.vue?vue&type=script&lang=js&":
+/*!*********************************************************************************!*\
+  !*** ./resources/js/components/forms/NewFallSport.vue?vue&type=script&lang=js& ***!
+  \*********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_NewFallSport_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./NewFallSport.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/forms/NewFallSport.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_NewFallSport_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/forms/NewFallSport.vue?vue&type=template&id=a1d893f8&scoped=true&":
+/*!***************************************************************************************************!*\
+  !*** ./resources/js/components/forms/NewFallSport.vue?vue&type=template&id=a1d893f8&scoped=true& ***!
+  \***************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_NewFallSport_vue_vue_type_template_id_a1d893f8_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./NewFallSport.vue?vue&type=template&id=a1d893f8&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/forms/NewFallSport.vue?vue&type=template&id=a1d893f8&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_NewFallSport_vue_vue_type_template_id_a1d893f8_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_NewFallSport_vue_vue_type_template_id_a1d893f8_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
 /***/ "./resources/js/components/forms/NewPhysicalForm.vue":
 /*!***********************************************************!*\
   !*** ./resources/js/components/forms/NewPhysicalForm.vue ***!
@@ -48096,17 +52601,17 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/components/forms/NewSportForm.vue":
-/*!********************************************************!*\
-  !*** ./resources/js/components/forms/NewSportForm.vue ***!
-  \********************************************************/
+/***/ "./resources/js/components/forms/NewSpringSport.vue":
+/*!**********************************************************!*\
+  !*** ./resources/js/components/forms/NewSpringSport.vue ***!
+  \**********************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _NewSportForm_vue_vue_type_template_id_6dee6fba_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./NewSportForm.vue?vue&type=template&id=6dee6fba&scoped=true& */ "./resources/js/components/forms/NewSportForm.vue?vue&type=template&id=6dee6fba&scoped=true&");
-/* harmony import */ var _NewSportForm_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./NewSportForm.vue?vue&type=script&lang=js& */ "./resources/js/components/forms/NewSportForm.vue?vue&type=script&lang=js&");
+/* harmony import */ var _NewSpringSport_vue_vue_type_template_id_06b84ef2_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./NewSpringSport.vue?vue&type=template&id=06b84ef2&scoped=true& */ "./resources/js/components/forms/NewSpringSport.vue?vue&type=template&id=06b84ef2&scoped=true&");
+/* harmony import */ var _NewSpringSport_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./NewSpringSport.vue?vue&type=script&lang=js& */ "./resources/js/components/forms/NewSpringSport.vue?vue&type=script&lang=js&");
 /* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -48116,50 +52621,533 @@ __webpack_require__.r(__webpack_exports__);
 /* normalize component */
 
 var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
-  _NewSportForm_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _NewSportForm_vue_vue_type_template_id_6dee6fba_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _NewSportForm_vue_vue_type_template_id_6dee6fba_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  _NewSpringSport_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _NewSpringSport_vue_vue_type_template_id_06b84ef2_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _NewSpringSport_vue_vue_type_template_id_06b84ef2_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
   false,
   null,
-  "6dee6fba",
+  "06b84ef2",
   null
   
 )
 
 /* hot reload */
 if (false) { var api; }
-component.options.__file = "resources/js/components/forms/NewSportForm.vue"
+component.options.__file = "resources/js/components/forms/NewSpringSport.vue"
 /* harmony default export */ __webpack_exports__["default"] = (component.exports);
 
 /***/ }),
 
-/***/ "./resources/js/components/forms/NewSportForm.vue?vue&type=script&lang=js&":
+/***/ "./resources/js/components/forms/NewSpringSport.vue?vue&type=script&lang=js&":
+/*!***********************************************************************************!*\
+  !*** ./resources/js/components/forms/NewSpringSport.vue?vue&type=script&lang=js& ***!
+  \***********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_NewSpringSport_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./NewSpringSport.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/forms/NewSpringSport.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_NewSpringSport_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/forms/NewSpringSport.vue?vue&type=template&id=06b84ef2&scoped=true&":
+/*!*****************************************************************************************************!*\
+  !*** ./resources/js/components/forms/NewSpringSport.vue?vue&type=template&id=06b84ef2&scoped=true& ***!
+  \*****************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_NewSpringSport_vue_vue_type_template_id_06b84ef2_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./NewSpringSport.vue?vue&type=template&id=06b84ef2&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/forms/NewSpringSport.vue?vue&type=template&id=06b84ef2&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_NewSpringSport_vue_vue_type_template_id_06b84ef2_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_NewSpringSport_vue_vue_type_template_id_06b84ef2_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/forms/NewWinterSport.vue":
+/*!**********************************************************!*\
+  !*** ./resources/js/components/forms/NewWinterSport.vue ***!
+  \**********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _NewWinterSport_vue_vue_type_template_id_1ec9093a_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./NewWinterSport.vue?vue&type=template&id=1ec9093a&scoped=true& */ "./resources/js/components/forms/NewWinterSport.vue?vue&type=template&id=1ec9093a&scoped=true&");
+/* harmony import */ var _NewWinterSport_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./NewWinterSport.vue?vue&type=script&lang=js& */ "./resources/js/components/forms/NewWinterSport.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _NewWinterSport_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _NewWinterSport_vue_vue_type_template_id_1ec9093a_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _NewWinterSport_vue_vue_type_template_id_1ec9093a_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  "1ec9093a",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/forms/NewWinterSport.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/forms/NewWinterSport.vue?vue&type=script&lang=js&":
+/*!***********************************************************************************!*\
+  !*** ./resources/js/components/forms/NewWinterSport.vue?vue&type=script&lang=js& ***!
+  \***********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_NewWinterSport_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./NewWinterSport.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/forms/NewWinterSport.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_NewWinterSport_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/forms/NewWinterSport.vue?vue&type=template&id=1ec9093a&scoped=true&":
+/*!*****************************************************************************************************!*\
+  !*** ./resources/js/components/forms/NewWinterSport.vue?vue&type=template&id=1ec9093a&scoped=true& ***!
+  \*****************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_NewWinterSport_vue_vue_type_template_id_1ec9093a_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./NewWinterSport.vue?vue&type=template&id=1ec9093a&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/forms/NewWinterSport.vue?vue&type=template&id=1ec9093a&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_NewWinterSport_vue_vue_type_template_id_1ec9093a_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_NewWinterSport_vue_vue_type_template_id_1ec9093a_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/sports/FallSport.vue":
+/*!******************************************************!*\
+  !*** ./resources/js/components/sports/FallSport.vue ***!
+  \******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _FallSport_vue_vue_type_template_id_a1ecc058_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./FallSport.vue?vue&type=template&id=a1ecc058&scoped=true& */ "./resources/js/components/sports/FallSport.vue?vue&type=template&id=a1ecc058&scoped=true&");
+/* harmony import */ var _FallSport_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./FallSport.vue?vue&type=script&lang=js& */ "./resources/js/components/sports/FallSport.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _FallSport_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _FallSport_vue_vue_type_template_id_a1ecc058_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _FallSport_vue_vue_type_template_id_a1ecc058_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  "a1ecc058",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/sports/FallSport.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/sports/FallSport.vue?vue&type=script&lang=js&":
+/*!*******************************************************************************!*\
+  !*** ./resources/js/components/sports/FallSport.vue?vue&type=script&lang=js& ***!
+  \*******************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_FallSport_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./FallSport.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/sports/FallSport.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_FallSport_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/sports/FallSport.vue?vue&type=template&id=a1ecc058&scoped=true&":
+/*!*************************************************************************************************!*\
+  !*** ./resources/js/components/sports/FallSport.vue?vue&type=template&id=a1ecc058&scoped=true& ***!
+  \*************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_FallSport_vue_vue_type_template_id_a1ecc058_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./FallSport.vue?vue&type=template&id=a1ecc058&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/sports/FallSport.vue?vue&type=template&id=a1ecc058&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_FallSport_vue_vue_type_template_id_a1ecc058_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_FallSport_vue_vue_type_template_id_a1ecc058_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/sports/FallSports.vue":
+/*!*******************************************************!*\
+  !*** ./resources/js/components/sports/FallSports.vue ***!
+  \*******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _FallSports_vue_vue_type_template_id_35d5fbcf_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./FallSports.vue?vue&type=template&id=35d5fbcf&scoped=true& */ "./resources/js/components/sports/FallSports.vue?vue&type=template&id=35d5fbcf&scoped=true&");
+/* harmony import */ var _FallSports_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./FallSports.vue?vue&type=script&lang=js& */ "./resources/js/components/sports/FallSports.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _FallSports_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _FallSports_vue_vue_type_template_id_35d5fbcf_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _FallSports_vue_vue_type_template_id_35d5fbcf_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  "35d5fbcf",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/sports/FallSports.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/sports/FallSports.vue?vue&type=script&lang=js&":
+/*!********************************************************************************!*\
+  !*** ./resources/js/components/sports/FallSports.vue?vue&type=script&lang=js& ***!
+  \********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_FallSports_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./FallSports.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/sports/FallSports.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_FallSports_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/sports/FallSports.vue?vue&type=template&id=35d5fbcf&scoped=true&":
+/*!**************************************************************************************************!*\
+  !*** ./resources/js/components/sports/FallSports.vue?vue&type=template&id=35d5fbcf&scoped=true& ***!
+  \**************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_FallSports_vue_vue_type_template_id_35d5fbcf_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./FallSports.vue?vue&type=template&id=35d5fbcf&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/sports/FallSports.vue?vue&type=template&id=35d5fbcf&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_FallSports_vue_vue_type_template_id_35d5fbcf_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_FallSports_vue_vue_type_template_id_35d5fbcf_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/sports/SpringSport.vue":
+/*!********************************************************!*\
+  !*** ./resources/js/components/sports/SpringSport.vue ***!
+  \********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _SpringSport_vue_vue_type_template_id_3e49f67c_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./SpringSport.vue?vue&type=template&id=3e49f67c&scoped=true& */ "./resources/js/components/sports/SpringSport.vue?vue&type=template&id=3e49f67c&scoped=true&");
+/* harmony import */ var _SpringSport_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./SpringSport.vue?vue&type=script&lang=js& */ "./resources/js/components/sports/SpringSport.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _SpringSport_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _SpringSport_vue_vue_type_template_id_3e49f67c_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _SpringSport_vue_vue_type_template_id_3e49f67c_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  "3e49f67c",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/sports/SpringSport.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/sports/SpringSport.vue?vue&type=script&lang=js&":
 /*!*********************************************************************************!*\
-  !*** ./resources/js/components/forms/NewSportForm.vue?vue&type=script&lang=js& ***!
+  !*** ./resources/js/components/sports/SpringSport.vue?vue&type=script&lang=js& ***!
   \*********************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_NewSportForm_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./NewSportForm.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/forms/NewSportForm.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_NewSportForm_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_SpringSport_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./SpringSport.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/sports/SpringSport.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_SpringSport_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
-/***/ "./resources/js/components/forms/NewSportForm.vue?vue&type=template&id=6dee6fba&scoped=true&":
+/***/ "./resources/js/components/sports/SpringSport.vue?vue&type=template&id=3e49f67c&scoped=true&":
 /*!***************************************************************************************************!*\
-  !*** ./resources/js/components/forms/NewSportForm.vue?vue&type=template&id=6dee6fba&scoped=true& ***!
+  !*** ./resources/js/components/sports/SpringSport.vue?vue&type=template&id=3e49f67c&scoped=true& ***!
   \***************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_NewSportForm_vue_vue_type_template_id_6dee6fba_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./NewSportForm.vue?vue&type=template&id=6dee6fba&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/forms/NewSportForm.vue?vue&type=template&id=6dee6fba&scoped=true&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_NewSportForm_vue_vue_type_template_id_6dee6fba_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_SpringSport_vue_vue_type_template_id_3e49f67c_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./SpringSport.vue?vue&type=template&id=3e49f67c&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/sports/SpringSport.vue?vue&type=template&id=3e49f67c&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_SpringSport_vue_vue_type_template_id_3e49f67c_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_NewSportForm_vue_vue_type_template_id_6dee6fba_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_SpringSport_vue_vue_type_template_id_3e49f67c_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/sports/SpringSports.vue":
+/*!*********************************************************!*\
+  !*** ./resources/js/components/sports/SpringSports.vue ***!
+  \*********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _SpringSports_vue_vue_type_template_id_3e3134a1___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./SpringSports.vue?vue&type=template&id=3e3134a1& */ "./resources/js/components/sports/SpringSports.vue?vue&type=template&id=3e3134a1&");
+/* harmony import */ var _SpringSports_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./SpringSports.vue?vue&type=script&lang=js& */ "./resources/js/components/sports/SpringSports.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _SpringSports_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _SpringSports_vue_vue_type_template_id_3e3134a1___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _SpringSports_vue_vue_type_template_id_3e3134a1___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/sports/SpringSports.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/sports/SpringSports.vue?vue&type=script&lang=js&":
+/*!**********************************************************************************!*\
+  !*** ./resources/js/components/sports/SpringSports.vue?vue&type=script&lang=js& ***!
+  \**********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_SpringSports_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./SpringSports.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/sports/SpringSports.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_SpringSports_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/sports/SpringSports.vue?vue&type=template&id=3e3134a1&":
+/*!****************************************************************************************!*\
+  !*** ./resources/js/components/sports/SpringSports.vue?vue&type=template&id=3e3134a1& ***!
+  \****************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_SpringSports_vue_vue_type_template_id_3e3134a1___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./SpringSports.vue?vue&type=template&id=3e3134a1& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/sports/SpringSports.vue?vue&type=template&id=3e3134a1&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_SpringSports_vue_vue_type_template_id_3e3134a1___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_SpringSports_vue_vue_type_template_id_3e3134a1___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/sports/WinterSport.vue":
+/*!********************************************************!*\
+  !*** ./resources/js/components/sports/WinterSport.vue ***!
+  \********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _WinterSport_vue_vue_type_template_id_0e2881ec_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./WinterSport.vue?vue&type=template&id=0e2881ec&scoped=true& */ "./resources/js/components/sports/WinterSport.vue?vue&type=template&id=0e2881ec&scoped=true&");
+/* harmony import */ var _WinterSport_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./WinterSport.vue?vue&type=script&lang=js& */ "./resources/js/components/sports/WinterSport.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _WinterSport_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _WinterSport_vue_vue_type_template_id_0e2881ec_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _WinterSport_vue_vue_type_template_id_0e2881ec_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  "0e2881ec",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/sports/WinterSport.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/sports/WinterSport.vue?vue&type=script&lang=js&":
+/*!*********************************************************************************!*\
+  !*** ./resources/js/components/sports/WinterSport.vue?vue&type=script&lang=js& ***!
+  \*********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_WinterSport_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./WinterSport.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/sports/WinterSport.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_WinterSport_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/sports/WinterSport.vue?vue&type=template&id=0e2881ec&scoped=true&":
+/*!***************************************************************************************************!*\
+  !*** ./resources/js/components/sports/WinterSport.vue?vue&type=template&id=0e2881ec&scoped=true& ***!
+  \***************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_WinterSport_vue_vue_type_template_id_0e2881ec_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./WinterSport.vue?vue&type=template&id=0e2881ec&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/sports/WinterSport.vue?vue&type=template&id=0e2881ec&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_WinterSport_vue_vue_type_template_id_0e2881ec_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_WinterSport_vue_vue_type_template_id_0e2881ec_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/sports/WinterSports.vue":
+/*!*********************************************************!*\
+  !*** ./resources/js/components/sports/WinterSports.vue ***!
+  \*********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _WinterSports_vue_vue_type_template_id_2837c359___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./WinterSports.vue?vue&type=template&id=2837c359& */ "./resources/js/components/sports/WinterSports.vue?vue&type=template&id=2837c359&");
+/* harmony import */ var _WinterSports_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./WinterSports.vue?vue&type=script&lang=js& */ "./resources/js/components/sports/WinterSports.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _WinterSports_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _WinterSports_vue_vue_type_template_id_2837c359___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _WinterSports_vue_vue_type_template_id_2837c359___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/sports/WinterSports.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/sports/WinterSports.vue?vue&type=script&lang=js&":
+/*!**********************************************************************************!*\
+  !*** ./resources/js/components/sports/WinterSports.vue?vue&type=script&lang=js& ***!
+  \**********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_WinterSports_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./WinterSports.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/sports/WinterSports.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_WinterSports_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/sports/WinterSports.vue?vue&type=template&id=2837c359&":
+/*!****************************************************************************************!*\
+  !*** ./resources/js/components/sports/WinterSports.vue?vue&type=template&id=2837c359& ***!
+  \****************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_WinterSports_vue_vue_type_template_id_2837c359___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./WinterSports.vue?vue&type=template&id=2837c359& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/sports/WinterSports.vue?vue&type=template&id=2837c359&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_WinterSports_vue_vue_type_template_id_2837c359___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_WinterSports_vue_vue_type_template_id_2837c359___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 
@@ -48243,9 +53231,15 @@ __webpack_require__.r(__webpack_exports__);
 
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
-Vue.component('athletes', __webpack_require__(/*! ./components/Athletes.vue */ "./resources/js/components/Athletes.vue")["default"]);
+Vue.component('athletes', __webpack_require__(/*! ./components/athletes/Athletes.vue */ "./resources/js/components/athletes/Athletes.vue")["default"]);
+Vue.component('sport-athletes', __webpack_require__(/*! ./components/athletes/SportAthletes.vue */ "./resources/js/components/athletes/SportAthletes.vue")["default"]); // Vue.component('athlete', require('./components/Athlete.vue').default);
+
 Vue.component('physicals', __webpack_require__(/*! ./components/Physicals.vue */ "./resources/js/components/Physicals.vue")["default"]);
-Vue.component('sports', __webpack_require__(/*! ./components/Sports.vue */ "./resources/js/components/Sports.vue")["default"]);
+Vue.component('profile-physicals', __webpack_require__(/*! ./components/ProfilePhysicals.vue */ "./resources/js/components/ProfilePhysicals.vue")["default"]); // Vue.component('sports', require('./components/Sports.vue').default);
+
+Vue.component('fall-sports', __webpack_require__(/*! ./components/sports/FallSports.vue */ "./resources/js/components/sports/FallSports.vue")["default"]);
+Vue.component('winter-sports', __webpack_require__(/*! ./components/sports/WinterSports.vue */ "./resources/js/components/sports/WinterSports.vue")["default"]);
+Vue.component('spring-sports', __webpack_require__(/*! ./components/sports/SpringSports.vue */ "./resources/js/components/sports/SpringSports.vue")["default"]);
 Vue.component('cancel-button', __webpack_require__(/*! ./components/buttons/CancelButton */ "./resources/js/components/buttons/CancelButton.vue")["default"]);
 Vue.component('create-button', __webpack_require__(/*! ./components/buttons/CreateButton */ "./resources/js/components/buttons/CreateButton.vue")["default"]);
 Vue.component('delete-button', __webpack_require__(/*! ./components/buttons/DeleteButton */ "./resources/js/components/buttons/DeleteButton.vue")["default"]);
@@ -48255,6 +53249,78 @@ Vue.component('update-button', __webpack_require__(/*! ./components/buttons/Upda
 new Vue({
   el: '#app'
 });
+
+/***/ }),
+
+/***/ "./resources/js/mixins/physicalsMixin.js":
+/*!***********************************************!*\
+  !*** ./resources/js/mixins/physicalsMixin.js ***!
+  \***********************************************/
+/*! exports provided: physicalsMixin */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "physicalsMixin", function() { return physicalsMixin; });
+var physicalsMixin = {
+  data: function data() {
+    return {
+      statusColor: '',
+      expirationColor: '',
+      allClear: false,
+      restrict: false,
+      notClear: false
+    };
+  },
+  computed: {
+    physicalStatus: function physicalStatus() {
+      if (this.data.latest_physical) {
+        var forms = [this.confirmedCardiacForm = this.data.latest_physical.ghsa_cardiac_form === 1, this.confirmedConcussionForm = this.data.latest_physical.ghsa_concussion_form === 1, this.confirmedHistoryForm = this.data.latest_physical.history_form === 1, this.confirmedMedicalEligibilityForm = this.data.latest_physical.medical_eligibility_form === 1, this.confirmedPhysicalExamForm = this.data.latest_physical.physical_exam_form === 1, this.confirmedPhysicalForm = this.data.latest_physical.physical_form === 1, this.confirmedBlanketWaiverForm = this.data.latest_physical.blanket_waiver_form === 1];
+
+        if (this.expiration === "Expired") {
+          this.statusColor = '#cc0000';
+          return "Not Cleared";
+        } else if (forms.every(Boolean) && this.data.latest_physical.restrictions === null) {
+          this.statusColor = '#00b300';
+          this.allClear = true;
+          return "Cleared";
+        } else if (forms.every(Boolean) && this.data.latest_physical.restrictions !== null) {
+          this.statusColor = '#fd6a02';
+          this.restrict = true;
+          return "Cleared with Restrictions";
+        } else {
+          this.statusColor = '#cc0000';
+          return "Not Cleared";
+        }
+      } else {
+        this.statusColor = '#cc0000';
+        return "Not Cleared";
+      }
+    },
+    expiration: function expiration() {
+      if (this.data.latest_physical) {
+        var examination_date = this.$moment(this.data.latest_physical.exam_date);
+        var expiration_date = this.$moment(examination_date).add(1, 'years');
+        var today = this.$moment();
+        var d = this.$moment(expiration_date).diff(today, 'days');
+
+        if (expiration_date > today && d >= 60) {
+          this.expirationColor = '#00b300';
+          return "Expires";
+        } else if (expiration_date > today && d <= 59) {
+          this.expirationColor = '#fd6a02';
+          return "Expires";
+        } else {
+          this.expirationColor = '#cc0000';
+          return "Expired";
+        }
+      } else {
+        this.statusColor = '#cc0000';
+        return "NA";
+      }
+    }
+  }
+};
 
 /***/ }),
 

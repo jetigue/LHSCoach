@@ -33,11 +33,13 @@ class AthleteController extends Controller {
     {
         $athlete = request()->validate([
             'first_name' => 'required|string',
-            'last_name'  => 'required|string',
-            'sex'        => 'required|in:m,f',
-            'dob'        => 'required|date',
-            'grad_year'  => 'required|integer',
-            'status'     => 'required|in:a,i',
+            'last_name' => 'required|string',
+            'sex' => 'required|in:m,f',
+            'dob' => 'required|date',
+            'grad_year' => 'required|integer',
+            'fall_sport_id' => 'required|integer',
+            'winter_sport_id' => 'required|integer',
+            'spring_sport_id' => 'required|integer'
         ]);
 
         $athlete = Athlete::create($athlete);
@@ -67,11 +69,13 @@ class AthleteController extends Controller {
     {
         request()->validate([
             'first_name' => 'required|string',
-            'last_name'  => 'required|string',
-            'sex'        => 'required|in:m,f',
-            'dob'        => 'required|date',
-            'grad_year'  => 'required|integer',
-            'status'     => 'required|in:a,i'
+            'last_name' => 'required|string',
+            'sex' => 'required|in:m,f',
+            'dob' => 'required|date',
+            'grad_year' => 'required|integer',
+            'fall_sport_id' => 'required|integer',
+            'winter_sport_id' => 'required|integer',
+            'spring_sport_id' => 'required|integer'
         ]);
 
         $athlete->update(request([
@@ -80,7 +84,9 @@ class AthleteController extends Controller {
             'sex',
             'dob',
             'grad_year',
-            'status'
+            'fall_sport_id',
+            'winter_ports_id',
+            'spring_sport_id'
         ]));
 
         return response()->json($athlete, 200);
