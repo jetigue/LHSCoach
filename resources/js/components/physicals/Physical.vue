@@ -297,10 +297,13 @@
                                 <span v-else><i class="fas fa-times"></i></span>
                             </div>
                         </div>
-                        <div class="flex w-full lg:w-1/3 px-2">
-                            <div class="w-full" :style="{color: expirationColor}">
+                        <div class="flex w-full lg:w-1/3 px-2 justify-between flex-wrap">
+                            <div class="w-full lg:w-4/5" :style="{color: expirationColor}">
                                 {{ expiration }}
                                 <span>{{ exam_date | moment("add", "1 year") | moment("from", "now") }}</span>
+                            </div>
+                            <div v-if="physicalUploaded" class="lg:w-1/5" style="color:#000080">
+                                <a :href="url" class="text-xl fas fa-file-download"></a>
                             </div>
                         </div>
                     </div>
@@ -344,7 +347,12 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="w-1/3"></div>
+                        <div class="w-1/3 p-3">
+                            <physical-upload-form
+                                :data="data"
+                                @formUploaded="resetPage">
+                            </physical-upload-form>
+                        </div>
                     </div>
                     <div class="flex justify-start cursor-pointer pt-1">
                         <edit-button @clicked="getNames"></edit-button>
@@ -359,8 +367,10 @@
 </template>
 
 <script>
+    import PhysicalUploadForm from "../forms/PhysicalUploadForm";
     export default {
         name: "Physical",
+        components: {PhysicalUploadForm},
         props: ['data'],
 
         data() {
@@ -383,6 +393,9 @@
                 notes: this.data.notes,
                 athlete_id: this.data.athlete_id,
                 athleteUrl: '/athletes/' + this.data.athlete.slug,
+                form_path: this.data.form_path,
+                physicalUploaded: this.data.form_path !== null,
+                url: location.pathname +'/'+this.data.id,
 
                 athletes: [],
 
@@ -424,7 +437,13 @@
                     this.cardiacFormConfirmed
                 ];
 
-                if  (forms.every(Boolean) && (this.restrictions === null)) {
+                if (this.expiration === 'Expired') {
+
+                    this.statusColor = '#cc0000';
+
+                    return "Not Cleared"
+                }
+                else if  (forms.every(Boolean) && (this.restrictions === null)) {
 
                     this.statusColor = '#00b300';
                     this.allClear = true;
@@ -492,6 +511,10 @@
         methods: {
             toggleRow() {
                 this.isExpanded = !this.isExpanded
+            },
+
+            resetPage() {
+                this.physicalUploaded = true;
             },
 
             confirmHistoryForm() {

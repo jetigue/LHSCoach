@@ -1,7 +1,7 @@
 <template>
     <div class="flex flex-col w-full">
         <div class="flex justify-end w-full">
-            <div class="flex md:w-1/2 lg:w-1/3 mb-8">
+            <div class="flex w-full md:w-1/2 lg:w-1/3 mb-8">
                 <input type="text"
                        v-model="search"
                        placeholder="Find an athlete..."
@@ -16,13 +16,13 @@
         <div class="">
             <div class="flex">
                 <div class="flex w-11/12 px-2 text-gray-500 font-semibold">
-                    <div class="w-1/3">
+                    <div class="w-full lg:w-1/3">
                         <p class="">Name</p>
                     </div>
-                    <div class="w-1/3">
+                    <div class="hidden lg:flex lg:w-1/3">
                         <p class="px-2">Physical Status</p>
                     </div>
-                    <div class="px-2 w-1/3">
+                    <div class="hidden px-2 lg:flex lg:w-1/3">
                         <p class="">Expiration</p>
                     </div>
                 </div>
@@ -43,10 +43,9 @@
 <script>
     import Collection from "../../Collection";
     import SportAthlete from "./SportAthlete";
-    import PhysicalStatus from "../PhysicalStatus";
     export default Collection.extend({
         name: "SportAthletes",
-        components: {SportAthlete, PhysicalStatus},
+        components: {SportAthlete},
         props: ['data'],
 
         data() {

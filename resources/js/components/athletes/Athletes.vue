@@ -48,11 +48,15 @@
                 <p class="text-2xl text-tertiary p-4">No Athletes Listed</p>
             </div>
         </div>
+        <div v-if="records">
+            <paginator :dataSet="dataSet" @changed="fetch">Athletes</paginator>
+        </div>
     </div>
 
 </template>
 
 <script>
+    import {paginationMixin} from "../../mixins/paginationMixin";
     import Collection from "../../Collection";
     import Athlete from "./Athlete";
     import NewAthleteForm from "../forms/NewAthleteForm";
@@ -60,6 +64,7 @@
     export default Collection.extend({
         name: "Athletes",
         components: {Athlete, NewAthleteForm},
+        mixins: [paginationMixin],
 
         props: ['data'],
 

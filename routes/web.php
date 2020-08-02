@@ -25,11 +25,15 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/sports', 'SportController@index');
 Route::get('/athletes', 'AthleteController@index');
 Route::get('/athletes/{athlete:slug}', 'AthleteController@show');
+
 Route::get('/physicals', 'PhysicalController@index');
+Route::get('/physicals/{physical}', 'PhysicalController@show');
 
 Route::get('fall/sports/{fall_sport:slug}', 'Sports\FallSportController@show');
 Route::get('winter/sports/{winter_sport:slug}', 'Sports\WinterSportController@show');
 Route::get('spring/sports/{spring_sport:slug}', 'Sports\SpringSportController@show');
+
+Route::post('api/physicals/{physical}/physical-form','API\PhysicalFormController@store');
 
 
 Route::apiResource('api/fall/sports', 'API\Sports\FallSportController')->parameters([

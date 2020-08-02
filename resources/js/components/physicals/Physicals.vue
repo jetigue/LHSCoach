@@ -45,18 +45,23 @@
                 <p class="text-2xl text-tertiary p-4">No Physicals Listed</p>
             </div>
         </div>
+        <div v-if="records">
+            <paginator :dataSet="dataSet" @changed="fetch">Athletes</paginator>
+        </div>
     </div>
 
 </template>
 
 <script>
-    import Collection from "../Collection";
+    import {paginationMixin} from "../../mixins/paginationMixin";
+    import Collection from "../../Collection";
     import Physical from "./Physical";
-    import NewPhysicalForm from "./forms/NewPhysicalForm";
+    import NewPhysicalForm from "../forms/NewPhysicalForm";
 
     export default Collection.extend({
         name: "Physicals",
         components: {Physical, NewPhysicalForm},
+        mixins: [paginationMixin],
 
         props: ['data'],
 
@@ -71,8 +76,9 @@
             filteredPhysicals() {
                 return this.items.filter((physical) => {
                     return (
-                        physical.exam_date.toLowerCase().match(this.search.toLowerCase())
-                        // athlete.first_name.toLowerCase().match(this.search.toLowerCase())
+                        physical.exam_date.toLowerCase().match(this.search.toLowerCase()) ||
+                        physical.athlete.last_name.toLowerCase().match(this.search.toLowerCase()) ||
+                        physical.athlete.first_name.toLowerCase().match(this.search.toLowerCase())
                     )
                 });
             }

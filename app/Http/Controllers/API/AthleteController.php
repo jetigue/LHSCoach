@@ -20,7 +20,10 @@ class AthleteController extends Controller {
         return Athlete::whereBetween('grad_year', [2021, 2025])
             ->orderBy('last_name')
             ->orderBy('first_name')
-            ->get();
+            ->with('fallSport')
+            ->with('springSport')
+            ->with('winterSport')
+            ->paginate(50);
     }
 
     /**

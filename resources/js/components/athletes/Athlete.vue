@@ -266,10 +266,9 @@
 </template>
 
 <script>
-    import PhysicalStatus from "../PhysicalStatus";
+
     export default {
         name: "Athlete",
-        components: {PhysicalStatus},
         props: ['data'],
 
         data() {

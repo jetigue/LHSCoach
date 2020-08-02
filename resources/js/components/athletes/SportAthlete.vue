@@ -193,13 +193,13 @@
         <div v-else class="flex py-1 items-center hover:bg-gray-100">
             <div class="flex flex-col w-full">
                 <div class="flex w-full">
-                    <div class="flex pt-1 w-11/12 px-2">
+                    <div class="flex pt-1 w-11/12 px-2 flex-wrap">
                         <div class="flex w-full lg:w-1/3">
                             <a :href="url" class="hover:font-semibold hover:underline">
                                 {{ last_name }}, {{ first_name }}
                             </a>
                         </div>
-                        <div class="flex w-1/3 px-2">
+                        <div class="flex w-ful  lg:w-1/3 px-2">
                             <div class="w-full"
                                  :style="{color: statusColor}">
                                         {{ physicalStatus }}
@@ -208,15 +208,28 @@
                                 <span v-else><i class="fas fa-times"></i></span>
                             </div>
                         </div>
-                        <div class="flex w-1/3 px-2">
-                            <div v-if="this.data.latest_physical" class="w-full" :style="{color: expirationColor}">
+<!--                        <div class="flex w-full lg:w-1/3 px-2">-->
+<!--                            <div class="w-full" :style="{color: expirationColor}">-->
+<!--                                {{ expiration }}-->
+<!--                                <span>{{ exam_date | moment("add", "1 year") | moment("from", "now") }}</span>-->
+<!--                            </div>-->
+<!--                            <div v-else class="w-full text-gray-500">-->
+<!--                                No Physical on File-->
+<!--                            </div>-->
+<!--                        </div>-->
+                        <div class="flex w-full lg:w-1/3 px-2 justify-between flex-wrap">
+                            <div v-if="this.data.latest_physical" class="w-full lg:w-4/5" :style="{color: expirationColor}">
                                 {{ expiration }}
                                 <span>{{ exam_date | moment("add", "1 year") | moment("from", "now") }}</span>
                             </div>
                             <div v-else class="w-full text-gray-500">
                                 No Physical on File
                             </div>
+                            <div v-if="physicalUploaded" class="lg:w-1/5" style="color:#000080">
+                                <a :href="physicalUrl" class="text-xl fas fa-file-download"></a>
+                            </div>
                         </div>
+
                     </div>
                     <div class="flex w-1/12 pt-1 justify-end px-4">
                         <expand-button @toggleRow="toggleRow" class=""></expand-button>
@@ -291,6 +304,7 @@
                 fall_sport_id: this.data.fall_sport_id,
                 winter_sport_id: this.data.winter_sport_id,
                 spring_sport_id: this.data.spring_sport_id,
+                // physicalUploaded: this.data.latest_physical.form_path !== null,
 
                 url: '/athletes/' + this.data.slug,
 
@@ -315,6 +329,18 @@
             exam_date() {
                 if (this.data.latest_physical) {
                     return this.data.latest_physical.exam_date
+                }
+            },
+
+            physicalUploaded() {
+                if (this.data.latest_physical) {
+                    return this.data.latest_physical.form_path !== null
+                }
+            },
+
+            physicalUrl() {
+                if (this.data.latest_physical) {
+                    return '/physicals/' + this.data.latest_physical.id
                 }
             },
 

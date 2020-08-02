@@ -4,7 +4,9 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use App\Models\Physical;
+use Carbon\Carbon;
 use Exception;
+use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
@@ -13,11 +15,17 @@ class PhysicalController extends Controller {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @param Physical $physicals
+     * @return LengthAwarePaginator
      */
-    public function index()
+    public function index(Physical $physicals)
     {
-        //
+        $ly = Carbon::now()->year - 1;
+
+        return $physicals->with('athlete')
+            ->orderBy('exam_date', 'desc')
+            ->whereYear('exam_date', '>=', $ly)
+            ->paginate(50);
     }
 
     /**

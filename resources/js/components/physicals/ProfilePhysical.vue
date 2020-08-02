@@ -16,10 +16,13 @@
                                 <span v-else><i class="fas fa-times"></i></span>
                             </div>
                         </div>
-                        <div class="w-full lg:flex lg:w-1/3 px-2">
-                            <div class="w-full" :style="{color: expirationColor}">
+                        <div class="flex w-full lg:w-1/3 px-2 justify-between flex-wrap">
+                            <div class="w-full lg:w-4/5" :style="{color: expirationColor}">
                                 {{ expiration }}
                                 <span>{{ exam_date | moment("add", "1 year") | moment("from", "now") }}</span>
+                            </div>
+                            <div v-if="physicalUploaded" class="lg:w-1/5" style="color:#000080">
+                                <a :href="url" class="text-xl fas fa-file-download"></a>
                             </div>
                         </div>
                     </div>
@@ -90,6 +93,8 @@
                 restrictions: this.data.restrictions,
                 notes: this.data.notes,
                 athlete_id: this.data.athlete_id,
+                physicalUploaded: this.data.form_path !== null,
+                url: '/physicals/'+this.data.id,
 
                 historyFormConfirmed: this.data.history_form === 1,
                 physicalExamFormConfirmed: this.data.physical_exam_form === 1,

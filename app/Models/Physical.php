@@ -18,7 +18,8 @@ class Physical extends Model
             'ghsa_cardiac_form',
             'exam_date',
             'restrictions',
-            'notes'
+            'notes',
+            'form_path'
     ];
 
     /**
@@ -29,6 +30,15 @@ class Physical extends Model
         protected $dates = [
             'exam_date',
         ];
+
+    /**
+     * The attributes that should be cast.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'exam_date' => 'datetime:Y-m-d',
+    ];
 
     /**
      * @return BelongsTo

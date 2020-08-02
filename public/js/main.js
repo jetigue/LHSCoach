@@ -1899,789 +1899,15 @@ module.exports = {
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Physical.vue?vue&type=script&lang=js&":
-/*!*******************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Physical.vue?vue&type=script&lang=js& ***!
-  \*******************************************************************************************************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-/* harmony default export */ __webpack_exports__["default"] = ({
-  name: "Physical",
-  props: ['data'],
-  data: function data() {
-    return {
-      editing: false,
-      isExpanded: false,
-      statusColor: '',
-      expirationColor: '',
-      allClear: false,
-      restrict: false,
-      notClear: false,
-      id: this.data.id,
-      last_name: this.data.athlete.last_name,
-      first_name: this.data.athlete.first_name,
-      exam_date: this.data.exam_date,
-      restrictions: this.data.restrictions,
-      notes: this.data.notes,
-      athlete_id: this.data.athlete_id,
-      athleteUrl: '/athletes/' + this.data.athlete.slug,
-      athletes: [],
-      form: new Form({
-        athlete_id: this.data.athlete_id,
-        exam_date: this.data.exam_date,
-        restrictions: this.data.restrictions,
-        form_path: this.data.form_path,
-        notes: this.data.notes,
-        history_form: this.data.history_form,
-        physical_exam_form: this.data.physical_exam_form,
-        medical_eligibility_form: this.data.medical_eligibility_form,
-        physical_form: this.data.physical_form,
-        blanket_waiver_form: this.data.blanket_waiver_form,
-        ghsa_concussion_form: this.data.ghsa_concussion_form,
-        ghsa_cardiac_form: this.data.ghsa_cardiac_form
-      }),
-      historyFormConfirmed: this.data.history_form === 1,
-      physicalExamFormConfirmed: this.data.physical_exam_form === 1,
-      eligibilityFormConfirmed: this.data.medical_eligibility_form === 1,
-      physicalFormConfirmed: this.data.physical_form === 1,
-      blanketFormConfirmed: this.data.blanket_waiver_form === 1,
-      concussionFormConfirmed: this.data.ghsa_concussion_form === 1,
-      cardiacFormConfirmed: this.data.ghsa_cardiac_form === 1
-    };
-  },
-  computed: {
-    status: function status() {
-      var forms = [this.historyFormConfirmed, this.physicalExamFormConfirmed, this.eligibilityFormConfirmed, this.physicalFormConfirmed, this.blanketFormConfirmed, this.concussionFormConfirmed, this.cardiacFormConfirmed];
-
-      if (forms.every(Boolean) && this.restrictions === null) {
-        this.statusColor = '#00b300';
-        this.allClear = true;
-        return "Cleared";
-      } else if (forms.every(Boolean) && this.restrictions !== null) {
-        this.statusColor = '#fd6a02';
-        this.restrict = true;
-        return "Cleared with Restrictions";
-      } else {
-        this.statusColor = '#cc0000';
-        return "Not Cleared";
-      }
-    },
-    expiration: function expiration() {
-      var examination_date = this.$moment(this.exam_date);
-      var expiration_date = this.$moment(examination_date).add(1, 'years');
-      var today = this.$moment();
-      var d = this.$moment(expiration_date).diff(today, 'days');
-
-      if (expiration_date > today && d >= 60) {
-        this.expirationColor = '#00b300';
-        return "Expires";
-      } else if (expiration_date > today && d <= 59) {
-        this.expirationColor = '#fd6a02';
-        return "Expires";
-      } else {
-        axios.patch('/api/physicals/' + this.data.id, {
-          history_form: this.history_form = '0',
-          physical_exam_form: this.physical_exam_form = '0',
-          medical_eligibility_form: this.medical_eligibility_form = '0',
-          physical_form: this.physical_form = '0',
-          blanket_waiver_form: this.blanket_waiver_form = '0',
-          ghsa_concussion_form: this.ghsa_concussion_form = '0',
-          ghsa_cardiac_form: this.ghsa_cardiac_form = '0'
-        })["catch"](function (errors) {
-          console.log(errors);
-        });
-        this.expirationColor = '#cc0000';
-        return "Expired";
-      }
-    }
-  },
-  methods: {
-    toggleRow: function toggleRow() {
-      this.isExpanded = !this.isExpanded;
-    },
-    confirmHistoryForm: function confirmHistoryForm() {
-      this.form.history_form = 1;
-      this.historyFormConfirmed = true;
-    },
-    unconfirmHistoryForm: function unconfirmHistoryForm() {
-      this.form.history_form = 0;
-      this.historyFormConfirmed = false;
-    },
-    confirmPhysicalExamForm: function confirmPhysicalExamForm() {
-      this.form.physical_exam_form = 1;
-      this.physicalExamFormConfirmed = true;
-    },
-    unconfirmPhysicalExamForm: function unconfirmPhysicalExamForm() {
-      this.form.physical_exam_form = 0;
-      this.physicalExamFormConfirmed = false;
-    },
-    confirmEligibilityForm: function confirmEligibilityForm() {
-      this.form.medical_eligibility_form = 1;
-      this.eligibilityFormConfirmed = true;
-    },
-    unconfirmEligibilityForm: function unconfirmEligibilityForm() {
-      this.form.medical_eligibility_form = 0;
-      this.eligibilityFormConfirmed = false;
-    },
-    confirmPhysicalForm: function confirmPhysicalForm() {
-      this.form.physical_form = 1;
-      this.physicalFormConfirmed = true;
-    },
-    unconfirmPhysicalForm: function unconfirmPhysicalForm() {
-      this.form.physical_form = 0;
-      this.physicalFormConfirmed = false;
-    },
-    confirmBlanketForm: function confirmBlanketForm() {
-      this.form.blanket_waiver_form = 1;
-      this.blanketFormConfirmed = true;
-    },
-    unconfirmBlanketForm: function unconfirmBlanketForm() {
-      this.form.blanket_waiver_form = 0;
-      this.blanketFormConfirmed = false;
-    },
-    confirmConcussionForm: function confirmConcussionForm() {
-      this.form.ghsa_concussion_form = 1;
-      this.concussionFormConfirmed = true;
-    },
-    unconfirmConcussionForm: function unconfirmConcussionForm() {
-      this.form.ghsa_concussion_form = 0;
-      this.concussionFormConfirmed = false;
-    },
-    confirmCardiacForm: function confirmCardiacForm() {
-      this.form.ghsa_cardiac_form = 1;
-      this.cardiacFormConfirmed = true;
-    },
-    unconfirmCardiacForm: function unconfirmCardiacForm() {
-      this.form.ghsa_cardiac_form = 0;
-      this.cardiacFormConfirmed = false;
-    },
-    getNames: function getNames() {
-      var _this = this;
-
-      this.editing = true;
-      axios.get('/api/athletes').then(function (response) {
-        _this.athletes = response.data;
-      })["catch"](function (errors) {
-        console.log(errors);
-      });
-    },
-    update: function update() {
-      var _this2 = this;
-
-      this.form.patch('/api/physicals/' + this.data.id).then(function (data) {
-        _this2.last_name = _this2.athletes.find(function (athlete) {
-          return athlete.id === _this2.form.athlete_id;
-        }).last_name;
-        _this2.first_name = _this2.athletes.find(function (athlete) {
-          return athlete.id === _this2.form.athlete_id;
-        }).first_name;
-        _this2.exam_date = _this2.form.exam_date;
-        _this2.restrictions = _this2.form.restrictions;
-        _this2.notes = _this2.form.notes;
-        _this2.history_form = _this2.form.history_form, _this2.physical_exam_form = _this2.form.physical_exam_form, _this2.medical_eligibility_form = _this2.form.medical_eligibility_form, _this2.physical_form = _this2.form.physical_form, _this2.blanket_waiver_form = _this2.form.blanket_waiver_form, _this2.ghsa_concussion_form = _this2.form.ghsa_concussion_form, _this2.ghsa_cardiac_form = _this2.form.ghsa_cardiac_form;
-        _this2.editing = false;
-        _this2.isExpanded = false;
-
-        if (_this2.athlete_id !== _this2.data.athlete_id || _this2.exam_date !== _this2.data.exam_date || _this2.restrictions !== _this2.data.restrictions || _this2.notes !== _this2.data.notes || _this2.grad_year !== _this2.data.grad_year || _this2.history_form !== _this2.data.history_form || _this2.physical_exam_form !== _this2.data.physical_exam_form || _this2.medical_eligibility_form !== _this2.data.medical_eligibility_form || _this2.physical_form !== _this2.data.physical_form || _this2.blanket_waiver_form !== _this2.data.blanket_waiver_form || _this2.ghsa_concussion_form !== _this2.data.ghsa_concussion_form || _this2.ghsa_cardiac_form !== _this2.data.ghsa_cardiac_form) {
-          var Toast = Vue.swal.mixin({
-            toast: true,
-            position: 'top-end',
-            showConfirmButton: false,
-            timer: 2500,
-            timerProgressBar: true,
-            onOpen: function onOpen(toast) {
-              toast.addEventListener('mouseenter', Vue.swal.stopTimer);
-              toast.addEventListener('mouseleave', Vue.swal.resumeTimer);
-            }
-          });
-          Toast.fire({
-            icon: 'success',
-            title: 'Physical Updated!'
-          });
-        }
-      })["catch"](function (errors) {
-        console.log(errors);
-      });
-    },
-    destroy: function destroy() {
-      axios["delete"]('api/physicals/' + this.data.id);
-      this.$emit('deleted', this.data.id);
-    },
-    resetForm: function resetForm() {
-      this.form.athlete_id = this.data.athlete_id, this.form.exam_date = this.data.exam_date, this.form.restrictions = this.data.restrictions, this.form.form_path = this.data.form_path, this.form.notes = this.data.notes, this.form.history_form = this.data.history_form, this.form.physical_exam_form = this.data.physical_exam_form, this.form.medical_eligibility_form = this.data.medical_eligibility_form, this.form.physical_form = this.data.physical_form, this.form.blanket_waiver_form = this.data.blanket_waiver_form, this.form.ghsa_concussion_form = this.data.ghsa_concussion_form, this.form.ghsa_cardiac_form = this.data.ghsa_cardiac_form;
-    }
-  }
-});
-
-/***/ }),
-
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/PhysicalStatus.vue?vue&type=script&lang=js&":
-/*!*************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/PhysicalStatus.vue?vue&type=script&lang=js& ***!
-  \*************************************************************************************************************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-/* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['data'],
-  name: "PhysicalStatus",
-  data: function data() {
-    return {
-      statusColor: '',
-      allClear: false,
-      restrict: false,
-      notClear: false
-    };
-  },
-  computed: {
-    status: function status() {
-      if (this.data.latest_physical) {
-        var forms = [this.confirmedCardiacForm = this.data.latest_physical.ghsa_cardiac_form === 1, this.confirmedConcussionForm = this.data.latest_physical.ghsa_concussion_form === 1, this.confirmedHistoryForm = this.data.latest_physical.history_form === 1, this.confirmedMedicalEligibilityForm = this.data.latest_physical.medical_eligibility_form === 1, this.confirmedPhysicalExamForm = this.data.latest_physical.physical_exam_form === 1, this.confirmedPhysicalForm = this.data.latest_physical.physical_form === 1, this.confirmedBlanketWaiverForm = this.data.latest_physical.blanket_waiver_form === 1];
-
-        if (forms.every(Boolean) && this.data.latest_physical.restrictions === null) {
-          this.statusColor = '#00b300';
-          this.allClear = true;
-          return "Cleared";
-        } else if (forms.every(Boolean) && this.data.latest_physical.restrictions !== null) {
-          this.statusColor = '#fd6a02';
-          this.restrict = true;
-          return "Cleared with Restrictions";
-        } else {
-          this.statusColor = '#cc0000';
-          return "Not Cleared";
-        }
-      } else {
-        this.statusColor = '#cc0000';
-        return "Not Cleared";
-      }
-    }
-  }
-});
-
-/***/ }),
-
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Physicals.vue?vue&type=script&lang=js&":
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Paginator.vue?vue&type=script&lang=js&":
 /*!********************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Physicals.vue?vue&type=script&lang=js& ***!
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Paginator.vue?vue&type=script&lang=js& ***!
   \********************************************************************************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _Collection__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../Collection */ "./resources/js/Collection.js");
-/* harmony import */ var _Physical__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Physical */ "./resources/js/components/Physical.vue");
-/* harmony import */ var _forms_NewPhysicalForm__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./forms/NewPhysicalForm */ "./resources/js/components/forms/NewPhysicalForm.vue");
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-
-
-/* harmony default export */ __webpack_exports__["default"] = (_Collection__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
-  name: "Physicals",
-  components: {
-    Physical: _Physical__WEBPACK_IMPORTED_MODULE_1__["default"],
-    NewPhysicalForm: _forms_NewPhysicalForm__WEBPACK_IMPORTED_MODULE_2__["default"]
-  },
-  props: ['data'],
-  data: function data() {
-    return {
-      search: ''
-    };
-  },
-  computed: {
-    filteredPhysicals: function filteredPhysicals() {
-      var _this = this;
-
-      return this.items.filter(function (physical) {
-        return physical.exam_date.toLowerCase().match(_this.search.toLowerCase()) // athlete.first_name.toLowerCase().match(this.search.toLowerCase())
-        ;
-      });
-    }
-  },
-  methods: {
-    clearSearch: function clearSearch() {
-      this.search = '';
-    }
-  }
-}));
-
-/***/ }),
-
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ProfilePhysical.vue?vue&type=script&lang=js&":
-/*!**************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/ProfilePhysical.vue?vue&type=script&lang=js& ***!
-  \**************************************************************************************************************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -2712,143 +1938,42 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: "ProfilePhysical",
-  props: ['data'],
+  name: "Paginator",
+  props: ['dataSet'],
   data: function data() {
     return {
-      editing: false,
-      isExpanded: false,
-      statusColor: '',
-      expirationColor: '',
-      allClear: false,
-      restrict: false,
-      notClear: false,
-      id: this.data.id,
-      exam_date: this.data.exam_date,
-      restrictions: this.data.restrictions,
-      notes: this.data.notes,
-      athlete_id: this.data.athlete_id,
-      historyFormConfirmed: this.data.history_form === 1,
-      physicalExamFormConfirmed: this.data.physical_exam_form === 1,
-      eligibilityFormConfirmed: this.data.medical_eligibility_form === 1,
-      physicalFormConfirmed: this.data.physical_form === 1,
-      blanketFormConfirmed: this.data.blanket_waiver_form === 1,
-      concussionFormConfirmed: this.data.ghsa_concussion_form === 1,
-      cardiacFormConfirmed: this.data.ghsa_cardiac_form === 1
+      page: 1,
+      prevUrl: false,
+      nextUrl: false,
+      firstItem: 1,
+      lastItem: false,
+      total: this.records
     };
   },
-  computed: {
-    status: function status() {
-      var forms = [this.historyFormConfirmed, this.physicalExamFormConfirmed, this.eligibilityFormConfirmed, this.physicalFormConfirmed, this.blanketFormConfirmed, this.concussionFormConfirmed, this.cardiacFormConfirmed];
-
-      if (forms.every(Boolean) && this.restrictions === null) {
-        this.statusColor = '#00b300';
-        this.allClear = true;
-        return "Cleared";
-      } else if (forms.every(Boolean) && this.restrictions !== null) {
-        this.statusColor = '#fd6a02';
-        this.restrict = true;
-        return "Cleared with Restrictions";
-      } else {
-        this.statusColor = '#cc0000';
-        return "Not Cleared";
-      }
+  watch: {
+    dataSet: function dataSet() {
+      this.page = this.dataSet.current_page;
+      this.prevUrl = this.dataSet.prev_page_url;
+      this.nextUrl = this.dataSet.next_page_url;
+      this.firstItem = this.dataSet.from;
+      this.lastItem = this.dataSet.to;
+      this.total = this.dataSet.total;
     },
-    expiration: function expiration() {
-      var examination_date = this.$moment(this.exam_date);
-      var expiration_date = this.$moment(examination_date).add(1, 'years');
-      var today = this.$moment();
-      var d = this.$moment(expiration_date).diff(today, 'days');
-
-      if (expiration_date > today && d >= 60) {
-        this.expirationColor = '#00b300';
-        return "Expires";
-      } else if (expiration_date > today && d <= 59) {
-        this.expirationColor = '#fd6a02';
-        return "Expires";
-      } else {
-        this.expirationColor = '#cc0000';
-        return "Expired";
-      }
+    page: function page() {
+      this.broadcast().updateUrl();
+    }
+  },
+  computed: {
+    shouldPaginate: function shouldPaginate() {
+      return !!this.prevUrl || !!this.nextUrl;
     }
   },
   methods: {
-    toggleRow: function toggleRow() {
-      this.isExpanded = !this.isExpanded;
-    }
-  }
-});
-
-/***/ }),
-
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ProfilePhysicals.vue?vue&type=script&lang=js&":
-/*!***************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/ProfilePhysicals.vue?vue&type=script&lang=js& ***!
-  \***************************************************************************************************************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _ProfilePhysical__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ProfilePhysical */ "./resources/js/components/ProfilePhysical.vue");
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-  name: "ProfilePhysicals",
-  components: {
-    ProfilePhysical: _ProfilePhysical__WEBPACK_IMPORTED_MODULE_0__["default"]
-  },
-  props: ['data'],
-  data: function data() {
-    return {
-      recordsCount: this.data.length,
-      items: this.data
-    };
-  },
-  computed: {
-    records: {
-      get: function get() {
-        return this.recordsCount;
-      },
-      set: function set() {
-        if (this.recordsCount !== 0) {
-          return this.records = true;
-        }
-
-        return this.records = false;
-      }
+    broadcast: function broadcast() {
+      return this.$emit('changed', this.page);
+    },
+    updateUrl: function updateUrl() {
+      history.pushState(null, null, '?page=' + this.page);
     }
   }
 });
@@ -2864,7 +1989,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _PhysicalStatus__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../PhysicalStatus */ "./resources/js/components/PhysicalStatus.vue");
 //
 //
 //
@@ -3132,12 +2256,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Athlete",
-  components: {
-    PhysicalStatus: _PhysicalStatus__WEBPACK_IMPORTED_MODULE_0__["default"]
-  },
   props: ['data'],
   data: function data() {
     return {
@@ -3293,9 +2413,13 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _Collection__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../Collection */ "./resources/js/Collection.js");
-/* harmony import */ var _Athlete__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Athlete */ "./resources/js/components/athletes/Athlete.vue");
-/* harmony import */ var _forms_NewAthleteForm__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../forms/NewAthleteForm */ "./resources/js/components/forms/NewAthleteForm.vue");
+/* harmony import */ var _mixins_paginationMixin__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../mixins/paginationMixin */ "./resources/js/mixins/paginationMixin.js");
+/* harmony import */ var _Collection__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../Collection */ "./resources/js/Collection.js");
+/* harmony import */ var _Athlete__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Athlete */ "./resources/js/components/athletes/Athlete.vue");
+/* harmony import */ var _forms_NewAthleteForm__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../forms/NewAthleteForm */ "./resources/js/components/forms/NewAthleteForm.vue");
+//
+//
+//
 //
 //
 //
@@ -3353,12 +2477,14 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-/* harmony default export */ __webpack_exports__["default"] = (_Collection__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
+
+/* harmony default export */ __webpack_exports__["default"] = (_Collection__WEBPACK_IMPORTED_MODULE_1__["default"].extend({
   name: "Athletes",
   components: {
-    Athlete: _Athlete__WEBPACK_IMPORTED_MODULE_1__["default"],
-    NewAthleteForm: _forms_NewAthleteForm__WEBPACK_IMPORTED_MODULE_2__["default"]
+    Athlete: _Athlete__WEBPACK_IMPORTED_MODULE_2__["default"],
+    NewAthleteForm: _forms_NewAthleteForm__WEBPACK_IMPORTED_MODULE_3__["default"]
   },
+  mixins: [_mixins_paginationMixin__WEBPACK_IMPORTED_MODULE_0__["paginationMixin"]],
   props: ['data'],
   data: function data() {
     return {
@@ -3661,6 +2787,19 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "SportAthlete",
@@ -3683,6 +2822,7 @@ __webpack_require__.r(__webpack_exports__);
       fall_sport_id: this.data.fall_sport_id,
       winter_sport_id: this.data.winter_sport_id,
       spring_sport_id: this.data.spring_sport_id,
+      // physicalUploaded: this.data.latest_physical.form_path !== null,
       url: '/athletes/' + this.data.slug,
       form: new Form({
         first_name: this.data.first_name,
@@ -3703,6 +2843,16 @@ __webpack_require__.r(__webpack_exports__);
     exam_date: function exam_date() {
       if (this.data.latest_physical) {
         return this.data.latest_physical.exam_date;
+      }
+    },
+    physicalUploaded: function physicalUploaded() {
+      if (this.data.latest_physical) {
+        return this.data.latest_physical.form_path !== null;
+      }
+    },
+    physicalUrl: function physicalUrl() {
+      if (this.data.latest_physical) {
+        return '/physicals/' + this.data.latest_physical.id;
       }
     },
     historyFormConfirmed: function historyFormConfirmed() {
@@ -3829,7 +2979,6 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Collection__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../Collection */ "./resources/js/Collection.js");
 /* harmony import */ var _SportAthlete__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./SportAthlete */ "./resources/js/components/athletes/SportAthlete.vue");
-/* harmony import */ var _PhysicalStatus__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../PhysicalStatus */ "./resources/js/components/PhysicalStatus.vue");
 //
 //
 //
@@ -3872,14 +3021,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-
 
 
 /* harmony default export */ __webpack_exports__["default"] = (_Collection__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
   name: "SportAthletes",
   components: {
-    SportAthlete: _SportAthlete__WEBPACK_IMPORTED_MODULE_1__["default"],
-    PhysicalStatus: _PhysicalStatus__WEBPACK_IMPORTED_MODULE_2__["default"]
+    SportAthlete: _SportAthlete__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
   props: ['data'],
   data: function data() {
@@ -5155,6 +4302,1032 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/forms/PhysicalUploadForm.vue?vue&type=script&lang=js&":
+/*!***********************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/forms/PhysicalUploadForm.vue?vue&type=script&lang=js& ***!
+  \***********************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: "PhysicalUploadForm",
+  props: ['data'],
+  data: function data() {
+    return {
+      physicalForm: this.data.form_path
+    };
+  },
+  methods: {
+    onChange: function onChange(e) {
+      var _this = this;
+
+      if (!e.target.files.length) return;
+      var file = e.target.files[0];
+      var reader = new FileReader();
+      reader.readAsDataURL(file);
+
+      reader.onload = function (e) {
+        _this.physical = e.target.result;
+      };
+
+      this.persist(file);
+    },
+    persist: function persist(file) {
+      var _this2 = this;
+
+      var data = new FormData();
+      data.append('physical-form', file);
+      axios.post("/api/physicals/".concat(this.data.id, "/physical-form"), data).then(function () {
+        _this2.$emit('formUploaded');
+
+        var Toast = Vue.swal.mixin({
+          toast: true,
+          position: 'top-end',
+          showConfirmButton: false,
+          timer: 2500,
+          timerProgressBar: true,
+          onOpen: function onOpen(toast) {
+            toast.addEventListener('mouseenter', Vue.swal.stopTimer);
+            toast.addEventListener('mouseleave', Vue.swal.resumeTimer);
+          }
+        });
+        Toast.fire({
+          icon: 'success',
+          title: 'Form Successfully Uploaded!'
+        });
+      })["catch"](function (errors) {
+        var Toast = Vue.swal.mixin({
+          toast: true,
+          position: 'top-end',
+          showConfirmButton: false,
+          timer: 2500,
+          timerProgressBar: true,
+          onOpen: function onOpen(toast) {
+            toast.addEventListener('mouseenter', Vue.swal.stopTimer);
+            toast.addEventListener('mouseleave', Vue.swal.resumeTimer);
+          }
+        });
+        Toast.fire({
+          icon: 'error',
+          title: 'Form Must be a pdf and not exceed 10 MB.'
+        });
+        console.log(errors);
+      });
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/physicals/Physical.vue?vue&type=script&lang=js&":
+/*!*****************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/physicals/Physical.vue?vue&type=script&lang=js& ***!
+  \*****************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _forms_PhysicalUploadForm__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../forms/PhysicalUploadForm */ "./resources/js/components/forms/PhysicalUploadForm.vue");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: "Physical",
+  components: {
+    PhysicalUploadForm: _forms_PhysicalUploadForm__WEBPACK_IMPORTED_MODULE_0__["default"]
+  },
+  props: ['data'],
+  data: function data() {
+    return {
+      editing: false,
+      isExpanded: false,
+      statusColor: '',
+      expirationColor: '',
+      allClear: false,
+      restrict: false,
+      notClear: false,
+      id: this.data.id,
+      last_name: this.data.athlete.last_name,
+      first_name: this.data.athlete.first_name,
+      exam_date: this.data.exam_date,
+      restrictions: this.data.restrictions,
+      notes: this.data.notes,
+      athlete_id: this.data.athlete_id,
+      athleteUrl: '/athletes/' + this.data.athlete.slug,
+      form_path: this.data.form_path,
+      physicalUploaded: this.data.form_path !== null,
+      url: location.pathname + '/' + this.data.id,
+      athletes: [],
+      form: new Form({
+        athlete_id: this.data.athlete_id,
+        exam_date: this.data.exam_date,
+        restrictions: this.data.restrictions,
+        form_path: this.data.form_path,
+        notes: this.data.notes,
+        history_form: this.data.history_form,
+        physical_exam_form: this.data.physical_exam_form,
+        medical_eligibility_form: this.data.medical_eligibility_form,
+        physical_form: this.data.physical_form,
+        blanket_waiver_form: this.data.blanket_waiver_form,
+        ghsa_concussion_form: this.data.ghsa_concussion_form,
+        ghsa_cardiac_form: this.data.ghsa_cardiac_form
+      }),
+      historyFormConfirmed: this.data.history_form === 1,
+      physicalExamFormConfirmed: this.data.physical_exam_form === 1,
+      eligibilityFormConfirmed: this.data.medical_eligibility_form === 1,
+      physicalFormConfirmed: this.data.physical_form === 1,
+      blanketFormConfirmed: this.data.blanket_waiver_form === 1,
+      concussionFormConfirmed: this.data.ghsa_concussion_form === 1,
+      cardiacFormConfirmed: this.data.ghsa_cardiac_form === 1
+    };
+  },
+  computed: {
+    status: function status() {
+      var forms = [this.historyFormConfirmed, this.physicalExamFormConfirmed, this.eligibilityFormConfirmed, this.physicalFormConfirmed, this.blanketFormConfirmed, this.concussionFormConfirmed, this.cardiacFormConfirmed];
+
+      if (this.expiration === 'Expired') {
+        this.statusColor = '#cc0000';
+        return "Not Cleared";
+      } else if (forms.every(Boolean) && this.restrictions === null) {
+        this.statusColor = '#00b300';
+        this.allClear = true;
+        return "Cleared";
+      } else if (forms.every(Boolean) && this.restrictions !== null) {
+        this.statusColor = '#fd6a02';
+        this.restrict = true;
+        return "Cleared with Restrictions";
+      } else {
+        this.statusColor = '#cc0000';
+        return "Not Cleared";
+      }
+    },
+    expiration: function expiration() {
+      var examination_date = this.$moment(this.exam_date);
+      var expiration_date = this.$moment(examination_date).add(1, 'years');
+      var today = this.$moment();
+      var d = this.$moment(expiration_date).diff(today, 'days');
+
+      if (expiration_date > today && d >= 60) {
+        this.expirationColor = '#00b300';
+        return "Expires";
+      } else if (expiration_date > today && d <= 59) {
+        this.expirationColor = '#fd6a02';
+        return "Expires";
+      } else {
+        axios.patch('/api/physicals/' + this.data.id, {
+          history_form: this.history_form = '0',
+          physical_exam_form: this.physical_exam_form = '0',
+          medical_eligibility_form: this.medical_eligibility_form = '0',
+          physical_form: this.physical_form = '0',
+          blanket_waiver_form: this.blanket_waiver_form = '0',
+          ghsa_concussion_form: this.ghsa_concussion_form = '0',
+          ghsa_cardiac_form: this.ghsa_cardiac_form = '0'
+        })["catch"](function (errors) {
+          console.log(errors);
+        });
+        this.expirationColor = '#cc0000';
+        return "Expired";
+      }
+    }
+  },
+  methods: {
+    toggleRow: function toggleRow() {
+      this.isExpanded = !this.isExpanded;
+    },
+    resetPage: function resetPage() {
+      this.physicalUploaded = true;
+    },
+    confirmHistoryForm: function confirmHistoryForm() {
+      this.form.history_form = 1;
+      this.historyFormConfirmed = true;
+    },
+    unconfirmHistoryForm: function unconfirmHistoryForm() {
+      this.form.history_form = 0;
+      this.historyFormConfirmed = false;
+    },
+    confirmPhysicalExamForm: function confirmPhysicalExamForm() {
+      this.form.physical_exam_form = 1;
+      this.physicalExamFormConfirmed = true;
+    },
+    unconfirmPhysicalExamForm: function unconfirmPhysicalExamForm() {
+      this.form.physical_exam_form = 0;
+      this.physicalExamFormConfirmed = false;
+    },
+    confirmEligibilityForm: function confirmEligibilityForm() {
+      this.form.medical_eligibility_form = 1;
+      this.eligibilityFormConfirmed = true;
+    },
+    unconfirmEligibilityForm: function unconfirmEligibilityForm() {
+      this.form.medical_eligibility_form = 0;
+      this.eligibilityFormConfirmed = false;
+    },
+    confirmPhysicalForm: function confirmPhysicalForm() {
+      this.form.physical_form = 1;
+      this.physicalFormConfirmed = true;
+    },
+    unconfirmPhysicalForm: function unconfirmPhysicalForm() {
+      this.form.physical_form = 0;
+      this.physicalFormConfirmed = false;
+    },
+    confirmBlanketForm: function confirmBlanketForm() {
+      this.form.blanket_waiver_form = 1;
+      this.blanketFormConfirmed = true;
+    },
+    unconfirmBlanketForm: function unconfirmBlanketForm() {
+      this.form.blanket_waiver_form = 0;
+      this.blanketFormConfirmed = false;
+    },
+    confirmConcussionForm: function confirmConcussionForm() {
+      this.form.ghsa_concussion_form = 1;
+      this.concussionFormConfirmed = true;
+    },
+    unconfirmConcussionForm: function unconfirmConcussionForm() {
+      this.form.ghsa_concussion_form = 0;
+      this.concussionFormConfirmed = false;
+    },
+    confirmCardiacForm: function confirmCardiacForm() {
+      this.form.ghsa_cardiac_form = 1;
+      this.cardiacFormConfirmed = true;
+    },
+    unconfirmCardiacForm: function unconfirmCardiacForm() {
+      this.form.ghsa_cardiac_form = 0;
+      this.cardiacFormConfirmed = false;
+    },
+    getNames: function getNames() {
+      var _this = this;
+
+      this.editing = true;
+      axios.get('/api/athletes').then(function (response) {
+        _this.athletes = response.data;
+      })["catch"](function (errors) {
+        console.log(errors);
+      });
+    },
+    update: function update() {
+      var _this2 = this;
+
+      this.form.patch('/api/physicals/' + this.data.id).then(function (data) {
+        _this2.last_name = _this2.athletes.find(function (athlete) {
+          return athlete.id === _this2.form.athlete_id;
+        }).last_name;
+        _this2.first_name = _this2.athletes.find(function (athlete) {
+          return athlete.id === _this2.form.athlete_id;
+        }).first_name;
+        _this2.exam_date = _this2.form.exam_date;
+        _this2.restrictions = _this2.form.restrictions;
+        _this2.notes = _this2.form.notes;
+        _this2.history_form = _this2.form.history_form, _this2.physical_exam_form = _this2.form.physical_exam_form, _this2.medical_eligibility_form = _this2.form.medical_eligibility_form, _this2.physical_form = _this2.form.physical_form, _this2.blanket_waiver_form = _this2.form.blanket_waiver_form, _this2.ghsa_concussion_form = _this2.form.ghsa_concussion_form, _this2.ghsa_cardiac_form = _this2.form.ghsa_cardiac_form;
+        _this2.editing = false;
+        _this2.isExpanded = false;
+
+        if (_this2.athlete_id !== _this2.data.athlete_id || _this2.exam_date !== _this2.data.exam_date || _this2.restrictions !== _this2.data.restrictions || _this2.notes !== _this2.data.notes || _this2.grad_year !== _this2.data.grad_year || _this2.history_form !== _this2.data.history_form || _this2.physical_exam_form !== _this2.data.physical_exam_form || _this2.medical_eligibility_form !== _this2.data.medical_eligibility_form || _this2.physical_form !== _this2.data.physical_form || _this2.blanket_waiver_form !== _this2.data.blanket_waiver_form || _this2.ghsa_concussion_form !== _this2.data.ghsa_concussion_form || _this2.ghsa_cardiac_form !== _this2.data.ghsa_cardiac_form) {
+          var Toast = Vue.swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 2500,
+            timerProgressBar: true,
+            onOpen: function onOpen(toast) {
+              toast.addEventListener('mouseenter', Vue.swal.stopTimer);
+              toast.addEventListener('mouseleave', Vue.swal.resumeTimer);
+            }
+          });
+          Toast.fire({
+            icon: 'success',
+            title: 'Physical Updated!'
+          });
+        }
+      })["catch"](function (errors) {
+        console.log(errors);
+      });
+    },
+    destroy: function destroy() {
+      axios["delete"]('api/physicals/' + this.data.id);
+      this.$emit('deleted', this.data.id);
+    },
+    resetForm: function resetForm() {
+      this.form.athlete_id = this.data.athlete_id, this.form.exam_date = this.data.exam_date, this.form.restrictions = this.data.restrictions, this.form.form_path = this.data.form_path, this.form.notes = this.data.notes, this.form.history_form = this.data.history_form, this.form.physical_exam_form = this.data.physical_exam_form, this.form.medical_eligibility_form = this.data.medical_eligibility_form, this.form.physical_form = this.data.physical_form, this.form.blanket_waiver_form = this.data.blanket_waiver_form, this.form.ghsa_concussion_form = this.data.ghsa_concussion_form, this.form.ghsa_cardiac_form = this.data.ghsa_cardiac_form;
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/physicals/Physicals.vue?vue&type=script&lang=js&":
+/*!******************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/physicals/Physicals.vue?vue&type=script&lang=js& ***!
+  \******************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _mixins_paginationMixin__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../mixins/paginationMixin */ "./resources/js/mixins/paginationMixin.js");
+/* harmony import */ var _Collection__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../Collection */ "./resources/js/Collection.js");
+/* harmony import */ var _Physical__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Physical */ "./resources/js/components/physicals/Physical.vue");
+/* harmony import */ var _forms_NewPhysicalForm__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../forms/NewPhysicalForm */ "./resources/js/components/forms/NewPhysicalForm.vue");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = (_Collection__WEBPACK_IMPORTED_MODULE_1__["default"].extend({
+  name: "Physicals",
+  components: {
+    Physical: _Physical__WEBPACK_IMPORTED_MODULE_2__["default"],
+    NewPhysicalForm: _forms_NewPhysicalForm__WEBPACK_IMPORTED_MODULE_3__["default"]
+  },
+  mixins: [_mixins_paginationMixin__WEBPACK_IMPORTED_MODULE_0__["paginationMixin"]],
+  props: ['data'],
+  data: function data() {
+    return {
+      search: ''
+    };
+  },
+  computed: {
+    filteredPhysicals: function filteredPhysicals() {
+      var _this = this;
+
+      return this.items.filter(function (physical) {
+        return physical.exam_date.toLowerCase().match(_this.search.toLowerCase()) || physical.athlete.last_name.toLowerCase().match(_this.search.toLowerCase()) || physical.athlete.first_name.toLowerCase().match(_this.search.toLowerCase());
+      });
+    }
+  },
+  methods: {
+    clearSearch: function clearSearch() {
+      this.search = '';
+    }
+  }
+}));
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/physicals/ProfilePhysical.vue?vue&type=script&lang=js&":
+/*!************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/physicals/ProfilePhysical.vue?vue&type=script&lang=js& ***!
+  \************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: "ProfilePhysical",
+  props: ['data'],
+  data: function data() {
+    return {
+      editing: false,
+      isExpanded: false,
+      statusColor: '',
+      expirationColor: '',
+      allClear: false,
+      restrict: false,
+      notClear: false,
+      id: this.data.id,
+      exam_date: this.data.exam_date,
+      restrictions: this.data.restrictions,
+      notes: this.data.notes,
+      athlete_id: this.data.athlete_id,
+      physicalUploaded: this.data.form_path !== null,
+      url: '/physicals/' + this.data.id,
+      historyFormConfirmed: this.data.history_form === 1,
+      physicalExamFormConfirmed: this.data.physical_exam_form === 1,
+      eligibilityFormConfirmed: this.data.medical_eligibility_form === 1,
+      physicalFormConfirmed: this.data.physical_form === 1,
+      blanketFormConfirmed: this.data.blanket_waiver_form === 1,
+      concussionFormConfirmed: this.data.ghsa_concussion_form === 1,
+      cardiacFormConfirmed: this.data.ghsa_cardiac_form === 1
+    };
+  },
+  computed: {
+    status: function status() {
+      var forms = [this.historyFormConfirmed, this.physicalExamFormConfirmed, this.eligibilityFormConfirmed, this.physicalFormConfirmed, this.blanketFormConfirmed, this.concussionFormConfirmed, this.cardiacFormConfirmed];
+
+      if (forms.every(Boolean) && this.restrictions === null) {
+        this.statusColor = '#00b300';
+        this.allClear = true;
+        return "Cleared";
+      } else if (forms.every(Boolean) && this.restrictions !== null) {
+        this.statusColor = '#fd6a02';
+        this.restrict = true;
+        return "Cleared with Restrictions";
+      } else {
+        this.statusColor = '#cc0000';
+        return "Not Cleared";
+      }
+    },
+    expiration: function expiration() {
+      var examination_date = this.$moment(this.exam_date);
+      var expiration_date = this.$moment(examination_date).add(1, 'years');
+      var today = this.$moment();
+      var d = this.$moment(expiration_date).diff(today, 'days');
+
+      if (expiration_date > today && d >= 60) {
+        this.expirationColor = '#00b300';
+        return "Expires";
+      } else if (expiration_date > today && d <= 59) {
+        this.expirationColor = '#fd6a02';
+        return "Expires";
+      } else {
+        this.expirationColor = '#cc0000';
+        return "Expired";
+      }
+    }
+  },
+  methods: {
+    toggleRow: function toggleRow() {
+      this.isExpanded = !this.isExpanded;
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/physicals/ProfilePhysicals.vue?vue&type=script&lang=js&":
+/*!*************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/physicals/ProfilePhysicals.vue?vue&type=script&lang=js& ***!
+  \*************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _ProfilePhysical__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ProfilePhysical */ "./resources/js/components/physicals/ProfilePhysical.vue");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: "ProfilePhysicals",
+  components: {
+    ProfilePhysical: _ProfilePhysical__WEBPACK_IMPORTED_MODULE_0__["default"]
+  },
+  props: ['data'],
+  data: function data() {
+    return {
+      recordsCount: this.data.length,
+      items: this.data
+    };
+  },
+  computed: {
+    records: {
+      get: function get() {
+        return this.recordsCount;
+      },
+      set: function set() {
+        if (this.recordsCount !== 0) {
+          return this.records = true;
+        }
+
+        return this.records = false;
+      }
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/sports/FallSport.vue?vue&type=script&lang=js&":
 /*!***************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/sports/FallSport.vue?vue&type=script&lang=js& ***!
@@ -5866,6 +6039,112 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "CreateButtonTooltip"
 });
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/forms/PhysicalUploadForm.vue?vue&type=style&index=0&lang=css&":
+/*!******************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/forms/PhysicalUploadForm.vue?vue&type=style&index=0&lang=css& ***!
+  \******************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ".upload-btn-wrapper {\n  position: relative;\n  overflow: hidden;\n  display: inline-block;\n}\n.btn {\n  border: 2px solid #000080;\n  color: #000080;\n  background-color: #fff;\n  padding: 6px 18px;\n  border-radius: 8px;\n  font-size: 16px;\n  font-weight: bold;\n}\n.upload-btn-wrapper input[type=file] {\n  font-size: 100px;\n  position: absolute;\n  left: 0;\n  top: 0;\n  opacity: 0;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/lib/css-base.js":
+/*!*************************************************!*\
+  !*** ./node_modules/css-loader/lib/css-base.js ***!
+  \*************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+/*
+	MIT License http://www.opensource.org/licenses/mit-license.php
+	Author Tobias Koppers @sokra
+*/
+// css base code, injected by the css-loader
+module.exports = function(useSourceMap) {
+	var list = [];
+
+	// return the list of modules as css string
+	list.toString = function toString() {
+		return this.map(function (item) {
+			var content = cssWithMappingToString(item, useSourceMap);
+			if(item[2]) {
+				return "@media " + item[2] + "{" + content + "}";
+			} else {
+				return content;
+			}
+		}).join("");
+	};
+
+	// import a list of modules into the list
+	list.i = function(modules, mediaQuery) {
+		if(typeof modules === "string")
+			modules = [[null, modules, ""]];
+		var alreadyImportedModules = {};
+		for(var i = 0; i < this.length; i++) {
+			var id = this[i][0];
+			if(typeof id === "number")
+				alreadyImportedModules[id] = true;
+		}
+		for(i = 0; i < modules.length; i++) {
+			var item = modules[i];
+			// skip already imported module
+			// this implementation is not 100% perfect for weird media query combinations
+			//  when a module is imported multiple times with different media queries.
+			//  I hope this will never occur (Hey this way we have smaller bundles)
+			if(typeof item[0] !== "number" || !alreadyImportedModules[item[0]]) {
+				if(mediaQuery && !item[2]) {
+					item[2] = mediaQuery;
+				} else if(mediaQuery) {
+					item[2] = "(" + item[2] + ") and (" + mediaQuery + ")";
+				}
+				list.push(item);
+			}
+		}
+	};
+	return list;
+};
+
+function cssWithMappingToString(item, useSourceMap) {
+	var content = item[1] || '';
+	var cssMapping = item[3];
+	if (!cssMapping) {
+		return content;
+	}
+
+	if (useSourceMap && typeof btoa === 'function') {
+		var sourceMapping = toComment(cssMapping);
+		var sourceURLs = cssMapping.sources.map(function (source) {
+			return '/*# sourceURL=' + cssMapping.sourceRoot + source + ' */'
+		});
+
+		return [content].concat(sourceURLs).concat([sourceMapping]).join('\n');
+	}
+
+	return [content].join('\n');
+}
+
+// Adapted from convert-source-map (MIT)
+function toComment(sourceMap) {
+	// eslint-disable-next-line no-undef
+	var base64 = btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap))));
+	var data = 'sourceMappingURL=data:application/json;charset=utf-8;base64,' + base64;
+
+	return '/*# ' + data + ' */';
+}
+
 
 /***/ }),
 
@@ -24055,6 +24334,545 @@ process.umask = function() { return 0; };
 
 /***/ }),
 
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/forms/PhysicalUploadForm.vue?vue&type=style&index=0&lang=css&":
+/*!**********************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/forms/PhysicalUploadForm.vue?vue&type=style&index=0&lang=css& ***!
+  \**********************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../../node_modules/css-loader??ref--6-1!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/src??ref--6-2!../../../../node_modules/vue-loader/lib??vue-loader-options!./PhysicalUploadForm.vue?vue&type=style&index=0&lang=css& */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/forms/PhysicalUploadForm.vue?vue&type=style&index=0&lang=css&");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
+/***/ "./node_modules/style-loader/lib/addStyles.js":
+/*!****************************************************!*\
+  !*** ./node_modules/style-loader/lib/addStyles.js ***!
+  \****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+/*
+	MIT License http://www.opensource.org/licenses/mit-license.php
+	Author Tobias Koppers @sokra
+*/
+
+var stylesInDom = {};
+
+var	memoize = function (fn) {
+	var memo;
+
+	return function () {
+		if (typeof memo === "undefined") memo = fn.apply(this, arguments);
+		return memo;
+	};
+};
+
+var isOldIE = memoize(function () {
+	// Test for IE <= 9 as proposed by Browserhacks
+	// @see http://browserhacks.com/#hack-e71d8692f65334173fee715c222cb805
+	// Tests for existence of standard globals is to allow style-loader
+	// to operate correctly into non-standard environments
+	// @see https://github.com/webpack-contrib/style-loader/issues/177
+	return window && document && document.all && !window.atob;
+});
+
+var getTarget = function (target, parent) {
+  if (parent){
+    return parent.querySelector(target);
+  }
+  return document.querySelector(target);
+};
+
+var getElement = (function (fn) {
+	var memo = {};
+
+	return function(target, parent) {
+                // If passing function in options, then use it for resolve "head" element.
+                // Useful for Shadow Root style i.e
+                // {
+                //   insertInto: function () { return document.querySelector("#foo").shadowRoot }
+                // }
+                if (typeof target === 'function') {
+                        return target();
+                }
+                if (typeof memo[target] === "undefined") {
+			var styleTarget = getTarget.call(this, target, parent);
+			// Special case to return head of iframe instead of iframe itself
+			if (window.HTMLIFrameElement && styleTarget instanceof window.HTMLIFrameElement) {
+				try {
+					// This will throw an exception if access to iframe is blocked
+					// due to cross-origin restrictions
+					styleTarget = styleTarget.contentDocument.head;
+				} catch(e) {
+					styleTarget = null;
+				}
+			}
+			memo[target] = styleTarget;
+		}
+		return memo[target]
+	};
+})();
+
+var singleton = null;
+var	singletonCounter = 0;
+var	stylesInsertedAtTop = [];
+
+var	fixUrls = __webpack_require__(/*! ./urls */ "./node_modules/style-loader/lib/urls.js");
+
+module.exports = function(list, options) {
+	if (typeof DEBUG !== "undefined" && DEBUG) {
+		if (typeof document !== "object") throw new Error("The style-loader cannot be used in a non-browser environment");
+	}
+
+	options = options || {};
+
+	options.attrs = typeof options.attrs === "object" ? options.attrs : {};
+
+	// Force single-tag solution on IE6-9, which has a hard limit on the # of <style>
+	// tags it will allow on a page
+	if (!options.singleton && typeof options.singleton !== "boolean") options.singleton = isOldIE();
+
+	// By default, add <style> tags to the <head> element
+        if (!options.insertInto) options.insertInto = "head";
+
+	// By default, add <style> tags to the bottom of the target
+	if (!options.insertAt) options.insertAt = "bottom";
+
+	var styles = listToStyles(list, options);
+
+	addStylesToDom(styles, options);
+
+	return function update (newList) {
+		var mayRemove = [];
+
+		for (var i = 0; i < styles.length; i++) {
+			var item = styles[i];
+			var domStyle = stylesInDom[item.id];
+
+			domStyle.refs--;
+			mayRemove.push(domStyle);
+		}
+
+		if(newList) {
+			var newStyles = listToStyles(newList, options);
+			addStylesToDom(newStyles, options);
+		}
+
+		for (var i = 0; i < mayRemove.length; i++) {
+			var domStyle = mayRemove[i];
+
+			if(domStyle.refs === 0) {
+				for (var j = 0; j < domStyle.parts.length; j++) domStyle.parts[j]();
+
+				delete stylesInDom[domStyle.id];
+			}
+		}
+	};
+};
+
+function addStylesToDom (styles, options) {
+	for (var i = 0; i < styles.length; i++) {
+		var item = styles[i];
+		var domStyle = stylesInDom[item.id];
+
+		if(domStyle) {
+			domStyle.refs++;
+
+			for(var j = 0; j < domStyle.parts.length; j++) {
+				domStyle.parts[j](item.parts[j]);
+			}
+
+			for(; j < item.parts.length; j++) {
+				domStyle.parts.push(addStyle(item.parts[j], options));
+			}
+		} else {
+			var parts = [];
+
+			for(var j = 0; j < item.parts.length; j++) {
+				parts.push(addStyle(item.parts[j], options));
+			}
+
+			stylesInDom[item.id] = {id: item.id, refs: 1, parts: parts};
+		}
+	}
+}
+
+function listToStyles (list, options) {
+	var styles = [];
+	var newStyles = {};
+
+	for (var i = 0; i < list.length; i++) {
+		var item = list[i];
+		var id = options.base ? item[0] + options.base : item[0];
+		var css = item[1];
+		var media = item[2];
+		var sourceMap = item[3];
+		var part = {css: css, media: media, sourceMap: sourceMap};
+
+		if(!newStyles[id]) styles.push(newStyles[id] = {id: id, parts: [part]});
+		else newStyles[id].parts.push(part);
+	}
+
+	return styles;
+}
+
+function insertStyleElement (options, style) {
+	var target = getElement(options.insertInto)
+
+	if (!target) {
+		throw new Error("Couldn't find a style target. This probably means that the value for the 'insertInto' parameter is invalid.");
+	}
+
+	var lastStyleElementInsertedAtTop = stylesInsertedAtTop[stylesInsertedAtTop.length - 1];
+
+	if (options.insertAt === "top") {
+		if (!lastStyleElementInsertedAtTop) {
+			target.insertBefore(style, target.firstChild);
+		} else if (lastStyleElementInsertedAtTop.nextSibling) {
+			target.insertBefore(style, lastStyleElementInsertedAtTop.nextSibling);
+		} else {
+			target.appendChild(style);
+		}
+		stylesInsertedAtTop.push(style);
+	} else if (options.insertAt === "bottom") {
+		target.appendChild(style);
+	} else if (typeof options.insertAt === "object" && options.insertAt.before) {
+		var nextSibling = getElement(options.insertAt.before, target);
+		target.insertBefore(style, nextSibling);
+	} else {
+		throw new Error("[Style Loader]\n\n Invalid value for parameter 'insertAt' ('options.insertAt') found.\n Must be 'top', 'bottom', or Object.\n (https://github.com/webpack-contrib/style-loader#insertat)\n");
+	}
+}
+
+function removeStyleElement (style) {
+	if (style.parentNode === null) return false;
+	style.parentNode.removeChild(style);
+
+	var idx = stylesInsertedAtTop.indexOf(style);
+	if(idx >= 0) {
+		stylesInsertedAtTop.splice(idx, 1);
+	}
+}
+
+function createStyleElement (options) {
+	var style = document.createElement("style");
+
+	if(options.attrs.type === undefined) {
+		options.attrs.type = "text/css";
+	}
+
+	if(options.attrs.nonce === undefined) {
+		var nonce = getNonce();
+		if (nonce) {
+			options.attrs.nonce = nonce;
+		}
+	}
+
+	addAttrs(style, options.attrs);
+	insertStyleElement(options, style);
+
+	return style;
+}
+
+function createLinkElement (options) {
+	var link = document.createElement("link");
+
+	if(options.attrs.type === undefined) {
+		options.attrs.type = "text/css";
+	}
+	options.attrs.rel = "stylesheet";
+
+	addAttrs(link, options.attrs);
+	insertStyleElement(options, link);
+
+	return link;
+}
+
+function addAttrs (el, attrs) {
+	Object.keys(attrs).forEach(function (key) {
+		el.setAttribute(key, attrs[key]);
+	});
+}
+
+function getNonce() {
+	if (false) {}
+
+	return __webpack_require__.nc;
+}
+
+function addStyle (obj, options) {
+	var style, update, remove, result;
+
+	// If a transform function was defined, run it on the css
+	if (options.transform && obj.css) {
+	    result = typeof options.transform === 'function'
+		 ? options.transform(obj.css) 
+		 : options.transform.default(obj.css);
+
+	    if (result) {
+	    	// If transform returns a value, use that instead of the original css.
+	    	// This allows running runtime transformations on the css.
+	    	obj.css = result;
+	    } else {
+	    	// If the transform function returns a falsy value, don't add this css.
+	    	// This allows conditional loading of css
+	    	return function() {
+	    		// noop
+	    	};
+	    }
+	}
+
+	if (options.singleton) {
+		var styleIndex = singletonCounter++;
+
+		style = singleton || (singleton = createStyleElement(options));
+
+		update = applyToSingletonTag.bind(null, style, styleIndex, false);
+		remove = applyToSingletonTag.bind(null, style, styleIndex, true);
+
+	} else if (
+		obj.sourceMap &&
+		typeof URL === "function" &&
+		typeof URL.createObjectURL === "function" &&
+		typeof URL.revokeObjectURL === "function" &&
+		typeof Blob === "function" &&
+		typeof btoa === "function"
+	) {
+		style = createLinkElement(options);
+		update = updateLink.bind(null, style, options);
+		remove = function () {
+			removeStyleElement(style);
+
+			if(style.href) URL.revokeObjectURL(style.href);
+		};
+	} else {
+		style = createStyleElement(options);
+		update = applyToTag.bind(null, style);
+		remove = function () {
+			removeStyleElement(style);
+		};
+	}
+
+	update(obj);
+
+	return function updateStyle (newObj) {
+		if (newObj) {
+			if (
+				newObj.css === obj.css &&
+				newObj.media === obj.media &&
+				newObj.sourceMap === obj.sourceMap
+			) {
+				return;
+			}
+
+			update(obj = newObj);
+		} else {
+			remove();
+		}
+	};
+}
+
+var replaceText = (function () {
+	var textStore = [];
+
+	return function (index, replacement) {
+		textStore[index] = replacement;
+
+		return textStore.filter(Boolean).join('\n');
+	};
+})();
+
+function applyToSingletonTag (style, index, remove, obj) {
+	var css = remove ? "" : obj.css;
+
+	if (style.styleSheet) {
+		style.styleSheet.cssText = replaceText(index, css);
+	} else {
+		var cssNode = document.createTextNode(css);
+		var childNodes = style.childNodes;
+
+		if (childNodes[index]) style.removeChild(childNodes[index]);
+
+		if (childNodes.length) {
+			style.insertBefore(cssNode, childNodes[index]);
+		} else {
+			style.appendChild(cssNode);
+		}
+	}
+}
+
+function applyToTag (style, obj) {
+	var css = obj.css;
+	var media = obj.media;
+
+	if(media) {
+		style.setAttribute("media", media)
+	}
+
+	if(style.styleSheet) {
+		style.styleSheet.cssText = css;
+	} else {
+		while(style.firstChild) {
+			style.removeChild(style.firstChild);
+		}
+
+		style.appendChild(document.createTextNode(css));
+	}
+}
+
+function updateLink (link, options, obj) {
+	var css = obj.css;
+	var sourceMap = obj.sourceMap;
+
+	/*
+		If convertToAbsoluteUrls isn't defined, but sourcemaps are enabled
+		and there is no publicPath defined then lets turn convertToAbsoluteUrls
+		on by default.  Otherwise default to the convertToAbsoluteUrls option
+		directly
+	*/
+	var autoFixUrls = options.convertToAbsoluteUrls === undefined && sourceMap;
+
+	if (options.convertToAbsoluteUrls || autoFixUrls) {
+		css = fixUrls(css);
+	}
+
+	if (sourceMap) {
+		// http://stackoverflow.com/a/26603875
+		css += "\n/*# sourceMappingURL=data:application/json;base64," + btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap)))) + " */";
+	}
+
+	var blob = new Blob([css], { type: "text/css" });
+
+	var oldSrc = link.href;
+
+	link.href = URL.createObjectURL(blob);
+
+	if(oldSrc) URL.revokeObjectURL(oldSrc);
+}
+
+
+/***/ }),
+
+/***/ "./node_modules/style-loader/lib/urls.js":
+/*!***********************************************!*\
+  !*** ./node_modules/style-loader/lib/urls.js ***!
+  \***********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+
+/**
+ * When source maps are enabled, `style-loader` uses a link element with a data-uri to
+ * embed the css on the page. This breaks all relative urls because now they are relative to a
+ * bundle instead of the current page.
+ *
+ * One solution is to only use full urls, but that may be impossible.
+ *
+ * Instead, this function "fixes" the relative urls to be absolute according to the current page location.
+ *
+ * A rudimentary test suite is located at `test/fixUrls.js` and can be run via the `npm test` command.
+ *
+ */
+
+module.exports = function (css) {
+  // get current location
+  var location = typeof window !== "undefined" && window.location;
+
+  if (!location) {
+    throw new Error("fixUrls requires window.location");
+  }
+
+	// blank or null?
+	if (!css || typeof css !== "string") {
+	  return css;
+  }
+
+  var baseUrl = location.protocol + "//" + location.host;
+  var currentDir = baseUrl + location.pathname.replace(/\/[^\/]*$/, "/");
+
+	// convert each url(...)
+	/*
+	This regular expression is just a way to recursively match brackets within
+	a string.
+
+	 /url\s*\(  = Match on the word "url" with any whitespace after it and then a parens
+	   (  = Start a capturing group
+	     (?:  = Start a non-capturing group
+	         [^)(]  = Match anything that isn't a parentheses
+	         |  = OR
+	         \(  = Match a start parentheses
+	             (?:  = Start another non-capturing groups
+	                 [^)(]+  = Match anything that isn't a parentheses
+	                 |  = OR
+	                 \(  = Match a start parentheses
+	                     [^)(]*  = Match anything that isn't a parentheses
+	                 \)  = Match a end parentheses
+	             )  = End Group
+              *\) = Match anything and then a close parens
+          )  = Close non-capturing group
+          *  = Match anything
+       )  = Close capturing group
+	 \)  = Match a close parens
+
+	 /gi  = Get all matches, not the first.  Be case insensitive.
+	 */
+	var fixedCss = css.replace(/url\s*\(((?:[^)(]|\((?:[^)(]+|\([^)(]*\))*\))*)\)/gi, function(fullMatch, origUrl) {
+		// strip quotes (if they exist)
+		var unquotedOrigUrl = origUrl
+			.trim()
+			.replace(/^"(.*)"$/, function(o, $1){ return $1; })
+			.replace(/^'(.*)'$/, function(o, $1){ return $1; });
+
+		// already a full url? no change
+		if (/^(#|data:|http:\/\/|https:\/\/|file:\/\/\/|\s*$)/i.test(unquotedOrigUrl)) {
+		  return fullMatch;
+		}
+
+		// convert the url to a full url
+		var newUrl;
+
+		if (unquotedOrigUrl.indexOf("//") === 0) {
+		  	//TODO: should we add protocol?
+			newUrl = unquotedOrigUrl;
+		} else if (unquotedOrigUrl.indexOf("/") === 0) {
+			// path should be relative to the base url
+			newUrl = baseUrl + unquotedOrigUrl; // already starts with '/'
+		} else {
+			// path should be relative to current directory
+			newUrl = currentDir + unquotedOrigUrl.replace(/^\.\//, ""); // Strip leading './'
+		}
+
+		// send back the fixed url(...)
+		return "url(" + JSON.stringify(newUrl) + ")";
+	});
+
+	// send back the fixed css
+	return fixedCss;
+};
+
+
+/***/ }),
+
 /***/ "./node_modules/sweetalert2/dist/sweetalert2.all.js":
 /*!**********************************************************!*\
   !*** ./node_modules/sweetalert2/dist/sweetalert2.all.js ***!
@@ -27320,1238 +28138,9 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Physical.vue?vue&type=template&id=7b6e9a7c&scoped=true&":
-/*!***********************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Physical.vue?vue&type=template&id=7b6e9a7c&scoped=true& ***!
-  \***********************************************************************************************************************************************************************************************************************/
-/*! exports provided: render, staticRenderFns */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("div", {}, [
-    _vm.editing
-      ? _c("div", { staticClass: "p-3" }, [
-          _c("div", { staticClass: "w-full lg:w-1/2 mx-auto" }, [
-            _c(
-              "form",
-              {
-                staticClass:
-                  "bg-gray-100 shadow-md rounded px-8 pt-6 pb-8 mb-4",
-                attrs: {
-                  action: "api/physicals/id",
-                  method: "POST",
-                  id: "editPhysical"
-                },
-                on: {
-                  submit: function($event) {
-                    $event.preventDefault()
-                    return _vm.update($event)
-                  },
-                  keydown: function($event) {
-                    return _vm.form.errors.clear()
-                  }
-                }
-              },
-              [
-                _c("div", { staticClass: "flex items-center mb-4" }, [
-                  _vm._m(0),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "w-full text-gray-800 px-4" }, [
-                    _c("p", [_vm._v(_vm._s(_vm.id))])
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "mb-2" }, [
-                  _c(
-                    "div",
-                    { staticClass: "flex justify-between content-end" },
-                    [
-                      _c(
-                        "label",
-                        {
-                          staticClass: "text-sm font-semibold text-red-900",
-                          attrs: { for: "form.athlete_id" }
-                        },
-                        [
-                          _vm._v(
-                            "\n                            Athlete\n                        "
-                          )
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _vm.form.errors.has("athlete_id")
-                        ? _c("span", {
-                            staticClass: "form-help",
-                            attrs: { id: "athleteHelp" },
-                            domProps: {
-                              textContent: _vm._s(
-                                _vm.form.errors.get("athlete_id")
-                              )
-                            }
-                          })
-                        : _vm._e()
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "select",
-                    {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.form.athlete_id,
-                          expression: "form.athlete_id"
-                        }
-                      ],
-                      staticClass:
-                        "w-full rounded border px-3 py-2 text-lg border shadow-md",
-                      attrs: {
-                        name: "athlete_id",
-                        id: "form.athlete_id",
-                        required: ""
-                      },
-                      on: {
-                        change: function($event) {
-                          var $$selectedVal = Array.prototype.filter
-                            .call($event.target.options, function(o) {
-                              return o.selected
-                            })
-                            .map(function(o) {
-                              var val = "_value" in o ? o._value : o.value
-                              return val
-                            })
-                          _vm.$set(
-                            _vm.form,
-                            "athlete_id",
-                            $event.target.multiple
-                              ? $$selectedVal
-                              : $$selectedVal[0]
-                          )
-                        }
-                      }
-                    },
-                    _vm._l(_vm.athletes, function(athlete) {
-                      return _c(
-                        "option",
-                        { key: athlete.id, domProps: { value: athlete.id } },
-                        [
-                          _vm._v(
-                            "\n                            " +
-                              _vm._s(athlete.last_name) +
-                              ", " +
-                              _vm._s(athlete.first_name) +
-                              "\n                        "
-                          )
-                        ]
-                      )
-                    }),
-                    0
-                  )
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "py-2" }, [
-                  _c(
-                    "div",
-                    { staticClass: "flex justify-between content-end" },
-                    [
-                      _c(
-                        "label",
-                        {
-                          staticClass: "text-sm font-semibold text-red-900",
-                          attrs: { for: "form.exam_date" }
-                        },
-                        [_vm._v("Exam Date")]
-                      ),
-                      _vm._v(" "),
-                      _vm.form.errors.has("exam_date")
-                        ? _c("span", {
-                            staticClass: "text-red-600 text-xs font-semibold",
-                            attrs: { id: "exam_dateHelp" },
-                            domProps: {
-                              textContent: _vm._s(
-                                _vm.form.errors.get("exam_date")
-                              )
-                            }
-                          })
-                        : _vm._e()
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.form.exam_date,
-                        expression: "form.exam_date"
-                      }
-                    ],
-                    staticClass:
-                      "w-full rounded border px-2 py-2 text-lg border shadow-md",
-                    attrs: { id: "form.exam_date", type: "date" },
-                    domProps: { value: _vm.form.exam_date },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.$set(_vm.form, "exam_date", $event.target.value)
-                      }
-                    }
-                  })
-                ]),
-                _vm._v(" "),
-                _vm._m(1),
-                _vm._v(" "),
-                _c("div", { staticClass: "flex flex-col px-4" }, [
-                  _c("div", { staticClass: "flex items-center py-1" }, [
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.form.history_form,
-                          expression: "form.history_form"
-                        }
-                      ],
-                      staticClass: "hidden",
-                      attrs: {
-                        type: "radio",
-                        id: "form.history_form",
-                        value: "1"
-                      },
-                      domProps: { checked: _vm._q(_vm.form.history_form, "1") },
-                      on: {
-                        change: function($event) {
-                          return _vm.$set(_vm.form, "history_form", "1")
-                        }
-                      }
-                    }),
-                    _vm._v(" "),
-                    _vm.historyFormConfirmed
-                      ? _c(
-                          "a",
-                          {
-                            staticClass: "text-xl",
-                            on: { click: _vm.unconfirmHistoryForm }
-                          },
-                          [_vm._m(2)]
-                        )
-                      : _c("a", { on: { click: _vm.confirmHistoryForm } }, [
-                          _vm._m(3)
-                        ]),
-                    _vm._v(" "),
-                    _vm._m(4)
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "flex flex-col px-4" }, [
-                  _c("div", { staticClass: "flex items-center py-1" }, [
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.form.physical_exam_form,
-                          expression: "form.physical_exam_form"
-                        }
-                      ],
-                      staticClass: "hidden",
-                      attrs: {
-                        type: "radio",
-                        id: "form.physical_exam_form",
-                        value: "1"
-                      },
-                      domProps: {
-                        checked: _vm._q(_vm.form.physical_exam_form, "1")
-                      },
-                      on: {
-                        change: function($event) {
-                          return _vm.$set(_vm.form, "physical_exam_form", "1")
-                        }
-                      }
-                    }),
-                    _vm._v(" "),
-                    _vm.physicalExamFormConfirmed
-                      ? _c(
-                          "a",
-                          {
-                            staticClass: "text-xl",
-                            on: { click: _vm.unconfirmPhysicalExamForm }
-                          },
-                          [_vm._m(5)]
-                        )
-                      : _c(
-                          "a",
-                          { on: { click: _vm.confirmPhysicalExamForm } },
-                          [_vm._m(6)]
-                        ),
-                    _vm._v(" "),
-                    _vm._m(7)
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "flex flex-col px-4" }, [
-                  _c("div", { staticClass: "flex items-center py-1" }, [
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.form.medical_eligibility_form,
-                          expression: "form.medical_eligibility_form"
-                        }
-                      ],
-                      staticClass: "hidden",
-                      attrs: {
-                        type: "radio",
-                        id: "form.medical_eligibility_form",
-                        value: "1"
-                      },
-                      domProps: {
-                        checked: _vm._q(_vm.form.medical_eligibility_form, "1")
-                      },
-                      on: {
-                        change: function($event) {
-                          return _vm.$set(
-                            _vm.form,
-                            "medical_eligibility_form",
-                            "1"
-                          )
-                        }
-                      }
-                    }),
-                    _vm._v(" "),
-                    _vm.eligibilityFormConfirmed
-                      ? _c(
-                          "a",
-                          {
-                            staticClass: "text-xl",
-                            on: { click: _vm.unconfirmEligibilityForm }
-                          },
-                          [_vm._m(8)]
-                        )
-                      : _c("a", { on: { click: _vm.confirmEligibilityForm } }, [
-                          _vm._m(9)
-                        ]),
-                    _vm._v(" "),
-                    _vm._m(10)
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "flex flex-col px-4" }, [
-                  _c("div", { staticClass: "flex items-center py-1" }, [
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.form.physical_form,
-                          expression: "form.physical_form"
-                        }
-                      ],
-                      staticClass: "hidden",
-                      attrs: {
-                        type: "radio",
-                        id: "form.physical_form",
-                        value: "1"
-                      },
-                      domProps: {
-                        checked: _vm._q(_vm.form.physical_form, "1")
-                      },
-                      on: {
-                        change: function($event) {
-                          return _vm.$set(_vm.form, "physical_form", "1")
-                        }
-                      }
-                    }),
-                    _vm._v(" "),
-                    _vm.physicalFormConfirmed
-                      ? _c(
-                          "a",
-                          {
-                            staticClass: "text-xl",
-                            on: { click: _vm.unconfirmPhysicalForm }
-                          },
-                          [_vm._m(11)]
-                        )
-                      : _c("a", { on: { click: _vm.confirmPhysicalForm } }, [
-                          _vm._m(12)
-                        ]),
-                    _vm._v(" "),
-                    _vm._m(13)
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "flex flex-col px-4" }, [
-                  _c("div", { staticClass: "flex items-center py-1" }, [
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.form.blanket_waiver_form,
-                          expression: "form.blanket_waiver_form"
-                        }
-                      ],
-                      staticClass: "hidden",
-                      attrs: {
-                        type: "radio",
-                        id: "form.blanket_waiver_form",
-                        value: "1"
-                      },
-                      domProps: {
-                        checked: _vm._q(_vm.form.blanket_waiver_form, "1")
-                      },
-                      on: {
-                        change: function($event) {
-                          return _vm.$set(_vm.form, "blanket_waiver_form", "1")
-                        }
-                      }
-                    }),
-                    _vm._v(" "),
-                    _vm.blanketFormConfirmed
-                      ? _c(
-                          "a",
-                          {
-                            staticClass: "text-xl",
-                            on: { click: _vm.unconfirmBlanketForm }
-                          },
-                          [_vm._m(14)]
-                        )
-                      : _c("a", { on: { click: _vm.confirmBlanketForm } }, [
-                          _vm._m(15)
-                        ]),
-                    _vm._v(" "),
-                    _vm._m(16)
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "flex flex-col px-4" }, [
-                  _c("div", { staticClass: "flex items-center py-1" }, [
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.form.ghsa_concussion_form,
-                          expression: "form.ghsa_concussion_form"
-                        }
-                      ],
-                      staticClass: "hidden",
-                      attrs: {
-                        type: "radio",
-                        id: "form.ghsa_concussion_form",
-                        value: "1"
-                      },
-                      domProps: {
-                        checked: _vm._q(_vm.form.ghsa_concussion_form, "1")
-                      },
-                      on: {
-                        change: function($event) {
-                          return _vm.$set(_vm.form, "ghsa_concussion_form", "1")
-                        }
-                      }
-                    }),
-                    _vm._v(" "),
-                    _vm.concussionFormConfirmed
-                      ? _c(
-                          "a",
-                          {
-                            staticClass: "text-xl",
-                            on: { click: _vm.unconfirmConcussionForm }
-                          },
-                          [_vm._m(17)]
-                        )
-                      : _c("a", { on: { click: _vm.confirmConcussionForm } }, [
-                          _vm._m(18)
-                        ]),
-                    _vm._v(" "),
-                    _vm._m(19)
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "flex flex-col px-4" }, [
-                  _c("div", { staticClass: "flex items-center py-1" }, [
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.form.ghsa_cardiac_form,
-                          expression: "form.ghsa_cardiac_form"
-                        }
-                      ],
-                      staticClass: "hidden",
-                      attrs: {
-                        type: "radio",
-                        id: "form.ghsa_cardiac_form",
-                        value: "1"
-                      },
-                      domProps: {
-                        checked: _vm._q(_vm.form.ghsa_cardiac_form, "1")
-                      },
-                      on: {
-                        change: function($event) {
-                          return _vm.$set(_vm.form, "ghsa_cardiac_form", "1")
-                        }
-                      }
-                    }),
-                    _vm._v(" "),
-                    _vm.cardiacFormConfirmed
-                      ? _c(
-                          "a",
-                          {
-                            staticClass: "text-xl",
-                            on: { click: _vm.unconfirmCardiacForm }
-                          },
-                          [_vm._m(20)]
-                        )
-                      : _c("a", { on: { click: _vm.confirmCardiacForm } }, [
-                          _vm._m(21)
-                        ]),
-                    _vm._v(" "),
-                    _vm._m(22)
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "py-2" }, [
-                  _c(
-                    "div",
-                    { staticClass: "flex justify-between content-end" },
-                    [
-                      _c(
-                        "label",
-                        {
-                          staticClass: "text-sm font-semibold text-red-900",
-                          attrs: { for: "form.restrictions" }
-                        },
-                        [_vm._v("Restrictions (if any)")]
-                      ),
-                      _vm._v(" "),
-                      _vm.form.errors.has("restrictions")
-                        ? _c("span", {
-                            staticClass: "text-red-600 text-xs font-semibold",
-                            attrs: { id: "restrictionsHelp" },
-                            domProps: {
-                              textContent: _vm._s(
-                                _vm.form.errors.get("restrictions")
-                              )
-                            }
-                          })
-                        : _vm._e()
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.form.restrictions,
-                        expression: "form.restrictions"
-                      }
-                    ],
-                    staticClass:
-                      "w-full rounded border px-3 py-2 text-lg border shadow-md",
-                    attrs: { id: "form.restrictions", type: "text" },
-                    domProps: { value: _vm.form.restrictions },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.$set(_vm.form, "restrictions", $event.target.value)
-                      }
-                    }
-                  })
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "py-2" }, [
-                  _c(
-                    "div",
-                    { staticClass: "flex justify-between content-end" },
-                    [
-                      _c(
-                        "label",
-                        {
-                          staticClass: "text-sm font-semibold text-red-900",
-                          attrs: { for: "form.notes" }
-                        },
-                        [
-                          _vm._v(
-                            "\n                            Notes (optional)\n                        "
-                          )
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _vm.form.errors.has("notes")
-                        ? _c("span", {
-                            staticClass: "form-help",
-                            attrs: { id: "notesHelp" },
-                            domProps: {
-                              textContent: _vm._s(_vm.form.errors.get("notes"))
-                            }
-                          })
-                        : _vm._e()
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c("textarea", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.form.notes,
-                        expression: "form.notes"
-                      }
-                    ],
-                    staticClass:
-                      "w-full rounded border px-3 py-2 text-lg border shadow-md",
-                    attrs: { id: "form.notes" },
-                    domProps: { value: _vm.form.notes },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.$set(_vm.form, "notes", $event.target.value)
-                      }
-                    }
-                  })
-                ]),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  { staticClass: " pt-2 flex items-center justify-end" },
-                  [
-                    _c(
-                      "update-button",
-                      {
-                        staticClass: "mr-4",
-                        attrs: { disabled: _vm.form.errors.any() }
-                      },
-                      [
-                        _vm._v(
-                          "\n                        Update\n                    "
-                        )
-                      ]
-                    ),
-                    _vm._v(" "),
-                    _c("cancel-button", { on: { clicked: _vm.resetForm } })
-                  ],
-                  1
-                )
-              ]
-            )
-          ])
-        ])
-      : _c("div", { staticClass: "flex py-1 items-center hover:bg-gray-100" }, [
-          _c("div", { staticClass: "flex flex-col w-full" }, [
-            _c("div", { staticClass: "flex w-full" }, [
-              _c("div", { staticClass: "flex pt-1 w-11/12 px-2 flex-wrap" }, [
-                _c("div", { staticClass: "flex w-full lg:w-1/3" }, [
-                  _c(
-                    "a",
-                    {
-                      staticClass: "hover:font-semibold hover:underline",
-                      attrs: { href: _vm.athleteUrl }
-                    },
-                    [
-                      _vm._v(
-                        "\n                            " +
-                          _vm._s(_vm.last_name) +
-                          ", " +
-                          _vm._s(_vm.first_name) +
-                          "\n                        "
-                      )
-                    ]
-                  )
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "flex w-full lg:w-1/3 px-2" }, [
-                  _c(
-                    "div",
-                    {
-                      staticClass: "w-full",
-                      style: { color: _vm.statusColor }
-                    },
-                    [
-                      _vm._v(
-                        "\n                                " +
-                          _vm._s(_vm.status) +
-                          "\n                            "
-                      ),
-                      _vm.allClear
-                        ? _c("span", [_c("i", { staticClass: "fas fa-check" })])
-                        : _vm.restrict
-                        ? _c("span", [
-                            _c("i", { staticClass: "fas fa-exclamation" })
-                          ])
-                        : _c("span", [_c("i", { staticClass: "fas fa-times" })])
-                    ]
-                  )
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "flex w-full lg:w-1/3 px-2" }, [
-                  _c(
-                    "div",
-                    {
-                      staticClass: "w-full",
-                      style: { color: _vm.expirationColor }
-                    },
-                    [
-                      _vm._v(
-                        "\n                            " +
-                          _vm._s(_vm.expiration) +
-                          "\n                            "
-                      ),
-                      _c("span", [
-                        _vm._v(
-                          _vm._s(
-                            _vm._f("moment")(
-                              _vm._f("moment")(_vm.exam_date, "add", "1 year"),
-                              "from",
-                              "now"
-                            )
-                          )
-                        )
-                      ])
-                    ]
-                  )
-                ])
-              ]),
-              _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "flex w-1/12 pt-1 justify-end px-4" },
-                [_c("expand-button", { on: { toggleRow: _vm.toggleRow } })],
-                1
-              )
-            ]),
-            _vm._v(" "),
-            _vm.isExpanded
-              ? _c("div", { staticClass: "p-2" }, [
-                  _c("div", { staticClass: "flex w-11/12 flex-wrap px-4" }, [
-                    _c("div", { staticClass: "w-full lg:w-1/3" }, [
-                      _c("p", { staticClass: "text-gray-500 w-full py-1" }, [
-                        _vm._v("Exam Date:\n                            "),
-                        _c(
-                          "span",
-                          { staticClass: "text-gray-800 font-semibold" },
-                          [
-                            _vm._v(
-                              "\n                                " +
-                                _vm._s(
-                                  _vm._f("moment")(_vm.exam_date, "MM/DD/YYYY")
-                                ) +
-                                "\n                            "
-                            )
-                          ]
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("p", { staticClass: "text-gray-500 w-full py-1" }, [
-                        _vm._v("Restrictions:\n                            "),
-                        _c(
-                          "span",
-                          {
-                            staticClass:
-                              "text-gray-800 font-semibold text-orange-500"
-                          },
-                          [
-                            _vm._v(
-                              "\n                                " +
-                                _vm._s(_vm.restrictions) +
-                                "\n                            "
-                            )
-                          ]
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("p", { staticClass: "text-gray-500 w-full py-1" }, [
-                        _vm._v("Notes:\n                            "),
-                        _c(
-                          "span",
-                          { staticClass: "text-gray-800 font-semibold" },
-                          [_vm._v(_vm._s(_vm.notes))]
-                        )
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "w-full lg:w-1/3" }, [
-                      this.expiration === "Expired"
-                        ? _c("div", [
-                            _c(
-                              "p",
-                              {
-                                staticClass:
-                                  "lg:px-1 font-sm font-semibold text-red-700"
-                              },
-                              [_vm._v("All Forms Have Expired")]
-                            )
-                          ])
-                        : this.status === "Not Cleared"
-                        ? _c("div", [
-                            _c(
-                              "p",
-                              { staticClass: "text-gray-500 w-full py-1 px-1" },
-                              [_vm._v("Missing:")]
-                            ),
-                            _vm._v(" "),
-                            _c("div", { staticClass: "text-sm px-1" }, [
-                              _c(
-                                "p",
-                                {
-                                  directives: [
-                                    {
-                                      name: "show",
-                                      rawName: "v-show",
-                                      value: !_vm.historyFormConfirmed,
-                                      expression: "!historyFormConfirmed"
-                                    }
-                                  ]
-                                },
-                                [_vm._v("Medical History Form")]
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "p",
-                                {
-                                  directives: [
-                                    {
-                                      name: "show",
-                                      rawName: "v-show",
-                                      value: !_vm.physicalExamFormConfirmed,
-                                      expression: "!physicalExamFormConfirmed"
-                                    }
-                                  ]
-                                },
-                                [_vm._v("Physical Exam Form")]
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "p",
-                                {
-                                  directives: [
-                                    {
-                                      name: "show",
-                                      rawName: "v-show",
-                                      value: !_vm.eligibilityFormConfirmed,
-                                      expression: "!eligibilityFormConfirmed"
-                                    }
-                                  ]
-                                },
-                                [_vm._v("Elegibility Form")]
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "p",
-                                {
-                                  directives: [
-                                    {
-                                      name: "show",
-                                      rawName: "v-show",
-                                      value: !_vm.physicalFormConfirmed,
-                                      expression: "!physicalFormConfirmed"
-                                    }
-                                  ]
-                                },
-                                [_vm._v("LHS Physical Form")]
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "p",
-                                {
-                                  directives: [
-                                    {
-                                      name: "show",
-                                      rawName: "v-show",
-                                      value: !_vm.blanketFormConfirmed,
-                                      expression: "!blanketFormConfirmed"
-                                    }
-                                  ]
-                                },
-                                [_vm._v("Blanket Waiver Form")]
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "p",
-                                {
-                                  directives: [
-                                    {
-                                      name: "show",
-                                      rawName: "v-show",
-                                      value: !_vm.concussionFormConfirmed,
-                                      expression: "!concussionFormConfirmed"
-                                    }
-                                  ]
-                                },
-                                [_vm._v("Concussion Form")]
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "p",
-                                {
-                                  directives: [
-                                    {
-                                      name: "show",
-                                      rawName: "v-show",
-                                      value: !_vm.cardiacFormConfirmed,
-                                      expression: "!cardiacFormConfirmed"
-                                    }
-                                  ]
-                                },
-                                [_vm._v("Cardiac Form")]
-                              )
-                            ])
-                          ])
-                        : _vm._e()
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "w-1/3" })
-                  ]),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    { staticClass: "flex justify-start cursor-pointer pt-1" },
-                    [
-                      _c("edit-button", { on: { clicked: _vm.getNames } }),
-                      _vm._v(" "),
-                      _c("delete-button", { on: { clicked: _vm.destroy } })
-                    ],
-                    1
-                  )
-                ])
-              : _vm._e()
-          ])
-        ])
-  ])
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-label ml-1" }, [
-      _c("p", [_vm._v("id")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "mt-2" }, [
-      _c("p", { staticClass: "text-sm font-semibold text-red-900" }, [
-        _vm._v("Forms")
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("span", { staticStyle: { color: "green" } }, [
-      _c("i", { staticClass: "fas fa-check-square" })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("span", { staticClass: "text-xl text-gray-500" }, [
-      _c("i", { staticClass: "bg-white far fa-square" })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "label",
-      {
-        staticClass: "text-sm font-semibold px-2",
-        attrs: { for: "form.history_form" }
-      },
-      [
-        _vm._v(
-          "\n                                Medical History Form\n                                "
-        ),
-        _c("span", { staticClass: "text-xs text-gray-600" }, [
-          _vm._v("student and parent signature")
-        ])
-      ]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("span", { staticStyle: { color: "green" } }, [
-      _c("i", { staticClass: "fas fa-check-square" })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("span", { staticClass: "text-xl text-gray-500" }, [
-      _c("i", { staticClass: "bg-white far fa-square" })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "label",
-      {
-        staticClass: "text-sm font-semibold px-2",
-        attrs: { for: "form.physical_exam_form" }
-      },
-      [
-        _vm._v(
-          "\n                                Physical Examination Form\n                                "
-        ),
-        _c("span", { staticClass: "text-xs text-gray-600" }, [
-          _vm._v("physician's signature")
-        ])
-      ]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("span", { staticStyle: { color: "green" } }, [
-      _c("i", { staticClass: "fas fa-check-square" })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("span", { staticClass: "text-xl text-gray-500" }, [
-      _c("i", { staticClass: "bg-white far fa-square" })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "label",
-      {
-        staticClass: "text-sm font-semibold px-2",
-        attrs: { for: "form.medical_eligibility_form" }
-      },
-      [
-        _vm._v(
-          "\n                                Medical Eligibility Form\n                                "
-        ),
-        _c("span", { staticClass: "text-xs text-gray-600" }, [
-          _vm._v("physician's signature")
-        ])
-      ]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("span", { staticStyle: { color: "green" } }, [
-      _c("i", { staticClass: "fas fa-check-square" })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("span", { staticClass: "text-xl text-gray-500" }, [
-      _c("i", { staticClass: "bg-white far fa-square" })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "label",
-      {
-        staticClass: "text-sm font-semibold px-2",
-        attrs: { for: "form.physical_form" }
-      },
-      [
-        _vm._v(
-          "\n                                LHS Physical Form\n                                "
-        ),
-        _c("span", { staticClass: "text-xs text-gray-600" }, [
-          _vm._v("insurance information and parent signature")
-        ])
-      ]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("span", { staticStyle: { color: "green" } }, [
-      _c("i", { staticClass: "fas fa-check-square" })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("span", { staticClass: "text-xl text-gray-500" }, [
-      _c("i", { staticClass: "bg-white far fa-square" })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "label",
-      {
-        staticClass: "text-sm font-semibold px-2",
-        attrs: { for: "form.blanket_waiver_form" }
-      },
-      [
-        _vm._v(
-          "\n                                Blanket Waiver Form\n                                "
-        ),
-        _c("span", { staticClass: "text-xs text-gray-600" }, [
-          _vm._v("2 parent signatures")
-        ])
-      ]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("span", { staticStyle: { color: "green" } }, [
-      _c("i", { staticClass: "fas fa-check-square" })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("span", { staticClass: "text-xl text-gray-500" }, [
-      _c("i", { staticClass: "bg-white far fa-square" })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "label",
-      {
-        staticClass: "text-sm font-semibold px-2",
-        attrs: { for: "form.ghsa_concussion_form" }
-      },
-      [
-        _vm._v(
-          "\n                                GHSA Concussion Form\n                                "
-        ),
-        _c("span", { staticClass: "text-xs text-gray-600" }, [
-          _vm._v("student and parent signature")
-        ])
-      ]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("span", { staticStyle: { color: "green" } }, [
-      _c("i", { staticClass: "fas fa-check-square" })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("span", { staticClass: "text-xl text-gray-500" }, [
-      _c("i", { staticClass: "bg-white far fa-square" })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "label",
-      {
-        staticClass: "text-sm font-semibold px-2",
-        attrs: { for: "form.ghsa_cardiac_form" }
-      },
-      [
-        _vm._v(
-          "\n                                GHSA Cardiac Form\n                                "
-        ),
-        _c("span", { staticClass: "text-xs text-gray-600" }, [
-          _vm._v("student and parent signature")
-        ])
-      ]
-    )
-  }
-]
-render._withStripped = true
-
-
-
-/***/ }),
-
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/PhysicalStatus.vue?vue&type=template&id=0800ce54&scoped=true&":
-/*!*****************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/PhysicalStatus.vue?vue&type=template&id=0800ce54&scoped=true& ***!
-  \*****************************************************************************************************************************************************************************************************************************/
-/*! exports provided: render, staticRenderFns */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "font-semibold w-full", style: { color: _vm.statusColor } },
-    [
-      _vm._v("\n        " + _vm._s(_vm.status) + "\n    "),
-      _vm.allClear
-        ? _c("span", [_c("i", { staticClass: "fas fa-check" })])
-        : _vm.restrict
-        ? _c("span", [_c("i", { staticClass: "fas fa-exclamation" })])
-        : _c("span", [_c("i", { staticClass: "fas fa-times" })])
-    ]
-  )
-}
-var staticRenderFns = []
-render._withStripped = true
-
-
-
-/***/ }),
-
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Physicals.vue?vue&type=template&id=eb0d72be&scoped=true&":
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Paginator.vue?vue&type=template&id=59656db6&scoped=true&":
 /*!************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Physicals.vue?vue&type=template&id=eb0d72be&scoped=true& ***!
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Paginator.vue?vue&type=template&id=59656db6&scoped=true& ***!
   \************************************************************************************************************************************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -28564,478 +28153,112 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "flex flex-col w-full" }, [
-    _c("div", { staticClass: "flex justify-end w-full" }, [
-      _c("div", { staticClass: "flex md:w-1/2 lg:w-1/3" }, [
-        _c("input", {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.search,
-              expression: "search"
-            }
-          ],
-          staticClass:
-            "flex w-full rounded-md border px-3 py-2 text-lg border shadow",
-          attrs: { type: "text", placeholder: "Find a physical..." },
-          domProps: { value: _vm.search },
-          on: {
-            input: function($event) {
-              if ($event.target.composing) {
-                return
-              }
-              _vm.search = $event.target.value
-            }
-          }
-        }),
-        _vm._v(" "),
-        _c(
-          "button",
-          {
-            staticClass:
-              "w-20 py-2 ml-2 bg-green-500 text-white text-sm font-bold rounded-md border-2 border-green-400",
-            on: { click: _vm.clearSearch }
-          },
-          [_vm._v("\n                Clear\n            ")]
-        )
-      ])
-    ]),
-    _vm._v(" "),
-    _c(
-      "header",
-      {
-        staticClass:
-          "w-full md:w-1/2 font-thin text-2xl lg:text-5xl py-4 text-red-900"
-      },
-      [_vm._v("Physicals")]
-    ),
-    _vm._v(" "),
-    _c("div", {}, [
-      _c("div", { staticClass: "flex" }, [
-        _vm._m(0),
-        _vm._v(" "),
-        _c(
-          "div",
-          { staticClass: "flex w-1/12 justify-end px-2 items-center" },
-          [
-            _c(
-              "create-button",
-              { attrs: { title: "Add New Physical" } },
-              [_c("new-physical-form", { on: { created: _vm.add } })],
-              1
-            )
-          ],
-          1
-        )
-      ]),
-      _vm._v(" "),
-      _vm.records
-        ? _c(
-            "div",
-            { staticClass: "divide-y border-t border-b" },
-            _vm._l(_vm.filteredPhysicals, function(physical, index) {
-              return _c(
-                "div",
-                { key: physical.id },
-                [
-                  _c("physical", {
-                    attrs: { data: physical },
-                    on: {
-                      deleted: function($event) {
-                        return _vm.remove(index)
-                      }
-                    }
-                  })
-                ],
-                1
-              )
-            }),
-            0
-          )
-        : _c("div", { staticClass: "flex flex-col text-center" }, [
-            _c("p", { staticClass: "text-2xl text-tertiary p-4" }, [
-              _vm._v("No Physicals Listed")
-            ])
-          ])
-    ])
-  ])
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      { staticClass: "flex w-11/12 px-2 text-gray-500 font-semibold" },
-      [
-        _c("div", { staticClass: "w-full lg:w-1/3" }, [
-          _c("p", {}, [_vm._v("Name")])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "hidden lg:flex px-2 lg:w-1/3" }, [
-          _c("p", {}, [_vm._v("Physical Status")])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "hidden lg:flex lg:w-1/3" }, [
-          _c("p", { staticClass: "px-2" }, [_vm._v("Expiration Status")])
-        ])
-      ]
-    )
-  }
-]
-render._withStripped = true
-
-
-
-/***/ }),
-
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ProfilePhysical.vue?vue&type=template&id=063d5bf6&scoped=true&":
-/*!******************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/ProfilePhysical.vue?vue&type=template&id=063d5bf6&scoped=true& ***!
-  \******************************************************************************************************************************************************************************************************************************/
-/*! exports provided: render, staticRenderFns */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("div", {}, [
-    _c("div", { staticClass: "flex py-1 items-center hover:bg-gray-100" }, [
-      _c("div", { staticClass: "flex flex-col w-full" }, [
-        _c("div", { staticClass: "flex w-full" }, [
-          _c("div", { staticClass: "flex pt-1 w-11/12 px-2 flex-wrap" }, [
-            _c("div", { staticClass: "w-full lg:flex lg:w-1/3" }, [
-              _vm._v(
-                "\n                        " +
-                  _vm._s(_vm._f("moment")(_vm.exam_date, "MM/DD/YYYY")) +
-                  "\n                    "
-              )
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "w-full lg:flex lg:w-1/3 px-2" }, [
+  return _vm.shouldPaginate
+    ? _c(
+        "div",
+        {
+          staticClass: "flex my-4 w-full flex-wrap justify-between items-center"
+        },
+        [
+          _c(
+            "ul",
+            { staticClass: "flex w-auto font-sans text-sm w-full md:w-1/3" },
+            [
               _c(
-                "div",
-                { staticClass: "w-full", style: { color: _vm.statusColor } },
-                [
-                  _vm._v(
-                    "\n                                " +
-                      _vm._s(_vm.status) +
-                      "\n                            "
-                  ),
-                  _vm.allClear
-                    ? _c("span", [_c("i", { staticClass: "fas fa-check" })])
-                    : _vm.restrict
-                    ? _c("span", [
-                        _c("i", { staticClass: "fas fa-exclamation" })
-                      ])
-                    : _c("span", [_c("i", { staticClass: "fas fa-times" })])
-                ]
-              )
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "w-full lg:flex lg:w-1/3 px-2" }, [
-              _c(
-                "div",
+                "li",
                 {
-                  staticClass: "w-full",
-                  style: { color: _vm.expirationColor }
+                  directives: [
+                    {
+                      name: "show",
+                      rawName: "v-show",
+                      value: _vm.prevUrl,
+                      expression: "prevUrl"
+                    }
+                  ]
                 },
                 [
-                  _vm._v(
-                    "\n                            " +
-                      _vm._s(_vm.expiration) +
-                      "\n                            "
-                  ),
-                  _c("span", [
-                    _vm._v(
-                      _vm._s(
-                        _vm._f("moment")(
-                          _vm._f("moment")(_vm.exam_date, "add", "1 year"),
-                          "from",
-                          "now"
-                        )
-                      )
-                    )
-                  ])
+                  _c(
+                    "a",
+                    {
+                      staticClass:
+                        "block text-white bg-red-900 px-3 py-1 rounded-l-lg",
+                      attrs: { rel: "prev", href: "#" },
+                      on: {
+                        click: function($event) {
+                          $event.preventDefault()
+                          _vm.page--
+                        }
+                      }
+                    },
+                    [
+                      _c("i", { staticClass: "fas fa-backward" }),
+                      _vm._v(" Previous\n            ")
+                    ]
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "li",
+                {
+                  directives: [
+                    {
+                      name: "show",
+                      rawName: "v-show",
+                      value: _vm.nextUrl,
+                      expression: "nextUrl"
+                    }
+                  ]
+                },
+                [
+                  _c(
+                    "a",
+                    {
+                      staticClass:
+                        "block text-white bg-red-900 px-3 py-1 rounded-r-lg",
+                      attrs: { rel: "next", href: "#" },
+                      on: {
+                        click: function($event) {
+                          $event.preventDefault()
+                          _vm.page++
+                        }
+                      }
+                    },
+                    [
+                      _vm._v("\n                    Next "),
+                      _c("i", { staticClass: "fas fa-forward" })
+                    ]
+                  )
                 ]
               )
-            ])
-          ]),
+            ]
+          ),
           _vm._v(" "),
           _c(
             "div",
-            { staticClass: "flex w-1/12 pt-1 justify-end px-4" },
-            [_c("expand-button", { on: { toggleRow: _vm.toggleRow } })],
-            1
-          )
-        ]),
-        _vm._v(" "),
-        _vm.isExpanded
-          ? _c("div", { staticClass: "p-2" }, [
-              _c("div", { staticClass: "flex w-11/12 flex-wrap lg:px-2" }, [
-                _c("div", { staticClass: "w-full lg:flex-col lg:w-1/3" }, [
-                  _c("p", { staticClass: "text-gray-500 w-full py-1" }, [
-                    _vm._v("Restrictions:\n                            "),
-                    _c(
-                      "span",
-                      {
-                        staticClass:
-                          "text-gray-800 font-semibold text-orange-500"
-                      },
-                      [
-                        _vm._v(
-                          "\n                                " +
-                            _vm._s(_vm.restrictions) +
-                            "\n                            "
-                        )
-                      ]
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("p", { staticClass: "text-gray-500 w-full py-1" }, [
-                    _vm._v("Notes:\n                            "),
-                    _c("span", { staticClass: "text-gray-800 font-semibold" }, [
-                      _vm._v(_vm._s(_vm.notes))
-                    ])
-                  ])
+            { staticClass: "flex w-full md:w-1/2 md:justify-end py-1" },
+            [
+              _c("p", [
+                _vm._v("Showing "),
+                _c("span", { staticClass: "text-red-900 font-semibold" }, [
+                  _vm._v(_vm._s(_vm.firstItem))
                 ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "w-full lg:flex lg:w-1/3 lg:px-2" }, [
-                  this.expiration === "Expired"
-                    ? _c("div", [
-                        _c(
-                          "p",
-                          { staticClass: "text-sm font-semibold text-red-700" },
-                          [_vm._v("All Forms Have Expired")]
-                        )
-                      ])
-                    : this.status === "Not Cleared"
-                    ? _c("div", [
-                        _c(
-                          "p",
-                          { staticClass: "text-gray-500 w-full py-1 px-1" },
-                          [_vm._v("Missing:")]
-                        ),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "text-sm px-1" }, [
-                          _c(
-                            "p",
-                            {
-                              directives: [
-                                {
-                                  name: "show",
-                                  rawName: "v-show",
-                                  value: !_vm.historyFormConfirmed,
-                                  expression: "!historyFormConfirmed"
-                                }
-                              ]
-                            },
-                            [_vm._v("Medical History Form")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "p",
-                            {
-                              directives: [
-                                {
-                                  name: "show",
-                                  rawName: "v-show",
-                                  value: !_vm.physicalExamFormConfirmed,
-                                  expression: "!physicalExamFormConfirmed"
-                                }
-                              ]
-                            },
-                            [_vm._v("Physical Exam Form")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "p",
-                            {
-                              directives: [
-                                {
-                                  name: "show",
-                                  rawName: "v-show",
-                                  value: !_vm.eligibilityFormConfirmed,
-                                  expression: "!eligibilityFormConfirmed"
-                                }
-                              ]
-                            },
-                            [_vm._v("Elegibility Form")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "p",
-                            {
-                              directives: [
-                                {
-                                  name: "show",
-                                  rawName: "v-show",
-                                  value: !_vm.physicalFormConfirmed,
-                                  expression: "!physicalFormConfirmed"
-                                }
-                              ]
-                            },
-                            [_vm._v("LHS Physical Form")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "p",
-                            {
-                              directives: [
-                                {
-                                  name: "show",
-                                  rawName: "v-show",
-                                  value: !_vm.blanketFormConfirmed,
-                                  expression: "!blanketFormConfirmed"
-                                }
-                              ]
-                            },
-                            [_vm._v("Blanket Waiver Form")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "p",
-                            {
-                              directives: [
-                                {
-                                  name: "show",
-                                  rawName: "v-show",
-                                  value: !_vm.concussionFormConfirmed,
-                                  expression: "!concussionFormConfirmed"
-                                }
-                              ]
-                            },
-                            [_vm._v("Concussion Form")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "p",
-                            {
-                              directives: [
-                                {
-                                  name: "show",
-                                  rawName: "v-show",
-                                  value: !_vm.cardiacFormConfirmed,
-                                  expression: "!cardiacFormConfirmed"
-                                }
-                              ]
-                            },
-                            [_vm._v("Cardiac Form")]
-                          )
-                        ])
-                      ])
-                    : _vm._e()
+                _vm._v(" to\n        "),
+                _c("span", { staticClass: "text-red-900 font-semibold" }, [
+                  _vm._v(_vm._s(_vm.lastItem))
                 ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "w-full lg:flex lg:w-1/3" })
+                _vm._v(" out of\n        "),
+                _c("span", { staticClass: "text-red-900 font-semibold" }, [
+                  _vm._v(_vm._s(_vm.total))
+                ])
               ])
-            ])
-          : _vm._e()
-      ])
-    ])
-  ])
+            ]
+          )
+        ]
+      )
+    : _vm._e()
 }
 var staticRenderFns = []
-render._withStripped = true
-
-
-
-/***/ }),
-
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ProfilePhysicals.vue?vue&type=template&id=ba16e084&scoped=true&":
-/*!*******************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/ProfilePhysicals.vue?vue&type=template&id=ba16e084&scoped=true& ***!
-  \*******************************************************************************************************************************************************************************************************************************/
-/*! exports provided: render, staticRenderFns */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "flex flex-col w-full mt-4 lg:mt-10" }, [
-    _c(
-      "header",
-      {
-        staticClass:
-          "w-full md:w-1/2 font-thin text-xl lg:text-3xl py-2 text-red-900"
-      },
-      [_vm._v("Physicals")]
-    ),
-    _vm._v(" "),
-    _c("div", {}, [
-      _vm._m(0),
-      _vm._v(" "),
-      _vm.records
-        ? _c(
-            "div",
-            { staticClass: "divide-y border-t border-b" },
-            _vm._l(_vm.items, function(physical, index) {
-              return _c(
-                "div",
-                { key: physical.id },
-                [
-                  _c("profile-physical", {
-                    attrs: { data: physical },
-                    on: {
-                      deleted: function($event) {
-                        return _vm.remove(index)
-                      }
-                    }
-                  })
-                ],
-                1
-              )
-            }),
-            0
-          )
-        : _c("div", { staticClass: "flex flex-col text-center" }, [
-            _c("p", { staticClass: "text-2xl text-tertiary p-4" }, [
-              _vm._v("No Physicals Listed")
-            ])
-          ])
-    ])
-  ])
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "flex" }, [
-      _c(
-        "div",
-        { staticClass: "flex w-11/12 px-2 text-gray-500 font-semibold" },
-        [
-          _c("div", { staticClass: "w-full lg:w-1/3" }, [
-            _c("p", {}, [_vm._v("Exam Date")])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "hidden lg:flex lg:px-2 lg:w-1/3" }, [
-            _c("p", {}, [_vm._v("Physical Status")])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "hidden lg:flex lg:w-1/3" }, [
-            _c("p", { staticClass: "px-2" }, [_vm._v("Expiration Status")])
-          ])
-        ]
-      ),
-      _vm._v(" "),
-      _c("div", { staticClass: "flex w-1/12 justify-end px-2 items-center" })
-    ])
-  }
-]
 render._withStripped = true
 
 
@@ -30033,7 +29256,21 @@ var render = function() {
               _vm._v("No Athletes Listed")
             ])
           ])
-    ])
+    ]),
+    _vm._v(" "),
+    _vm.records
+      ? _c(
+          "div",
+          [
+            _c(
+              "paginator",
+              { attrs: { dataSet: _vm.dataSet }, on: { changed: _vm.fetch } },
+              [_vm._v("Athletes")]
+            )
+          ],
+          1
+        )
+      : _vm._e()
   ])
 }
 var staticRenderFns = [
@@ -30131,7 +29368,7 @@ var render = function() {
                         },
                         [
                           _vm._v(
-                            "\n                            First Name\n                        "
+                            "\n                                First Name\n                            "
                           )
                         ]
                       ),
@@ -30192,7 +29429,7 @@ var render = function() {
                         },
                         [
                           _vm._v(
-                            "\n                            Last Name\n                        "
+                            "\n                                Last Name\n                            "
                           )
                         ]
                       ),
@@ -30428,7 +29665,7 @@ var render = function() {
                         },
                         [
                           _vm._v(
-                            "\n                            Fall Sport\n                        "
+                            "\n                                Fall Sport\n                            "
                           )
                         ]
                       ),
@@ -30491,9 +29728,9 @@ var render = function() {
                         { key: sport.id, domProps: { value: sport.id } },
                         [
                           _vm._v(
-                            "\n                            " +
+                            "\n                                " +
                               _vm._s(sport.name) +
-                              "\n                        "
+                              "\n                            "
                           )
                         ]
                       )
@@ -30515,7 +29752,7 @@ var render = function() {
                         },
                         [
                           _vm._v(
-                            "\n                            Winter Sport\n                        "
+                            "\n                                Winter Sport\n                            "
                           )
                         ]
                       ),
@@ -30578,9 +29815,9 @@ var render = function() {
                         { key: sport.id, domProps: { value: sport.id } },
                         [
                           _vm._v(
-                            "\n                            " +
+                            "\n                                " +
                               _vm._s(sport.name) +
-                              "\n                        "
+                              "\n                            "
                           )
                         ]
                       )
@@ -30602,7 +29839,7 @@ var render = function() {
                         },
                         [
                           _vm._v(
-                            "\n                            Spring Sport\n                        "
+                            "\n                                Spring Sport\n                            "
                           )
                         ]
                       ),
@@ -30665,9 +29902,9 @@ var render = function() {
                         { key: sport.id, domProps: { value: sport.id } },
                         [
                           _vm._v(
-                            "\n                            " +
+                            "\n                                " +
                               _vm._s(sport.name) +
-                              "\n                        "
+                              "\n                            "
                           )
                         ]
                       )
@@ -30688,7 +29925,7 @@ var render = function() {
                       },
                       [
                         _vm._v(
-                          "\n                        Update\n                    "
+                          "\n                            Update\n                        "
                         )
                       ]
                     ),
@@ -30704,7 +29941,7 @@ var render = function() {
       : _c("div", { staticClass: "flex py-1 items-center hover:bg-gray-100" }, [
           _c("div", { staticClass: "flex flex-col w-full" }, [
             _c("div", { staticClass: "flex w-full" }, [
-              _c("div", { staticClass: "flex pt-1 w-11/12 px-2" }, [
+              _c("div", { staticClass: "flex pt-1 w-11/12 px-2 flex-wrap" }, [
                 _c("div", { staticClass: "flex w-full lg:w-1/3" }, [
                   _c(
                     "a",
@@ -30714,17 +29951,17 @@ var render = function() {
                     },
                     [
                       _vm._v(
-                        "\n                            " +
+                        "\n                                " +
                           _vm._s(_vm.last_name) +
                           ", " +
                           _vm._s(_vm.first_name) +
-                          "\n                        "
+                          "\n                            "
                       )
                     ]
                   )
                 ]),
                 _vm._v(" "),
-                _c("div", { staticClass: "flex w-1/3 px-2" }, [
+                _c("div", { staticClass: "flex w-ful  lg:w-1/3 px-2" }, [
                   _c(
                     "div",
                     {
@@ -30733,9 +29970,9 @@ var render = function() {
                     },
                     [
                       _vm._v(
-                        "\n                                    " +
+                        "\n                                        " +
                           _vm._s(_vm.physicalStatus) +
-                          "\n                            "
+                          "\n                                "
                       ),
                       _vm.allClear
                         ? _c("span", [_c("i", { staticClass: "fas fa-check" })])
@@ -30748,43 +29985,66 @@ var render = function() {
                   )
                 ]),
                 _vm._v(" "),
-                _c("div", { staticClass: "flex w-1/3 px-2" }, [
-                  this.data.latest_physical
-                    ? _c(
-                        "div",
-                        {
-                          staticClass: "w-full",
-                          style: { color: _vm.expirationColor }
-                        },
-                        [
-                          _vm._v(
-                            "\n                            " +
-                              _vm._s(_vm.expiration) +
-                              "\n                            "
-                          ),
-                          _c("span", [
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "flex w-full lg:w-1/3 px-2 justify-between flex-wrap"
+                  },
+                  [
+                    this.data.latest_physical
+                      ? _c(
+                          "div",
+                          {
+                            staticClass: "w-full lg:w-4/5",
+                            style: { color: _vm.expirationColor }
+                          },
+                          [
                             _vm._v(
-                              _vm._s(
-                                _vm._f("moment")(
+                              "\n                                " +
+                                _vm._s(_vm.expiration) +
+                                "\n                                "
+                            ),
+                            _c("span", [
+                              _vm._v(
+                                _vm._s(
                                   _vm._f("moment")(
-                                    _vm.exam_date,
-                                    "add",
-                                    "1 year"
-                                  ),
-                                  "from",
-                                  "now"
+                                    _vm._f("moment")(
+                                      _vm.exam_date,
+                                      "add",
+                                      "1 year"
+                                    ),
+                                    "from",
+                                    "now"
+                                  )
                                 )
                               )
-                            )
-                          ])
-                        ]
-                      )
-                    : _c("div", { staticClass: "w-full text-gray-500" }, [
-                        _vm._v(
-                          "\n                            No Physical on File\n                        "
+                            ])
+                          ]
                         )
-                      ])
-                ])
+                      : _c("div", { staticClass: "w-full text-gray-500" }, [
+                          _vm._v(
+                            "\n                                No Physical on File\n                            "
+                          )
+                        ]),
+                    _vm._v(" "),
+                    _vm.physicalUploaded
+                      ? _c(
+                          "div",
+                          {
+                            staticClass: "lg:w-1/5",
+                            staticStyle: { color: "#000080" }
+                          },
+                          [
+                            _c("a", {
+                              staticClass: "text-xl fas fa-file-download",
+                              attrs: { href: _vm.physicalUrl }
+                            })
+                          ]
+                        )
+                      : _vm._e()
+                  ]
+                )
               ]),
               _vm._v(" "),
               _c(
@@ -30803,7 +30063,7 @@ var render = function() {
                       { staticClass: "flex flex-col w-full lg:w-1/3" },
                       [
                         _c("p", { staticClass: "text-gray-500 w-full py-1" }, [
-                          _vm._v("Sex:\n                            "),
+                          _vm._v("Sex:\n                                "),
                           _c(
                             "span",
                             { staticClass: "text-gray-800 font-semibold" },
@@ -30812,7 +30072,7 @@ var render = function() {
                         ]),
                         _vm._v(" "),
                         _c("p", { staticClass: "text-gray-500 w-full py-1" }, [
-                          _vm._v("DOB:\n                            "),
+                          _vm._v("DOB:\n                                "),
                           _c(
                             "span",
                             { staticClass: "text-gray-800 font-semibold" },
@@ -30833,7 +30093,7 @@ var render = function() {
                         ]),
                         _vm._v(" "),
                         _c("p", { staticClass: "text-gray-500 w-full py-1" }, [
-                          _vm._v("Class:\n                            "),
+                          _vm._v("Class:\n                                "),
                           _c(
                             "span",
                             { staticClass: "text-gray-800 font-semibold" },
@@ -31020,7 +30280,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "flex flex-col w-full" }, [
     _c("div", { staticClass: "flex justify-end w-full" }, [
-      _c("div", { staticClass: "flex md:w-1/2 lg:w-1/3 mb-8" }, [
+      _c("div", { staticClass: "flex w-full md:w-1/2 lg:w-1/3 mb-8" }, [
         _c("input", {
           directives: [
             {
@@ -31100,13 +30360,15 @@ var staticRenderFns = [
         "div",
         { staticClass: "flex w-11/12 px-2 text-gray-500 font-semibold" },
         [
-          _c("div", { staticClass: "w-1/3" }, [_c("p", {}, [_vm._v("Name")])]),
+          _c("div", { staticClass: "w-full lg:w-1/3" }, [
+            _c("p", {}, [_vm._v("Name")])
+          ]),
           _vm._v(" "),
-          _c("div", { staticClass: "w-1/3" }, [
+          _c("div", { staticClass: "hidden lg:flex lg:w-1/3" }, [
             _c("p", { staticClass: "px-2" }, [_vm._v("Physical Status")])
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "px-2 w-1/3" }, [
+          _c("div", { staticClass: "hidden px-2 lg:flex lg:w-1/3" }, [
             _c("p", {}, [_vm._v("Expiration")])
           ])
         ]
@@ -33045,6 +32307,1809 @@ var render = function() {
   )
 }
 var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/forms/PhysicalUploadForm.vue?vue&type=template&id=24246432&":
+/*!***************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/forms/PhysicalUploadForm.vue?vue&type=template&id=24246432& ***!
+  \***************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c("div", { staticClass: "upload-btn-wrapper" }, [
+      _c("button", { staticClass: "btn" }, [
+        _vm._v("\n            Upload Physical\n        ")
+      ]),
+      _vm._v(" "),
+      _c(
+        "form",
+        { attrs: { method: "POST", enctype: "multipart/form-data" } },
+        [
+          _c("input", {
+            staticClass: "py-4",
+            attrs: { type: "file", name: "physical-form", accept: ".pdf" },
+            on: { change: _vm.onChange }
+          })
+        ]
+      )
+    ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/physicals/Physical.vue?vue&type=template&id=5c720fb5&scoped=true&":
+/*!*********************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/physicals/Physical.vue?vue&type=template&id=5c720fb5&scoped=true& ***!
+  \*********************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", {}, [
+    _vm.editing
+      ? _c("div", { staticClass: "p-3" }, [
+          _c("div", { staticClass: "w-full lg:w-1/2 mx-auto" }, [
+            _c(
+              "form",
+              {
+                staticClass:
+                  "bg-gray-100 shadow-md rounded px-8 pt-6 pb-8 mb-4",
+                attrs: {
+                  action: "api/physicals/id",
+                  method: "POST",
+                  id: "editPhysical"
+                },
+                on: {
+                  submit: function($event) {
+                    $event.preventDefault()
+                    return _vm.update($event)
+                  },
+                  keydown: function($event) {
+                    return _vm.form.errors.clear()
+                  }
+                }
+              },
+              [
+                _c("div", { staticClass: "flex items-center mb-4" }, [
+                  _vm._m(0),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "w-full text-gray-800 px-4" }, [
+                    _c("p", [_vm._v(_vm._s(_vm.id))])
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "mb-2" }, [
+                  _c(
+                    "div",
+                    { staticClass: "flex justify-between content-end" },
+                    [
+                      _c(
+                        "label",
+                        {
+                          staticClass: "text-sm font-semibold text-red-900",
+                          attrs: { for: "form.athlete_id" }
+                        },
+                        [
+                          _vm._v(
+                            "\n                            Athlete\n                        "
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _vm.form.errors.has("athlete_id")
+                        ? _c("span", {
+                            staticClass: "form-help",
+                            attrs: { id: "athleteHelp" },
+                            domProps: {
+                              textContent: _vm._s(
+                                _vm.form.errors.get("athlete_id")
+                              )
+                            }
+                          })
+                        : _vm._e()
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "select",
+                    {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.form.athlete_id,
+                          expression: "form.athlete_id"
+                        }
+                      ],
+                      staticClass:
+                        "w-full rounded border px-3 py-2 text-lg border shadow-md",
+                      attrs: {
+                        name: "athlete_id",
+                        id: "form.athlete_id",
+                        required: ""
+                      },
+                      on: {
+                        change: function($event) {
+                          var $$selectedVal = Array.prototype.filter
+                            .call($event.target.options, function(o) {
+                              return o.selected
+                            })
+                            .map(function(o) {
+                              var val = "_value" in o ? o._value : o.value
+                              return val
+                            })
+                          _vm.$set(
+                            _vm.form,
+                            "athlete_id",
+                            $event.target.multiple
+                              ? $$selectedVal
+                              : $$selectedVal[0]
+                          )
+                        }
+                      }
+                    },
+                    _vm._l(_vm.athletes, function(athlete) {
+                      return _c(
+                        "option",
+                        { key: athlete.id, domProps: { value: athlete.id } },
+                        [
+                          _vm._v(
+                            "\n                            " +
+                              _vm._s(athlete.last_name) +
+                              ", " +
+                              _vm._s(athlete.first_name) +
+                              "\n                        "
+                          )
+                        ]
+                      )
+                    }),
+                    0
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "py-2" }, [
+                  _c(
+                    "div",
+                    { staticClass: "flex justify-between content-end" },
+                    [
+                      _c(
+                        "label",
+                        {
+                          staticClass: "text-sm font-semibold text-red-900",
+                          attrs: { for: "form.exam_date" }
+                        },
+                        [_vm._v("Exam Date")]
+                      ),
+                      _vm._v(" "),
+                      _vm.form.errors.has("exam_date")
+                        ? _c("span", {
+                            staticClass: "text-red-600 text-xs font-semibold",
+                            attrs: { id: "exam_dateHelp" },
+                            domProps: {
+                              textContent: _vm._s(
+                                _vm.form.errors.get("exam_date")
+                              )
+                            }
+                          })
+                        : _vm._e()
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.form.exam_date,
+                        expression: "form.exam_date"
+                      }
+                    ],
+                    staticClass:
+                      "w-full rounded border px-2 py-2 text-lg border shadow-md",
+                    attrs: { id: "form.exam_date", type: "date" },
+                    domProps: { value: _vm.form.exam_date },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(_vm.form, "exam_date", $event.target.value)
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _vm._m(1),
+                _vm._v(" "),
+                _c("div", { staticClass: "flex flex-col px-4" }, [
+                  _c("div", { staticClass: "flex items-center py-1" }, [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.form.history_form,
+                          expression: "form.history_form"
+                        }
+                      ],
+                      staticClass: "hidden",
+                      attrs: {
+                        type: "radio",
+                        id: "form.history_form",
+                        value: "1"
+                      },
+                      domProps: { checked: _vm._q(_vm.form.history_form, "1") },
+                      on: {
+                        change: function($event) {
+                          return _vm.$set(_vm.form, "history_form", "1")
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _vm.historyFormConfirmed
+                      ? _c(
+                          "a",
+                          {
+                            staticClass: "text-xl",
+                            on: { click: _vm.unconfirmHistoryForm }
+                          },
+                          [_vm._m(2)]
+                        )
+                      : _c("a", { on: { click: _vm.confirmHistoryForm } }, [
+                          _vm._m(3)
+                        ]),
+                    _vm._v(" "),
+                    _vm._m(4)
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "flex flex-col px-4" }, [
+                  _c("div", { staticClass: "flex items-center py-1" }, [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.form.physical_exam_form,
+                          expression: "form.physical_exam_form"
+                        }
+                      ],
+                      staticClass: "hidden",
+                      attrs: {
+                        type: "radio",
+                        id: "form.physical_exam_form",
+                        value: "1"
+                      },
+                      domProps: {
+                        checked: _vm._q(_vm.form.physical_exam_form, "1")
+                      },
+                      on: {
+                        change: function($event) {
+                          return _vm.$set(_vm.form, "physical_exam_form", "1")
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _vm.physicalExamFormConfirmed
+                      ? _c(
+                          "a",
+                          {
+                            staticClass: "text-xl",
+                            on: { click: _vm.unconfirmPhysicalExamForm }
+                          },
+                          [_vm._m(5)]
+                        )
+                      : _c(
+                          "a",
+                          { on: { click: _vm.confirmPhysicalExamForm } },
+                          [_vm._m(6)]
+                        ),
+                    _vm._v(" "),
+                    _vm._m(7)
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "flex flex-col px-4" }, [
+                  _c("div", { staticClass: "flex items-center py-1" }, [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.form.medical_eligibility_form,
+                          expression: "form.medical_eligibility_form"
+                        }
+                      ],
+                      staticClass: "hidden",
+                      attrs: {
+                        type: "radio",
+                        id: "form.medical_eligibility_form",
+                        value: "1"
+                      },
+                      domProps: {
+                        checked: _vm._q(_vm.form.medical_eligibility_form, "1")
+                      },
+                      on: {
+                        change: function($event) {
+                          return _vm.$set(
+                            _vm.form,
+                            "medical_eligibility_form",
+                            "1"
+                          )
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _vm.eligibilityFormConfirmed
+                      ? _c(
+                          "a",
+                          {
+                            staticClass: "text-xl",
+                            on: { click: _vm.unconfirmEligibilityForm }
+                          },
+                          [_vm._m(8)]
+                        )
+                      : _c("a", { on: { click: _vm.confirmEligibilityForm } }, [
+                          _vm._m(9)
+                        ]),
+                    _vm._v(" "),
+                    _vm._m(10)
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "flex flex-col px-4" }, [
+                  _c("div", { staticClass: "flex items-center py-1" }, [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.form.physical_form,
+                          expression: "form.physical_form"
+                        }
+                      ],
+                      staticClass: "hidden",
+                      attrs: {
+                        type: "radio",
+                        id: "form.physical_form",
+                        value: "1"
+                      },
+                      domProps: {
+                        checked: _vm._q(_vm.form.physical_form, "1")
+                      },
+                      on: {
+                        change: function($event) {
+                          return _vm.$set(_vm.form, "physical_form", "1")
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _vm.physicalFormConfirmed
+                      ? _c(
+                          "a",
+                          {
+                            staticClass: "text-xl",
+                            on: { click: _vm.unconfirmPhysicalForm }
+                          },
+                          [_vm._m(11)]
+                        )
+                      : _c("a", { on: { click: _vm.confirmPhysicalForm } }, [
+                          _vm._m(12)
+                        ]),
+                    _vm._v(" "),
+                    _vm._m(13)
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "flex flex-col px-4" }, [
+                  _c("div", { staticClass: "flex items-center py-1" }, [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.form.blanket_waiver_form,
+                          expression: "form.blanket_waiver_form"
+                        }
+                      ],
+                      staticClass: "hidden",
+                      attrs: {
+                        type: "radio",
+                        id: "form.blanket_waiver_form",
+                        value: "1"
+                      },
+                      domProps: {
+                        checked: _vm._q(_vm.form.blanket_waiver_form, "1")
+                      },
+                      on: {
+                        change: function($event) {
+                          return _vm.$set(_vm.form, "blanket_waiver_form", "1")
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _vm.blanketFormConfirmed
+                      ? _c(
+                          "a",
+                          {
+                            staticClass: "text-xl",
+                            on: { click: _vm.unconfirmBlanketForm }
+                          },
+                          [_vm._m(14)]
+                        )
+                      : _c("a", { on: { click: _vm.confirmBlanketForm } }, [
+                          _vm._m(15)
+                        ]),
+                    _vm._v(" "),
+                    _vm._m(16)
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "flex flex-col px-4" }, [
+                  _c("div", { staticClass: "flex items-center py-1" }, [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.form.ghsa_concussion_form,
+                          expression: "form.ghsa_concussion_form"
+                        }
+                      ],
+                      staticClass: "hidden",
+                      attrs: {
+                        type: "radio",
+                        id: "form.ghsa_concussion_form",
+                        value: "1"
+                      },
+                      domProps: {
+                        checked: _vm._q(_vm.form.ghsa_concussion_form, "1")
+                      },
+                      on: {
+                        change: function($event) {
+                          return _vm.$set(_vm.form, "ghsa_concussion_form", "1")
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _vm.concussionFormConfirmed
+                      ? _c(
+                          "a",
+                          {
+                            staticClass: "text-xl",
+                            on: { click: _vm.unconfirmConcussionForm }
+                          },
+                          [_vm._m(17)]
+                        )
+                      : _c("a", { on: { click: _vm.confirmConcussionForm } }, [
+                          _vm._m(18)
+                        ]),
+                    _vm._v(" "),
+                    _vm._m(19)
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "flex flex-col px-4" }, [
+                  _c("div", { staticClass: "flex items-center py-1" }, [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.form.ghsa_cardiac_form,
+                          expression: "form.ghsa_cardiac_form"
+                        }
+                      ],
+                      staticClass: "hidden",
+                      attrs: {
+                        type: "radio",
+                        id: "form.ghsa_cardiac_form",
+                        value: "1"
+                      },
+                      domProps: {
+                        checked: _vm._q(_vm.form.ghsa_cardiac_form, "1")
+                      },
+                      on: {
+                        change: function($event) {
+                          return _vm.$set(_vm.form, "ghsa_cardiac_form", "1")
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _vm.cardiacFormConfirmed
+                      ? _c(
+                          "a",
+                          {
+                            staticClass: "text-xl",
+                            on: { click: _vm.unconfirmCardiacForm }
+                          },
+                          [_vm._m(20)]
+                        )
+                      : _c("a", { on: { click: _vm.confirmCardiacForm } }, [
+                          _vm._m(21)
+                        ]),
+                    _vm._v(" "),
+                    _vm._m(22)
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "py-2" }, [
+                  _c(
+                    "div",
+                    { staticClass: "flex justify-between content-end" },
+                    [
+                      _c(
+                        "label",
+                        {
+                          staticClass: "text-sm font-semibold text-red-900",
+                          attrs: { for: "form.restrictions" }
+                        },
+                        [_vm._v("Restrictions (if any)")]
+                      ),
+                      _vm._v(" "),
+                      _vm.form.errors.has("restrictions")
+                        ? _c("span", {
+                            staticClass: "text-red-600 text-xs font-semibold",
+                            attrs: { id: "restrictionsHelp" },
+                            domProps: {
+                              textContent: _vm._s(
+                                _vm.form.errors.get("restrictions")
+                              )
+                            }
+                          })
+                        : _vm._e()
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.form.restrictions,
+                        expression: "form.restrictions"
+                      }
+                    ],
+                    staticClass:
+                      "w-full rounded border px-3 py-2 text-lg border shadow-md",
+                    attrs: { id: "form.restrictions", type: "text" },
+                    domProps: { value: _vm.form.restrictions },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(_vm.form, "restrictions", $event.target.value)
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "py-2" }, [
+                  _c(
+                    "div",
+                    { staticClass: "flex justify-between content-end" },
+                    [
+                      _c(
+                        "label",
+                        {
+                          staticClass: "text-sm font-semibold text-red-900",
+                          attrs: { for: "form.notes" }
+                        },
+                        [
+                          _vm._v(
+                            "\n                            Notes (optional)\n                        "
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _vm.form.errors.has("notes")
+                        ? _c("span", {
+                            staticClass: "form-help",
+                            attrs: { id: "notesHelp" },
+                            domProps: {
+                              textContent: _vm._s(_vm.form.errors.get("notes"))
+                            }
+                          })
+                        : _vm._e()
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c("textarea", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.form.notes,
+                        expression: "form.notes"
+                      }
+                    ],
+                    staticClass:
+                      "w-full rounded border px-3 py-2 text-lg border shadow-md",
+                    attrs: { id: "form.notes" },
+                    domProps: { value: _vm.form.notes },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(_vm.form, "notes", $event.target.value)
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: " pt-2 flex items-center justify-end" },
+                  [
+                    _c(
+                      "update-button",
+                      {
+                        staticClass: "mr-4",
+                        attrs: { disabled: _vm.form.errors.any() }
+                      },
+                      [
+                        _vm._v(
+                          "\n                        Update\n                    "
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c("cancel-button", { on: { clicked: _vm.resetForm } })
+                  ],
+                  1
+                )
+              ]
+            )
+          ])
+        ])
+      : _c("div", { staticClass: "flex py-1 items-center hover:bg-gray-100" }, [
+          _c("div", { staticClass: "flex flex-col w-full" }, [
+            _c("div", { staticClass: "flex w-full" }, [
+              _c("div", { staticClass: "flex pt-1 w-11/12 px-2 flex-wrap" }, [
+                _c("div", { staticClass: "flex w-full lg:w-1/3" }, [
+                  _c(
+                    "a",
+                    {
+                      staticClass: "hover:font-semibold hover:underline",
+                      attrs: { href: _vm.athleteUrl }
+                    },
+                    [
+                      _vm._v(
+                        "\n                            " +
+                          _vm._s(_vm.last_name) +
+                          ", " +
+                          _vm._s(_vm.first_name) +
+                          "\n                        "
+                      )
+                    ]
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "flex w-full lg:w-1/3 px-2" }, [
+                  _c(
+                    "div",
+                    {
+                      staticClass: "w-full",
+                      style: { color: _vm.statusColor }
+                    },
+                    [
+                      _vm._v(
+                        "\n                                " +
+                          _vm._s(_vm.status) +
+                          "\n                            "
+                      ),
+                      _vm.allClear
+                        ? _c("span", [_c("i", { staticClass: "fas fa-check" })])
+                        : _vm.restrict
+                        ? _c("span", [
+                            _c("i", { staticClass: "fas fa-exclamation" })
+                          ])
+                        : _c("span", [_c("i", { staticClass: "fas fa-times" })])
+                    ]
+                  )
+                ]),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "flex w-full lg:w-1/3 px-2 justify-between flex-wrap"
+                  },
+                  [
+                    _c(
+                      "div",
+                      {
+                        staticClass: "w-full lg:w-4/5",
+                        style: { color: _vm.expirationColor }
+                      },
+                      [
+                        _vm._v(
+                          "\n                            " +
+                            _vm._s(_vm.expiration) +
+                            "\n                            "
+                        ),
+                        _c("span", [
+                          _vm._v(
+                            _vm._s(
+                              _vm._f("moment")(
+                                _vm._f("moment")(
+                                  _vm.exam_date,
+                                  "add",
+                                  "1 year"
+                                ),
+                                "from",
+                                "now"
+                              )
+                            )
+                          )
+                        ])
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _vm.physicalUploaded
+                      ? _c(
+                          "div",
+                          {
+                            staticClass: "lg:w-1/5",
+                            staticStyle: { color: "#000080" }
+                          },
+                          [
+                            _c("a", {
+                              staticClass: "text-xl fas fa-file-download",
+                              attrs: { href: _vm.url }
+                            })
+                          ]
+                        )
+                      : _vm._e()
+                  ]
+                )
+              ]),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "flex w-1/12 pt-1 justify-end px-4" },
+                [_c("expand-button", { on: { toggleRow: _vm.toggleRow } })],
+                1
+              )
+            ]),
+            _vm._v(" "),
+            _vm.isExpanded
+              ? _c("div", { staticClass: "p-2" }, [
+                  _c("div", { staticClass: "flex w-11/12 flex-wrap px-4" }, [
+                    _c("div", { staticClass: "w-full lg:w-1/3" }, [
+                      _c("p", { staticClass: "text-gray-500 w-full py-1" }, [
+                        _vm._v("Exam Date:\n                            "),
+                        _c(
+                          "span",
+                          { staticClass: "text-gray-800 font-semibold" },
+                          [
+                            _vm._v(
+                              "\n                                " +
+                                _vm._s(
+                                  _vm._f("moment")(_vm.exam_date, "MM/DD/YYYY")
+                                ) +
+                                "\n                            "
+                            )
+                          ]
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("p", { staticClass: "text-gray-500 w-full py-1" }, [
+                        _vm._v("Restrictions:\n                            "),
+                        _c(
+                          "span",
+                          {
+                            staticClass:
+                              "text-gray-800 font-semibold text-orange-500"
+                          },
+                          [
+                            _vm._v(
+                              "\n                                " +
+                                _vm._s(_vm.restrictions) +
+                                "\n                            "
+                            )
+                          ]
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("p", { staticClass: "text-gray-500 w-full py-1" }, [
+                        _vm._v("Notes:\n                            "),
+                        _c(
+                          "span",
+                          { staticClass: "text-gray-800 font-semibold" },
+                          [_vm._v(_vm._s(_vm.notes))]
+                        )
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "w-full lg:w-1/3" }, [
+                      this.expiration === "Expired"
+                        ? _c("div", [
+                            _c(
+                              "p",
+                              {
+                                staticClass:
+                                  "lg:px-1 font-sm font-semibold text-red-700"
+                              },
+                              [_vm._v("All Forms Have Expired")]
+                            )
+                          ])
+                        : this.status === "Not Cleared"
+                        ? _c("div", [
+                            _c(
+                              "p",
+                              { staticClass: "text-gray-500 w-full py-1 px-1" },
+                              [_vm._v("Missing:")]
+                            ),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "text-sm px-1" }, [
+                              _c(
+                                "p",
+                                {
+                                  directives: [
+                                    {
+                                      name: "show",
+                                      rawName: "v-show",
+                                      value: !_vm.historyFormConfirmed,
+                                      expression: "!historyFormConfirmed"
+                                    }
+                                  ]
+                                },
+                                [_vm._v("Medical History Form")]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "p",
+                                {
+                                  directives: [
+                                    {
+                                      name: "show",
+                                      rawName: "v-show",
+                                      value: !_vm.physicalExamFormConfirmed,
+                                      expression: "!physicalExamFormConfirmed"
+                                    }
+                                  ]
+                                },
+                                [_vm._v("Physical Exam Form")]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "p",
+                                {
+                                  directives: [
+                                    {
+                                      name: "show",
+                                      rawName: "v-show",
+                                      value: !_vm.eligibilityFormConfirmed,
+                                      expression: "!eligibilityFormConfirmed"
+                                    }
+                                  ]
+                                },
+                                [_vm._v("Elegibility Form")]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "p",
+                                {
+                                  directives: [
+                                    {
+                                      name: "show",
+                                      rawName: "v-show",
+                                      value: !_vm.physicalFormConfirmed,
+                                      expression: "!physicalFormConfirmed"
+                                    }
+                                  ]
+                                },
+                                [_vm._v("LHS Physical Form")]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "p",
+                                {
+                                  directives: [
+                                    {
+                                      name: "show",
+                                      rawName: "v-show",
+                                      value: !_vm.blanketFormConfirmed,
+                                      expression: "!blanketFormConfirmed"
+                                    }
+                                  ]
+                                },
+                                [_vm._v("Blanket Waiver Form")]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "p",
+                                {
+                                  directives: [
+                                    {
+                                      name: "show",
+                                      rawName: "v-show",
+                                      value: !_vm.concussionFormConfirmed,
+                                      expression: "!concussionFormConfirmed"
+                                    }
+                                  ]
+                                },
+                                [_vm._v("Concussion Form")]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "p",
+                                {
+                                  directives: [
+                                    {
+                                      name: "show",
+                                      rawName: "v-show",
+                                      value: !_vm.cardiacFormConfirmed,
+                                      expression: "!cardiacFormConfirmed"
+                                    }
+                                  ]
+                                },
+                                [_vm._v("Cardiac Form")]
+                              )
+                            ])
+                          ])
+                        : _vm._e()
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "w-1/3 p-3" },
+                      [
+                        _c("physical-upload-form", {
+                          attrs: { data: _vm.data },
+                          on: { formUploaded: _vm.resetPage }
+                        })
+                      ],
+                      1
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    { staticClass: "flex justify-start cursor-pointer pt-1" },
+                    [
+                      _c("edit-button", { on: { clicked: _vm.getNames } }),
+                      _vm._v(" "),
+                      _c("delete-button", { on: { clicked: _vm.destroy } })
+                    ],
+                    1
+                  )
+                ])
+              : _vm._e()
+          ])
+        ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-label ml-1" }, [
+      _c("p", [_vm._v("id")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "mt-2" }, [
+      _c("p", { staticClass: "text-sm font-semibold text-red-900" }, [
+        _vm._v("Forms")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticStyle: { color: "green" } }, [
+      _c("i", { staticClass: "fas fa-check-square" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticClass: "text-xl text-gray-500" }, [
+      _c("i", { staticClass: "bg-white far fa-square" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "label",
+      {
+        staticClass: "text-sm font-semibold px-2",
+        attrs: { for: "form.history_form" }
+      },
+      [
+        _vm._v(
+          "\n                                Medical History Form\n                                "
+        ),
+        _c("span", { staticClass: "text-xs text-gray-600" }, [
+          _vm._v("student and parent signature")
+        ])
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticStyle: { color: "green" } }, [
+      _c("i", { staticClass: "fas fa-check-square" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticClass: "text-xl text-gray-500" }, [
+      _c("i", { staticClass: "bg-white far fa-square" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "label",
+      {
+        staticClass: "text-sm font-semibold px-2",
+        attrs: { for: "form.physical_exam_form" }
+      },
+      [
+        _vm._v(
+          "\n                                Physical Examination Form\n                                "
+        ),
+        _c("span", { staticClass: "text-xs text-gray-600" }, [
+          _vm._v("physician's signature")
+        ])
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticStyle: { color: "green" } }, [
+      _c("i", { staticClass: "fas fa-check-square" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticClass: "text-xl text-gray-500" }, [
+      _c("i", { staticClass: "bg-white far fa-square" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "label",
+      {
+        staticClass: "text-sm font-semibold px-2",
+        attrs: { for: "form.medical_eligibility_form" }
+      },
+      [
+        _vm._v(
+          "\n                                Medical Eligibility Form\n                                "
+        ),
+        _c("span", { staticClass: "text-xs text-gray-600" }, [
+          _vm._v("physician's signature")
+        ])
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticStyle: { color: "green" } }, [
+      _c("i", { staticClass: "fas fa-check-square" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticClass: "text-xl text-gray-500" }, [
+      _c("i", { staticClass: "bg-white far fa-square" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "label",
+      {
+        staticClass: "text-sm font-semibold px-2",
+        attrs: { for: "form.physical_form" }
+      },
+      [
+        _vm._v(
+          "\n                                LHS Physical Form\n                                "
+        ),
+        _c("span", { staticClass: "text-xs text-gray-600" }, [
+          _vm._v("insurance information and parent signature")
+        ])
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticStyle: { color: "green" } }, [
+      _c("i", { staticClass: "fas fa-check-square" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticClass: "text-xl text-gray-500" }, [
+      _c("i", { staticClass: "bg-white far fa-square" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "label",
+      {
+        staticClass: "text-sm font-semibold px-2",
+        attrs: { for: "form.blanket_waiver_form" }
+      },
+      [
+        _vm._v(
+          "\n                                Blanket Waiver Form\n                                "
+        ),
+        _c("span", { staticClass: "text-xs text-gray-600" }, [
+          _vm._v("2 parent signatures")
+        ])
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticStyle: { color: "green" } }, [
+      _c("i", { staticClass: "fas fa-check-square" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticClass: "text-xl text-gray-500" }, [
+      _c("i", { staticClass: "bg-white far fa-square" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "label",
+      {
+        staticClass: "text-sm font-semibold px-2",
+        attrs: { for: "form.ghsa_concussion_form" }
+      },
+      [
+        _vm._v(
+          "\n                                GHSA Concussion Form\n                                "
+        ),
+        _c("span", { staticClass: "text-xs text-gray-600" }, [
+          _vm._v("student and parent signature")
+        ])
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticStyle: { color: "green" } }, [
+      _c("i", { staticClass: "fas fa-check-square" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticClass: "text-xl text-gray-500" }, [
+      _c("i", { staticClass: "bg-white far fa-square" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "label",
+      {
+        staticClass: "text-sm font-semibold px-2",
+        attrs: { for: "form.ghsa_cardiac_form" }
+      },
+      [
+        _vm._v(
+          "\n                                GHSA Cardiac Form\n                                "
+        ),
+        _c("span", { staticClass: "text-xs text-gray-600" }, [
+          _vm._v("student and parent signature")
+        ])
+      ]
+    )
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/physicals/Physicals.vue?vue&type=template&id=357b880e&scoped=true&":
+/*!**********************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/physicals/Physicals.vue?vue&type=template&id=357b880e&scoped=true& ***!
+  \**********************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "flex flex-col w-full" }, [
+    _c("div", { staticClass: "flex justify-end w-full" }, [
+      _c("div", { staticClass: "flex md:w-1/2 lg:w-1/3" }, [
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.search,
+              expression: "search"
+            }
+          ],
+          staticClass:
+            "flex w-full rounded-md border px-3 py-2 text-lg border shadow",
+          attrs: { type: "text", placeholder: "Find a physical..." },
+          domProps: { value: _vm.search },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.search = $event.target.value
+            }
+          }
+        }),
+        _vm._v(" "),
+        _c(
+          "button",
+          {
+            staticClass:
+              "w-20 py-2 ml-2 bg-green-500 text-white text-sm font-bold rounded-md border-2 border-green-400",
+            on: { click: _vm.clearSearch }
+          },
+          [_vm._v("\n                Clear\n            ")]
+        )
+      ])
+    ]),
+    _vm._v(" "),
+    _c(
+      "header",
+      {
+        staticClass:
+          "w-full md:w-1/2 font-thin text-2xl lg:text-5xl py-4 text-red-900"
+      },
+      [_vm._v("Physicals")]
+    ),
+    _vm._v(" "),
+    _c("div", {}, [
+      _c("div", { staticClass: "flex" }, [
+        _vm._m(0),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "flex w-1/12 justify-end px-2 items-center" },
+          [
+            _c(
+              "create-button",
+              { attrs: { title: "Add New Physical" } },
+              [_c("new-physical-form", { on: { created: _vm.add } })],
+              1
+            )
+          ],
+          1
+        )
+      ]),
+      _vm._v(" "),
+      _vm.records
+        ? _c(
+            "div",
+            { staticClass: "divide-y border-t border-b" },
+            _vm._l(_vm.filteredPhysicals, function(physical, index) {
+              return _c(
+                "div",
+                { key: physical.id },
+                [
+                  _c("physical", {
+                    attrs: { data: physical },
+                    on: {
+                      deleted: function($event) {
+                        return _vm.remove(index)
+                      }
+                    }
+                  })
+                ],
+                1
+              )
+            }),
+            0
+          )
+        : _c("div", { staticClass: "flex flex-col text-center" }, [
+            _c("p", { staticClass: "text-2xl text-tertiary p-4" }, [
+              _vm._v("No Physicals Listed")
+            ])
+          ])
+    ]),
+    _vm._v(" "),
+    _vm.records
+      ? _c(
+          "div",
+          [
+            _c(
+              "paginator",
+              { attrs: { dataSet: _vm.dataSet }, on: { changed: _vm.fetch } },
+              [_vm._v("Athletes")]
+            )
+          ],
+          1
+        )
+      : _vm._e()
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      { staticClass: "flex w-11/12 px-2 text-gray-500 font-semibold" },
+      [
+        _c("div", { staticClass: "w-full lg:w-1/3" }, [
+          _c("p", {}, [_vm._v("Name")])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "hidden lg:flex px-2 lg:w-1/3" }, [
+          _c("p", {}, [_vm._v("Physical Status")])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "hidden lg:flex lg:w-1/3" }, [
+          _c("p", { staticClass: "px-2" }, [_vm._v("Expiration Status")])
+        ])
+      ]
+    )
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/physicals/ProfilePhysical.vue?vue&type=template&id=4d13e49c&scoped=true&":
+/*!****************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/physicals/ProfilePhysical.vue?vue&type=template&id=4d13e49c&scoped=true& ***!
+  \****************************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", {}, [
+    _c("div", { staticClass: "flex py-1 items-center hover:bg-gray-100" }, [
+      _c("div", { staticClass: "flex flex-col w-full" }, [
+        _c("div", { staticClass: "flex w-full" }, [
+          _c("div", { staticClass: "flex pt-1 w-11/12 px-2 flex-wrap" }, [
+            _c("div", { staticClass: "w-full lg:flex lg:w-1/3" }, [
+              _vm._v(
+                "\n                        " +
+                  _vm._s(_vm._f("moment")(_vm.exam_date, "MM/DD/YYYY")) +
+                  "\n                    "
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "w-full lg:flex lg:w-1/3 px-2" }, [
+              _c(
+                "div",
+                { staticClass: "w-full", style: { color: _vm.statusColor } },
+                [
+                  _vm._v(
+                    "\n                                " +
+                      _vm._s(_vm.status) +
+                      "\n                            "
+                  ),
+                  _vm.allClear
+                    ? _c("span", [_c("i", { staticClass: "fas fa-check" })])
+                    : _vm.restrict
+                    ? _c("span", [
+                        _c("i", { staticClass: "fas fa-exclamation" })
+                      ])
+                    : _c("span", [_c("i", { staticClass: "fas fa-times" })])
+                ]
+              )
+            ]),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass:
+                  "flex w-full lg:w-1/3 px-2 justify-between flex-wrap"
+              },
+              [
+                _c(
+                  "div",
+                  {
+                    staticClass: "w-full lg:w-4/5",
+                    style: { color: _vm.expirationColor }
+                  },
+                  [
+                    _vm._v(
+                      "\n                            " +
+                        _vm._s(_vm.expiration) +
+                        "\n                            "
+                    ),
+                    _c("span", [
+                      _vm._v(
+                        _vm._s(
+                          _vm._f("moment")(
+                            _vm._f("moment")(_vm.exam_date, "add", "1 year"),
+                            "from",
+                            "now"
+                          )
+                        )
+                      )
+                    ])
+                  ]
+                ),
+                _vm._v(" "),
+                _vm.physicalUploaded
+                  ? _c(
+                      "div",
+                      {
+                        staticClass: "lg:w-1/5",
+                        staticStyle: { color: "#000080" }
+                      },
+                      [
+                        _c("a", {
+                          staticClass: "text-xl fas fa-file-download",
+                          attrs: { href: _vm.url }
+                        })
+                      ]
+                    )
+                  : _vm._e()
+              ]
+            )
+          ]),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "flex w-1/12 pt-1 justify-end px-4" },
+            [_c("expand-button", { on: { toggleRow: _vm.toggleRow } })],
+            1
+          )
+        ]),
+        _vm._v(" "),
+        _vm.isExpanded
+          ? _c("div", { staticClass: "p-2" }, [
+              _c("div", { staticClass: "flex w-11/12 flex-wrap lg:px-2" }, [
+                _c("div", { staticClass: "w-full lg:flex-col lg:w-1/3" }, [
+                  _c("p", { staticClass: "text-gray-500 w-full py-1" }, [
+                    _vm._v("Restrictions:\n                            "),
+                    _c(
+                      "span",
+                      {
+                        staticClass:
+                          "text-gray-800 font-semibold text-orange-500"
+                      },
+                      [
+                        _vm._v(
+                          "\n                                " +
+                            _vm._s(_vm.restrictions) +
+                            "\n                            "
+                        )
+                      ]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("p", { staticClass: "text-gray-500 w-full py-1" }, [
+                    _vm._v("Notes:\n                            "),
+                    _c("span", { staticClass: "text-gray-800 font-semibold" }, [
+                      _vm._v(_vm._s(_vm.notes))
+                    ])
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "w-full lg:flex lg:w-1/3 lg:px-2" }, [
+                  this.expiration === "Expired"
+                    ? _c("div", [
+                        _c(
+                          "p",
+                          { staticClass: "text-sm font-semibold text-red-700" },
+                          [_vm._v("All Forms Have Expired")]
+                        )
+                      ])
+                    : this.status === "Not Cleared"
+                    ? _c("div", [
+                        _c(
+                          "p",
+                          { staticClass: "text-gray-500 w-full py-1 px-1" },
+                          [_vm._v("Missing:")]
+                        ),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "text-sm px-1" }, [
+                          _c(
+                            "p",
+                            {
+                              directives: [
+                                {
+                                  name: "show",
+                                  rawName: "v-show",
+                                  value: !_vm.historyFormConfirmed,
+                                  expression: "!historyFormConfirmed"
+                                }
+                              ]
+                            },
+                            [_vm._v("Medical History Form")]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "p",
+                            {
+                              directives: [
+                                {
+                                  name: "show",
+                                  rawName: "v-show",
+                                  value: !_vm.physicalExamFormConfirmed,
+                                  expression: "!physicalExamFormConfirmed"
+                                }
+                              ]
+                            },
+                            [_vm._v("Physical Exam Form")]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "p",
+                            {
+                              directives: [
+                                {
+                                  name: "show",
+                                  rawName: "v-show",
+                                  value: !_vm.eligibilityFormConfirmed,
+                                  expression: "!eligibilityFormConfirmed"
+                                }
+                              ]
+                            },
+                            [_vm._v("Elegibility Form")]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "p",
+                            {
+                              directives: [
+                                {
+                                  name: "show",
+                                  rawName: "v-show",
+                                  value: !_vm.physicalFormConfirmed,
+                                  expression: "!physicalFormConfirmed"
+                                }
+                              ]
+                            },
+                            [_vm._v("LHS Physical Form")]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "p",
+                            {
+                              directives: [
+                                {
+                                  name: "show",
+                                  rawName: "v-show",
+                                  value: !_vm.blanketFormConfirmed,
+                                  expression: "!blanketFormConfirmed"
+                                }
+                              ]
+                            },
+                            [_vm._v("Blanket Waiver Form")]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "p",
+                            {
+                              directives: [
+                                {
+                                  name: "show",
+                                  rawName: "v-show",
+                                  value: !_vm.concussionFormConfirmed,
+                                  expression: "!concussionFormConfirmed"
+                                }
+                              ]
+                            },
+                            [_vm._v("Concussion Form")]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "p",
+                            {
+                              directives: [
+                                {
+                                  name: "show",
+                                  rawName: "v-show",
+                                  value: !_vm.cardiacFormConfirmed,
+                                  expression: "!cardiacFormConfirmed"
+                                }
+                              ]
+                            },
+                            [_vm._v("Cardiac Form")]
+                          )
+                        ])
+                      ])
+                    : _vm._e()
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "w-full lg:flex lg:w-1/3" })
+              ])
+            ])
+          : _vm._e()
+      ])
+    ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/physicals/ProfilePhysicals.vue?vue&type=template&id=58f749b1&scoped=true&":
+/*!*****************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/physicals/ProfilePhysicals.vue?vue&type=template&id=58f749b1&scoped=true& ***!
+  \*****************************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "flex flex-col w-full mt-4 lg:mt-10" }, [
+    _c(
+      "header",
+      {
+        staticClass:
+          "w-full md:w-1/2 font-thin text-xl lg:text-3xl py-2 text-red-900"
+      },
+      [_vm._v("Physicals")]
+    ),
+    _vm._v(" "),
+    _c("div", {}, [
+      _vm._m(0),
+      _vm._v(" "),
+      _vm.records
+        ? _c(
+            "div",
+            { staticClass: "divide-y border-t border-b" },
+            _vm._l(_vm.items, function(physical, index) {
+              return _c(
+                "div",
+                { key: physical.id },
+                [
+                  _c("profile-physical", {
+                    attrs: { data: physical },
+                    on: {
+                      deleted: function($event) {
+                        return _vm.remove(index)
+                      }
+                    }
+                  })
+                ],
+                1
+              )
+            }),
+            0
+          )
+        : _c("div", { staticClass: "flex flex-col text-center" }, [
+            _c("p", { staticClass: "text-2xl text-tertiary p-4" }, [
+              _vm._v("No Physicals Listed")
+            ])
+          ])
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "flex" }, [
+      _c(
+        "div",
+        { staticClass: "flex w-11/12 px-2 text-gray-500 font-semibold" },
+        [
+          _c("div", { staticClass: "w-full lg:w-1/3" }, [
+            _c("p", {}, [_vm._v("Exam Date")])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "hidden lg:flex lg:px-2 lg:w-1/3" }, [
+            _c("p", {}, [_vm._v("Physical Status")])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "hidden lg:flex lg:w-1/3" }, [
+            _c("p", { staticClass: "px-2" }, [_vm._v("Expiration Status")])
+          ])
+        ]
+      ),
+      _vm._v(" "),
+      _c("div", { staticClass: "flex w-1/12 justify-end px-2 items-center" })
+    ])
+  }
+]
 render._withStripped = true
 
 
@@ -51359,155 +52424,17 @@ window.Errors = _utilities_Errors__WEBPACK_IMPORTED_MODULE_4__["default"];
 
 /***/ }),
 
-/***/ "./resources/js/components/Physical.vue":
-/*!**********************************************!*\
-  !*** ./resources/js/components/Physical.vue ***!
-  \**********************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _Physical_vue_vue_type_template_id_7b6e9a7c_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Physical.vue?vue&type=template&id=7b6e9a7c&scoped=true& */ "./resources/js/components/Physical.vue?vue&type=template&id=7b6e9a7c&scoped=true&");
-/* harmony import */ var _Physical_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Physical.vue?vue&type=script&lang=js& */ "./resources/js/components/Physical.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
-
-
-
-
-
-/* normalize component */
-
-var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
-  _Physical_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _Physical_vue_vue_type_template_id_7b6e9a7c_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _Physical_vue_vue_type_template_id_7b6e9a7c_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
-  false,
-  null,
-  "7b6e9a7c",
-  null
-  
-)
-
-/* hot reload */
-if (false) { var api; }
-component.options.__file = "resources/js/components/Physical.vue"
-/* harmony default export */ __webpack_exports__["default"] = (component.exports);
-
-/***/ }),
-
-/***/ "./resources/js/components/Physical.vue?vue&type=script&lang=js&":
-/*!***********************************************************************!*\
-  !*** ./resources/js/components/Physical.vue?vue&type=script&lang=js& ***!
-  \***********************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Physical_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./Physical.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Physical.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Physical_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
-
-/***/ }),
-
-/***/ "./resources/js/components/Physical.vue?vue&type=template&id=7b6e9a7c&scoped=true&":
-/*!*****************************************************************************************!*\
-  !*** ./resources/js/components/Physical.vue?vue&type=template&id=7b6e9a7c&scoped=true& ***!
-  \*****************************************************************************************/
-/*! exports provided: render, staticRenderFns */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Physical_vue_vue_type_template_id_7b6e9a7c_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./Physical.vue?vue&type=template&id=7b6e9a7c&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Physical.vue?vue&type=template&id=7b6e9a7c&scoped=true&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Physical_vue_vue_type_template_id_7b6e9a7c_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Physical_vue_vue_type_template_id_7b6e9a7c_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
-
-
-
-/***/ }),
-
-/***/ "./resources/js/components/PhysicalStatus.vue":
-/*!****************************************************!*\
-  !*** ./resources/js/components/PhysicalStatus.vue ***!
-  \****************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _PhysicalStatus_vue_vue_type_template_id_0800ce54_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./PhysicalStatus.vue?vue&type=template&id=0800ce54&scoped=true& */ "./resources/js/components/PhysicalStatus.vue?vue&type=template&id=0800ce54&scoped=true&");
-/* harmony import */ var _PhysicalStatus_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./PhysicalStatus.vue?vue&type=script&lang=js& */ "./resources/js/components/PhysicalStatus.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
-
-
-
-
-
-/* normalize component */
-
-var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
-  _PhysicalStatus_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _PhysicalStatus_vue_vue_type_template_id_0800ce54_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _PhysicalStatus_vue_vue_type_template_id_0800ce54_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
-  false,
-  null,
-  "0800ce54",
-  null
-  
-)
-
-/* hot reload */
-if (false) { var api; }
-component.options.__file = "resources/js/components/PhysicalStatus.vue"
-/* harmony default export */ __webpack_exports__["default"] = (component.exports);
-
-/***/ }),
-
-/***/ "./resources/js/components/PhysicalStatus.vue?vue&type=script&lang=js&":
-/*!*****************************************************************************!*\
-  !*** ./resources/js/components/PhysicalStatus.vue?vue&type=script&lang=js& ***!
-  \*****************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_PhysicalStatus_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./PhysicalStatus.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/PhysicalStatus.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_PhysicalStatus_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
-
-/***/ }),
-
-/***/ "./resources/js/components/PhysicalStatus.vue?vue&type=template&id=0800ce54&scoped=true&":
-/*!***********************************************************************************************!*\
-  !*** ./resources/js/components/PhysicalStatus.vue?vue&type=template&id=0800ce54&scoped=true& ***!
-  \***********************************************************************************************/
-/*! exports provided: render, staticRenderFns */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PhysicalStatus_vue_vue_type_template_id_0800ce54_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./PhysicalStatus.vue?vue&type=template&id=0800ce54&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/PhysicalStatus.vue?vue&type=template&id=0800ce54&scoped=true&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PhysicalStatus_vue_vue_type_template_id_0800ce54_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PhysicalStatus_vue_vue_type_template_id_0800ce54_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
-
-
-
-/***/ }),
-
-/***/ "./resources/js/components/Physicals.vue":
+/***/ "./resources/js/components/Paginator.vue":
 /*!***********************************************!*\
-  !*** ./resources/js/components/Physicals.vue ***!
+  !*** ./resources/js/components/Paginator.vue ***!
   \***********************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _Physicals_vue_vue_type_template_id_eb0d72be_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Physicals.vue?vue&type=template&id=eb0d72be&scoped=true& */ "./resources/js/components/Physicals.vue?vue&type=template&id=eb0d72be&scoped=true&");
-/* harmony import */ var _Physicals_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Physicals.vue?vue&type=script&lang=js& */ "./resources/js/components/Physicals.vue?vue&type=script&lang=js&");
+/* harmony import */ var _Paginator_vue_vue_type_template_id_59656db6_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Paginator.vue?vue&type=template&id=59656db6&scoped=true& */ "./resources/js/components/Paginator.vue?vue&type=template&id=59656db6&scoped=true&");
+/* harmony import */ var _Paginator_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Paginator.vue?vue&type=script&lang=js& */ "./resources/js/components/Paginator.vue?vue&type=script&lang=js&");
 /* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -51517,188 +52444,50 @@ __webpack_require__.r(__webpack_exports__);
 /* normalize component */
 
 var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
-  _Physicals_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _Physicals_vue_vue_type_template_id_eb0d72be_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _Physicals_vue_vue_type_template_id_eb0d72be_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  _Paginator_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _Paginator_vue_vue_type_template_id_59656db6_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _Paginator_vue_vue_type_template_id_59656db6_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
   false,
   null,
-  "eb0d72be",
+  "59656db6",
   null
   
 )
 
 /* hot reload */
 if (false) { var api; }
-component.options.__file = "resources/js/components/Physicals.vue"
+component.options.__file = "resources/js/components/Paginator.vue"
 /* harmony default export */ __webpack_exports__["default"] = (component.exports);
 
 /***/ }),
 
-/***/ "./resources/js/components/Physicals.vue?vue&type=script&lang=js&":
+/***/ "./resources/js/components/Paginator.vue?vue&type=script&lang=js&":
 /*!************************************************************************!*\
-  !*** ./resources/js/components/Physicals.vue?vue&type=script&lang=js& ***!
+  !*** ./resources/js/components/Paginator.vue?vue&type=script&lang=js& ***!
   \************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Physicals_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./Physicals.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Physicals.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Physicals_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Paginator_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./Paginator.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Paginator.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Paginator_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
-/***/ "./resources/js/components/Physicals.vue?vue&type=template&id=eb0d72be&scoped=true&":
+/***/ "./resources/js/components/Paginator.vue?vue&type=template&id=59656db6&scoped=true&":
 /*!******************************************************************************************!*\
-  !*** ./resources/js/components/Physicals.vue?vue&type=template&id=eb0d72be&scoped=true& ***!
+  !*** ./resources/js/components/Paginator.vue?vue&type=template&id=59656db6&scoped=true& ***!
   \******************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Physicals_vue_vue_type_template_id_eb0d72be_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./Physicals.vue?vue&type=template&id=eb0d72be&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Physicals.vue?vue&type=template&id=eb0d72be&scoped=true&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Physicals_vue_vue_type_template_id_eb0d72be_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Paginator_vue_vue_type_template_id_59656db6_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./Paginator.vue?vue&type=template&id=59656db6&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Paginator.vue?vue&type=template&id=59656db6&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Paginator_vue_vue_type_template_id_59656db6_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Physicals_vue_vue_type_template_id_eb0d72be_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
-
-
-
-/***/ }),
-
-/***/ "./resources/js/components/ProfilePhysical.vue":
-/*!*****************************************************!*\
-  !*** ./resources/js/components/ProfilePhysical.vue ***!
-  \*****************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _ProfilePhysical_vue_vue_type_template_id_063d5bf6_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ProfilePhysical.vue?vue&type=template&id=063d5bf6&scoped=true& */ "./resources/js/components/ProfilePhysical.vue?vue&type=template&id=063d5bf6&scoped=true&");
-/* harmony import */ var _ProfilePhysical_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ProfilePhysical.vue?vue&type=script&lang=js& */ "./resources/js/components/ProfilePhysical.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
-
-
-
-
-
-/* normalize component */
-
-var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
-  _ProfilePhysical_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _ProfilePhysical_vue_vue_type_template_id_063d5bf6_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _ProfilePhysical_vue_vue_type_template_id_063d5bf6_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
-  false,
-  null,
-  "063d5bf6",
-  null
-  
-)
-
-/* hot reload */
-if (false) { var api; }
-component.options.__file = "resources/js/components/ProfilePhysical.vue"
-/* harmony default export */ __webpack_exports__["default"] = (component.exports);
-
-/***/ }),
-
-/***/ "./resources/js/components/ProfilePhysical.vue?vue&type=script&lang=js&":
-/*!******************************************************************************!*\
-  !*** ./resources/js/components/ProfilePhysical.vue?vue&type=script&lang=js& ***!
-  \******************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ProfilePhysical_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./ProfilePhysical.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ProfilePhysical.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ProfilePhysical_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
-
-/***/ }),
-
-/***/ "./resources/js/components/ProfilePhysical.vue?vue&type=template&id=063d5bf6&scoped=true&":
-/*!************************************************************************************************!*\
-  !*** ./resources/js/components/ProfilePhysical.vue?vue&type=template&id=063d5bf6&scoped=true& ***!
-  \************************************************************************************************/
-/*! exports provided: render, staticRenderFns */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ProfilePhysical_vue_vue_type_template_id_063d5bf6_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./ProfilePhysical.vue?vue&type=template&id=063d5bf6&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ProfilePhysical.vue?vue&type=template&id=063d5bf6&scoped=true&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ProfilePhysical_vue_vue_type_template_id_063d5bf6_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ProfilePhysical_vue_vue_type_template_id_063d5bf6_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
-
-
-
-/***/ }),
-
-/***/ "./resources/js/components/ProfilePhysicals.vue":
-/*!******************************************************!*\
-  !*** ./resources/js/components/ProfilePhysicals.vue ***!
-  \******************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _ProfilePhysicals_vue_vue_type_template_id_ba16e084_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ProfilePhysicals.vue?vue&type=template&id=ba16e084&scoped=true& */ "./resources/js/components/ProfilePhysicals.vue?vue&type=template&id=ba16e084&scoped=true&");
-/* harmony import */ var _ProfilePhysicals_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ProfilePhysicals.vue?vue&type=script&lang=js& */ "./resources/js/components/ProfilePhysicals.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
-
-
-
-
-
-/* normalize component */
-
-var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
-  _ProfilePhysicals_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _ProfilePhysicals_vue_vue_type_template_id_ba16e084_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _ProfilePhysicals_vue_vue_type_template_id_ba16e084_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
-  false,
-  null,
-  "ba16e084",
-  null
-  
-)
-
-/* hot reload */
-if (false) { var api; }
-component.options.__file = "resources/js/components/ProfilePhysicals.vue"
-/* harmony default export */ __webpack_exports__["default"] = (component.exports);
-
-/***/ }),
-
-/***/ "./resources/js/components/ProfilePhysicals.vue?vue&type=script&lang=js&":
-/*!*******************************************************************************!*\
-  !*** ./resources/js/components/ProfilePhysicals.vue?vue&type=script&lang=js& ***!
-  \*******************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ProfilePhysicals_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./ProfilePhysicals.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ProfilePhysicals.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ProfilePhysicals_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
-
-/***/ }),
-
-/***/ "./resources/js/components/ProfilePhysicals.vue?vue&type=template&id=ba16e084&scoped=true&":
-/*!*************************************************************************************************!*\
-  !*** ./resources/js/components/ProfilePhysicals.vue?vue&type=template&id=ba16e084&scoped=true& ***!
-  \*************************************************************************************************/
-/*! exports provided: render, staticRenderFns */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ProfilePhysicals_vue_vue_type_template_id_ba16e084_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./ProfilePhysicals.vue?vue&type=template&id=ba16e084&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ProfilePhysicals.vue?vue&type=template&id=ba16e084&scoped=true&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ProfilePhysicals_vue_vue_type_template_id_ba16e084_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ProfilePhysicals_vue_vue_type_template_id_ba16e084_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Paginator_vue_vue_type_template_id_59656db6_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 
@@ -52739,6 +53528,369 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/forms/PhysicalUploadForm.vue":
+/*!**************************************************************!*\
+  !*** ./resources/js/components/forms/PhysicalUploadForm.vue ***!
+  \**************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _PhysicalUploadForm_vue_vue_type_template_id_24246432___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./PhysicalUploadForm.vue?vue&type=template&id=24246432& */ "./resources/js/components/forms/PhysicalUploadForm.vue?vue&type=template&id=24246432&");
+/* harmony import */ var _PhysicalUploadForm_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./PhysicalUploadForm.vue?vue&type=script&lang=js& */ "./resources/js/components/forms/PhysicalUploadForm.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _PhysicalUploadForm_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./PhysicalUploadForm.vue?vue&type=style&index=0&lang=css& */ "./resources/js/components/forms/PhysicalUploadForm.vue?vue&type=style&index=0&lang=css&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
+  _PhysicalUploadForm_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _PhysicalUploadForm_vue_vue_type_template_id_24246432___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _PhysicalUploadForm_vue_vue_type_template_id_24246432___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/forms/PhysicalUploadForm.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/forms/PhysicalUploadForm.vue?vue&type=script&lang=js&":
+/*!***************************************************************************************!*\
+  !*** ./resources/js/components/forms/PhysicalUploadForm.vue?vue&type=script&lang=js& ***!
+  \***************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_PhysicalUploadForm_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./PhysicalUploadForm.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/forms/PhysicalUploadForm.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_PhysicalUploadForm_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/forms/PhysicalUploadForm.vue?vue&type=style&index=0&lang=css&":
+/*!***********************************************************************************************!*\
+  !*** ./resources/js/components/forms/PhysicalUploadForm.vue?vue&type=style&index=0&lang=css& ***!
+  \***********************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_PhysicalUploadForm_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/style-loader!../../../../node_modules/css-loader??ref--6-1!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/src??ref--6-2!../../../../node_modules/vue-loader/lib??vue-loader-options!./PhysicalUploadForm.vue?vue&type=style&index=0&lang=css& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/forms/PhysicalUploadForm.vue?vue&type=style&index=0&lang=css&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_PhysicalUploadForm_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_PhysicalUploadForm_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_PhysicalUploadForm_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_PhysicalUploadForm_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_PhysicalUploadForm_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default.a); 
+
+/***/ }),
+
+/***/ "./resources/js/components/forms/PhysicalUploadForm.vue?vue&type=template&id=24246432&":
+/*!*********************************************************************************************!*\
+  !*** ./resources/js/components/forms/PhysicalUploadForm.vue?vue&type=template&id=24246432& ***!
+  \*********************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PhysicalUploadForm_vue_vue_type_template_id_24246432___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./PhysicalUploadForm.vue?vue&type=template&id=24246432& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/forms/PhysicalUploadForm.vue?vue&type=template&id=24246432&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PhysicalUploadForm_vue_vue_type_template_id_24246432___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PhysicalUploadForm_vue_vue_type_template_id_24246432___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/physicals/Physical.vue":
+/*!********************************************************!*\
+  !*** ./resources/js/components/physicals/Physical.vue ***!
+  \********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Physical_vue_vue_type_template_id_5c720fb5_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Physical.vue?vue&type=template&id=5c720fb5&scoped=true& */ "./resources/js/components/physicals/Physical.vue?vue&type=template&id=5c720fb5&scoped=true&");
+/* harmony import */ var _Physical_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Physical.vue?vue&type=script&lang=js& */ "./resources/js/components/physicals/Physical.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _Physical_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _Physical_vue_vue_type_template_id_5c720fb5_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _Physical_vue_vue_type_template_id_5c720fb5_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  "5c720fb5",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/physicals/Physical.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/physicals/Physical.vue?vue&type=script&lang=js&":
+/*!*********************************************************************************!*\
+  !*** ./resources/js/components/physicals/Physical.vue?vue&type=script&lang=js& ***!
+  \*********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Physical_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./Physical.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/physicals/Physical.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Physical_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/physicals/Physical.vue?vue&type=template&id=5c720fb5&scoped=true&":
+/*!***************************************************************************************************!*\
+  !*** ./resources/js/components/physicals/Physical.vue?vue&type=template&id=5c720fb5&scoped=true& ***!
+  \***************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Physical_vue_vue_type_template_id_5c720fb5_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./Physical.vue?vue&type=template&id=5c720fb5&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/physicals/Physical.vue?vue&type=template&id=5c720fb5&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Physical_vue_vue_type_template_id_5c720fb5_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Physical_vue_vue_type_template_id_5c720fb5_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/physicals/Physicals.vue":
+/*!*********************************************************!*\
+  !*** ./resources/js/components/physicals/Physicals.vue ***!
+  \*********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Physicals_vue_vue_type_template_id_357b880e_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Physicals.vue?vue&type=template&id=357b880e&scoped=true& */ "./resources/js/components/physicals/Physicals.vue?vue&type=template&id=357b880e&scoped=true&");
+/* harmony import */ var _Physicals_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Physicals.vue?vue&type=script&lang=js& */ "./resources/js/components/physicals/Physicals.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _Physicals_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _Physicals_vue_vue_type_template_id_357b880e_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _Physicals_vue_vue_type_template_id_357b880e_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  "357b880e",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/physicals/Physicals.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/physicals/Physicals.vue?vue&type=script&lang=js&":
+/*!**********************************************************************************!*\
+  !*** ./resources/js/components/physicals/Physicals.vue?vue&type=script&lang=js& ***!
+  \**********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Physicals_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./Physicals.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/physicals/Physicals.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Physicals_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/physicals/Physicals.vue?vue&type=template&id=357b880e&scoped=true&":
+/*!****************************************************************************************************!*\
+  !*** ./resources/js/components/physicals/Physicals.vue?vue&type=template&id=357b880e&scoped=true& ***!
+  \****************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Physicals_vue_vue_type_template_id_357b880e_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./Physicals.vue?vue&type=template&id=357b880e&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/physicals/Physicals.vue?vue&type=template&id=357b880e&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Physicals_vue_vue_type_template_id_357b880e_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Physicals_vue_vue_type_template_id_357b880e_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/physicals/ProfilePhysical.vue":
+/*!***************************************************************!*\
+  !*** ./resources/js/components/physicals/ProfilePhysical.vue ***!
+  \***************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _ProfilePhysical_vue_vue_type_template_id_4d13e49c_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ProfilePhysical.vue?vue&type=template&id=4d13e49c&scoped=true& */ "./resources/js/components/physicals/ProfilePhysical.vue?vue&type=template&id=4d13e49c&scoped=true&");
+/* harmony import */ var _ProfilePhysical_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ProfilePhysical.vue?vue&type=script&lang=js& */ "./resources/js/components/physicals/ProfilePhysical.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _ProfilePhysical_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _ProfilePhysical_vue_vue_type_template_id_4d13e49c_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _ProfilePhysical_vue_vue_type_template_id_4d13e49c_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  "4d13e49c",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/physicals/ProfilePhysical.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/physicals/ProfilePhysical.vue?vue&type=script&lang=js&":
+/*!****************************************************************************************!*\
+  !*** ./resources/js/components/physicals/ProfilePhysical.vue?vue&type=script&lang=js& ***!
+  \****************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ProfilePhysical_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./ProfilePhysical.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/physicals/ProfilePhysical.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ProfilePhysical_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/physicals/ProfilePhysical.vue?vue&type=template&id=4d13e49c&scoped=true&":
+/*!**********************************************************************************************************!*\
+  !*** ./resources/js/components/physicals/ProfilePhysical.vue?vue&type=template&id=4d13e49c&scoped=true& ***!
+  \**********************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ProfilePhysical_vue_vue_type_template_id_4d13e49c_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./ProfilePhysical.vue?vue&type=template&id=4d13e49c&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/physicals/ProfilePhysical.vue?vue&type=template&id=4d13e49c&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ProfilePhysical_vue_vue_type_template_id_4d13e49c_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ProfilePhysical_vue_vue_type_template_id_4d13e49c_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/physicals/ProfilePhysicals.vue":
+/*!****************************************************************!*\
+  !*** ./resources/js/components/physicals/ProfilePhysicals.vue ***!
+  \****************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _ProfilePhysicals_vue_vue_type_template_id_58f749b1_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ProfilePhysicals.vue?vue&type=template&id=58f749b1&scoped=true& */ "./resources/js/components/physicals/ProfilePhysicals.vue?vue&type=template&id=58f749b1&scoped=true&");
+/* harmony import */ var _ProfilePhysicals_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ProfilePhysicals.vue?vue&type=script&lang=js& */ "./resources/js/components/physicals/ProfilePhysicals.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _ProfilePhysicals_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _ProfilePhysicals_vue_vue_type_template_id_58f749b1_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _ProfilePhysicals_vue_vue_type_template_id_58f749b1_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  "58f749b1",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/physicals/ProfilePhysicals.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/physicals/ProfilePhysicals.vue?vue&type=script&lang=js&":
+/*!*****************************************************************************************!*\
+  !*** ./resources/js/components/physicals/ProfilePhysicals.vue?vue&type=script&lang=js& ***!
+  \*****************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ProfilePhysicals_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./ProfilePhysicals.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/physicals/ProfilePhysicals.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ProfilePhysicals_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/physicals/ProfilePhysicals.vue?vue&type=template&id=58f749b1&scoped=true&":
+/*!***********************************************************************************************************!*\
+  !*** ./resources/js/components/physicals/ProfilePhysicals.vue?vue&type=template&id=58f749b1&scoped=true& ***!
+  \***********************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ProfilePhysicals_vue_vue_type_template_id_58f749b1_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./ProfilePhysicals.vue?vue&type=template&id=58f749b1&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/physicals/ProfilePhysicals.vue?vue&type=template&id=58f749b1&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ProfilePhysicals_vue_vue_type_template_id_58f749b1_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ProfilePhysicals_vue_vue_type_template_id_58f749b1_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
 /***/ "./resources/js/components/sports/FallSport.vue":
 /*!******************************************************!*\
   !*** ./resources/js/components/sports/FallSport.vue ***!
@@ -53232,11 +54384,9 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 Vue.component('athletes', __webpack_require__(/*! ./components/athletes/Athletes.vue */ "./resources/js/components/athletes/Athletes.vue")["default"]);
-Vue.component('sport-athletes', __webpack_require__(/*! ./components/athletes/SportAthletes.vue */ "./resources/js/components/athletes/SportAthletes.vue")["default"]); // Vue.component('athlete', require('./components/Athlete.vue').default);
-
-Vue.component('physicals', __webpack_require__(/*! ./components/Physicals.vue */ "./resources/js/components/Physicals.vue")["default"]);
-Vue.component('profile-physicals', __webpack_require__(/*! ./components/ProfilePhysicals.vue */ "./resources/js/components/ProfilePhysicals.vue")["default"]); // Vue.component('sports', require('./components/Sports.vue').default);
-
+Vue.component('sport-athletes', __webpack_require__(/*! ./components/athletes/SportAthletes.vue */ "./resources/js/components/athletes/SportAthletes.vue")["default"]);
+Vue.component('physicals', __webpack_require__(/*! ./components/physicals/Physicals.vue */ "./resources/js/components/physicals/Physicals.vue")["default"]);
+Vue.component('profile-physicals', __webpack_require__(/*! ./components/physicals/ProfilePhysicals.vue */ "./resources/js/components/physicals/ProfilePhysicals.vue")["default"]);
 Vue.component('fall-sports', __webpack_require__(/*! ./components/sports/FallSports.vue */ "./resources/js/components/sports/FallSports.vue")["default"]);
 Vue.component('winter-sports', __webpack_require__(/*! ./components/sports/WinterSports.vue */ "./resources/js/components/sports/WinterSports.vue")["default"]);
 Vue.component('spring-sports', __webpack_require__(/*! ./components/sports/SpringSports.vue */ "./resources/js/components/sports/SpringSports.vue")["default"]);
@@ -53246,9 +54396,52 @@ Vue.component('delete-button', __webpack_require__(/*! ./components/buttons/Dele
 Vue.component('edit-button', __webpack_require__(/*! ./components/buttons/EditButton */ "./resources/js/components/buttons/EditButton.vue")["default"]);
 Vue.component('expand-button', __webpack_require__(/*! ./components/buttons/ExpandButton */ "./resources/js/components/buttons/ExpandButton.vue")["default"]);
 Vue.component('update-button', __webpack_require__(/*! ./components/buttons/UpdateButton */ "./resources/js/components/buttons/UpdateButton.vue")["default"]);
+Vue.component('paginator', __webpack_require__(/*! ./components/Paginator */ "./resources/js/components/Paginator.vue")["default"]);
 new Vue({
   el: '#app'
 });
+
+/***/ }),
+
+/***/ "./resources/js/mixins/paginationMixin.js":
+/*!************************************************!*\
+  !*** ./resources/js/mixins/paginationMixin.js ***!
+  \************************************************/
+/*! exports provided: paginationMixin */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "paginationMixin", function() { return paginationMixin; });
+var paginationMixin = {
+  data: function data() {
+    return {
+      dataSet: false
+    };
+  },
+  created: function created() {
+    this.fetch();
+  },
+  methods: {
+    fetch: function fetch(page) {
+      axios.get(this.url(page)).then(this.refresh);
+    },
+    url: function url(page) {
+      if (!page) {
+        var query = location.search.match(/page=(\d+)/);
+        page = query ? query[1] : 1;
+      }
+
+      return "api".concat(location.pathname, "?page=").concat(page);
+    },
+    refresh: function refresh(_ref) {
+      var data = _ref.data;
+      this.dataSet = data;
+      this.items = data.data;
+      window.scrollTo(0, 0);
+    }
+  }
+};
 
 /***/ }),
 
