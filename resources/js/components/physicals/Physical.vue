@@ -350,7 +350,7 @@
                         <div class="w-1/3 p-3">
                             <physical-upload-form
                                 :data="data"
-                                @formUploaded="resetPage">
+                                @formUploaded="this.resetRow">
                             </physical-upload-form>
                         </div>
                     </div>
@@ -394,8 +394,8 @@
                 athlete_id: this.data.athlete_id,
                 athleteUrl: '/athletes/' + this.data.athlete.slug,
                 form_path: this.data.form_path,
-                physicalUploaded: this.data.form_path !== null,
                 url: location.pathname +'/'+this.data.id,
+                physicalUploaded: this.data.form_path != null,
 
                 athletes: [],
 
@@ -425,7 +425,6 @@
         },
 
         computed: {
-
             status() {
                 let forms =[
                     this.historyFormConfirmed,
@@ -513,8 +512,9 @@
                 this.isExpanded = !this.isExpanded
             },
 
-            resetPage() {
+            resetRow() {
                 this.physicalUploaded = true;
+                this.isExpanded = false;
             },
 
             confirmHistoryForm() {
@@ -590,7 +590,7 @@
             getNames() {
                 this.editing = true;
 
-                axios.get('/api/athletes')
+                axios.get('/api/athletes-physicals')
                     .then(response => {
                         this.athletes = response.data;
                     })

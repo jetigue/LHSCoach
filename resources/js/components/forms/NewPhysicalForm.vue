@@ -432,10 +432,9 @@ export default {
 
         Event.$on('getNames', () =>
 
-            axios.get('api/athletes')
+            axios.get('api/athletes-physicals')
                 .then(response => {
                     this.athletes = response.data;
-                    console.log(this.athletes)
                 })
                 .catch(errors => {
                     console.log(errors)

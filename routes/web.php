@@ -35,6 +35,7 @@ Route::get('spring/sports/{spring_sport:slug}', 'Sports\SpringSportController@sh
 
 Route::post('api/physicals/{physical}/physical-form','API\PhysicalFormController@store');
 
+Route::get('api/athletes-physicals', 'API\AthletePhysicalController@index');
 
 Route::apiResource('api/fall/sports', 'API\Sports\FallSportController')->parameters([
     'sports' => 'fall_sport'

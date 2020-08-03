@@ -7,13 +7,14 @@ use App\Models\Athlete;
 use Exception;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 class AthleteController extends Controller {
 
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function index()
     {
@@ -45,7 +46,10 @@ class AthleteController extends Controller {
             'spring_sport_id' => 'required|integer'
         ]);
 
-        $athlete = Athlete::create($athlete);
+        $athlete = Athlete::create($athlete)
+            ->load('fallSport')
+            ->load('winterSport')
+            ->load('springSport');
 
         return response()->json($athlete, 201);
     }
@@ -54,7 +58,7 @@ class AthleteController extends Controller {
      * Display the specified resource.
      *
      * @param Athlete $athlete
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function show(Athlete $athlete)
     {

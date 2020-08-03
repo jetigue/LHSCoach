@@ -20,6 +20,6 @@ Vue.component('update-button', require('./components/buttons/UpdateButton').defa
 Vue.component('paginator', require('./components/Paginator').default);
 
 new Vue({
-    el: '#app',
+    el: '#main',
 });
 

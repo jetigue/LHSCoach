@@ -1,5 +1,5 @@
 <template>
-    <div class="flex flex-col w-full mt-4 lg:mt-10">
+    <div class="flex flex-col w-full">
 
         <header class="w-full md:w-1/2 font-thin text-xl lg:text-3xl py-2 text-red-900">Physicals</header>
         <div class="">

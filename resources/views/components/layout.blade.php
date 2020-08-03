@@ -19,15 +19,21 @@
         <link href="{{ asset('css/main.css') }}" rel="stylesheet">
     </head>
 <body>
-    <div id="app" class="w-full min-h-screen bg-white">
+    <div id="app" class="w-full min-h-screen bg-gray-white">
+         @if (Route::has('welcome'))
+                <x-welcome-layout></x-welcome-layout>
+        @else
         <div class="flex flex-col w-full">
             <x-banner>
-                <header class="text-white text-3xl">Physical Tracker</header>
+                <header class="text-white text-3xl md:text-4xl">
+                    <a href="/">Physical Tracker</a>
+                </header>
             </x-banner>
         </div>
-        <div class="flex min-h-screen lg:w-2/3 mx-auto">
+        <div class="flex min-h-screen lg:w-2/3 mx-auto" id="main">
             {{ $slot }}
         </div>
+        @endif
         <portal-target name="create-modal"></portal-target>
     </div>
 </body>

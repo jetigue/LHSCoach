@@ -4,6 +4,7 @@ import VueSweetalert2 from 'vue-sweetalert2';
 import Form from './utilities/Form';
 import Errors from './utilities/Errors';
 import PortalVue from 'portal-vue';
+import 'alpinejs';
 
 Vue.use(PortalVue);
 Vue.use(VueSweetalert2);

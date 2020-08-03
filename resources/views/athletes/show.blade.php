@@ -21,8 +21,56 @@
             </div>
         </div>
 
-        <div class="">
-            <profile-physicals :data="{{ $physicals }}"></profile-physicals>
+        <div class="w-full py-8">
+            <header class="w-full md:w-1/2 font-thin text-xl lg:text-3xl py-2 text-red-900">Sports</header>
+            @if (
+                $athlete->fall_sport_id !== 1 ||
+                $athlete->winter_sport_id !== 1 ||
+                $athlete->spring_sport_id !== 1
+                )
+                @unless ($athlete->fall_sport_id === 1)
+                <div class="flex w-full text-lg px-2">
+                    <div class="text-gray-500 mr-3">Fall</div>
+                    <a class="hover:font-semibold hover:underline"
+                        href="/fall/sports/{{ $athlete->fallSport->slug }}">
+                        {{ $athlete->fallSport->name }}
+                    </a>
+                </div>
+                @endunless
+                @unless ($athlete->winter_sport_id === 1)
+                <div class="flex w-full text-lg px-2">
+                    <div class="text-gray-500 mr-3">Winter</div>
+                    <a class="hover:font-semibold hover:underline"
+                        href="/winter/sports/{{ $athlete->winterSport->slug }}">
+                        {{ $athlete->winterSport->name }}
+                    </a>
+                </div>
+                @endunless
+                @unless ($athlete->spring_sport_id === 1)
+                <div class="flex w-full text-lg px-2">
+                    <div class="text-gray-500 mr-3">Spring</div>
+                    <a class="hover:font-semibold hover:underline"
+                        href="/spring/sports/{{ $athlete->springSport->slug }}">
+                        {{ $athlete->springSport->name }}
+                    </a>
+                </div>
+                @endunless
+            @else
+                <div class="px-2 font-semibold">None</div>
+            @endif
         </div>
+
+        @if (count($physicals) > 0)
+            <profile-physicals :data="{{ $physicals }}"></profile-physicals>
+        @else
+            <header class="w-full md:w-1/2 font-thin text-xl lg:text-3xl py-2 text-red-900">
+                Physicals
+            </header>
+            <div class="px-2 font-semibold">None</div>
+        @endif
+
+
+
+
     </div>
 </x-layout>
