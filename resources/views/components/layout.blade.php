@@ -19,7 +19,7 @@
         <link href="{{ asset('css/main.css') }}" rel="stylesheet">
     </head>
 <body>
-    <div id="main" class="w-full min-h-screen bg-gray-white">
+    <div class="w-full min-h-screen bg-gray-white">
         @if (Route::has('welcome'))
             <x-welcome-layout></x-welcome-layout>
         @else
@@ -32,9 +32,10 @@
         </div>
         <div class="flex min-h-screen lg:w-2/3 mx-auto" id="main">
             {{ $slot }}
+            <portal-target name="create-modal"></portal-target>
         </div>
         @endif
-        <portal-target name="create-modal"></portal-target>
+        
     </div>
 </body>
 

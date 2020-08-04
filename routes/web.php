@@ -22,16 +22,16 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/sports', 'SportController@index');
-Route::get('/athletes', 'AthleteController@index');
-Route::get('/athletes/{athlete:slug}', 'AthleteController@show');
+Route::get('/sports', 'SportController@index')->middleware('auth');
+Route::get('/athletes', 'AthleteController@index')->middleware('auth');
+Route::get('/athletes/{athlete:slug}', 'AthleteController@show')->middleware('auth');
 
-Route::get('/physicals', 'PhysicalController@index');
-Route::get('/physicals/{physical}', 'PhysicalController@show');
+Route::get('/physicals', 'PhysicalController@index')->middleware('auth');
+Route::get('/physicals/{physical}', 'PhysicalController@show')->middleware('auth');
 
-Route::get('fall/sports/{fall_sport:slug}', 'Sports\FallSportController@show');
-Route::get('winter/sports/{winter_sport:slug}', 'Sports\WinterSportController@show');
-Route::get('spring/sports/{spring_sport:slug}', 'Sports\SpringSportController@show');
+Route::get('fall/sports/{fall_sport:slug}', 'Sports\FallSportController@show')->middleware('auth');
+Route::get('winter/sports/{winter_sport:slug}', 'Sports\WinterSportController@show')->middleware('auth');
+Route::get('spring/sports/{spring_sport:slug}', 'Sports\SpringSportController@show')->middleware('auth');
 
 Route::post('api/physicals/{physical}/physical-form','API\PhysicalFormController@store');
 

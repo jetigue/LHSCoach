@@ -3,14 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="2b56f75d-7ca0-4d53-b152-7a241e594436" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/API/AthleteController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/API/AthleteController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/sports/FallSport.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/sports/FallSport.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/sports/FallSports.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/sports/FallSports.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/sports/SpringSport.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/sports/SpringSport.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/sports/SpringSports.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/sports/SpringSports.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/sports/WinterSport.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/sports/WinterSport.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/sports/WinterSports.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/sports/WinterSports.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/athletes/Athlete.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/athletes/Athlete.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/components/layout.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/layout.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -246,7 +243,9 @@
       <workItem from="1596463970953" duration="40000" />
       <workItem from="1596464030064" duration="8000" />
       <workItem from="1596493654623" duration="8053000" />
-      <workItem from="1596562124759" duration="1078000" />
+      <workItem from="1596562124759" duration="2299000" />
+      <workItem from="1596567377039" duration="1126000" />
+      <workItem from="1596569489293" duration="1585000" />
     </task>
     <servers />
   </component>
@@ -393,11 +392,11 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="523" y="131" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1920.1050/-1920.0.1920.1050@0.0.1920.1050" timestamp="1595766018322" />
-    <state x="498" y="178" width="672" height="533" key="search.everywhere.popup" timestamp="1596563164585">
+    <state x="498" y="178" width="672" height="533" key="search.everywhere.popup" timestamp="1596571036945">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="498" y="178" width="672" height="533" key="search.everywhere.popup/0.0.1536.824/1158.-1080.1920.1040@0.0.1536.824" timestamp="1596502680817" />
-    <state x="498" y="178" width="672" height="533" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1596563164585" />
+    <state x="498" y="178" width="672" height="533" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1596571036945" />
     <state x="623" y="227" width="672" height="678" key="search.everywhere.popup/0.0.1920.1050/-1920.0.1920.1050@0.0.1920.1050" timestamp="1595973315876" />
   </component>
 </project>

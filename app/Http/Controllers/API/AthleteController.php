@@ -92,7 +92,7 @@ class AthleteController extends Controller {
             'dob',
             'grad_year',
             'fall_sport_id',
-            'winter_ports_id',
+            'winter_sport_id',
             'spring_sport_id'
         ]));
 

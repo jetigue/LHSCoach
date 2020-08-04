@@ -288,6 +288,9 @@
                 fall_sport_id: this.data.fall_sport_id,
                 winter_sport_id: this.data.winter_sport_id,
                 spring_sport_id: this.data.spring_sport_id,
+                fall_sport: this.data.fall_sport.name,
+                winter_sport: this.data.winter_sport.name,
+                spring_sport: this.data.spring_sport.name,
 
                 athleteUrl: '/athletes/' + this.data.slug,
                 fallSportUrl: '/fall/sports/' + this.data.fall_sport.slug,
@@ -319,21 +322,21 @@
 
             fallSport() {
                 if (this.data.fall_sport_id !== 1) {
-                    return this.data.fall_sport.name
+                    return this.fall_sport
                 }
                 return ''
             },
 
             winterSport() {
                 if (this.data.winter_sport_id !== 1) {
-                    return this.data.winter_sport.name
+                    return this.winter_sport
                 }
                 return ''
             },
 
             springSport() {
                 if (this.data.spring_sport_id !== 1) {
-                    return this.data.spring_sport.name
+                    return this.spring_sport
                 }
                 return ''
             }
@@ -389,6 +392,9 @@
                         this.fall_sport_id = this.form.fall_sport_id;
                         this.winter_sport_id = this.form.winter_sport_id;
                         this.spring_sport_id = this.form.spring_sport_id;
+                        this.fall_sport = this.fallSports.find(sport => sport.id === this.form.fall_sport_id).name
+                        this.winter_sport = this.winterSports.find(sport => sport.id === this.form.winter_sport_id).name
+                        this.spring_sport = this.springSports.find(sport => sport.id === this.form.spring_sport_id).name
 
                         this.editing = false;
                         this.isExpanded = false;
