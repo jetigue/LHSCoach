@@ -1,5 +1,5 @@
 <template>
-    <div class="">
+    <div v-if="this.name !== 'None'" class="border-t botder-b">
         <div v-if="editing" class="p-3">
             <div class="w-full mx-auto">
                 <form action="api/spring/sports/id" method="POST" id="editSpringSport" @submit.prevent="update"

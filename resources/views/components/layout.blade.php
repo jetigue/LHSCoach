@@ -19,9 +19,9 @@
         <link href="{{ asset('css/main.css') }}" rel="stylesheet">
     </head>
 <body>
-    <div id="app" class="w-full min-h-screen bg-gray-white">
-         @if (Route::has('welcome'))
-                <x-welcome-layout></x-welcome-layout>
+    <div id="main" class="w-full min-h-screen bg-gray-white">
+        @if (Route::has('welcome'))
+            <x-welcome-layout></x-welcome-layout>
         @else
         <div class="flex flex-col w-full">
             <x-banner>

@@ -37,7 +37,7 @@
                     </div>
                 </div>
             </div>
-            <div v-if="records" class="divide-y border-t border-b">
+            <div v-if="records" class="border-t border-b">
                 <div v-for="(springSport, index) in items" :key="springSport.id">
                     <spring-sport :data="springSport" @deleted="remove(index)"></spring-sport>
                 </div>

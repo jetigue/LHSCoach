@@ -37,7 +37,7 @@
                     </div>
                 </div>
             </div>
-            <div v-if="records" class="divide-y border-t border-b">
+            <div v-if="records" class="border-t border-b">
                 <div v-for="(winterSport, index) in items" :key="winterSport.id">
                     <winter-sport :data="winterSport" @deleted="remove(index)"></winter-sport>
                 </div>

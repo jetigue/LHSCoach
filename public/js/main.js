@@ -35998,163 +35998,178 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", {}, [
-    _vm.editing
-      ? _c("div", { staticClass: "p-3" }, [
-          _c("div", { staticClass: "w-full mx-auto" }, [
-            _c(
-              "form",
-              {
-                staticClass:
-                  "bg-gray-100 shadow-md rounded px-8 pt-6 pb-8 mb-4",
-                attrs: {
-                  action: "api/fall/sports/id",
-                  method: "POST",
-                  id: "editFallSport"
-                },
-                on: {
-                  submit: function($event) {
-                    $event.preventDefault()
-                    return _vm.update($event)
+  return this.name !== "None"
+    ? _c("div", { staticClass: "border-t botder-b" }, [
+        _vm.editing
+          ? _c("div", { staticClass: "p-3" }, [
+              _c("div", { staticClass: "w-full mx-auto" }, [
+                _c(
+                  "form",
+                  {
+                    staticClass:
+                      "bg-gray-100 shadow-md rounded px-8 pt-6 pb-8 mb-4",
+                    attrs: {
+                      action: "api/fall/sports/id",
+                      method: "POST",
+                      id: "editFallSport"
+                    },
+                    on: {
+                      submit: function($event) {
+                        $event.preventDefault()
+                        return _vm.update($event)
+                      },
+                      keydown: function($event) {
+                        return _vm.form.errors.clear()
+                      }
+                    }
                   },
-                  keydown: function($event) {
-                    return _vm.form.errors.clear()
-                  }
-                }
-              },
-              [
-                _c("div", { staticClass: "py-2" }, [
-                  _c(
-                    "div",
-                    { staticClass: "flex justify-between content-end" },
-                    [
+                  [
+                    _c("div", { staticClass: "py-2" }, [
                       _c(
-                        "label",
-                        {
-                          staticClass: "text-sm font-semibold text-red-900",
-                          attrs: { for: "form.name" }
-                        },
+                        "div",
+                        { staticClass: "flex justify-between content-end" },
                         [
-                          _vm._v(
-                            "\n                            Name\n                        "
-                          )
+                          _c(
+                            "label",
+                            {
+                              staticClass: "text-sm font-semibold text-red-900",
+                              attrs: { for: "form.name" }
+                            },
+                            [
+                              _vm._v(
+                                "\n                            Name\n                        "
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _vm.form.errors.has("name")
+                            ? _c("span", {
+                                staticClass:
+                                  "text-red-600 text-xs font-semibold",
+                                attrs: { id: "nameHelp" },
+                                domProps: {
+                                  textContent: _vm._s(
+                                    _vm.form.errors.get("name")
+                                  )
+                                }
+                              })
+                            : _vm._e()
                         ]
                       ),
                       _vm._v(" "),
-                      _vm.form.errors.has("name")
-                        ? _c("span", {
-                            staticClass: "text-red-600 text-xs font-semibold",
-                            attrs: { id: "nameHelp" },
-                            domProps: {
-                              textContent: _vm._s(_vm.form.errors.get("name"))
-                            }
-                          })
-                        : _vm._e()
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.form.name,
-                        expression: "form.name"
-                      }
-                    ],
-                    staticClass:
-                      "w-full rounded border px-3 py-2 text-lg border shadow-md",
-                    attrs: { id: "form.name", type: "text", required: "" },
-                    domProps: { value: _vm.form.name },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.$set(_vm.form, "name", $event.target.value)
-                      }
-                    }
-                  })
-                ]),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  { staticClass: " pt-2 flex items-center justify-end" },
-                  [
-                    _c(
-                      "update-button",
-                      {
-                        staticClass: "mr-4",
-                        attrs: { disabled: _vm.form.errors.any() }
-                      },
-                      [
-                        _vm._v(
-                          "\n                        Update\n                    "
-                        )
-                      ]
-                    ),
-                    _vm._v(" "),
-                    _c("cancel-button", { on: { clicked: _vm.resetForm } })
-                  ],
-                  1
-                )
-              ]
-            )
-          ])
-        ])
-      : _c("div", { staticClass: "flex py-1 items-center hover:bg-gray-100" }, [
-          _c("div", { staticClass: "flex flex-col w-full" }, [
-            _c("div", { staticClass: "flex w-full" }, [
-              _c("div", { staticClass: "flex pt-1 w-11/12 px-2" }, [
-                _c("div", { staticClass: "flex" }, [
-                  _c(
-                    "a",
-                    {
-                      staticClass: "hover:font-semibold hover:underline",
-                      attrs: { href: _vm.url }
-                    },
-                    [
-                      _vm._v(
-                        "\n                            " +
-                          _vm._s(_vm.name) +
-                          "\n                        "
-                      )
-                    ]
-                  )
-                ])
-              ]),
-              _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "flex w-1/12 pt-1 justify-end px-4" },
-                [_c("expand-button", { on: { toggleRow: _vm.toggleRow } })],
-                1
-              )
-            ]),
-            _vm._v(" "),
-            _vm.isExpanded
-              ? _c("div", { staticClass: "p-2" }, [
-                  _c(
-                    "div",
-                    { staticClass: "flex justify-start cursor-pointer" },
-                    [
-                      _c("edit-button", {
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.form.name,
+                            expression: "form.name"
+                          }
+                        ],
+                        staticClass:
+                          "w-full rounded border px-3 py-2 text-lg border shadow-md",
+                        attrs: { id: "form.name", type: "text", required: "" },
+                        domProps: { value: _vm.form.name },
                         on: {
-                          clicked: function($event) {
-                            _vm.editing = true
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(_vm.form, "name", $event.target.value)
                           }
                         }
-                      }),
-                      _vm._v(" "),
-                      _c("delete-button", { on: { clicked: _vm.destroy } })
-                    ],
-                    1
-                  )
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: " pt-2 flex items-center justify-end" },
+                      [
+                        _c(
+                          "update-button",
+                          {
+                            staticClass: "mr-4",
+                            attrs: { disabled: _vm.form.errors.any() }
+                          },
+                          [
+                            _vm._v(
+                              "\n                        Update\n                    "
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c("cancel-button", { on: { clicked: _vm.resetForm } })
+                      ],
+                      1
+                    )
+                  ]
+                )
+              ])
+            ])
+          : _c(
+              "div",
+              { staticClass: "flex py-1 items-center hover:bg-gray-100" },
+              [
+                _c("div", { staticClass: "flex flex-col w-full" }, [
+                  _c("div", { staticClass: "flex w-full" }, [
+                    _c("div", { staticClass: "flex pt-1 w-11/12 px-2" }, [
+                      _c("div", { staticClass: "flex" }, [
+                        _c(
+                          "a",
+                          {
+                            staticClass: "hover:font-semibold hover:underline",
+                            attrs: { href: _vm.url }
+                          },
+                          [
+                            _vm._v(
+                              "\n                            " +
+                                _vm._s(_vm.name) +
+                                "\n                        "
+                            )
+                          ]
+                        )
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "flex w-1/12 pt-1 justify-end px-4" },
+                      [
+                        _c("expand-button", {
+                          on: { toggleRow: _vm.toggleRow }
+                        })
+                      ],
+                      1
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _vm.isExpanded
+                    ? _c("div", { staticClass: "p-2" }, [
+                        _c(
+                          "div",
+                          { staticClass: "flex justify-start cursor-pointer" },
+                          [
+                            _c("edit-button", {
+                              on: {
+                                clicked: function($event) {
+                                  _vm.editing = true
+                                }
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c("delete-button", {
+                              on: { clicked: _vm.destroy }
+                            })
+                          ],
+                          1
+                        )
+                      ])
+                    : _vm._e()
                 ])
-              : _vm._e()
-          ])
-        ])
-  ])
+              ]
+            )
+      ])
+    : _vm._e()
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -36293,7 +36308,7 @@ var render = function() {
       _vm.records
         ? _c(
             "div",
-            { staticClass: "divide-y border-t border-b" },
+            { staticClass: "border-t border-b" },
             _vm._l(_vm.items, function(fallSport, index) {
               return _c(
                 "div",
@@ -36366,163 +36381,178 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", {}, [
-    _vm.editing
-      ? _c("div", { staticClass: "p-3" }, [
-          _c("div", { staticClass: "w-full mx-auto" }, [
-            _c(
-              "form",
-              {
-                staticClass:
-                  "bg-gray-100 shadow-md rounded px-8 pt-6 pb-8 mb-4",
-                attrs: {
-                  action: "api/spring/sports/id",
-                  method: "POST",
-                  id: "editSpringSport"
-                },
-                on: {
-                  submit: function($event) {
-                    $event.preventDefault()
-                    return _vm.update($event)
+  return this.name !== "None"
+    ? _c("div", { staticClass: "border-t botder-b" }, [
+        _vm.editing
+          ? _c("div", { staticClass: "p-3" }, [
+              _c("div", { staticClass: "w-full mx-auto" }, [
+                _c(
+                  "form",
+                  {
+                    staticClass:
+                      "bg-gray-100 shadow-md rounded px-8 pt-6 pb-8 mb-4",
+                    attrs: {
+                      action: "api/spring/sports/id",
+                      method: "POST",
+                      id: "editSpringSport"
+                    },
+                    on: {
+                      submit: function($event) {
+                        $event.preventDefault()
+                        return _vm.update($event)
+                      },
+                      keydown: function($event) {
+                        return _vm.form.errors.clear()
+                      }
+                    }
                   },
-                  keydown: function($event) {
-                    return _vm.form.errors.clear()
-                  }
-                }
-              },
-              [
-                _c("div", { staticClass: "py-2" }, [
-                  _c(
-                    "div",
-                    { staticClass: "flex justify-between content-end" },
-                    [
+                  [
+                    _c("div", { staticClass: "py-2" }, [
                       _c(
-                        "label",
-                        {
-                          staticClass: "text-sm font-semibold text-red-900",
-                          attrs: { for: "form.name" }
-                        },
+                        "div",
+                        { staticClass: "flex justify-between content-end" },
                         [
-                          _vm._v(
-                            "\n                            Name\n                        "
-                          )
+                          _c(
+                            "label",
+                            {
+                              staticClass: "text-sm font-semibold text-red-900",
+                              attrs: { for: "form.name" }
+                            },
+                            [
+                              _vm._v(
+                                "\n                            Name\n                        "
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _vm.form.errors.has("name")
+                            ? _c("span", {
+                                staticClass:
+                                  "text-red-600 text-xs font-semibold",
+                                attrs: { id: "nameHelp" },
+                                domProps: {
+                                  textContent: _vm._s(
+                                    _vm.form.errors.get("name")
+                                  )
+                                }
+                              })
+                            : _vm._e()
                         ]
                       ),
                       _vm._v(" "),
-                      _vm.form.errors.has("name")
-                        ? _c("span", {
-                            staticClass: "text-red-600 text-xs font-semibold",
-                            attrs: { id: "nameHelp" },
-                            domProps: {
-                              textContent: _vm._s(_vm.form.errors.get("name"))
-                            }
-                          })
-                        : _vm._e()
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.form.name,
-                        expression: "form.name"
-                      }
-                    ],
-                    staticClass:
-                      "w-full rounded border px-3 py-2 text-lg border shadow-md",
-                    attrs: { id: "form.name", type: "text", required: "" },
-                    domProps: { value: _vm.form.name },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.$set(_vm.form, "name", $event.target.value)
-                      }
-                    }
-                  })
-                ]),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  { staticClass: " pt-2 flex items-center justify-end" },
-                  [
-                    _c(
-                      "update-button",
-                      {
-                        staticClass: "mr-4",
-                        attrs: { disabled: _vm.form.errors.any() }
-                      },
-                      [
-                        _vm._v(
-                          "\n                        Update\n                    "
-                        )
-                      ]
-                    ),
-                    _vm._v(" "),
-                    _c("cancel-button", { on: { clicked: _vm.resetForm } })
-                  ],
-                  1
-                )
-              ]
-            )
-          ])
-        ])
-      : _c("div", { staticClass: "flex py-1 items-center hover:bg-gray-100" }, [
-          _c("div", { staticClass: "flex flex-col w-full" }, [
-            _c("div", { staticClass: "flex w-full" }, [
-              _c("div", { staticClass: "flex pt-1 w-11/12 px-2" }, [
-                _c("div", { staticClass: "flex" }, [
-                  _c(
-                    "a",
-                    {
-                      staticClass: "hover:font-semibold hover:underline",
-                      attrs: { href: _vm.url }
-                    },
-                    [
-                      _vm._v(
-                        "\n                            " +
-                          _vm._s(_vm.name) +
-                          "\n                        "
-                      )
-                    ]
-                  )
-                ])
-              ]),
-              _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "flex w-1/12 pt-1 justify-end px-4" },
-                [_c("expand-button", { on: { toggleRow: _vm.toggleRow } })],
-                1
-              )
-            ]),
-            _vm._v(" "),
-            _vm.isExpanded
-              ? _c("div", { staticClass: "p-2" }, [
-                  _c(
-                    "div",
-                    { staticClass: "flex justify-start cursor-pointer" },
-                    [
-                      _c("edit-button", {
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.form.name,
+                            expression: "form.name"
+                          }
+                        ],
+                        staticClass:
+                          "w-full rounded border px-3 py-2 text-lg border shadow-md",
+                        attrs: { id: "form.name", type: "text", required: "" },
+                        domProps: { value: _vm.form.name },
                         on: {
-                          clicked: function($event) {
-                            _vm.editing = true
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(_vm.form, "name", $event.target.value)
                           }
                         }
-                      }),
-                      _vm._v(" "),
-                      _c("delete-button", { on: { clicked: _vm.destroy } })
-                    ],
-                    1
-                  )
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: " pt-2 flex items-center justify-end" },
+                      [
+                        _c(
+                          "update-button",
+                          {
+                            staticClass: "mr-4",
+                            attrs: { disabled: _vm.form.errors.any() }
+                          },
+                          [
+                            _vm._v(
+                              "\n                        Update\n                    "
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c("cancel-button", { on: { clicked: _vm.resetForm } })
+                      ],
+                      1
+                    )
+                  ]
+                )
+              ])
+            ])
+          : _c(
+              "div",
+              { staticClass: "flex py-1 items-center hover:bg-gray-100" },
+              [
+                _c("div", { staticClass: "flex flex-col w-full" }, [
+                  _c("div", { staticClass: "flex w-full" }, [
+                    _c("div", { staticClass: "flex pt-1 w-11/12 px-2" }, [
+                      _c("div", { staticClass: "flex" }, [
+                        _c(
+                          "a",
+                          {
+                            staticClass: "hover:font-semibold hover:underline",
+                            attrs: { href: _vm.url }
+                          },
+                          [
+                            _vm._v(
+                              "\n                            " +
+                                _vm._s(_vm.name) +
+                                "\n                        "
+                            )
+                          ]
+                        )
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "flex w-1/12 pt-1 justify-end px-4" },
+                      [
+                        _c("expand-button", {
+                          on: { toggleRow: _vm.toggleRow }
+                        })
+                      ],
+                      1
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _vm.isExpanded
+                    ? _c("div", { staticClass: "p-2" }, [
+                        _c(
+                          "div",
+                          { staticClass: "flex justify-start cursor-pointer" },
+                          [
+                            _c("edit-button", {
+                              on: {
+                                clicked: function($event) {
+                                  _vm.editing = true
+                                }
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c("delete-button", {
+                              on: { clicked: _vm.destroy }
+                            })
+                          ],
+                          1
+                        )
+                      ])
+                    : _vm._e()
                 ])
-              : _vm._e()
-          ])
-        ])
-  ])
+              ]
+            )
+      ])
+    : _vm._e()
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -36661,7 +36691,7 @@ var render = function() {
       _vm.records
         ? _c(
             "div",
-            { staticClass: "divide-y border-t border-b" },
+            { staticClass: "border-t border-b" },
             _vm._l(_vm.items, function(springSport, index) {
               return _c(
                 "div",
@@ -36734,163 +36764,178 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", {}, [
-    _vm.editing
-      ? _c("div", { staticClass: "p-3" }, [
-          _c("div", { staticClass: "w-full mx-auto" }, [
-            _c(
-              "form",
-              {
-                staticClass:
-                  "bg-gray-100 shadow-md rounded px-8 pt-6 pb-8 mb-4",
-                attrs: {
-                  action: "api/winter/sports/id",
-                  method: "POST",
-                  id: "editWinterSport"
-                },
-                on: {
-                  submit: function($event) {
-                    $event.preventDefault()
-                    return _vm.update($event)
+  return this.name !== "None"
+    ? _c("div", { staticClass: "border-t botder-b" }, [
+        _vm.editing
+          ? _c("div", { staticClass: "p-3" }, [
+              _c("div", { staticClass: "w-full mx-auto" }, [
+                _c(
+                  "form",
+                  {
+                    staticClass:
+                      "bg-gray-100 shadow-md rounded px-8 pt-6 pb-8 mb-4",
+                    attrs: {
+                      action: "api/winter/sports/id",
+                      method: "POST",
+                      id: "editWinterSport"
+                    },
+                    on: {
+                      submit: function($event) {
+                        $event.preventDefault()
+                        return _vm.update($event)
+                      },
+                      keydown: function($event) {
+                        return _vm.form.errors.clear()
+                      }
+                    }
                   },
-                  keydown: function($event) {
-                    return _vm.form.errors.clear()
-                  }
-                }
-              },
-              [
-                _c("div", { staticClass: "py-2" }, [
-                  _c(
-                    "div",
-                    { staticClass: "flex justify-between content-end" },
-                    [
+                  [
+                    _c("div", { staticClass: "py-2" }, [
                       _c(
-                        "label",
-                        {
-                          staticClass: "text-sm font-semibold text-red-900",
-                          attrs: { for: "form.name" }
-                        },
+                        "div",
+                        { staticClass: "flex justify-between content-end" },
                         [
-                          _vm._v(
-                            "\n                            Name\n                        "
-                          )
+                          _c(
+                            "label",
+                            {
+                              staticClass: "text-sm font-semibold text-red-900",
+                              attrs: { for: "form.name" }
+                            },
+                            [
+                              _vm._v(
+                                "\n                            Name\n                        "
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _vm.form.errors.has("name")
+                            ? _c("span", {
+                                staticClass:
+                                  "text-red-600 text-xs font-semibold",
+                                attrs: { id: "nameHelp" },
+                                domProps: {
+                                  textContent: _vm._s(
+                                    _vm.form.errors.get("name")
+                                  )
+                                }
+                              })
+                            : _vm._e()
                         ]
                       ),
                       _vm._v(" "),
-                      _vm.form.errors.has("name")
-                        ? _c("span", {
-                            staticClass: "text-red-600 text-xs font-semibold",
-                            attrs: { id: "nameHelp" },
-                            domProps: {
-                              textContent: _vm._s(_vm.form.errors.get("name"))
-                            }
-                          })
-                        : _vm._e()
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.form.name,
-                        expression: "form.name"
-                      }
-                    ],
-                    staticClass:
-                      "w-full rounded border px-3 py-2 text-lg border shadow-md",
-                    attrs: { id: "form.name", type: "text", required: "" },
-                    domProps: { value: _vm.form.name },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.$set(_vm.form, "name", $event.target.value)
-                      }
-                    }
-                  })
-                ]),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  { staticClass: " pt-2 flex items-center justify-end" },
-                  [
-                    _c(
-                      "update-button",
-                      {
-                        staticClass: "mr-4",
-                        attrs: { disabled: _vm.form.errors.any() }
-                      },
-                      [
-                        _vm._v(
-                          "\n                        Update\n                    "
-                        )
-                      ]
-                    ),
-                    _vm._v(" "),
-                    _c("cancel-button", { on: { clicked: _vm.resetForm } })
-                  ],
-                  1
-                )
-              ]
-            )
-          ])
-        ])
-      : _c("div", { staticClass: "flex py-1 items-center hover:bg-gray-100" }, [
-          _c("div", { staticClass: "flex flex-col w-full" }, [
-            _c("div", { staticClass: "flex w-full" }, [
-              _c("div", { staticClass: "flex pt-1 w-11/12 px-2" }, [
-                _c("div", { staticClass: "flex" }, [
-                  _c(
-                    "a",
-                    {
-                      staticClass: "hover:font-semibold hover:underline",
-                      attrs: { href: _vm.url }
-                    },
-                    [
-                      _vm._v(
-                        "\n                            " +
-                          _vm._s(_vm.name) +
-                          "\n                        "
-                      )
-                    ]
-                  )
-                ])
-              ]),
-              _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "flex w-1/12 pt-1 justify-end px-4" },
-                [_c("expand-button", { on: { toggleRow: _vm.toggleRow } })],
-                1
-              )
-            ]),
-            _vm._v(" "),
-            _vm.isExpanded
-              ? _c("div", { staticClass: "p-2" }, [
-                  _c(
-                    "div",
-                    { staticClass: "flex justify-start cursor-pointer" },
-                    [
-                      _c("edit-button", {
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.form.name,
+                            expression: "form.name"
+                          }
+                        ],
+                        staticClass:
+                          "w-full rounded border px-3 py-2 text-lg border shadow-md",
+                        attrs: { id: "form.name", type: "text", required: "" },
+                        domProps: { value: _vm.form.name },
                         on: {
-                          clicked: function($event) {
-                            _vm.editing = true
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(_vm.form, "name", $event.target.value)
                           }
                         }
-                      }),
-                      _vm._v(" "),
-                      _c("delete-button", { on: { clicked: _vm.destroy } })
-                    ],
-                    1
-                  )
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: " pt-2 flex items-center justify-end" },
+                      [
+                        _c(
+                          "update-button",
+                          {
+                            staticClass: "mr-4",
+                            attrs: { disabled: _vm.form.errors.any() }
+                          },
+                          [
+                            _vm._v(
+                              "\n                        Update\n                    "
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c("cancel-button", { on: { clicked: _vm.resetForm } })
+                      ],
+                      1
+                    )
+                  ]
+                )
+              ])
+            ])
+          : _c(
+              "div",
+              { staticClass: "flex py-1 items-center hover:bg-gray-100" },
+              [
+                _c("div", { staticClass: "flex flex-col w-full" }, [
+                  _c("div", { staticClass: "flex w-full" }, [
+                    _c("div", { staticClass: "flex pt-1 w-11/12 px-2" }, [
+                      _c("div", { staticClass: "flex" }, [
+                        _c(
+                          "a",
+                          {
+                            staticClass: "hover:font-semibold hover:underline",
+                            attrs: { href: _vm.url }
+                          },
+                          [
+                            _vm._v(
+                              "\n                            " +
+                                _vm._s(_vm.name) +
+                                "\n                        "
+                            )
+                          ]
+                        )
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "flex w-1/12 pt-1 justify-end px-4" },
+                      [
+                        _c("expand-button", {
+                          on: { toggleRow: _vm.toggleRow }
+                        })
+                      ],
+                      1
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _vm.isExpanded
+                    ? _c("div", { staticClass: "p-2" }, [
+                        _c(
+                          "div",
+                          { staticClass: "flex justify-start cursor-pointer" },
+                          [
+                            _c("edit-button", {
+                              on: {
+                                clicked: function($event) {
+                                  _vm.editing = true
+                                }
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c("delete-button", {
+                              on: { clicked: _vm.destroy }
+                            })
+                          ],
+                          1
+                        )
+                      ])
+                    : _vm._e()
                 ])
-              : _vm._e()
-          ])
-        ])
-  ])
+              ]
+            )
+      ])
+    : _vm._e()
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -37029,7 +37074,7 @@ var render = function() {
       _vm.records
         ? _c(
             "div",
-            { staticClass: "divide-y border-t border-b" },
+            { staticClass: "border-t border-b" },
             _vm._l(_vm.items, function(winterSport, index) {
               return _c(
                 "div",
