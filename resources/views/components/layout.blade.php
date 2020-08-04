@@ -19,7 +19,7 @@
         <link href="{{ asset('css/main.css') }}" rel="stylesheet">
     </head>
 <body>
-    <div class="w-full min-h-screen bg-gray-white">
+    <div class="w-full min-h-screen bg-white">
         @if (Route::has('welcome'))
             <x-welcome-layout></x-welcome-layout>
         @else
@@ -35,7 +35,7 @@
             <portal-target name="create-modal"></portal-target>
         </div>
         @endif
-        
+
     </div>
 </body>
 
