@@ -12,7 +12,7 @@
                 <form method="POST" action="{{ route('register') }}">
                     @csrf
 
-                    <div class="mb-3">
+                    <div class="mb-4">
                         <div class="flex justify-between content-end">
                             <label class="text-red-900"
                                    for="first_name">
@@ -33,7 +33,7 @@
                                required autofocus>
                     </div>
 
-                    <div class="mb-3">
+                    <div class="mb-4">
                         <div class="flex justify-between content-end">
                             <label class="text-red-900"
                                    for="last_name">Last Name</label>
@@ -52,7 +52,7 @@
                                required>
                     </div>
 
-                    <div class="mb-3">
+                    <div class="mb-4">
                         <div class="flex justify-between content-end">
                             <label class="text-red-900"
                                    for="email">Email Address</label>

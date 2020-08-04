@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Physical Tracker'),
+    'name' => env('APP_NAME', 'Longhorn Coach'),
 
     /*
     |--------------------------------------------------------------------------

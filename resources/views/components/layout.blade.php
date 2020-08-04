@@ -7,7 +7,7 @@
         <!-- CSRF Token -->
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>{{ config('app.name', 'LHS Coach') }}</title>
+        <title>{{ config('app.name', 'Longhorn Coach') }}</title>
 
         <!-- Scripts -->
         <script src="{{ asset('js/main.js') }}" defer></script>
@@ -26,7 +26,7 @@
         <div class="flex flex-col w-full">
             <x-banner>
                 <header class="text-white text-3xl md:text-4xl">
-                    <a href="/">Physical Tracker</a>
+                    <a href="/">Longhorn Coach</a>
                 </header>
             </x-banner>
         </div>

@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'LHS Coach') }}</title>
+    <title>{{ config('app.name', 'Longhorn Coach') }}</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/main.js') }}" defer></script>
@@ -26,11 +26,10 @@
             <div class="flex w-full justify-end p-4">
                 <x-sign-in></x-sign-in>
             </div>
-
         @endif
-        <div>
+
             {{ $slot }}
-        </div>
+
     </div>
 </body>
 

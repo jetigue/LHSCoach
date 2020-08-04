@@ -1,5 +1,9 @@
 @if(Auth::guest())
+    @if(Route::current()->getName() === 'login' || Route::current()->getName() === 'register')
+        <button class="text-white text-sm"><a href="/">Cancel</a></button>
+    @else
     <button class="text-white text-sm"><a href="/login">Sign In</a></button>
+    @endif
 @else
 
     <div x-data="{ open: false }" class="flex text-white">
