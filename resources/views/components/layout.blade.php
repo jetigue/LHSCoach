@@ -35,7 +35,6 @@
             <portal-target name="create-modal"></portal-target>
         </div>
         @endif
-
     </div>
 </body>
 
