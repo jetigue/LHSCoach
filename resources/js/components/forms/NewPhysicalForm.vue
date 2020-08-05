@@ -417,7 +417,7 @@ export default {
             this.form.ghsa_cardiac_form = 0;
 
             this.historyFormConfirmed = false;
-            this.physicalFormConfirmed = false;
+            this.physicalExamFormConfirmed = false;
             this.eligibilityFormConfirmed = false;
             this.physicalFormConfirmed = false;
             this.blanketFormConfirmed = false;
