@@ -1,5 +1,5 @@
 <x-layout>
-    <x-sport-header title="{{ $springSport->name }}">
+    <x-sport-header title="{!! $springSport->name !!}">
         @if(count($athletes)>0)
             <sport-athletes :data="{{ $athletes }}"></sport-athletes>
         @else

@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2b56f75d-7ca0-4d53-b152-7a241e594436" name="Default Changelist" comment="" />
+    <list default="true" id="2b56f75d-7ca0-4d53-b152-7a241e594436" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Sports/SpringSportController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Sports/SpringSportController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/sports/spring/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/sports/spring/show.blade.php" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -241,7 +245,8 @@
       <workItem from="1596569489293" duration="4709000" />
       <workItem from="1596630973985" duration="864000" />
       <workItem from="1596636016195" duration="707000" />
-      <workItem from="1596636882482" duration="404000" />
+      <workItem from="1596636882482" duration="555000" />
+      <workItem from="1596652196031" duration="1279000" />
     </task>
     <servers />
   </component>
@@ -388,11 +393,11 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="523" y="131" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1920.1050/-1920.0.1920.1050@0.0.1920.1050" timestamp="1595766018322" />
-    <state x="498" y="178" width="672" height="533" key="search.everywhere.popup" timestamp="1596636927695">
+    <state x="498" y="178" width="672" height="533" key="search.everywhere.popup" timestamp="1596653145334">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="498" y="178" width="672" height="533" key="search.everywhere.popup/0.0.1536.824/1158.-1080.1920.1040@0.0.1536.824" timestamp="1596502680817" />
-    <state x="498" y="178" width="672" height="533" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1596636927695" />
+    <state x="498" y="178" width="672" height="533" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1596653145334" />
     <state x="623" y="227" width="672" height="678" key="search.everywhere.popup/0.0.1920.1050/-1920.0.1920.1050@0.0.1920.1050" timestamp="1595973315876" />
   </component>
 </project>

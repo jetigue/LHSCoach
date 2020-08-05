@@ -17,7 +17,7 @@ class SpringSportController extends Controller
      */
     public function show(SpringSport $springSport)
     {
-        $athletes = Athlete::where('winter_sport_id', $springSport->id)
+        $athletes = Athlete::where('spring_sport_id', $springSport->id)
             ->orderBy('last_name')->orderBy('first_name')
             ->with('latestPhysical')
             ->get();
