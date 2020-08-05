@@ -30,7 +30,7 @@
                 </header>
             </x-banner>
         </div>
-        <div class="flex min-h-screen lg:w-2/3 mx-auto bg-white" id="main">
+        <div class="flex min-h-screen lg:w-2/3 mx-auto bg-gray-white" id="main">
             {{ $slot }}
             <portal-target name="create-modal"></portal-target>
         </div>
