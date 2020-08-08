@@ -41,6 +41,50 @@ class Physical extends Model
     ];
 
     /**
+     * @var string[]
+     */
+    protected $appends = ['athlete_name', 'physical_status'];
+
+    /**
+     * @return string
+     */
+    public function getAthleteNameAttribute()
+    {
+        return $this->athlete->last_name . ', ' . $this->athlete->first_name;
+    }
+
+    public function getPhysicalStatusAttribute()
+    {
+        if
+            (
+                $this->history_form === 1 &&
+                $this->physical_exam_form === 1 &&
+                $this->medical_eligibility_form === 1 &&
+                $this->physical_form === 1 &&
+                $this->blanket_waiver_form === 1 &&
+                $this->ghsa_concussion_form === 1 &&
+                $this->ghsa_cardiac_form === 1 &&
+                $this->restrictions === null
+            )
+        { return "Cleared";}
+
+        elseif
+        (
+            $this->history_form === 1 &&
+            $this->physical_exam_form === 1 &&
+            $this->medical_eligibility_form === 1 &&
+            $this->physical_form === 1 &&
+            $this->blanket_waiver_form === 1 &&
+            $this->ghsa_concussion_form === 1 &&
+            $this->ghsa_cardiac_form === 1 &&
+            $this->restrictions !== null
+        ) {
+            return "Cleared with Restrictions";
+        }
+        return "Not Cleared";
+    }
+
+    /**
      * @return BelongsTo
      */
     public function athlete()

@@ -19,17 +19,44 @@
         <div class="w-full">
             <div class="flex">
                 <div class="flex w-11/12 px-2 text-gray-500 font-semibold">
-                    <div class="w-full lg:w-1/3">
-                        <p class="">Name</p>
+                    <div class="w-full lg:w-3/12">
+                        <div @click="sort('last_name')" class="cursor-pointer">Name
+                            <span v-if="this.currentSort==='last_name' && this.currentSortDir==='desc'"><i class="fas fa-sort-down"></i></span>
+                            <span v-else-if="this.currentSort==='last_name' && this.currentSortDir==='asc'"><i class="fas fa-sort-up"></i></span>
+                            <span v-else><i class="fas fa-sort"></i></span>
+                        </div>
                     </div>
-                    <div class="hidden lg:flex lg:w-1/6">
-                        <p class="">Sex</p>
+                    <div class="hidden lg:flex lg:w-2/12">
+                        <div @click="sort('sex')" class="cursor-pointer">Sex
+                            <span v-if="this.currentSort==='sex' && this.currentSortDir==='desc'"><i class="fas fa-sort-down"></i></span>
+                            <span v-else-if="this.currentSort==='sex' && this.currentSortDir==='asc'"><i class="fas fa-sort-up"></i></span>
+                            <span v-else><i class="fas fa-sort"></i></span>
+                        </div>
                     </div>
-                    <div class="hidden lg:flex lg:w-1/6">
-                        <p class="">Class</p>
+                    <div class="hidden lg:flex lg:w-2/12">
+                        <div @click="sort('grade')" class="cursor-pointer">Grade
+                            <span v-if="this.currentSort==='grade' && this.currentSortDir==='desc'"><i class="fas fa-sort-down"></i></span>
+                            <span v-else-if="this.currentSort==='grade' && this.currentSortDir==='asc'"><i class="fas fa-sort-up"></i></span>
+                            <span v-else><i class="fas fa-sort"></i></span>
+                        </div>
                     </div>
-                    <div class="hidden lg:flex lg:w-1/3 px-2">
-                        <p class="">Sports</p>
+                    <div class="hidden lg:flex lg:w-5/12 px-2">
+                        <div @click="sort('fall_sport_id')" class="cursor-pointer w-1/3">Fall Sport
+                            <span v-if="this.currentSort==='fall_sport_id' && this.currentSortDir==='desc'"><i class="fas fa-sort-down"></i></span>
+                            <span v-else-if="this.currentSort==='fall_sport_id' && this.currentSortDir==='asc'"><i class="fas fa-sort-up"></i></span>
+                            <span v-else><i class="fas fa-sort"></i></span>
+                        </div>
+                        <div @click="sort('winter_sport_id')" class="cursor-pointer w-1/3">Winter Sport
+                            <span v-if="this.currentSort==='winter_sport_id' && this.currentSortDir==='desc'"><i class="fas fa-sort-down"></i></span>
+                            <span v-else-if="this.currentSort==='winter_sport_id' && this.currentSortDir==='asc'"><i class="fas fa-sort-up"></i></span>
+                            <span v-else><i class="fas fa-sort"></i></span>
+                        </div>
+                        <div @click="sort('spring_sport_id')" class="cursor-pointer w-1/3">Spring Sport
+                            <span v-if="this.currentSort==='spring_sport_id' && this.currentSortDir==='desc'"><i class="fas fa-sort-down"></i></span>
+                            <span v-else-if="this.currentSort==='spring_sport_id' && this.currentSortDir==='asc'"><i class="fas fa-sort-up"></i></span>
+                            <span v-else><i class="fas fa-sort"></i></span>
+                        </div>
+
                     </div>
                 </div>
                 <div class="flex w-1/12 justify-end px-2 items-center">
@@ -39,7 +66,7 @@
                 </div>
             </div>
             <div v-if="records" class="divide-y border-t border-b">
-                <div v-for="(athlete, index) in filteredAthletes" :key="athlete.id">
+                <div v-for="(athlete, index) in sortedAthletes" :key="athlete.id">
                     <athlete :data="athlete" @deleted="remove(index)"></athlete>
                 </div>
             </div>
@@ -71,7 +98,8 @@
         data() {
             return {
                 search: '',
-
+                currentSort: 'last_name',
+                currentSortDir: 'asc',
             }
         },
 
@@ -83,12 +111,29 @@
                         athlete.first_name.toLowerCase().match(this.search.toLowerCase())
                     )
                 });
-            }
+            },
+
+            sortedAthletes: function() {
+                return this.filteredAthletes.sort((a, b) => {
+                    let modifier = 1;
+                    if (this.currentSortDir === 'desc') modifier = -1;
+                    if (a[this.currentSort] < b[this.currentSort]) return -1 * modifier;
+                    if (a[this.currentSort] > b[this.currentSort]) return modifier;
+                    return 0;
+                });
+            },
         },
 
         methods: {
             clearSearch() {
                 this.search = ''
+            },
+
+            sort:function(s) {
+                if (s === this.currentSort) {
+                    this.currentSortDir = this.currentSortDir === 'asc'?'desc':'asc';
+                }
+                this.currentSort = s;
             }
         }
     })

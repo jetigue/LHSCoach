@@ -23,7 +23,7 @@ class Athlete extends Model
     /**
      * @var string[]
      */
-    protected $appends = ['age', 'class', 'gender'];
+    protected $appends = ['age', 'grade', 'gender'];
 
     /**
      * @var array
@@ -104,7 +104,7 @@ class Athlete extends Model
         return $this->dob->diffInYears(Carbon::now());
     }
 
-    public function getClassAttribute()
+    public function getGradeAttribute()
     {
         $m = Carbon::now()->month;
         $y = Carbon::now()->year;
@@ -113,39 +113,54 @@ class Athlete extends Model
         switch($m)
         {
             case $m >= 6:
-                if ($gy - $y === 4)
-                { return 'Freshman'; }
+                if ($gy - $y === 5)
+                { return 8; }
+
+                else if ($gy - $y === 4)
+                { return 9; }
 
                 elseif ($gy - $y === 3)
-                { return 'Sophomore'; }
+                { return 10; }
 
                 elseif ($gy - $y === 2)
-                { return 'Junior'; }
+                { return 11; }
 
                 elseif ($gy - $y === 1)
-                { return 'Senior'; }
+                { return 12; }
 
                 elseif ($gy - $y <= 0)
                 { return 'alum'; }
 
                 else { return ''; }
             case $m <= 5:
-                if ($gy - $y === 3)
-                { return 'Freshman'; }
+                if ($gy - $y === 4)
+                { return 8; }
+
+                elseif ($gy - $y === 3)
+                { return 9; }
 
                 elseif ($gy - $y === 2)
-                { return 'Sophomore'; }
+                { return 10; }
 
                 elseif ($gy - $y === 1)
-                { return 'Junior'; }
+                { return 11; }
 
                 elseif ($gy - $y === 0)
-                { return 'Senior'; }
+                { return 12; }
 
                 else { return 'alum'; }
         }
 
     }
+
+//    public function getPhysicalStatusAttribute()
+//    {
+//        if ($this->latestPhysical === null)
+//        {
+//            return 'Not Cleared';
+//        }
+//        return $this->latestPhysical->physical_status;
+//    }
 
     /**
      * Save a slug on store and update

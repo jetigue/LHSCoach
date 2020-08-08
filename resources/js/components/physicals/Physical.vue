@@ -396,6 +396,7 @@
                 form_path: this.data.form_path,
                 url: location.pathname +'/'+this.data.id,
                 physicalUploaded: this.data.form_path != null,
+                physical_status: this.data.physical_status,
 
                 athletes: [],
 
@@ -463,6 +464,20 @@
                     return "Not Cleared"
                 }
             },
+
+            // statusColor() {
+            //     if (this.expiration === "Expired") {
+            //         return '#cc0000';
+            //     } else if (this.physical_status === 'Not Cleared') {
+            //         return '#cc0000'
+            //     } else if (this.physical_status === 'Cleared with Restrictions') {
+            //         this.restrict = true
+            //         return '#fd6a02'
+            //     } else {
+            //         this.allClear = true
+            //         return '#00b300'
+            //     }
+            // },
 
             expiration() {
                 let examination_date = this.$moment(this.exam_date);
@@ -610,13 +625,13 @@
                         this.exam_date = this.form.exam_date;
                         this.restrictions = this.form.restrictions;
                         this.notes = this.form.notes;
-                        this.history_form = this.form.history_form,
-                        this.physical_exam_form = this.form.physical_exam_form,
-                        this.medical_eligibility_form = this.form.medical_eligibility_form,
-                        this.physical_form = this.form.physical_form,
-                        this.blanket_waiver_form = this.form.blanket_waiver_form,
-                        this.ghsa_concussion_form = this.form.ghsa_concussion_form,
-                        this.ghsa_cardiac_form = this.form.ghsa_cardiac_form
+                        this.history_form = this.form.history_form;
+                        this.physical_exam_form = this.form.physical_exam_form;
+                        this.medical_eligibility_form = this.form.medical_eligibility_form;
+                        this.physical_form = this.form.physical_form;
+                        this.blanket_waiver_form = this.form.blanket_waiver_form;
+                        this.ghsa_concussion_form = this.form.ghsa_concussion_form;
+                        this.ghsa_cardiac_form = this.form.ghsa_cardiac_form;
 
                         this.editing = false;
                         this.isExpanded = false;

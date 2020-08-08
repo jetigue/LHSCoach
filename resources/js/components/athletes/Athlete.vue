@@ -194,35 +194,35 @@
             <div class="flex flex-col w-full">
                 <div class="flex w-full">
                     <div class="flex pt-1 w-11/12 px-2 flex-wrap">
-                        <div class="flex w-full lg:w-1/3">
+                        <div class="flex w-full lg:w-3/12">
                             <a :href="athleteUrl" class="hover:font-semibold hover:underline">
                                 {{ last_name }}, {{ first_name }}
                             </a>
 
                         </div>
-                        <div class="hidden lg:flex lg:w-1/6">
+                        <div class="hidden lg:flex lg:w-2/12">
                             {{ sexName }}
                         </div>
-                        <div class="hidden lg:flex lg:w-1/6">
-                             {{ grade }}
+                        <div class="hidden lg:flex lg:w-2/12">
+                             {{ gradeWithSuffix }}
                         </div>
-                        <div class="flex flex-col w-full text-gray-700 lg:text-black lg:flex-row lg:w-1/3">
-                            <span v-show="fallSport" class="px-2">
-                                <a :href="fallSportUrl" class="hover:font-semibold hover:underline">
+                        <div class="flex flex-col w-full text-gray-700 lg:text-black lg:flex-row lg:w-5/12">
+                            <div class="w-1/3 px-2">
+                                <a v-show="fallSport" :href="fallSportUrl" class="hover:font-semibold hover:underline">
                                     {{ fallSport }}
                                 </a>
-                            </span>
-                            <span v-show="winterSport" class="px-2">
-                                <a :href="winterSportUrl" class="hover:font-semibold hover:underline">
+                            </div>
+                            <div  class="w-1/3 px-2">
+                                <a v-show="winterSport" :href="winterSportUrl" class="hover:font-semibold hover:underline">
                                     {{ winterSport }}
                                 </a>
-                            </span>
-                            <span v-show="springSport" class="px-2">
-                                <a :href="springSportUrl" class="hover:font-semibold hover:underline">
+                            </div>
+                            <div class="w-1/3 px-2">
+                                <a v-show="springSport" :href="springSportUrl" class="hover:font-semibold hover:underline">
                                     {{ springSport }}
                                 </a>
 
-                            </span>
+                            </div>
                         </div>
                     </div>
                     <div class="flex w-1/12 pt-1 justify-end px-4">
@@ -244,7 +244,7 @@
 
                             <p class="text-gray-500 w-full py-1">Class:
                                 <span class="text-gray-800 font-semibold">{{ grad_year }}</span>
-                                <span class="text-gray-500 text-sm font-semibold">{{ grade }}</span>
+                                <span class="text-gray-500 text-sm font-semibold">{{ gradeWithSuffix }}</span>
                             </p>
 
                         </div>
@@ -281,7 +281,7 @@
                 dob: this.data.dob,
                 first_name: this.data.first_name,
                 grad_year: this.data.grad_year,
-                grade: this.data.class,
+                grade: this.data.grade,
                 id: this.data.id,
                 last_name: this.data.last_name,
                 sex: this.data.sex,
@@ -320,11 +320,20 @@
                 return this.sex === 'm' ? "Male" : "Female";
             },
 
+            gradeWithSuffix() {
+                return this.grade !== 'alum' ? this.grade + 'th' : 'alum';
+            },
+
             fallSport() {
-                if (this.data.fall_sport_id !== 1) {
+                if (this.data.fall_sport_id === 1) {
+                    return '';
+                }
+                else if (this.data.fall_sport.name === 'Competition Cheerleading') {
+                    return 'Comp Cheer';
+                }
+                else {
                     return this.fall_sport
                 }
-                return ''
             },
 
             winterSport() {

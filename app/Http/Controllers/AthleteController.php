@@ -16,8 +16,8 @@ class AthleteController extends Controller
      */
     public function index()
     {
-        $athletes = Athlete::query()
-            ->with('latestPhysical')
+        $athletes = Athlete::whereBetween('grad_year', [2021, 2025])
+//            ->with('latestPhysical')
             ->with('fallSport')
             ->with('winterSport')
             ->with('springSport')
