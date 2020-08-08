@@ -19,7 +19,8 @@ class FallSportController extends Controller
     public function show(FallSport $fallSport)
     {
         $athletes = Athlete::where('fall_sport_id', $fallSport->id)
-            ->orderBy('last_name')->orderBy('first_name')
+            ->orderBy('last_name')
+            ->orderBy('first_name')
             ->with('latestPhysical')
             ->get();
 

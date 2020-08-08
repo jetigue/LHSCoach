@@ -4135,7 +4135,7 @@ __webpack_require__.r(__webpack_exports__);
       dob: this.data.dob,
       first_name: this.data.first_name,
       grad_year: this.data.grad_year,
-      grade: this.data["class"],
+      grade: this.data.grade,
       id: this.data.id,
       last_name: this.data.last_name,
       sex: this.data.sex,
@@ -4168,12 +4168,17 @@ __webpack_require__.r(__webpack_exports__);
     sexName: function sexName() {
       return this.sex === 'm' ? "Male" : "Female";
     },
+    gradeWithSuffix: function gradeWithSuffix() {
+      return this.grade !== 'alum' ? this.grade + 'th' : 'alum';
+    },
     fallSport: function fallSport() {
-      if (this.data.fall_sport_id !== 1) {
+      if (this.data.fall_sport_id === 1) {
+        return '';
+      } else if (this.data.fall_sport.name === 'Competition Cheerleading') {
+        return 'Comp Cheer';
+      } else {
         return this.fall_sport;
       }
-
-      return '';
     },
     winterSport: function winterSport() {
       if (this.data.winter_sport_id !== 1) {
@@ -4353,6 +4358,33 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -4367,7 +4399,9 @@ __webpack_require__.r(__webpack_exports__);
   props: ['data'],
   data: function data() {
     return {
-      search: ''
+      search: '',
+      currentSort: 'last_name',
+      currentSortDir: 'asc'
     };
   },
   computed: {
@@ -4377,11 +4411,29 @@ __webpack_require__.r(__webpack_exports__);
       return this.items.filter(function (athlete) {
         return athlete.last_name.toLowerCase().match(_this.search.toLowerCase()) || athlete.first_name.toLowerCase().match(_this.search.toLowerCase());
       });
+    },
+    sortedAthletes: function sortedAthletes() {
+      var _this2 = this;
+
+      return this.filteredAthletes.sort(function (a, b) {
+        var modifier = 1;
+        if (_this2.currentSortDir === 'desc') modifier = -1;
+        if (a[_this2.currentSort] < b[_this2.currentSort]) return -1 * modifier;
+        if (a[_this2.currentSort] > b[_this2.currentSort]) return modifier;
+        return 0;
+      });
     }
   },
   methods: {
     clearSearch: function clearSearch() {
       this.search = '';
+    },
+    sort: function sort(s) {
+      if (s === this.currentSort) {
+        this.currentSortDir = this.currentSortDir === 'asc' ? 'desc' : 'asc';
+      }
+
+      this.currentSort = s;
     }
   }
 }));
@@ -4910,7 +4962,9 @@ __webpack_require__.r(__webpack_exports__);
   props: ['data'],
   data: function data() {
     return {
-      search: ''
+      search: '',
+      currentSort: 'last_name',
+      currentSortDir: 'asc'
     };
   },
   computed: {
@@ -4920,11 +4974,29 @@ __webpack_require__.r(__webpack_exports__);
       return this.items.filter(function (athlete) {
         return athlete.last_name.toLowerCase().match(_this.search.toLowerCase()) || athlete.first_name.toLowerCase().match(_this.search.toLowerCase());
       });
+    },
+    sortedAthletes: function sortedAthletes() {
+      var _this2 = this;
+
+      return this.filteredAthletes.sort(function (a, b) {
+        var modifier = 1;
+        if (_this2.currentSortDir === 'desc') modifier = -1;
+        if (a[_this2.currentSort] < b[_this2.currentSort]) return -1 * modifier;
+        if (a[_this2.currentSort] > b[_this2.currentSort]) return modifier;
+        return 0;
+      });
     }
   },
   methods: {
     clearSearch: function clearSearch() {
       this.search = '';
+    },
+    sort: function sort(s) {
+      if (s === this.currentSort) {
+        this.currentSortDir = this.currentSortDir === 'asc' ? 'desc' : 'asc';
+      }
+
+      this.currentSort = s;
     }
   }
 }));
@@ -6680,6 +6752,7 @@ __webpack_require__.r(__webpack_exports__);
       form_path: this.data.form_path,
       url: location.pathname + '/' + this.data.id,
       physicalUploaded: this.data.form_path != null,
+      physical_status: this.data.physical_status,
       athletes: [],
       form: new Form({
         athlete_id: this.data.athlete_id,
@@ -6724,6 +6797,19 @@ __webpack_require__.r(__webpack_exports__);
         return "Not Cleared";
       }
     },
+    // statusColor() {
+    //     if (this.expiration === "Expired") {
+    //         return '#cc0000';
+    //     } else if (this.physical_status === 'Not Cleared') {
+    //         return '#cc0000'
+    //     } else if (this.physical_status === 'Cleared with Restrictions') {
+    //         this.restrict = true
+    //         return '#fd6a02'
+    //     } else {
+    //         this.allClear = true
+    //         return '#00b300'
+    //     }
+    // },
     expiration: function expiration() {
       var examination_date = this.$moment(this.exam_date);
       var expiration_date = this.$moment(examination_date).add(1, 'years');
@@ -6840,7 +6926,13 @@ __webpack_require__.r(__webpack_exports__);
         _this2.exam_date = _this2.form.exam_date;
         _this2.restrictions = _this2.form.restrictions;
         _this2.notes = _this2.form.notes;
-        _this2.history_form = _this2.form.history_form, _this2.physical_exam_form = _this2.form.physical_exam_form, _this2.medical_eligibility_form = _this2.form.medical_eligibility_form, _this2.physical_form = _this2.form.physical_form, _this2.blanket_waiver_form = _this2.form.blanket_waiver_form, _this2.ghsa_concussion_form = _this2.form.ghsa_concussion_form, _this2.ghsa_cardiac_form = _this2.form.ghsa_cardiac_form;
+        _this2.history_form = _this2.form.history_form;
+        _this2.physical_exam_form = _this2.form.physical_exam_form;
+        _this2.medical_eligibility_form = _this2.form.medical_eligibility_form;
+        _this2.physical_form = _this2.form.physical_form;
+        _this2.blanket_waiver_form = _this2.form.blanket_waiver_form;
+        _this2.ghsa_concussion_form = _this2.form.ghsa_concussion_form;
+        _this2.ghsa_cardiac_form = _this2.form.ghsa_cardiac_form;
         _this2.editing = false;
         _this2.isExpanded = false;
 
@@ -6944,6 +7036,21 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -6958,7 +7065,9 @@ __webpack_require__.r(__webpack_exports__);
   props: ['data'],
   data: function data() {
     return {
-      search: ''
+      search: '',
+      currentSort: 'athlete_name',
+      currentSortDir: 'asc'
     };
   },
   computed: {
@@ -6968,11 +7077,29 @@ __webpack_require__.r(__webpack_exports__);
       return this.items.filter(function (physical) {
         return physical.exam_date.toLowerCase().match(_this.search.toLowerCase()) || physical.athlete.last_name.toLowerCase().match(_this.search.toLowerCase()) || physical.athlete.first_name.toLowerCase().match(_this.search.toLowerCase());
       });
+    },
+    sortedPhysicals: function sortedPhysicals() {
+      var _this2 = this;
+
+      return this.filteredPhysicals.sort(function (a, b) {
+        var modifier = 1;
+        if (_this2.currentSortDir === 'desc') modifier = -1;
+        if (a[_this2.currentSort] < b[_this2.currentSort]) return -1 * modifier;
+        if (a[_this2.currentSort] > b[_this2.currentSort]) return modifier;
+        return 0;
+      });
     }
   },
   methods: {
     clearSearch: function clearSearch() {
       this.search = '';
+    },
+    sort: function sort(s) {
+      if (s === this.currentSort) {
+        this.currentSortDir = this.currentSortDir === 'asc' ? 'desc' : 'asc';
+      }
+
+      this.currentSort = s;
     }
   }
 }));
@@ -30779,7 +30906,7 @@ var render = function() {
           _c("div", { staticClass: "flex flex-col w-full" }, [
             _c("div", { staticClass: "flex w-full" }, [
               _c("div", { staticClass: "flex pt-1 w-11/12 px-2 flex-wrap" }, [
-                _c("div", { staticClass: "flex w-full lg:w-1/3" }, [
+                _c("div", { staticClass: "flex w-full lg:w-3/12" }, [
                   _c(
                     "a",
                     {
@@ -30798,7 +30925,7 @@ var render = function() {
                   )
                 ]),
                 _vm._v(" "),
-                _c("div", { staticClass: "hidden lg:flex lg:w-1/6" }, [
+                _c("div", { staticClass: "hidden lg:flex lg:w-2/12" }, [
                   _vm._v(
                     "\n                        " +
                       _vm._s(_vm.sexName) +
@@ -30806,10 +30933,10 @@ var render = function() {
                   )
                 ]),
                 _vm._v(" "),
-                _c("div", { staticClass: "hidden lg:flex lg:w-1/6" }, [
+                _c("div", { staticClass: "hidden lg:flex lg:w-2/12" }, [
                   _vm._v(
                     "\n                         " +
-                      _vm._s(_vm.grade) +
+                      _vm._s(_vm.gradeWithSuffix) +
                       "\n                    "
                   )
                 ]),
@@ -30818,101 +30945,83 @@ var render = function() {
                   "div",
                   {
                     staticClass:
-                      "flex flex-col w-full text-gray-700 lg:text-black lg:flex-row lg:w-1/3"
+                      "flex flex-col w-full text-gray-700 lg:text-black lg:flex-row lg:w-5/12"
                   },
                   [
-                    _c(
-                      "span",
-                      {
-                        directives: [
-                          {
-                            name: "show",
-                            rawName: "v-show",
-                            value: _vm.fallSport,
-                            expression: "fallSport"
-                          }
-                        ],
-                        staticClass: "px-2"
-                      },
-                      [
-                        _c(
-                          "a",
-                          {
-                            staticClass: "hover:font-semibold hover:underline",
-                            attrs: { href: _vm.fallSportUrl }
-                          },
-                          [
-                            _vm._v(
-                              "\n                                " +
-                                _vm._s(_vm.fallSport) +
-                                "\n                            "
-                            )
-                          ]
-                        )
-                      ]
-                    ),
+                    _c("div", { staticClass: "w-1/3 px-2" }, [
+                      _c(
+                        "a",
+                        {
+                          directives: [
+                            {
+                              name: "show",
+                              rawName: "v-show",
+                              value: _vm.fallSport,
+                              expression: "fallSport"
+                            }
+                          ],
+                          staticClass: "hover:font-semibold hover:underline",
+                          attrs: { href: _vm.fallSportUrl }
+                        },
+                        [
+                          _vm._v(
+                            "\n                                " +
+                              _vm._s(_vm.fallSport) +
+                              "\n                            "
+                          )
+                        ]
+                      )
+                    ]),
                     _vm._v(" "),
-                    _c(
-                      "span",
-                      {
-                        directives: [
-                          {
-                            name: "show",
-                            rawName: "v-show",
-                            value: _vm.winterSport,
-                            expression: "winterSport"
-                          }
-                        ],
-                        staticClass: "px-2"
-                      },
-                      [
-                        _c(
-                          "a",
-                          {
-                            staticClass: "hover:font-semibold hover:underline",
-                            attrs: { href: _vm.winterSportUrl }
-                          },
-                          [
-                            _vm._v(
-                              "\n                                " +
-                                _vm._s(_vm.winterSport) +
-                                "\n                            "
-                            )
-                          ]
-                        )
-                      ]
-                    ),
+                    _c("div", { staticClass: "w-1/3 px-2" }, [
+                      _c(
+                        "a",
+                        {
+                          directives: [
+                            {
+                              name: "show",
+                              rawName: "v-show",
+                              value: _vm.winterSport,
+                              expression: "winterSport"
+                            }
+                          ],
+                          staticClass: "hover:font-semibold hover:underline",
+                          attrs: { href: _vm.winterSportUrl }
+                        },
+                        [
+                          _vm._v(
+                            "\n                                " +
+                              _vm._s(_vm.winterSport) +
+                              "\n                            "
+                          )
+                        ]
+                      )
+                    ]),
                     _vm._v(" "),
-                    _c(
-                      "span",
-                      {
-                        directives: [
-                          {
-                            name: "show",
-                            rawName: "v-show",
-                            value: _vm.springSport,
-                            expression: "springSport"
-                          }
-                        ],
-                        staticClass: "px-2"
-                      },
-                      [
-                        _c(
-                          "a",
-                          {
-                            staticClass: "hover:font-semibold hover:underline",
-                            attrs: { href: _vm.springSportUrl }
-                          },
-                          [
-                            _vm._v(
-                              "\n                                " +
-                                _vm._s(_vm.springSport) +
-                                "\n                            "
-                            )
-                          ]
-                        )
-                      ]
-                    )
+                    _c("div", { staticClass: "w-1/3 px-2" }, [
+                      _c(
+                        "a",
+                        {
+                          directives: [
+                            {
+                              name: "show",
+                              rawName: "v-show",
+                              value: _vm.springSport,
+                              expression: "springSport"
+                            }
+                          ],
+                          staticClass: "hover:font-semibold hover:underline",
+                          attrs: { href: _vm.springSportUrl }
+                        },
+                        [
+                          _vm._v(
+                            "\n                                " +
+                              _vm._s(_vm.springSport) +
+                              "\n                            "
+                          )
+                        ]
+                      )
+                    ])
                   ]
                 )
               ]),
@@ -30975,7 +31084,7 @@ var render = function() {
                             {
                               staticClass: "text-gray-500 text-sm font-semibold"
                             },
-                            [_vm._v(_vm._s(_vm.grade))]
+                            [_vm._v(_vm._s(_vm.gradeWithSuffix))]
                           )
                         ])
                       ]
@@ -31090,7 +31199,149 @@ var render = function() {
     _vm._v(" "),
     _c("div", { staticClass: "w-full" }, [
       _c("div", { staticClass: "flex" }, [
-        _vm._m(0),
+        _c(
+          "div",
+          { staticClass: "flex w-11/12 px-2 text-gray-500 font-semibold" },
+          [
+            _c("div", { staticClass: "w-full lg:w-3/12" }, [
+              _c(
+                "div",
+                {
+                  staticClass: "cursor-pointer",
+                  on: {
+                    click: function($event) {
+                      return _vm.sort("last_name")
+                    }
+                  }
+                },
+                [
+                  _vm._v("Name\n                        "),
+                  this.currentSort === "last_name" &&
+                  this.currentSortDir === "desc"
+                    ? _c("span", [_c("i", { staticClass: "fas fa-sort-down" })])
+                    : this.currentSort === "last_name" &&
+                      this.currentSortDir === "asc"
+                    ? _c("span", [_c("i", { staticClass: "fas fa-sort-up" })])
+                    : _c("span", [_c("i", { staticClass: "fas fa-sort" })])
+                ]
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "hidden lg:flex lg:w-2/12" }, [
+              _c(
+                "div",
+                {
+                  staticClass: "cursor-pointer",
+                  on: {
+                    click: function($event) {
+                      return _vm.sort("sex")
+                    }
+                  }
+                },
+                [
+                  _vm._v("Sex\n                        "),
+                  this.currentSort === "sex" && this.currentSortDir === "desc"
+                    ? _c("span", [_c("i", { staticClass: "fas fa-sort-down" })])
+                    : this.currentSort === "sex" &&
+                      this.currentSortDir === "asc"
+                    ? _c("span", [_c("i", { staticClass: "fas fa-sort-up" })])
+                    : _c("span", [_c("i", { staticClass: "fas fa-sort" })])
+                ]
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "hidden lg:flex lg:w-2/12" }, [
+              _c(
+                "div",
+                {
+                  staticClass: "cursor-pointer",
+                  on: {
+                    click: function($event) {
+                      return _vm.sort("grade")
+                    }
+                  }
+                },
+                [
+                  _vm._v("Grade\n                        "),
+                  this.currentSort === "grade" && this.currentSortDir === "desc"
+                    ? _c("span", [_c("i", { staticClass: "fas fa-sort-down" })])
+                    : this.currentSort === "grade" &&
+                      this.currentSortDir === "asc"
+                    ? _c("span", [_c("i", { staticClass: "fas fa-sort-up" })])
+                    : _c("span", [_c("i", { staticClass: "fas fa-sort" })])
+                ]
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "hidden lg:flex lg:w-5/12 px-2" }, [
+              _c(
+                "div",
+                {
+                  staticClass: "cursor-pointer w-1/3",
+                  on: {
+                    click: function($event) {
+                      return _vm.sort("fall_sport_id")
+                    }
+                  }
+                },
+                [
+                  _vm._v("Fall Sport\n                        "),
+                  this.currentSort === "fall_sport_id" &&
+                  this.currentSortDir === "desc"
+                    ? _c("span", [_c("i", { staticClass: "fas fa-sort-down" })])
+                    : this.currentSort === "fall_sport_id" &&
+                      this.currentSortDir === "asc"
+                    ? _c("span", [_c("i", { staticClass: "fas fa-sort-up" })])
+                    : _c("span", [_c("i", { staticClass: "fas fa-sort" })])
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass: "cursor-pointer w-1/3",
+                  on: {
+                    click: function($event) {
+                      return _vm.sort("winter_sport_id")
+                    }
+                  }
+                },
+                [
+                  _vm._v("Winter Sport\n                        "),
+                  this.currentSort === "winter_sport_id" &&
+                  this.currentSortDir === "desc"
+                    ? _c("span", [_c("i", { staticClass: "fas fa-sort-down" })])
+                    : this.currentSort === "winter_sport_id" &&
+                      this.currentSortDir === "asc"
+                    ? _c("span", [_c("i", { staticClass: "fas fa-sort-up" })])
+                    : _c("span", [_c("i", { staticClass: "fas fa-sort" })])
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass: "cursor-pointer w-1/3",
+                  on: {
+                    click: function($event) {
+                      return _vm.sort("spring_sport_id")
+                    }
+                  }
+                },
+                [
+                  _vm._v("Spring Sport\n                        "),
+                  this.currentSort === "spring_sport_id" &&
+                  this.currentSortDir === "desc"
+                    ? _c("span", [_c("i", { staticClass: "fas fa-sort-down" })])
+                    : this.currentSort === "spring_sport_id" &&
+                      this.currentSortDir === "asc"
+                    ? _c("span", [_c("i", { staticClass: "fas fa-sort-up" })])
+                    : _c("span", [_c("i", { staticClass: "fas fa-sort" })])
+                ]
+              )
+            ])
+          ]
+        ),
         _vm._v(" "),
         _c(
           "div",
@@ -31111,7 +31362,7 @@ var render = function() {
         ? _c(
             "div",
             { staticClass: "divide-y border-t border-b" },
-            _vm._l(_vm.filteredAthletes, function(athlete, index) {
+            _vm._l(_vm.sortedAthletes, function(athlete, index) {
               return _c(
                 "div",
                 { key: athlete.id },
@@ -31152,34 +31403,7 @@ var render = function() {
       : _vm._e()
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      { staticClass: "flex w-11/12 px-2 text-gray-500 font-semibold" },
-      [
-        _c("div", { staticClass: "w-full lg:w-1/3" }, [
-          _c("p", {}, [_vm._v("Name")])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "hidden lg:flex lg:w-1/6" }, [
-          _c("p", {}, [_vm._v("Sex")])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "hidden lg:flex lg:w-1/6" }, [
-          _c("p", {}, [_vm._v("Class")])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "hidden lg:flex lg:w-1/3 px-2" }, [
-          _c("p", {}, [_vm._v("Sports")])
-        ])
-      ]
-    )
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -32196,13 +32420,37 @@ var render = function() {
     ]),
     _vm._v(" "),
     _c("div", {}, [
-      _vm._m(0),
+      _c("div", { staticClass: "flex" }, [
+        _c(
+          "div",
+          { staticClass: "flex w-11/12 px-2 text-gray-500 font-semibold" },
+          [
+            _c("div", { staticClass: "w-full lg:w-1/3" }, [
+              _c(
+                "div",
+                {
+                  on: {
+                    click: function($event) {
+                      return _vm.sort("last_name")
+                    }
+                  }
+                },
+                [_vm._v("Name")]
+              )
+            ]),
+            _vm._v(" "),
+            _vm._m(0),
+            _vm._v(" "),
+            _vm._m(1)
+          ]
+        )
+      ]),
       _vm._v(" "),
       _vm.records
         ? _c(
             "div",
             { staticClass: "divide-y border-t border-b" },
-            _vm._l(_vm.filteredAthletes, function(athlete, index) {
+            _vm._l(_vm.sortedAthletes, function(athlete, index) {
               return _c(
                 "div",
                 { key: athlete.id },
@@ -32234,24 +32482,16 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "flex" }, [
-      _c(
-        "div",
-        { staticClass: "flex w-11/12 px-2 text-gray-500 font-semibold" },
-        [
-          _c("div", { staticClass: "w-full lg:w-1/3" }, [
-            _c("p", {}, [_vm._v("Name")])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "hidden lg:flex lg:w-1/3" }, [
-            _c("p", { staticClass: "px-2" }, [_vm._v("Physical Status")])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "hidden px-2 lg:flex lg:w-1/3" }, [
-            _c("p", {}, [_vm._v("Expiration")])
-          ])
-        ]
-      )
+    return _c("div", { staticClass: "hidden lg:flex lg:w-1/3" }, [
+      _c("div", { staticClass: "px-2" }, [_vm._v("Physical Status")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "hidden px-2 lg:flex lg:w-1/3" }, [
+      _c("div", {}, [_vm._v("Expiration")])
     ])
   }
 ]
@@ -35529,7 +35769,87 @@ var render = function() {
     _vm._v(" "),
     _c("div", {}, [
       _c("div", { staticClass: "flex" }, [
-        _vm._m(0),
+        _c(
+          "div",
+          { staticClass: "flex w-11/12 px-2 text-gray-500 font-semibold" },
+          [
+            _c("div", { staticClass: "w-full lg:w-1/3" }, [
+              _c(
+                "div",
+                {
+                  staticClass: "cursor-pointer",
+                  on: {
+                    click: function($event) {
+                      return _vm.sort("athlete_name")
+                    }
+                  }
+                },
+                [
+                  _vm._v(
+                    "\n                        Name\n                        "
+                  ),
+                  this.currentSort === "athlete_name" &&
+                  this.currentSortDir === "desc"
+                    ? _c("span", [_c("i", { staticClass: "fas fa-sort-down" })])
+                    : this.currentSort === "athlete_name" &&
+                      this.currentSortDir === "asc"
+                    ? _c("span", [_c("i", { staticClass: "fas fa-sort-up" })])
+                    : _c("span", [_c("i", { staticClass: "fas fa-sort" })])
+                ]
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "hidden lg:flex px-2 lg:w-1/3" }, [
+              _c(
+                "div",
+                {
+                  staticClass: "cursor-pointer",
+                  on: {
+                    click: function($event) {
+                      return _vm.sort("physical_status")
+                    }
+                  }
+                },
+                [
+                  _vm._v("Physical Status\n                        "),
+                  this.currentSort === "physical_status" &&
+                  this.currentSortDir === "desc"
+                    ? _c("span", [_c("i", { staticClass: "fas fa-sort-down" })])
+                    : this.currentSort === "physical_status" &&
+                      this.currentSortDir === "asc"
+                    ? _c("span", [_c("i", { staticClass: "fas fa-sort-up" })])
+                    : _c("span", [_c("i", { staticClass: "fas fa-sort" })])
+                ]
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "hidden lg:flex lg:w-1/3" }, [
+              _c(
+                "div",
+                {
+                  staticClass: "px-2 cursor-pointer",
+                  on: {
+                    click: function($event) {
+                      return _vm.sort("exam_date")
+                    }
+                  }
+                },
+                [
+                  _vm._v(
+                    "\n                        Expiration Status\n                        "
+                  ),
+                  this.currentSort === "exam_date" &&
+                  this.currentSortDir === "desc"
+                    ? _c("span", [_c("i", { staticClass: "fas fa-sort-down" })])
+                    : this.currentSort === "exam_date" &&
+                      this.currentSortDir === "asc"
+                    ? _c("span", [_c("i", { staticClass: "fas fa-sort-up" })])
+                    : _c("span", [_c("i", { staticClass: "fas fa-sort" })])
+                ]
+              )
+            ])
+          ]
+        ),
         _vm._v(" "),
         _c(
           "div",
@@ -35550,7 +35870,7 @@ var render = function() {
         ? _c(
             "div",
             { staticClass: "divide-y border-t border-b" },
-            _vm._l(_vm.filteredPhysicals, function(physical, index) {
+            _vm._l(_vm.sortedPhysicals, function(physical, index) {
               return _c(
                 "div",
                 { key: physical.id },
@@ -35591,30 +35911,7 @@ var render = function() {
       : _vm._e()
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      { staticClass: "flex w-11/12 px-2 text-gray-500 font-semibold" },
-      [
-        _c("div", { staticClass: "w-full lg:w-1/3" }, [
-          _c("p", {}, [_vm._v("Name")])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "hidden lg:flex px-2 lg:w-1/3" }, [
-          _c("p", {}, [_vm._v("Physical Status")])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "hidden lg:flex lg:w-1/3" }, [
-          _c("p", { staticClass: "px-2" }, [_vm._v("Expiration Status")])
-        ])
-      ]
-    )
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
