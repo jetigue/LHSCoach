@@ -22,8 +22,9 @@ class PhysicalController extends Controller {
     {
         $ly = Carbon::now()->year - 1;
 
-        return $physicals->with('athlete')
-            ->orderBy('exam_date', 'desc')
+        return $physicals->with(['athlete' => function ($q) {
+            $q->orderBy('last_name')->orderBy('first_name');
+        }])
             ->whereYear('exam_date', '>=', $ly)
             ->paginate(50);
     }
