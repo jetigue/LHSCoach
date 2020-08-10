@@ -41,17 +41,17 @@
                         </div>
                     </div>
                     <div class="hidden lg:flex lg:w-5/12 px-2">
-                        <div @click="sort('fall_sport_id')" class="cursor-pointer w-1/3">Fall Sport
+                        <div @click="sort('fall_sport_id')" class="cursor-pointer w-1/3">Fall
                             <span v-if="this.currentSort==='fall_sport_id' && this.currentSortDir==='desc'"><i class="fas fa-sort-down"></i></span>
                             <span v-else-if="this.currentSort==='fall_sport_id' && this.currentSortDir==='asc'"><i class="fas fa-sort-up"></i></span>
                             <span v-else><i class="fas fa-sort"></i></span>
                         </div>
-                        <div @click="sort('winter_sport_id')" class="cursor-pointer w-1/3">Winter Sport
+                        <div @click="sort('winter_sport_id')" class="cursor-pointer w-1/3">Winter
                             <span v-if="this.currentSort==='winter_sport_id' && this.currentSortDir==='desc'"><i class="fas fa-sort-down"></i></span>
                             <span v-else-if="this.currentSort==='winter_sport_id' && this.currentSortDir==='asc'"><i class="fas fa-sort-up"></i></span>
                             <span v-else><i class="fas fa-sort"></i></span>
                         </div>
-                        <div @click="sort('spring_sport_id')" class="cursor-pointer w-1/3">Spring Sport
+                        <div @click="sort('spring_sport_id')" class="cursor-pointer w-1/3">Spring
                             <span v-if="this.currentSort==='spring_sport_id' && this.currentSortDir==='desc'"><i class="fas fa-sort-down"></i></span>
                             <span v-else-if="this.currentSort==='spring_sport_id' && this.currentSortDir==='asc'"><i class="fas fa-sort-up"></i></span>
                             <span v-else><i class="fas fa-sort"></i></span>

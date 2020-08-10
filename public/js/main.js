@@ -31285,7 +31285,7 @@ var render = function() {
                   }
                 },
                 [
-                  _vm._v("Fall Sport\n                        "),
+                  _vm._v("Fall\n                        "),
                   this.currentSort === "fall_sport_id" &&
                   this.currentSortDir === "desc"
                     ? _c("span", [_c("i", { staticClass: "fas fa-sort-down" })])
@@ -31307,7 +31307,7 @@ var render = function() {
                   }
                 },
                 [
-                  _vm._v("Winter Sport\n                        "),
+                  _vm._v("Winter\n                        "),
                   this.currentSort === "winter_sport_id" &&
                   this.currentSortDir === "desc"
                     ? _c("span", [_c("i", { staticClass: "fas fa-sort-down" })])
@@ -31329,7 +31329,7 @@ var render = function() {
                   }
                 },
                 [
-                  _vm._v("Spring Sport\n                        "),
+                  _vm._v("Spring\n                        "),
                   this.currentSort === "spring_sport_id" &&
                   this.currentSortDir === "desc"
                     ? _c("span", [_c("i", { staticClass: "fas fa-sort-down" })])
