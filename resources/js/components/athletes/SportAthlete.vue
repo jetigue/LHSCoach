@@ -244,7 +244,7 @@
 
                             <p class="text-gray-500 w-full py-1">DOB:
                                 <span class="text-gray-800 font-semibold">{{ dob | moment("MM/DD/YYYY") }}</span>
-                                <span class="text-gray-500 text-sm font-semibold">{{ age }} years old</span>
+                                <span class="hidden lg:flex text-gray-500 text-sm font-semibold">{{ age }} years old</span>
                             </p>
 
 
@@ -253,7 +253,7 @@
                                 <span class="text-gray-500 text-sm font-semibold">{{ grade }}</span>
                             </p>
                         </div>
-                        <div class="flex w-2/3">
+                        <div class="flex lg:w-1/3">
                             <div class="flex w-full">
                                 <div v-if="this.physicalStatus === 'Not Cleared'">
                                     <p class="text-gray-500 w-full py-1 px-1">Missing:</p>
@@ -267,6 +267,15 @@
                                         <p v-show="!cardiacFormConfirmed">Cardiac Form</p>
                                     </div>
                                 </div>
+                            </div>
+                        </div>
+                        <div class="flex lg:w-1/3 lg:px-3">
+                            <div v-if="this.physicalStatus !== 'Not Cleared'">
+                                <p class="text-gray-500 w-full py-1">Exp:
+                                    <span class="text-gray-800 font-semibold">
+                                        {{ exam_date| moment("add", "1 year")|moment("M.D.YYYY") }}
+                                    </span>
+                                </p>
                             </div>
                         </div>
                     </div>

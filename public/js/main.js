@@ -4731,6 +4731,15 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "SportAthlete",
@@ -32189,7 +32198,8 @@ var render = function() {
                           _c(
                             "span",
                             {
-                              staticClass: "text-gray-500 text-sm font-semibold"
+                              staticClass:
+                                "hidden lg:flex text-gray-500 text-sm font-semibold"
                             },
                             [_vm._v(_vm._s(_vm.age) + " years old")]
                           )
@@ -32214,7 +32224,7 @@ var render = function() {
                       ]
                     ),
                     _vm._v(" "),
-                    _c("div", { staticClass: "flex w-2/3" }, [
+                    _c("div", { staticClass: "flex lg:w-1/3" }, [
                       _c("div", { staticClass: "flex w-full" }, [
                         this.physicalStatus === "Not Cleared"
                           ? _c("div", [
@@ -32335,6 +32345,44 @@ var render = function() {
                             ])
                           : _vm._e()
                       ])
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "flex lg:w-1/3 lg:px-3" }, [
+                      this.physicalStatus !== "Not Cleared"
+                        ? _c("div", [
+                            _c(
+                              "p",
+                              { staticClass: "text-gray-500 w-full py-1" },
+                              [
+                                _vm._v(
+                                  "Exp:\n                                    "
+                                ),
+                                _c(
+                                  "span",
+                                  {
+                                    staticClass: "text-gray-800 font-semibold"
+                                  },
+                                  [
+                                    _vm._v(
+                                      "\n                                        " +
+                                        _vm._s(
+                                          _vm._f("moment")(
+                                            _vm._f("moment")(
+                                              _vm.exam_date,
+                                              "add",
+                                              "1 year"
+                                            ),
+                                            "M.D.YYYY"
+                                          )
+                                        ) +
+                                        "\n                                    "
+                                    )
+                                  ]
+                                )
+                              ]
+                            )
+                          ])
+                        : _vm._e()
                     ])
                   ]),
                   _vm._v(" "),
@@ -33184,7 +33232,7 @@ var render = function() {
               staticClass: "text-sm font-semibold text-red-900",
               attrs: { for: "form.winter_sport_id" }
             },
-            [_vm._v("\n                Spring Sport\n            ")]
+            [_vm._v("\n                Winter Sport\n            ")]
           ),
           _vm._v(" "),
           _vm.form.errors.has("winter_sport_id")
@@ -33257,7 +33305,7 @@ var render = function() {
               staticClass: "text-sm font-semibold text-red-900",
               attrs: { for: "form.spring_sport_id" }
             },
-            [_vm._v("\n                Fall Sport\n            ")]
+            [_vm._v("\n                Spring Sport\n            ")]
           ),
           _vm._v(" "),
           _vm.form.errors.has("spring_sport_id")

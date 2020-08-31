@@ -3,7 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="2b56f75d-7ca0-4d53-b152-7a241e594436" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/API/PhysicalController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/API/PhysicalController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/athletes/SportAthlete.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/athletes/SportAthlete.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/forms/NewAthleteForm.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/forms/NewAthleteForm.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -252,7 +254,9 @@
       <workItem from="1596718811132" duration="12000" />
       <workItem from="1596834287195" duration="18807000" />
       <workItem from="1596899987770" duration="883000" />
-      <workItem from="1597101975108" duration="1911000" />
+      <workItem from="1597101975108" duration="2511000" />
+      <workItem from="1597517611061" duration="266000" />
+      <workItem from="1598897454683" duration="1326000" />
     </task>
     <servers />
   </component>
@@ -399,11 +403,11 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="523" y="131" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1920.1050/-1920.0.1920.1050@0.0.1920.1050" timestamp="1595766018322" />
-    <state x="498" y="178" width="672" height="533" key="search.everywhere.popup" timestamp="1597103486638">
+    <state x="498" y="178" width="672" height="533" key="search.everywhere.popup" timestamp="1598898753078">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="498" y="178" width="672" height="533" key="search.everywhere.popup/0.0.1536.824/1158.-1080.1920.1040@0.0.1536.824" timestamp="1597103486638" />
-    <state x="498" y="178" width="672" height="533" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1596653145334" />
+    <state x="498" y="178" width="672" height="533" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1598898753078" />
     <state x="623" y="227" width="672" height="678" key="search.everywhere.popup/0.0.1920.1050/-1920.0.1920.1050@0.0.1920.1050" timestamp="1595973315876" />
   </component>
 </project>

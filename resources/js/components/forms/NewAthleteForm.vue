@@ -124,7 +124,7 @@
         <div class="py-2">
             <div class="flex justify-between content-end">
                 <label class="text-sm font-semibold text-red-900" for="form.winter_sport_id">
-                    Spring Sport
+                    Winter Sport
                 </label>
                 <span
                     id="winterSportHelp"
@@ -148,7 +148,7 @@
         <div class="py-2">
             <div class="flex justify-between content-end">
                 <label class="text-sm font-semibold text-red-900" for="form.spring_sport_id">
-                    Fall Sport
+                    Spring Sport
                 </label>
                 <span
                     id="springSportHelp"
