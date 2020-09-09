@@ -15,18 +15,19 @@ class PhysicalController extends Controller {
     /**
      * Display a listing of the resource.
      *
-     * @param Physical $physicals
      * @return LengthAwarePaginator
      */
-    public function index(Physical $physicals)
+    public function index()
     {
         $ly = Carbon::now()->year - 1;
 
-        return $physicals->with(['athlete' => function ($q) {
+        $physicals = Physical::with(['athlete' => function ($q) {
             $q->orderBy('last_name')->orderBy('first_name');
         }])
             ->whereYear('exam_date', '>=', $ly)
-            ->paginate(50);
+            ->get();
+
+        return $physicals->paginate(50);
     }
 
     /**
