@@ -15,7 +15,6 @@ class PhysicalController extends Controller {
     /**
      * Display a listing of the resource.
      *
-     * @return LengthAwarePaginator
      */
     public function index()
     {
@@ -25,7 +24,7 @@ class PhysicalController extends Controller {
             $q->orderBy('last_name')->orderBy('first_name');
         }])
             ->whereYear('exam_date', '>=', $ly)
-            ->paginate(100);
+            ->get();
     }
 
     /**
