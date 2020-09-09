@@ -24,7 +24,7 @@ class PhysicalController extends Controller {
             $q->orderBy('last_name')->orderBy('first_name');
         }])
             ->whereYear('exam_date', '>=', $ly)
-            ->get();
+            ->paginate(100);
     }
 
     /**
